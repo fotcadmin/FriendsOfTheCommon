@@ -3,381 +3,363 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Get Involved | Membership, Donations & Volunteering | Friends of the Commons</title>
+  <title>Get Involved | Membership, Donations &amp; Volunteering | Friends of the Commons</title>
   <meta name="description" content="Support Tunbridge Wells and Rusthall Commons. Join as a member, make a donation with Gift Aid, or volunteer for practical conservation working parties.">
   
   <!-- Open Graph Meta Tags -->
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://friendsofthecommons.uk/get-involved.html">
-  <meta property="og:title" content="Join, Donate or Volunteer | Friends of Tunbridge Wells & Rusthall Commons">
-  <meta property="og:description" content="Your membership and donations directly protect 256 acres of ancient woodland, trails, and sandstone rocks. Boost gifts by 25% with Gift Aid.">
+  <meta property="og:title" content="Join, Donate or Volunteer | Friends of Tunbridge Wells &amp; Rusthall Commons">
+  <meta property="og:description" content="Your membership and donations directly protect 256 acres of ancient woodland, trails, and sandstone rocks. Registered Charity No. 1013975.">
   <meta property="og:image" content="assets/images/og-share.jpg">
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Support The Friends of the Commons">
-  <meta name="twitter:description" content="Join as a member or donate with Gift Aid to protect Tunbridge Wells & Rusthall Commons.">
-  <meta name="twitter:image" content="assets/images/og-share.jpg">
 
   <!-- Favicon & Touch Icons -->
   <link rel="icon" href="favicon.ico" sizes="any">
   <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
   <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
   <link rel="manifest" href="site.webmanifest">
-  <meta name="theme-color" content="#1b4332">
-  <link rel="stylesheet" href="assets/css/style.css">
+  <meta name="theme-color" content="#133926">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="assets/css/nt-style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-  <!-- Sticky Site Header -->
+  <!-- Urgent Top Announcement Bar -->
+  <aside class="urgent-notice-bar" role="region" aria-label="Campaign Notice">
+    <div class="urgent-notice-content">
+      <div>
+        <span class="urgent-tag">COMMONS SALE NOTICE</span>
+        <span>Over 3,000 residents have backed The Friends' community bid to protect the freehold from private equity.</span>
+      </div>
+      <a href="campaign.html#pledge" class="urgent-link">Read bid details &amp; pledge support &rarr;</a>
+    </div>
+  </aside>
+
+  <!-- Site Header -->
   <header class="site-header" role="banner">
-    <div class="container header-container">
-      <a href="index.html" class="site-brand" aria-label="Friends of the Commons Home">
-        <img src="assets/images/logo-transparent.webp" alt="Friends of Tunbridge Wells & Rusthall Commons Logo" class="site-logo" width="54" height="58">
-        <div class="brand-text">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-link" aria-label="Friends of the Commons Home">
+        <img src="assets/images/logo-transparent.webp" alt="Friends of Tunbridge Wells and Rusthall Commons Logo" class="brand-logo" width="48" height="52">
+        <div class="brand-title-wrap">
           <span class="brand-title">Friends of the Commons</span>
-          <span class="brand-subtitle">Tunbridge Wells &amp; Rusthall</span>
+          <span class="brand-sub">Tunbridge Wells &amp; Rusthall &bull; Registered Charity No. 1013975</span>
         </div>
       </a>
 
-      <nav class="main-nav" role="navigation" aria-label="Main Navigation">
-        <a href="index.html" class="nav-link">Home</a>
-        <a href="campaign.html" class="nav-link">Campaign &amp; Sale</a>
+      <!-- Desktop Navigation -->
+      <nav class="nav-desktop" role="navigation" aria-label="Primary Navigation">
+        <a href="index.html" class="nav-link">Overview</a>
+        <a href="campaign.html" class="nav-link">The Sale &amp; Bid</a>
         <a href="explore.html" class="nav-link">Explore &amp; Maps</a>
-        <a href="get-involved.html" class="nav-link active">Get Involved</a>
+        <a href="get-involved.html" class="nav-link active">Pledge &amp; Join</a>
         <a href="news-events.html" class="nav-link">News &amp; Events</a>
         <a href="about.html" class="nav-link">About &amp; Contact</a>
       </nav>
 
-      <div class="header-actions">
-        <a href="#join" class="btn btn-primary btn-sm">Join Us</a>
-        <a href="#donate" class="btn btn-secondary btn-sm">Donate</a>
-        <button class="mobile-menu-btn" aria-label="Toggle navigation menu" aria-expanded="false">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      <!-- Header Action Buttons -->
+      <div class="header-cta-group">
+        <a href="campaign.html#pledge" class="btn btn-terracotta btn-sm">Pledge Support</a>
+        <a href="#join" class="btn btn-secondary btn-sm">Join (£15/yr)</a>
+        <button class="mobile-toggle" aria-label="Toggle navigation menu" onclick="document.querySelector('.nav-desktop').classList.toggle('nav-mobile-open')">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
         </button>
       </div>
     </div>
   </header>
 
-  <!-- Mobile Navigation Drawer -->
-  <div class="mobile-nav-drawer" role="dialog" aria-label="Mobile Navigation">
-    <a href="index.html" class="mobile-nav-link">Home</a>
-    <a href="campaign.html" class="mobile-nav-link">Campaign &amp; Sale FAQs</a>
-    <a href="explore.html" class="mobile-nav-link">Explore Maps &amp; Trails</a>
-    <a href="get-involved.html" class="mobile-nav-link">Join, Donate &amp; Volunteer</a>
-    <a href="news-events.html" class="mobile-nav-link">News &amp; Events</a>
-    <a href="about.html" class="mobile-nav-link">About Charity &amp; Contact</a>
-  </div>
-
   <main id="main-content" role="main">
 
-    <!-- Standardized Page Hero Headline Panel -->
-    <section class="page-hero">
-      <div class="container page-hero-inner">
-        <span class="page-badge">
-          <span>🤝</span> Support Your Local Charity
-        </span>
-        <h1>Make a lasting difference to our Commons</h1>
-        <p>
-          Whether through annual membership, a one-off Gift Aided donation, or getting your hands dirty on a volunteer working party, your support directly protects this irreplaceable green space.
-        </p>
-        <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-top: 1.75rem;">
-          <a href="#join" class="btn btn-secondary btn-lg">Become a Member</a>
-          <a href="#donate" class="btn btn-primary btn-lg" style="background: #ffffff; color: var(--color-forest-dark);">Donate Today</a>
-          <a href="#volunteer" class="btn btn-outline btn-lg" style="color: #ffffff; border-color: rgba(255,255,255,0.5);">Volunteer</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Pillar 1: Membership (Join Us) -->
-    <section id="join" class="section container">
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: start;">
-        <div>
-          <span style="color: var(--color-leaf); font-weight: 700; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.08em;">Annual Membership</span>
-          <h2 style="margin-top: 0.5rem; margin-bottom: 1.25rem;">Join the Friends of the Commons</h2>
-          <p style="color: var(--color-text-muted); font-size: 1.05rem;">
-            Subscriptions provide the stable, reliable income we need to fund ongoing conservation projects, habitat restoration, and trail improvements year after year.
-          </p>
-
-          <div style="background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: 1.75rem; margin-top: 1.75rem;">
-            <h4 style="font-size: 1.15rem; margin-bottom: 1rem; color: var(--color-forest);">What membership gives you:</h4>
-            <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.85rem; font-size: 0.95rem; color: var(--color-text-muted);">
-              <li>✅ <strong>Welcome Pack:</strong> Free printed trail maps of Tunbridge Wells &amp; Rusthall Commons.</li>
-              <li>✅ <strong>Regular Newsletters:</strong> In-depth updates and seasonal reports from the Ranger &amp; Natural History specialist.</li>
-              <li>✅ <strong>Priority Booking &amp; Discounts:</strong> Early access to popular social events, bat nights, and guided nature walks.</li>
-              <li>✅ <strong>Direct Impact:</strong> Funds essential tools, tree safety works, and pond clearance.</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Membership Tiers & GoCardless Direct Debit Integration -->
-        <div style="display: flex; flex-direction: column; gap: 1.5rem;">
-          <!-- Individual Tier -->
-          <div class="flow-card" style="border-top: 4px solid var(--color-forest);">
-            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
-              <h3 style="font-size: 1.3rem;">Individual Membership</h3>
-              <div style="font-size: 1.6rem; font-family: var(--font-serif); font-weight: 700; color: var(--color-forest);">£15 <span style="font-size: 0.9rem; font-family: var(--font-sans); color: var(--color-text-muted); font-weight: 400;">/ year</span></div>
-            </div>
-            <p style="font-size: 0.9rem; color: var(--color-text-muted); margin-bottom: 1.5rem;">
-              Ideal for individual residents wanting to support the stewardship of the commons.
-            </p>
-            <a href="https://pay.gocardless.com/BRT00035S4J5CTW" target="_blank" rel="noopener" class="btn btn-primary" style="width: 100%;">
-              Setup Direct Debit via GoCardless &rarr;
-            </a>
-          </div>
-
-          <!-- Family Tier -->
-          <div class="flow-card" style="border-top: 4px solid var(--color-leaf);">
-            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
-              <h3 style="font-size: 1.3rem;">Family Membership</h3>
-              <div style="font-size: 1.6rem; font-family: var(--font-serif); font-weight: 700; color: var(--color-forest);">£25 <span style="font-size: 0.9rem; font-family: var(--font-sans); color: var(--color-text-muted); font-weight: 400;">/ year</span></div>
-            </div>
-            <p style="font-size: 0.9rem; color: var(--color-text-muted); margin-bottom: 1.5rem;">
-              Covers all adults and children in your household, including children's nature activity sheets.
-            </p>
-            <a href="https://pay.gocardless.com/BRT0003629VSFKA" target="_blank" rel="noopener" class="btn btn-secondary" style="width: 100%;">
-              Setup Family Direct Debit &rarr;
-            </a>
-          </div>
-
-          <!-- Bank Transfer / Cheque Info Accordion -->
-          <div class="needs-review" style="background: var(--color-surface); border: 1px dashed var(--color-border); border-radius: var(--radius-md); padding: 1.25rem; font-size: 0.88rem; color: var(--color-text-muted);">
-            <div class="review-badge">✏️ Legacy Banking Info — Verify with Treasurer</div><br>
-            <strong>Prefer Bank Transfer or Cheque?</strong><br>
-            NatWest Account • Sort Code: <code>55-70-13</code> • Account No: <code>01028774</code><br>
-            Cheques payable to <em>"Friends of Tunbridge Wells and Rusthall Commons"</em> sent to Chris Gurr, 45 Erskine Park Road, Rusthall, TN4 8UT.
-            <div class="review-note">Carried over from legacy WordPress site: verify NatWest bank account numbers and Chris Gurr's postal address before launching donations.</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Pillar 2: Donations & Gift Aid (+25%) -->
-    <section id="donate" class="section bg-white" style="border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border);">
+    <!-- Page Header Banner -->
+    <section class="page-header-nt">
       <div class="container">
-        <div style="text-align: center; max-width: 700px; margin: 0 auto 3rem auto;">
-          <span style="color: var(--color-leaf); font-weight: 700; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.08em;">Online Donations</span>
-          <h2 style="margin-top: 0.5rem; margin-bottom: 1rem;">Make a One-Off or Monthly Gift</h2>
-          <p style="color: var(--color-text-muted); font-size: 1.05rem;">
-            Whether celebrating a wedding, anniversary, remembering a loved one, or simply giving back to the woods you walk in every day, every donation directly funds critical works.
+        <span class="page-kicker">Support The Charity &bull; Registered Charity No. 1013975</span>
+        <h1 class="page-title">Make a Lasting Difference to Our Commons</h1>
+        <p class="page-lead">
+          Whether through annual membership, a Gift-Aided donation, or volunteering on conservation work parties, your contribution directly preserves 256 acres of ancient heathland, woodland, and rocks.
+        </p>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem;">
+          <a href="#join" class="btn btn-primary btn-sm">Become a Member</a>
+          <a href="#donate" class="btn btn-secondary btn-sm">Make a Donation</a>
+          <a href="#volunteer" class="btn btn-secondary btn-sm">Volunteer on the Land</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pillar 1: Membership -->
+    <section id="join" style="padding: 3.5rem 0; border-bottom: 1px solid var(--nt-border);">
+      <div class="container">
+        <div class="section-intro-header">
+          <span class="section-kicker">Annual Stewardship</span>
+          <h2 class="section-title">Become a Member of the Friends</h2>
+          <p style="color: var(--nt-muted); margin-top: 0.5rem; font-size: 1.05rem; max-width: 800px;">
+            Member subscriptions provide the steady annual revenue necessary to fund ranger equipment, habitat management, path drainage, and our community campaign.
           </p>
         </div>
 
-        <div class="fundraising-container" style="max-width: 900px; margin: 0 auto;">
-          <div class="flow-card">
-            <h3 style="margin-bottom: 1.25rem;">Choose Donation Amount</h3>
-            
-            <div class="amount-selector">
-              <button type="button" class="amount-btn donate-amount-btn" data-amount="10">£10</button>
-              <button type="button" class="amount-btn donate-amount-btn selected" data-amount="25">£25</button>
-              <button type="button" class="amount-btn donate-amount-btn" data-amount="50">£50</button>
-              <button type="button" class="amount-btn donate-amount-btn" data-amount="100">£100</button>
+        <div class="tier-grid">
+          <!-- Tier 1: Individual -->
+          <div class="tier-card featured">
+            <span class="tier-badge">Most Popular</span>
+            <div class="tier-name">Individual Member</div>
+            <div class="tier-price">£15 <span>/ year</span></div>
+            <p style="color: var(--nt-muted); font-size: 0.9rem; margin-bottom: 1.5rem; line-height: 1.5;">
+              Full voting membership for individual residents supporting our year-round stewardship.
+            </p>
+            <ul class="clean-list" style="margin-bottom: 1.5rem;">
+              <li>Welcome pack with free printed trail maps</li>
+              <li>Quarterly printed natural history journal</li>
+              <li>Priority booking for guided bat &amp; fungi walks</li>
+              <li>Annual General Meeting voting rights</li>
+            </ul>
+            <div style="margin-top: auto;">
+              <a href="https://pay.gocardless.com/BRT00035S4J5CTW" target="_blank" rel="noopener" class="btn btn-primary" style="width: 100%;">
+                Join via Direct Debit &rarr;
+              </a>
             </div>
+          </div>
 
-            <div class="form-group">
-              <label for="custom-donate-amount" class="form-label">Or Custom Amount (£)</label>
-              <input type="number" id="custom-donate-amount" class="form-input" placeholder="e.g. 75" min="1">
+          <!-- Tier 2: Family -->
+          <div class="tier-card">
+            <div class="tier-name">Family / Household</div>
+            <div class="tier-price">£25 <span>/ year</span></div>
+            <p style="color: var(--nt-muted); font-size: 0.9rem; margin-bottom: 1.5rem; line-height: 1.5;">
+              Covers all adults and children living at the same address, including youth activity packs.
+            </p>
+            <ul class="clean-list" style="margin-bottom: 1.5rem;">
+              <li>All Individual Membership benefits</li>
+              <li>Children's wildlife spotter and trail sheets</li>
+              <li>Family admission to all community events</li>
+              <li>Two votes at the Charity AGM</li>
+            </ul>
+            <div style="margin-top: auto;">
+              <a href="https://pay.gocardless.com/BRT0003629VSFKA" target="_blank" rel="noopener" class="btn btn-secondary" style="width: 100%;">
+                Join via Direct Debit &rarr;
+              </a>
             </div>
+          </div>
 
-            <!-- UK Gift Aid Box -->
-            <div class="gift-aid-box">
-              <label class="gift-aid-header">
-                <input type="checkbox" id="donate-gift-aid" checked style="width: 18px; height: 18px; margin-top: 2px;">
-                <span>Boost my donation by 25% with Gift Aid</span>
-              </label>
-              <div class="gift-aid-calc" id="gift-aid-bonus-display">
-                Charity receives £31.25 at no extra cost to you! (+£6.25 Gift Aid)
-              </div>
-              <p style="font-size: 0.75rem; color: var(--color-text-muted); margin-top: 0.5rem; padding-left: 1.75rem;">
-                I am a UK taxpayer and understand that if I pay less Income Tax and/or Capital Gains Tax than the amount of Gift Aid claimed on all my donations in that tax year it is my responsibility to pay any difference.
-              </p>
+          <!-- Tier 3: Life Membership -->
+          <div class="tier-card">
+            <div class="tier-name">Life Member</div>
+            <div class="tier-price">£150 <span>single gift</span></div>
+            <p style="color: var(--nt-muted); font-size: 0.9rem; margin-bottom: 1.5rem; line-height: 1.5;">
+              A lifetime commitment to the protection of Tunbridge Wells and Rusthall Commons.
+            </p>
+            <ul class="clean-list" style="margin-bottom: 1.5rem;">
+              <li>Lifetime membership certificate</li>
+              <li>Permanent subscription to printed publications</li>
+              <li>Invitations to annual Trustee receptions</li>
+              <li>Direct contribution to the land endowment fund</li>
+            </ul>
+            <div style="margin-top: auto;">
+              <a href="about.html#contact" class="btn btn-secondary" style="width: 100%;">
+                Enquire with Treasurer &rarr;
+              </a>
             </div>
+          </div>
+        </div>
 
-            <!-- Simulated Card Payment Form -->
-            <form data-simulate="true">
+        <!-- Bank Transfer Alternative Notice -->
+        <div style="margin-top: 2rem; padding: 1.25rem 1.5rem; background: #ffffff; border: 1px solid var(--nt-border); font-size: 0.9rem; color: var(--nt-charcoal);">
+          <strong>Alternative payment methods:</strong> To pay by standing order or cheque, please contact the Membership Secretary directly at <a href="about.html#contact" style="font-weight: 600;">our contact page</a> or download our postal membership form.
+        </div>
+      </div>
+    </section>
+
+    <!-- Pillar 2: Donations & Gift Aid -->
+    <section id="donate" style="padding: 3.5rem 0; background: #ffffff; border-bottom: 1px solid var(--nt-border);">
+      <div class="container">
+        <div class="section-intro-header">
+          <span class="section-kicker">Charitable Giving</span>
+          <h2 class="section-title">Make a Donation with Gift Aid</h2>
+          <p style="color: var(--nt-muted); margin-top: 0.5rem; font-size: 1.05rem; max-width: 800px;">
+            One-off and regular donations fund urgent tree surgery following winter gales, pond restoration, and legal representation. If you are a UK taxpayer, Gift Aid increases the value of your donation by 25% at no extra cost to you.
+          </p>
+        </div>
+
+        <div class="content-two-col">
+          <div class="nt-form-box">
+            <h3 style="font-family: var(--font-serif); font-size: 1.35rem; color: var(--nt-charcoal); margin-bottom: 1.25rem;">Online Donation Form</h3>
+            <form id="donation-form" onsubmit="event.preventDefault(); alert('Thank you for your generous donation to Friends of the Commons.');">
               <div class="form-group">
-                <label for="donor-name" class="form-label">Your Name *</label>
-                <input type="text" id="donor-name" class="form-input" required placeholder="Full Name">
+                <label class="form-label">Select Amount (£)</label>
+                <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.75rem;">
+                  <button type="button" class="btn btn-secondary btn-sm" onclick="document.getElementById('custom-donation').value=10;">£10</button>
+                  <button type="button" class="btn btn-secondary btn-sm" onclick="document.getElementById('custom-donation').value=25;">£25</button>
+                  <button type="button" class="btn btn-secondary btn-sm" onclick="document.getElementById('custom-donation').value=50;">£50</button>
+                  <button type="button" class="btn btn-secondary btn-sm" onclick="document.getElementById('custom-donation').value=100;">£100</button>
+                </div>
+                <input type="number" id="custom-donation" class="form-input" min="5" value="25" style="max-width: 200px;" required>
               </div>
 
               <div class="form-group">
-                <label for="donor-email" class="form-label">Email Address *</label>
-                <input type="email" id="donor-email" class="form-input" required placeholder="email@domain.co.uk">
+                <label for="donor-name" class="form-label">Full Name *</label>
+                <input type="text" id="donor-name" class="form-input" placeholder="e.g. David Thornley" required>
               </div>
 
-              <div class="form-group">
-                <label for="donor-postcode" class="form-label">Home Postcode (Required for Gift Aid) *</label>
-                <input type="text" id="donor-postcode" class="form-input" required placeholder="TN4 8UT" style="width: 140px;">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="donor-email" class="form-label">Email Address *</label>
+                  <input type="email" id="donor-email" class="form-input" placeholder="name@example.co.uk" required>
+                </div>
+                <div class="form-group">
+                  <label for="donor-postcode" class="form-label">Postcode (for Gift Aid) *</label>
+                  <input type="text" id="donor-postcode" class="form-input" placeholder="e.g. TN4 8AH" required>
+                </div>
               </div>
 
-              <button type="submit" class="btn btn-primary btn-lg" style="width: 100%; margin-top: 1rem;">
-                Donate <span id="donation-total-display">£25</span> Securely Now
+              <div class="form-group" style="padding: 1rem; background: var(--nt-sand-bg); border: 1px solid var(--nt-border);">
+                <label class="form-checkbox-label">
+                  <input type="checkbox" checked>
+                  <span><strong>Gift Aid declaration:</strong> I am a UK taxpayer and understand that if I pay less Income Tax and/or Capital Gains Tax in the current tax year than the amount of Gift Aid claimed on all my donations, it is my responsibility to pay any difference.</span>
+                </label>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-lg" style="width: 100%; margin-top: 0.5rem;">
+                Proceed to Secure Donation &rarr;
               </button>
-              <div style="text-align: center; margin-top: 0.75rem; font-size: 0.8rem; color: var(--color-text-muted);">
-                🔒 256-bit encrypted • Supports Apple Pay, Google Pay &amp; all major cards
-              </div>
             </form>
           </div>
 
-          <!-- Impact Breakdown -->
+          <!-- Direct Impact Breakdown -->
           <div>
-            <div style="background: var(--color-sandstone-bg); border: 1px solid var(--color-border); border-radius: var(--radius-xl); padding: 2rem;">
-              <h3 style="font-size: 1.25rem; margin-bottom: 1.25rem;">How your gift protects the commons</h3>
-              <div style="display: flex; flex-direction: column; gap: 1.25rem;">
-                <div>
-                  <h4 style="font-size: 1.05rem; color: var(--color-forest); margin-bottom: 0.25rem;">£15</h4>
-                  <p style="font-size: 0.9rem; color: var(--color-text-muted); margin: 0;">
-                    Buys heavy-duty loppers and safety gloves for community volunteer working parties.
-                  </p>
-                </div>
-                <div style="border-top: 1px solid var(--color-border); padding-top: 1rem;">
-                  <h4 style="font-size: 1.05rem; color: var(--color-forest); margin-bottom: 0.25rem;">£50</h4>
-                  <p style="font-size: 0.9rem; color: var(--color-text-muted); margin: 0;">
-                    Funds stone resurfacing materials to restore eroded woodland walking paths.
-                  </p>
-                </div>
-                <div style="border-top: 1px solid var(--color-border); padding-top: 1rem;">
-                  <h4 style="font-size: 1.05rem; color: var(--color-forest); margin-bottom: 0.25rem;">£150</h4>
-                  <p style="font-size: 0.9rem; color: var(--color-text-muted); margin: 0;">
-                    Enables specialist ecological surveys for bats, fungi, and rare native pollinators.
-                  </p>
-                </div>
-              </div>
+            <div class="sharp-card" style="padding: 2rem; margin-bottom: 2rem;">
+              <h3 style="font-family: var(--font-serif); font-size: 1.25rem; color: var(--nt-green-deep); margin-bottom: 1rem;">How your gift directly protects the land</h3>
+              <ul class="clean-list">
+                <li><strong>£15:</strong> Purchases heavy-duty loppers and protective gloves for volunteer work parties.</li>
+                <li><strong>£50:</strong> Funds stone resurfacing materials to restore eroded woodland walking paths and steps.</li>
+                <li><strong>£150:</strong> Enables specialist ecological surveys for bats, rare fungi, and native pollinators.</li>
+                <li><strong>£500:</strong> Contributes directly to veteran tree management and emergency storm clearance.</li>
+              </ul>
             </div>
 
-            <!-- Legacy Box -->
-            <div id="legacy" style="margin-top: 1.5rem; background: #ffffff; border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: 1.75rem;">
-              <h4 style="font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--color-forest-dark);">Leaving a Gift in Your Will</h4>
-              <p style="font-size: 0.9rem; color: var(--color-text-muted); margin-bottom: 1rem;">
-                A gift in your will ensures future generations will experience the wild beauty and tranquility of the Commons. Even 1% of an estate makes a profound impact.
+            <div class="sharp-card" style="padding: 1.75rem; background: var(--nt-surface-alt);">
+              <h4 style="font-family: var(--font-serif); font-size: 1.15rem; color: var(--nt-charcoal); margin-bottom: 0.5rem;">Legacy Giving in Your Will</h4>
+              <p style="color: var(--nt-muted); font-size: 0.9rem; line-height: 1.6; margin-bottom: 1rem;">
+                A gift in your will ensures future generations will experience the wild beauty and quiet solace of the Commons. Even a modest legacy creates a lasting conservation endowment.
               </p>
-              <a href="about.html#contact" style="font-size: 0.9rem; font-weight: 600;">Request confidential legacy guide &rarr;</a>
+              <a href="about.html#contact" class="btn btn-secondary btn-sm">Request Confidential Legacy Guide &rarr;</a>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Pillar 3: Volunteering & Working Parties -->
-    <section id="volunteer" class="section container">
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: center;">
-        <div>
-          <span style="color: var(--color-leaf); font-weight: 700; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.08em;">Hands-on Conservation</span>
-          <h2 style="margin-top: 0.5rem; margin-bottom: 1.25rem;">Join our volunteer working parties</h2>
-          <p style="color: var(--color-text-muted); font-size: 1.05rem;">
-            A fantastic way to stay active outdoors, meet fellow nature-lovers, and help protect the commons. No previous experience needed — tools, gloves, training, and friendly supervision are provided!
+    <!-- Pillar 3: Volunteering -->
+    <section id="volunteer" style="padding: 3.5rem 0;">
+      <div class="container">
+        <div class="section-intro-header">
+          <span class="section-kicker">Hands-on Conservation</span>
+          <h2 class="section-title">Join Our Volunteer Working Parties</h2>
+          <p style="color: var(--nt-muted); margin-top: 0.5rem; font-size: 1.05rem; max-width: 800px;">
+            A rewarding way to spend a morning outdoors, meet fellow nature enthusiasts, and care directly for the landscape. No prior experience is required—full guidance and tools are provided.
           </p>
+        </div>
 
-          <div style="margin-top: 1.5rem; display: flex; flex-direction: column; gap: 1rem;">
-            <div style="background: #ffffff; border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 1.25rem;">
-              <h4 style="font-size: 1rem; margin-bottom: 0.35rem;">🌲 Practical Habitat Conservation</h4>
-              <p style="font-size: 0.88rem; color: var(--color-text-muted); margin: 0;">
-                Clearing invasive rhododendron and birch scrub to restore endangered lowland heathland habitat.
+        <div class="content-two-col">
+          <div>
+            <div class="sharp-card" style="padding: 1.5rem; margin-bottom: 1.25rem;">
+              <h4 style="font-family: var(--font-serif); font-size: 1.15rem; color: var(--nt-charcoal); margin-bottom: 0.35rem;">Habitat Conservation Working Parties</h4>
+              <p style="color: var(--nt-muted); font-size: 0.9rem; margin: 0; line-height: 1.5;">
+                Regular Saturday morning sessions clearing invasive scrub, pulling encroaching birch, and restoring rare lowland heathland glades.
               </p>
             </div>
-            <div style="background: #ffffff; border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 1.25rem;">
-              <h4 style="font-size: 1rem; margin-bottom: 0.35rem;">🧹 Monthly Litter Picks</h4>
-              <p style="font-size: 0.88rem; color: var(--color-text-muted); margin: 0;">
-                Keeping clearings, glades, ponds, and children’s play areas safe and clean.
+
+            <div class="sharp-card" style="padding: 1.5rem; margin-bottom: 1.25rem;">
+              <h4 style="font-family: var(--font-serif); font-size: 1.15rem; color: var(--nt-charcoal); margin-bottom: 0.35rem;">Community Litter Clearance</h4>
+              <p style="color: var(--nt-muted); font-size: 0.9rem; margin: 0; line-height: 1.5;">
+                Monthly coordinated sweeps keeping pathways, pond margins, and picnic glades pristine and safe for grazing animals and wildlife.
               </p>
             </div>
-            <div style="background: #ffffff; border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 1.25rem;">
-              <h4 style="font-size: 1rem; margin-bottom: 0.35rem;">🤝 Committee &amp; Event Roles</h4>
-              <p style="font-size: 0.88rem; color: var(--color-text-muted); margin: 0;">
-                Help organise community walks, write newsletter pieces, or assist with charity governance.
+
+            <div class="sharp-card" style="padding: 1.5rem;">
+              <h4 style="font-family: var(--font-serif); font-size: 1.15rem; color: var(--nt-charcoal); margin-bottom: 0.35rem;">Charity Committee &amp; Event Roles</h4>
+              <p style="color: var(--nt-muted); font-size: 0.9rem; margin: 0; line-height: 1.5;">
+                Help organise guided nature walks, write newsletter articles, assist with social media, or contribute to charity governance.
               </p>
             </div>
           </div>
-        </div>
 
-        <!-- Volunteer Registration Form -->
-        <div class="flow-card">
-          <h3 style="margin-bottom: 1rem; font-size: 1.35rem;">Register Your Interest in Volunteering</h3>
-          <form data-simulate="true">
-            <div class="form-group">
-              <label for="vol-name" class="form-label">Full Name *</label>
-              <input type="text" id="vol-name" class="form-input" required placeholder="Jane Doe">
-            </div>
+          <!-- Volunteer Registration Form -->
+          <div class="nt-form-box">
+            <h3 style="font-family: var(--font-serif); font-size: 1.35rem; color: var(--nt-charcoal); margin-bottom: 1.25rem;">Volunteer Sign-Up</h3>
+            <form id="volunteer-form" onsubmit="event.preventDefault(); alert('Thank you for volunteering! Our working party coordinator will be in touch with upcoming dates.');">
+              <div class="form-group">
+                <label for="vol-name" class="form-label">Full Name *</label>
+                <input type="text" id="vol-name" class="form-input" placeholder="e.g. Graham Wright" required>
+              </div>
 
-            <div class="form-group">
-              <label for="vol-email" class="form-label">Email Address *</label>
-              <input type="email" id="vol-email" class="form-input" required placeholder="jane@example.co.uk">
-            </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="vol-email" class="form-label">Email Address *</label>
+                  <input type="email" id="vol-email" class="form-input" placeholder="name@example.co.uk" required>
+                </div>
+                <div class="form-group">
+                  <label for="vol-phone" class="form-label">Telephone *</label>
+                  <input type="tel" id="vol-phone" class="form-input" placeholder="07123 456789" required>
+                </div>
+              </div>
 
-            <div class="form-group">
-              <label for="vol-phone" class="form-label">Phone Number *</label>
-              <input type="tel" id="vol-phone" class="form-input" required placeholder="07123 456789">
-            </div>
+              <div class="form-group">
+                <label for="vol-area" class="form-label">Area of Interest</label>
+                <select id="vol-area" class="form-select">
+                  <option value="both">Both Conservation Work &amp; Litter Picks</option>
+                  <option value="conservation">Practical Conservation Working Parties</option>
+                  <option value="litter">Litter Clearance Sessions</option>
+                  <option value="events">Event Organization &amp; Guided Walks</option>
+                  <option value="committee">Charity Administration &amp; Media</option>
+                </select>
+              </div>
 
-            <div class="form-group">
-              <label for="vol-interest" class="form-label">I would like to help with:</label>
-              <select id="vol-interest" class="form-select">
-                <option value="both">Both Conservation &amp; Litter Picks</option>
-                <option value="conservation">Practical Conservation Working Parties</option>
-                <option value="litter">Litter Picking Sessions</option>
-                <option value="events">Event Organization &amp; Guided Walks</option>
-                <option value="committee">Charity Committee &amp; Administration</option>
-              </select>
-            </div>
-
-            <button type="submit" class="btn btn-secondary btn-lg" style="width: 100%; margin-top: 1rem;">
-              Sign Up as Volunteer &rarr;
-            </button>
-          </form>
+              <button type="submit" class="btn btn-secondary btn-lg" style="width: 100%; margin-top: 0.5rem;">
+                Register My Availability &rarr;
+              </button>
+            </form>
+          </div>
         </div>
       </div>
     </section>
 
   </main>
 
-  <!-- Site Footer -->
+  <!-- Clean Editorial Footer -->
   <footer class="site-footer" role="contentinfo">
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <div style="display: flex; align-items: center; gap: 0.85rem; margin-bottom: 1rem;">
-            <img src="assets/images/logo-white.webp" alt="Friends of the Common Logo Crest" width="48" height="52">
-            <h3 style="font-size: 1.2rem; margin: 0; color: #ffffff;">Friends of the Commons</h3>
-          </div>
+          <h4>Friends of the Commons</h4>
           <p>
-            The Friends of Tunbridge Wells &amp; Rusthall Commons is a local registered charity dedicated to protecting, preserving, and enhancing our unique shared green spaces.
+            The Friends of Tunbridge Wells and Rusthall Commons is a registered charity dedicated to protecting 256 acres of common land for wildlife, heritage, and the public.
           </p>
-          <p style="margin-top: 0.75rem; font-size: 0.85rem; color: #a4c4b5;">
-            Registered Charity No. <strong>1013975</strong>
+          <p style="margin-top: 0.75rem; font-size: 0.8rem; color: #63726a;">
+            Registered Charity No. 1013975 &bull; In active partnership with the Tunbridge Wells Commons Conservators under the 1890 Act.
           </p>
         </div>
 
         <div class="footer-col">
-          <h4>Explore</h4>
+          <h5>Navigation</h5>
           <ul class="footer-links">
-            <li><a href="explore.html">Maps &amp; Walking Trails</a></li>
-            <li><a href="explore.html#landmarks">Wellington Rocks</a></li>
-            <li><a href="campaign.html">The Commons Sale</a></li>
-            <li><a href="campaign.html#facts">Valuation &amp; Legal Facts</a></li>
+            <li><a href="index.html">Overview</a></li>
+            <li><a href="campaign.html">The Commons Sale &amp; Bid</a></li>
+            <li><a href="explore.html">Maps, Rocks &amp; Trails</a></li>
+            <li><a href="get-involved.html">Become a Member</a></li>
+            <li><a href="news-events.html">News &amp; Events</a></li>
+            <li><a href="about.html">Charity Governance &amp; Accounts</a></li>
           </ul>
         </div>
 
         <div class="footer-col">
-          <h4>Get Involved</h4>
+          <h5>Contact &amp; Legal</h5>
           <ul class="footer-links">
-            <li><a href="get-involved.html#join">Become a Member</a></li>
-            <li><a href="get-involved.html#donate">Make a Donation</a></li>
-            <li><a href="get-involved.html#volunteer">Volunteer Working Parties</a></li>
-            <li><a href="campaign.html#pledge">Make a Financial Pledge</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h4>Charity Documents</h4>
-          <ul class="footer-links">
-            <li><a href="assets/docs/objects-and-rules.pdf" target="_blank" rel="noopener">Objects &amp; Rules (PDF)</a></li>
-            <li><a href="assets/docs/safeguarding-policy.pdf" target="_blank" rel="noopener">Safeguarding Policy (PDF)</a></li>
-            <li><a href="about.html#contact">Contact Committee</a></li>
+            <li><a href="about.html#contact">Contact Trustees &amp; Secretary</a></li>
+            <li><a href="assets/docs/objects-and-rules.pdf" target="_blank">Charity Constitution &amp; Rules (PDF)</a></li>
+            <li><a href="assets/docs/safeguarding-policy.pdf" target="_blank">Safeguarding Policy (PDF)</a></li>
+            <li><a href="comms-guide.html">Communications Handover Guide</a></li>
           </ul>
         </div>
       </div>
@@ -386,15 +368,12 @@
         <div>
           &copy; 2026 The Friends of Tunbridge Wells and Rusthall Commons. All rights reserved.
         </div>
-        <div style="display: flex; gap: 1.5rem;">
-          <a href="about.html#privacy" style="color: #9ab0a6;">Privacy Policy</a>
-          <a href="about.html#governance" style="color: #9ab0a6;">Charity Governance</a>
-          <a href="about.html#contact" style="color: #9ab0a6;">Contact Us</a>
+        <div>
+          Protected under the 1890 Tunbridge Wells Improvement Act.
         </div>
       </div>
     </div>
   </footer>
 
-  <script src="assets/js/main.js"></script>
 </body>
 </html>
