@@ -1,6 +1,7 @@
 /**
  * Interactive Landmark & Trail Map for The Friends of Tunbridge Wells & Rusthall Commons
  * Built with Leaflet.js and OpenStreetMap
+ * Upgraded with Crisp SVG Markers & National Trust Styling
  */
 
 (function () {
@@ -23,25 +24,41 @@
     maxZoom: 19
   }).addTo(map);
 
-  // Landmark Dataset — Verified with OpenStreetMap Ground-Truth Coordinates
+  // High-Legibility Monochrome SVG Icons for Pins and List Items
+  const ICONS = {
+    rock: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 3 4 8 5-5 5 15H2L8 3z"/></svg>`,
+    sport: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/></svg>`,
+    nature: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>`,
+    train: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="16" x="4" y="3" rx="2"/><path d="M4 11h16M12 3v8M8 19l-2 3M16 19l2 3"/><circle cx="8" cy="15" r="1"/><circle cx="16" cy="15" r="1"/></svg>`,
+    food: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>`,
+    hotel: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4v16M2 8h18a2 2 0 0 1 2 2v10M2 17h20M6 8v9"/></svg>`,
+    parking: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 17V7h4a3 3 0 0 1 0 6H9"/></svg>`,
+    facility: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2"/><path d="m9 20 1-6-2-2a2 2 0 0 1 .5-2.5L11 8h2l2.5 1.5A2 2 0 0 1 16 12l-2 2 1 6"/></svg>`
+  };
+
+  function getSvg(iconType) {
+    return ICONS[iconType] || ICONS.rock;
+  }
+
+  // Landmark Dataset — Verified Coordinates
   const landmarks = [
     {
       id: 'wellington-rocks',
       name: 'Wellington Rocks',
       category: 'heritage',
+      iconType: 'rock',
       catName: 'Rocks & Heritage',
-      icon: '🪨',
       lat: 51.130277,
       lng: 0.254214,
       navQuery: 'Wellington Rocks, Tunbridge Wells Common, Tunbridge Wells',
-      desc: 'Iconic Ardingly Sandstone outcrop (130 million years old), shaped by prehistoric wind and ice. The premier climbing and picnic destination on Tunbridge Wells Common.'
+      desc: 'Iconic Ardingly Sandstone outcrop (135 million years old), shaped by prehistoric wind and ice. The premier climbing and exploration destination on Tunbridge Wells Common.'
     },
     {
       id: 'cricket-ground',
       name: 'Higher Cricket Ground (TW Common)',
       category: 'heritage',
+      iconType: 'sport',
       catName: 'Sports & Heritage',
-      icon: '🏏',
       lat: 51.129431,
       lng: 0.252939,
       navQuery: 'Linden Park Cricket Club, Higher Common Ground, Tunbridge Wells TN4 8AH',
@@ -51,8 +68,8 @@
       id: 'rusthall-cricket-ground',
       name: 'Rusthall Cricket Ground',
       category: 'heritage',
+      iconType: 'sport',
       catName: 'Sports & Heritage',
-      icon: '🏏',
       lat: 51.132714,
       lng: 0.235179,
       navQuery: 'Rusthall Cricket Ground, Coach Road, Rusthall, Tunbridge Wells TN4 8RD',
@@ -62,8 +79,8 @@
       id: 'happy-valley',
       name: 'Happy Valley & 100 Steps',
       category: 'heritage',
+      iconType: 'rock',
       catName: 'Rocks & Heritage',
-      icon: '🏞️',
       lat: 51.130285,
       lng: 0.235182,
       navQuery: 'Happy Valley, Rusthall Common, Tunbridge Wells',
@@ -73,8 +90,8 @@
       id: 'toad-rock',
       name: 'Toad Rock',
       category: 'heritage',
+      iconType: 'rock',
       catName: 'Rocks & Heritage',
-      icon: '🐸',
       lat: 51.133848,
       lng: 0.239909,
       navQuery: 'Toad Rock, Rusthall, Tunbridge Wells TN4 8NX',
@@ -84,19 +101,19 @@
       id: 'bulls-hollow',
       name: "Bull's Hollow (Quarry & Crag)",
       category: 'heritage',
+      iconType: 'rock',
       catName: 'Rocks & Heritage',
-      icon: '🧗',
       lat: 51.132644,
       lng: 0.240951,
       navQuery: 'Bulls Hollow, Rusthall Park, Rusthall, Tunbridge Wells TN4 8PE',
-      desc: 'Historic disused 19th-century sandstone quarry and prominent Southern Sandstone climbing crag on Rusthall Common near The Bumps. Features sheltered vertical Ardingly Sandstone faces and woodland trails restored by the Sandstone Volunteers Group.'
+      desc: 'Historic disused 19th-century sandstone quarry and prominent Southern Sandstone climbing crag on Rusthall Common. Features sheltered vertical rock faces restored by volunteers.'
     },
     {
       id: 'chalybeate-spring',
       name: 'The Chalybeate Spring (1606)',
       category: 'heritage',
-      catName: 'Rocks & Heritage',
-      icon: '💧',
+      iconType: 'nature',
+      catName: 'Heritage Spring',
       lat: 51.126668,
       lng: 0.258623,
       navQuery: 'The Chalybeate Spring, The Pantiles, Tunbridge Wells TN2 5TE',
@@ -104,89 +121,89 @@
     },
     {
       id: 'high-rocks',
-      name: 'High Rocks & Steam Railway (Extended Trail)',
+      name: 'High Rocks & Steam Railway',
       category: 'heritage',
+      iconType: 'rock',
       catName: 'Extended Trail',
-      icon: '⛰️',
       lat: 51.122770,
       lng: 0.225516,
       navQuery: 'The High Rocks, High Rocks Lane, Tunbridge Wells TN3 9JJ',
-      desc: 'Dramatic sister Ardingly Sandstone crags situated 1.5 miles SW of the Common, linked by scenic woodland trails through Broadwater Forest and the heritage Spa Valley Railway. (Privately managed SSSI).'
+      desc: 'Dramatic sister Ardingly Sandstone crags situated 1.5 miles SW of the Common, linked by scenic woodland trails through Broadwater Forest and the heritage Spa Valley Railway.'
     },
     {
       id: 'spa-valley-west',
       name: 'Spa Valley Railway (West Station)',
       category: 'heritage',
+      iconType: 'train',
       catName: 'Heritage Railway',
-      icon: '🚂',
       lat: 51.123589,
       lng: 0.252678,
       navQuery: 'Spa Valley Railway, West Station, Nevill Terrace, Tunbridge Wells TN2 5QY',
-      desc: 'Historic 1866 Victorian terminus of the heritage Spa Valley Railway, situated at the southern boundary of the Common. Regular steam and heritage diesel departures through the Weald to High Rocks and Groombridge.'
+      desc: 'Historic 1866 Victorian terminus of the heritage Spa Valley Railway at the southern boundary of the Common. Regular steam and heritage diesel departures through the High Weald.'
     },
     {
       id: 'fir-tree-pond',
       name: 'Fir Tree Pond',
       category: 'nature',
+      iconType: 'nature',
       catName: 'Nature & Wildlife',
-      icon: '🦆',
       lat: 51.131394,
       lng: 0.244758,
       navQuery: 'Fir Tree Pond, Tunbridge Wells Common, Tunbridge Wells',
-      desc: 'Restored freshwater pond on Tunbridge Wells Common supporting breeding smooth newts, great crested newts, dragonflies, and water lilies.'
+      desc: 'Restored freshwater pond on Tunbridge Wells Common supporting breeding smooth newts, great crested newts, dragonflies, and white water lilies.'
     },
     {
       id: 'marlpit-pond',
       name: 'The Marlpit & Ponds',
       category: 'nature',
+      iconType: 'nature',
       catName: 'Nature & Wildlife',
-      icon: '🌿',
       lat: 51.132960,
       lng: 0.236976,
       navQuery: 'Marlpit Pond, Rusthall Common, Tunbridge Wells',
-      desc: 'Historic clay and marl pits on Rusthall Common transformed into serene freshwater ponds supporting damselflies, frogs, and waterfowl.'
+      desc: 'Historic clay and marl excavation pits on Rusthall Common transformed into serene freshwater ponds supporting damselflies, frogs, and waterfowl.'
     },
     {
       id: 'mount-edgcumbe',
       name: 'The Mount Edgcumbe (Pub & Rooms)',
       category: 'food',
+      iconType: 'food',
       categories: ['food', 'hotels'],
-      catName: 'Pubs, Dining & Rooms',
-      icon: '🏰',
+      catName: 'Inns & Dining',
       lat: 51.131184,
       lng: 0.255642,
       navQuery: 'The Mount Edgcumbe, Mount Ephraim, Tunbridge Wells TN4 8BX',
-      desc: 'Historic 18th-century country pub & boutique inn built directly into the living sandstone bedrock on the Common’s edge. Features 6 luxury boutique bedrooms, dog-friendly garden terrace, and seasonal British dining.'
+      desc: 'Historic 18th-century country pub and boutique inn built directly into the living sandstone bedrock on the Common edge. Features 6 luxury bedrooms, dog-friendly terrace, and seasonal dining.'
     },
     {
       id: 'the-beau-nash',
       name: 'The Beau Nash (Mount Ephraim)',
       category: 'food',
-      catName: 'Pubs & Dining',
-      icon: '🍺',
+      iconType: 'food',
+      catName: 'Inns & Dining',
       lat: 51.134747,
       lng: 0.258283,
       navQuery: 'The Beau Nash, 59 Mount Ephraim, Tunbridge Wells TN4 8AE',
-      desc: 'Historic 19th-century pub named after the Georgian Master of Ceremonies, situated at 59 Mount Ephraim facing Tunbridge Wells Common. Cask ales & log fire.'
+      desc: 'Historic 19th-century pub situated at 59 Mount Ephraim directly facing Tunbridge Wells Common. Traditional cask ales and log fire.'
     },
     {
       id: 'the-beacon',
-      name: 'The Beacon (Dining & Boutique Rooms)',
+      name: 'The Beacon (Dining & Rooms)',
       category: 'food',
+      iconType: 'food',
       categories: ['food', 'hotels'],
-      catName: 'Pubs, Dining & Rooms',
-      icon: '🍽️',
+      catName: 'Inns & Dining',
       lat: 51.130254,
       lng: 0.231831,
       navQuery: 'The Beacon, Tea Garden Lane, Tunbridge Wells TN3 9JH',
-      desc: 'Acclaimed dining room, country pub, and boutique retreat perched atop Tea Garden Lane with 6 renovated luxury boutique bedrooms and breathtaking terrace views directly overlooking Happy Valley and Rusthall Common.'
+      desc: 'Acclaimed dining room and boutique retreat perched atop Tea Garden Lane with breathtaking terrace views directly overlooking Happy Valley and Rusthall Common.'
     },
     {
       id: 'toad-rock-retreat',
       name: 'The Toad Rock Retreat',
       category: 'food',
-      catName: 'Pubs & Dining',
-      icon: '🍺',
+      iconType: 'food',
+      catName: 'Inns & Dining',
       lat: 51.134617,
       lng: 0.239808,
       navQuery: 'The Toad Rock Retreat, 1 Upper Street, Rusthall, Tunbridge Wells TN4 8NX',
@@ -196,9 +213,9 @@
       id: 'spa-hotel',
       name: 'The Spa Hotel & Terrace',
       category: 'hotels',
+      iconType: 'hotel',
       categories: ['hotels', 'food'],
-      catName: 'Hotels & Dining',
-      icon: '🏨',
+      catName: 'Hotels & Stays',
       lat: 51.130802,
       lng: 0.246222,
       navQuery: 'The Spa Hotel, Mount Ephraim, Tunbridge Wells TN4 8XJ',
@@ -208,8 +225,8 @@
       id: 'tunbridge-wells-hotel',
       name: 'The Tunbridge Wells Hotel',
       category: 'hotels',
+      iconType: 'hotel',
       catName: 'Hotels & Stays',
-      icon: '🏨',
       lat: 51.125897,
       lng: 0.257416,
       navQuery: 'The Tunbridge Wells Hotel, 58 The Pantiles, Tunbridge Wells TN2 5TD',
@@ -219,8 +236,8 @@
       id: 'one-warwick-park',
       name: 'One Warwick Park Hotel',
       category: 'hotels',
+      iconType: 'hotel',
       catName: 'Hotels & Stays',
-      icon: '🏨',
       lat: 51.126414,
       lng: 0.259607,
       navQuery: 'One Warwick Park Hotel, 1 Warwick Park, Tunbridge Wells TN2 5TA',
@@ -230,8 +247,8 @@
       id: 'premier-inn',
       name: 'Premier Inn (London Road)',
       category: 'hotels',
+      iconType: 'hotel',
       catName: 'Hotels & Stays',
-      icon: '🏨',
       lat: 51.129922,
       lng: 0.260373,
       navQuery: 'Premier Inn Tunbridge Wells, Merevale House, London Road, Tunbridge Wells TN1 1DZ',
@@ -241,8 +258,8 @@
       id: 'travelodge',
       name: 'Travelodge (Mount Ephraim)',
       category: 'hotels',
+      iconType: 'hotel',
       catName: 'Hotels & Stays',
-      icon: '🏨',
       lat: 51.131232,
       lng: 0.253081,
       navQuery: 'Travelodge Tunbridge Wells, 84 Mount Ephraim, Tunbridge Wells TN4 8BU',
@@ -252,42 +269,42 @@
       id: 'royal-wells-hotel',
       name: 'The Royal Wells Hotel',
       category: 'hotels',
+      iconType: 'hotel',
       categories: ['hotels', 'food'],
-      catName: 'Hotels & Dining',
-      icon: '🏨',
+      catName: 'Hotels & Stays',
       lat: 51.134663,
       lng: 0.258655,
       navQuery: 'The Royal Wells Hotel, 59 Mount Ephraim, Tunbridge Wells TN4 8BE',
-      desc: 'Historic landmark hotel on Mount Ephraim directly overlooking Tunbridge Wells Common. Named in honour of frequent visits by young Queen Victoria in the 1830s, featuring traditional rooms, Wells Bar, and conservatory dining.'
+      desc: 'Historic landmark hotel on Mount Ephraim directly overlooking Tunbridge Wells Common. Named in honour of frequent visits by young Queen Victoria in the 1830s.'
     },
     {
       id: 'russell-hotel',
       name: 'The Russell Hotel',
       category: 'hotels',
+      iconType: 'hotel',
       catName: 'Hotels & Stays',
-      icon: '🏨',
       lat: 51.134188,
       lng: 0.260465,
       navQuery: 'The Russell Hotel, 80 London Road, Tunbridge Wells TN1 1DZ',
-      desc: 'Classic Victorian townhouse hotel situated on London Road directly facing the leafy edge of Tunbridge Wells Common, offering traditional en-suite guest accommodation.'
+      desc: 'Classic Victorian townhouse hotel situated on London Road directly facing the leafy edge of Tunbridge Wells Common.'
     },
     {
       id: 'rcp-parking',
       name: 'Fairground Car Park (Upper Pantiles)',
       category: 'parking',
+      iconType: 'parking',
       catName: 'Parking & Access',
-      icon: '🅿️',
       lat: 51.126083,
       lng: 0.255391,
       navQuery: 'Upper Pantiles Car Park, Major Yorks Road, Tunbridge Wells TN4 8SR',
-      desc: 'Charging surface car park (RCP Parking) at the foot of Major York’s Road between Eridge Road and Hungershall Park (TN4 8SR). RingGo / pay on foot.'
+      desc: 'Charging surface car park (RCP Parking) at the foot of Major York’s Road near The Pantiles roundabout (TN4 8SR). RingGo / pay on foot.'
     },
     {
       id: 'lower-pantiles-parking',
       name: 'Lower Pantiles Car Park',
       category: 'parking',
+      iconType: 'parking',
       catName: 'Parking & Access',
-      icon: '🅿️',
       lat: 51.125258,
       lng: 0.258003,
       navQuery: 'Lower Pantiles Car Park, Linden Park Road, Tunbridge Wells TN2 5TP',
@@ -297,8 +314,8 @@
       id: 'torrington-parking',
       name: 'Torrington Multi-Storey Car Park',
       category: 'parking',
+      iconType: 'parking',
       catName: 'Parking & Access',
-      icon: '🅿️',
       lat: 51.130000,
       lng: 0.262139,
       navQuery: 'Torrington Car Park, Vale Road, Tunbridge Wells TN1 1DJ',
@@ -308,8 +325,8 @@
       id: 'fir-tree-parking',
       name: 'Fir Tree Road Parking (Free 4h)',
       category: 'parking',
+      iconType: 'parking',
       catName: 'Parking & Access',
-      icon: '🅿️',
       lat: 51.129523,
       lng: 0.251694,
       navQuery: 'Fir Tree Road, Tunbridge Wells Common, Tunbridge Wells TN4 8AH',
@@ -319,19 +336,19 @@
       id: 'station',
       name: 'Tunbridge Wells Station (5-min walk)',
       category: 'parking',
-      catName: 'Parking & Access',
-      icon: '🚉',
+      iconType: 'train',
+      catName: 'Rail Station',
       lat: 51.130096,
       lng: 0.263028,
       navQuery: 'Tunbridge Wells Railway Station, Mount Pleasant Road, Tunbridge Wells TN1 1BT',
-      desc: 'Southeastern mainline railway station with direct services from London Charing Cross, Waterloo East, London Bridge, and Hastings. 400m to Common.'
+      desc: 'Southeastern mainline railway station with direct services from London Charing Cross, Waterloo East, London Bridge, and Hastings. 400m walk to the Common.'
     },
     {
       id: 'public-toilets-rocks',
       name: 'Wellington Rocks Public Toilets',
       category: 'facilities',
+      iconType: 'facility',
       catName: 'Public Restrooms',
-      icon: '🚻',
       lat: 51.130423,
       lng: 0.253302,
       navQuery: 'Wellington Rocks, Tunbridge Wells Common, Tunbridge Wells TN4 8SR',
@@ -341,8 +358,8 @@
       id: 'public-toilets-pantiles',
       name: 'The Pantiles Public Restrooms',
       category: 'facilities',
+      iconType: 'facility',
       catName: 'Public Restrooms',
-      icon: '🚻',
       lat: 51.125652,
       lng: 0.257287,
       navQuery: 'The Pantiles, Tunbridge Wells TN2 5TE',
@@ -354,30 +371,31 @@
   const markers = {};
   const markerGroup = L.featureGroup().addTo(map);
 
-  // Custom DivIcon generator
-  function createPin(icon, category) {
+  // Custom DivIcon generator using sharp monochrome SVGs
+  function createPin(iconType, category) {
+    const svgContent = getSvg(iconType);
     return L.divIcon({
       className: 'custom-pin-wrapper',
-      html: `<div class="custom-pin pin-${category}"><span class="custom-pin-inner">${icon}</span></div>`,
-      iconSize: [34, 34],
-      iconAnchor: [17, 34],
-      popupAnchor: [0, -32]
+      html: `<div class="custom-pin pin-${category}"><span class="custom-pin-inner">${svgContent}</span></div>`,
+      iconSize: [36, 36],
+      iconAnchor: [18, 36],
+      popupAnchor: [0, -34]
     });
   }
 
   // Populate Markers
   landmarks.forEach(lm => {
-    const pin = createPin(lm.icon, lm.category);
+    const pin = createPin(lm.iconType, lm.category);
     const destinationQuery = lm.navQuery ? encodeURIComponent(lm.navQuery) : `${lm.lat},${lm.lng}`;
     const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${destinationQuery}`;
 
     const popupContent = `
       <div>
         <span class="popup-tag">${lm.catName}</span>
-        <h4 class="popup-title">${lm.icon} ${lm.name}</h4>
+        <h4 class="popup-title">${lm.name}</h4>
         <p class="popup-desc">${lm.desc}</p>
         <a href="${directionsUrl}" target="_blank" rel="noopener" class="popup-btn">
-          Google Maps Directions &rarr;
+          Directions in Google Maps &rarr;
         </a>
       </div>
     `;
@@ -401,7 +419,7 @@
     listContainer.innerHTML = '';
 
     if (filteredLandmarks.length === 0) {
-      listContainer.innerHTML = '<div style="padding: 1rem; color: var(--color-text-muted); font-size: 0.9rem;">No landmarks found in this category.</div>';
+      listContainer.innerHTML = '<div style="padding: 1.5rem; color: var(--nt-muted); font-size: 0.9rem;">No landmarks found in this category.</div>';
       return;
     }
 
@@ -410,7 +428,9 @@
       item.className = 'place-item';
       item.dataset.id = lm.id;
       item.innerHTML = `
-        <div class="place-icon">${lm.icon}</div>
+        <div class="place-icon cat-${lm.category}">
+          ${getSvg(lm.iconType)}
+        </div>
         <div style="flex-grow: 1;">
           <div class="place-name">${lm.name}</div>
           <span class="place-tag">${lm.catName}</span>
@@ -468,6 +488,6 @@
     });
   });
 
-  // Re-invalidate size on window resize / drawer toggle
+  // Re-invalidate size on window resize
   window.addEventListener('resize', () => map.invalidateSize());
 })();

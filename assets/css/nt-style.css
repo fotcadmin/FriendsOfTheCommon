@@ -1320,7 +1320,10 @@ details[open] .summary-icon {
   border-radius: 0;
   padding: 0.85rem 1rem;
   cursor: pointer;
-  transition: border-color var(--transition-quick);
+  display: flex;
+  gap: 0.85rem;
+  align-items: flex-start;
+  transition: all var(--transition-quick);
 }
 
 .place-item:hover,
@@ -1329,17 +1332,169 @@ details[open] .summary-icon {
   background-color: var(--nt-surface-alt);
 }
 
-.place-item-title {
-  font-family: var(--font-serif);
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: var(--nt-charcoal);
+.place-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  flex-shrink: 0;
+  background-color: var(--nt-green-deep);
 }
 
-.place-item-desc {
-  font-size: 0.85rem;
+.place-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.place-icon.cat-heritage { background-color: #133926; }
+.place-icon.cat-nature { background-color: #236343; }
+.place-icon.cat-food { background-color: #994d13; }
+.place-icon.cat-hotels { background-color: #473b7b; }
+.place-icon.cat-parking { background-color: #1b5ea3; }
+.place-icon.cat-facilities { background-color: #0e6e66; }
+
+.place-name {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--nt-charcoal);
+  line-height: 1.25;
+}
+
+.place-tag {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
   color: var(--nt-muted);
+  display: inline-block;
   margin-top: 0.2rem;
+}
+
+.place-desc {
+  font-size: 0.82rem;
+  color: var(--nt-muted);
+  margin-top: 0.35rem;
+  line-height: 1.45;
+}
+
+/* Custom Marker Pins on Leaflet Map */
+.custom-pin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  background: var(--nt-green-deep);
+  border: 2px solid #ffffff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.custom-pin:hover {
+  transform: rotate(-45deg) scale(1.18);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  z-index: 1000 !important;
+}
+
+.custom-pin-inner {
+  transform: rotate(45deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  width: 20px;
+  height: 20px;
+}
+
+.custom-pin-inner svg {
+  width: 18px;
+  height: 18px;
+  stroke: #ffffff;
+}
+
+.custom-pin.pin-heritage { background-color: #133926; }
+.custom-pin.pin-nature { background-color: #236343; }
+.custom-pin.pin-food { background-color: #994d13; }
+.custom-pin.pin-hotels { background-color: #473b7b; }
+.custom-pin.pin-parking { background-color: #1b5ea3; }
+.custom-pin.pin-facilities { background-color: #0e6e66; }
+
+/* Sharp Leaflet Popups */
+.leaflet-popup-content-wrapper {
+  border-radius: 0 !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15) !important;
+  border: 1px solid var(--nt-border);
+  padding: 0.4rem !important;
+  font-family: var(--font-sans) !important;
+  background: #ffffff !important;
+}
+
+.leaflet-popup-content {
+  margin: 0.6rem !important;
+  line-height: 1.45 !important;
+}
+
+.leaflet-popup-tip-container {
+  overflow: hidden;
+}
+
+.leaflet-popup-tip {
+  border-radius: 0 !important;
+  background: #ffffff !important;
+}
+
+.popup-tag {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.2rem 0.5rem;
+  background: var(--nt-sand-bg);
+  border: 1px solid var(--nt-border);
+  color: var(--nt-green-deep);
+  margin-bottom: 0.4rem;
+}
+
+.popup-title {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--nt-green-deep);
+  margin-bottom: 0.35rem;
+  line-height: 1.25;
+}
+
+.popup-desc {
+  font-size: 0.85rem;
+  color: var(--nt-charcoal);
+  margin-bottom: 0.75rem;
+  line-height: 1.45;
+}
+
+.popup-btn {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: var(--nt-green-deep);
+  padding: 0.45rem 0.85rem;
+  text-decoration: none;
+  border-radius: 0;
+  border: 1px solid var(--nt-green-deep);
+  transition: background-color var(--transition-quick);
+}
+
+.popup-btn:hover {
+  background-color: var(--nt-green-mid);
+  color: #ffffff;
 }
 
 @media (max-width: 900px) {
@@ -1352,5 +1507,6 @@ details[open] .summary-icon {
     height: 400px;
   }
 }
+
 
 
