@@ -169,11 +169,16 @@ a:hover {
 }
 
 .brand-sub {
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   color: var(--nt-muted);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   font-weight: 500;
+  white-space: nowrap;
+}
+
+.brand-charity-no {
+  white-space: nowrap;
 }
 
 .nav-desktop {
