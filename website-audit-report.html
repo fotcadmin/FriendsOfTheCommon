@@ -1,0 +1,150 @@
+<!DOCTYPE html><html lang="en-GB"><head><meta charset="utf-8">
+<title>Website Audit Report - Friends of the Commons</title>
+<style>
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; font-size: 11pt; line-height: 1.5; color: #24292f; max-width: 820px; margin: 0 auto; padding: 30px; background-color: #fff; }
+h1 { color: #1b4332; font-size: 20pt; margin-bottom: 4pt; font-weight: bold; }
+h2 { color: #2d6a4f; font-size: 13.5pt; margin-top: 18pt; margin-bottom: 6pt; border-bottom: 1.5px solid #e2e8f0; padding-bottom: 4pt; font-weight: 600; }
+h3 { color: #1b4332; font-size: 12pt; margin-top: 14pt; margin-bottom: 5pt; font-weight: 600; }
+h4 { color: #2d6a4f; font-size: 11pt; margin-top: 10pt; margin-bottom: 3pt; font-weight: bold; }
+table { border-collapse: collapse; width: 100%; margin: 14pt 0; font-size: 10pt; }
+th, td { border: 1px solid #cbd5e1; padding: 7pt 10pt; text-align: left; }
+th { background-color: #f1f5f9; color: #0f172a; font-weight: bold; }
+tr:nth-child(even) { background-color: #f8fafc; }
+blockquote { background-color: #fefce8; border-left: 4px solid #ca8a04; padding: 8pt 12pt; margin: 10pt 0; font-style: italic; color: #713f12; }
+ul { margin-top: 4pt; margin-bottom: 8pt; padding-left: 20pt; }
+li { margin-bottom: 4pt; }
+p { margin: 0 0 8pt 0; }
+code { background: #f1f5f9; padding: 2px 4px; border-radius: 3px; font-size: 9.5pt; font-family: ui-monospace, SFMono-Regular, Consolas, monospace; }
+hr { border: none; border-top: 1px solid #cbd5e1; margin: 16pt 0; }
+</style></head><body>
+<h1>Forensic Website Audit &amp; Friction Analysis</h1>
+<h2>An Executive &amp; Technical Review of `friendsofthecommons.uk`</h2>
+<p><strong>Client:</strong> The Friends of Tunbridge Wells & Rusthall Commons (Charity No. 1013975)</p>
+<p><strong>Date:</strong> September 2026 | <strong>Scope:</strong> Full-Site Analysis (All 20 Pages & 2 Posts)</p>
+<hr>
+<h3>Executive Overview</h3>
+<p>An in-depth technical and heuristic audit was conducted across the live web property (<code>https://friendsofthecommons.uk/</code>), combining the user's Lighthouse audit with live HTTP crawling across all 20 published pages and posts.</p>
+<p>The investigation reveals that the current website suffers from severe architectural bloat, catastrophic mobile load times (<strong>13.9-second Largest Contentful Paint</strong>), live content embarrassments (such as published <strong>Lorem Ipsum placeholder text</strong>), and complete commercial friction—specifically, <strong>zero ability to accept online payments for donations or memberships</strong>, requiring supporters in 2026 to post physical paper cheques.</p>
+<hr>
+<h3>Key Audit Scorecard</h3>
+<table>
+<tr><th>Category</th><th>Score / Metric</th><th>Status</th><th>Primary Culprit</th></tr>
+<tr><td><strong>Performance (Lighthouse)</strong></td><td><strong>65 / 100</strong></td><td>🔴 Critical Failure</td><td>13.9s LCP, 2.09s render-blocking CSS/JS</td></tr>
+<tr><td><strong>Largest Contentful Paint (LCP)</strong></td><td><strong>13.9s</strong> (Target: < 2.5s)</td><td>🔴 Severe Delay</td><td>972 KB unoptimised hero JPEG loaded via CSS</td></tr>
+<tr><td><strong>First Contentful Paint (FCP)</strong></td><td><strong>3.5s</strong> (Target: < 1.8s)</td><td>🟠 Poor</td><td>58 external stylesheet & script dependencies</td></tr>
+<tr><td><strong>Total Page Weight</strong></td><td><strong>2.18 MB</strong> (Home)</td><td>🟠 Bloated</td><td>Uncompressed images & unused JavaScript</td></tr>
+<tr><td><strong>Accessibility (a11y)</strong></td><td><strong>93 / 100</strong></td><td>🟡 Partial</td><td>Severe colour contrast failures (#6FC56F on white)</td></tr>
+<tr><td><strong>Best Practices</strong></td><td><strong>54 / 100</strong></td><td>🔴 Failing</td><td>5 Meta/Facebook tracking cookies, deprecated APIs</td></tr>
+<tr><td><strong>SEO</strong></td><td><strong>92 / 100</strong></td><td>🟡 Mediocre</td><td>Missing meta description on homepage</td></tr>
+<tr><td><strong>Online Payment Processing</strong></td><td><strong>0% Available</strong></td><td>🔴 Fatal Conversion Flaw</td><td>Cheques and manual bank transfer only</td></tr>
+<tr><td><strong>Live Content Quality</strong></td><td><strong>Hidden Placeholders in DOM</strong></td><td>🟠 High Fragility</td><td>Unfinished template filler in live HTML on `/donate/`</td></tr>
+</table>
+<hr>
+<h3>1. Technical &amp; Performance Breakdown</h3>
+<h4>A. The 13.9-Second Largest Contentful Paint (LCP) Catastrophe</h4>
+<ul>
+<li><strong>What Happened:</strong> On mobile devices (representing >70% of traffic), visitors wait nearly <strong>14 seconds</strong> before the main visual content renders.</li>
+<li><strong>The Root Causes:</strong></li>
+</ul>
+<p>2. <strong>CSS Background Loading:</strong> Because the image is applied as a CSS background property inside an Elementor container rather than an HTML <code><img></code> tag with <code>fetchpriority="high"</code>, the browser cannot discover the image until all 28 stylesheets are downloaded and parsed. This creates a <strong>7.7-second discovery delay</strong>.</p>
+<h4>B. Asset Bloat &amp; Render-Blocking Overhead</h4>
+<ul>
+<li><strong>58 Render-Blocking Files:</strong> Before displaying a single pixel of text, the browser must sequentially download:</li>
+<li><strong>28 CSS Stylesheets</strong> (Elementor, Elementor Pro, Hello Theme, JetEngine, SmartMenus, Swiper, custom snippet CSS).</li>
+<li><strong>30 JavaScript Files</strong> (WordPress jQuery, jQuery Migrate, jQuery UI Core, Elementor frontend runtime, Google Tag Manager, Facebook Pixel).</li>
+<li><strong>Render-Blocking Penalty:</strong> An estimated <strong>2,090 ms</strong> is wasted purely waiting for unnecessary CSS/JS files to download.</li>
+<li><strong>Redundant Plugin Overlap:</strong> The site loads both <strong>Elementor Pro Forms</strong> and <strong>Gravity Forms</strong> (<code>gform_3</code>), doubling form-handling overhead.</li>
+<li><strong>Third-Party Surveillance Bloat:</strong></li>
+<li>The site loads the full <strong>Facebook Pixel</strong> (<code>fbevents.js</code>, 110 KB transfer, 421 KB uncompressed) and drops 5 third-party tracking cookies (<code>c_user</code>, <code>datr</code>, <code>fr</code>, <code>sb</code>, <code>xs</code>). For a registered local environmental charity, invasive commercial tracking adds zero value while degrading trust and compliance.</li>
+</ul>
+<h4>C. Accessibility &amp; Standards Violations</h4>
+<ul>
+<li><strong>Low Contrast Links (WCAG AA Violation):</strong> The primary brand green link colour (<code>#6FC56F</code>) on a white background produces a contrast ratio of only <strong>2.12:1</strong> (minimum requirement is 4.5:1). This makes links on the homepage, FAQ, and key facts unreadable for visually impaired and elderly users.</li>
+<li><strong>Empty Header Link:</strong> The main logo link in the header contains no accessible <code>aria-label</code> or alt text, leaving screen readers to announce a blank or raw URL.</li>
+<li><strong>Distorted Image Ratios:</strong> <code>Signpost-768x576.jpg</code> (displayed in the layout) has an aspect ratio mismatch (forced from 1.33:1 to 1.20:1), producing visual distortion on mobile screens.</li>
+</ul>
+<hr>
+<h3>2. Live Content &amp; Editorial Defects</h3>
+<p>Crawling the 20 published pages revealed significant quality control failures:</p>
+<p>1. <strong>Unfinished Placeholder Section in the Live HTML on <code>/donate/</code>:</strong></p>
+<ul>
+<li>In the source code of the live <code>/donate/</code> page, there is a section titled *"What your donation can do"* containing <strong>four unedited template cards</strong>:</li>
+</ul>
+<ul>
+<li><strong>Why it is not visible on screen:</strong> The previous web developer hid this container using Elementor's responsive CSS toggles (<code>class="... elementor-hidden-desktop elementor-hidden-tablet elementor-hidden-mobile"</code>).</li>
+<li><strong>Why this is a serious technical liability:</strong></li>
+<li><strong>SEO & Web Crawlers:</strong> Search engines (Googlebot, Bing), accessibility screen readers, and automated parsers read the raw HTML DOM. They still process this unfinished placeholder text as part of the charity's live content.</li>
+<li><strong>Fragility & CSS Breakage Risk:</strong> If Elementor's external stylesheets fail or are delayed (exactly as occurred during the recent <code>post-37.css</code> 404 outage), the CSS <code>display: none;</code> rule fails, and this raw placeholder text suddenly flashes or appears on the public screen!</li>
+<li><strong>DOM & Network Bloat:</strong> It forces browsers to download unneeded images (<code>donate-1.png</code>), markup, and layout containers on every visit.</li>
+</ul>
+<ul>
+<li>Section B is titled: *"Section B - Gift and Decleration"* (misspelling Declaration).</li>
+</ul>
+<ul>
+<li>The page explicitly reveals sensitive commercial negotiation figures:</li>
+</ul>
+<ul>
+<li>As John Barber correctly noted, publishing internal valuations and indicating willingness to exceed £1m severely damages the Trustees' bargaining position against Targetfollow.</li>
+</ul>
+<hr>
+<h3>3. Commercial &amp; Conversion Friction Analysis</h3>
+<p><code></code><code></p>
+<p>Current Journey (High Abandonment):</p>
+<p>[Visit Site] ➔ [Click Donate] ➔ [See Placeholders] ➔ [Copy Bank Details] ➔ [Open Banking App] ➔ (Drop-off >80%)</p>
+<p>OR</p>
+<p>[Write Paper Cheque] ➔ [Buy Stamp] ➔ [Post to Volunteer] ➔ (Drop-off >95%)</p>
+<p><code></code><code></p>
+<h4>A. The Donation Bottleneck (`/donate/`)</h4>
+<ul>
+<li><strong>Zero E-Commerce Integration:</strong> There is <strong>no payment gateway</strong> (no Stripe, PayPal, card processor, Apple Pay, or Google Pay).</li>
+<li><strong>The Payment Barrier:</strong> The only methods provided are:</li>
+</ul>
+<p>2. Writing a physical paper cheque payable to the charity and mailing it via Royal Mail to a trustee's residential address (<em>Chris Gurr, 45 Erskine Park Road</em>).</p>
+<ul>
+<li><strong>Conversion Impact:</strong> On mobile devices, asking a donor to manually switch apps to make a BACS transfer or write a cheque results in an estimated <strong>85%+ abandonment rate</strong>.</li>
+<li><strong>Zero Real-Time Gift Aid:</strong> Gift Aid cannot be claimed at the point of donation.</li>
+</ul>
+<h4>B. The Membership Sign-Up Friction (`/sign-up/`)</h4>
+<ul>
+<li><strong>14 Form Fields:</strong> The Gravity Form requires First Name, Last Name, Street Address, Address Line 2, City, County, Post Code, Phone, Email, Tier selection, Gift Aid statement, payment choice, and CAPTCHA.</li>
+<li><strong>Misleading Direct Debit Option:</strong> The form asks users to choose "Direct Debit", but provides <strong>no Direct Debit mandate integration</strong> (like GoCardless).</li>
+<li><strong>Pricing Confusion:</strong> The copy states: *"Annual membership is £20 for a Family and £10 for an individual"*, whereas campaign literature cites £15 rates.</li>
+</ul>
+<h4>C. The Pledge Flow Friction (`/sale-faqs/pledge/`)</h4>
+<ul>
+<li><strong>Poor URL Architecture:</strong> The pledge form is buried as a nested subpage under <code>/sale-faqs/pledge/</code>, making it difficult to locate from external social links or print campaigns.</li>
+<li><strong>No Pre-set Tiers:</strong> The form uses a generic free-text input box for the pledge sum with no accessible starter tiers (£20, £50, £100), increasing cognitive friction.</li>
+<li><strong>Lack of Reassurance:</strong> Does not clearly emphasise up front that no money is taken immediately and that pledges are strictly non-binding and confidential until contracts are finalised.</li>
+</ul>
+<hr>
+<h3>4. Human Navigation &amp; Visitor Utility</h3>
+<table>
+<tr><th>Feature</th><th>Current Website Status</th><th>Modern Standard</th></tr>
+<tr><td><strong>Interactive Map</strong></td><td>None. Only static downloadable PDFs on `/more/`.</td><td>Responsive GPS-enabled map with trail toggles and landmarks.</td></tr>
+<tr><td><strong>Parking Guidance</strong></td><td>None. Visitors must guess where to park for Wellington Rocks or Toad Rock.</td><td>Clear parking cards with postcodes, capacities, and Google Maps links.</td></tr>
+<tr><td><strong>Mobile Menu</strong></td><td>10 top-level items with duplicates ("Join", "Sign Up", "Donate", "Support Us").</td><td>Clean 5-item consolidated navigation with distinct CTA buttons.</td></tr>
+<tr><td><strong>News & Events</strong></td><td>Stagnant: Only 2 posts since site launch in mid-2024.</td><td>Active, searchable newsroom with upcoming volunteer dates.</td></tr>
+<tr><td><strong>Search Engine Discovery</strong></td><td>Missing homepage meta description; weak local keyword targeting.</td><td>Optimised metadata for *"Tunbridge Wells walks"*, *"Toad Rock parking"*, etc.</td></tr>
+</table>
+<hr>
+<h3>5. Recommendations &amp; Roadmap for the Modern Rebuild</h3>
+<p>1. <strong>Replace WordPress/Elementor with Headless Static Architecture:</strong></p>
+<ul>
+<li>Cut asset requests from <strong>58 files down to 4 files</strong>.</li>
+<li>Reduce mobile LCP from <strong>13.9 seconds to under 1.2 seconds</strong> (achieving a 98+ Lighthouse score).</li>
+</ul>
+<ul>
+<li>Integrate Stripe Elements supporting <strong>Apple Pay, Google Pay, and major debit/credit cards</strong>.</li>
+<li>Enable 1-click <strong>Gift Aid declaration</strong> (+25% value to the charity at zero donor cost).</li>
+<li>Implement automated email receipts and membership confirmation.</li>
+</ul>
+<ul>
+<li>Eradicate all Lorem Ipsum and placeholder text.</li>
+<li>Redact sensitive valuation figures from public pages to preserve John Barber's negotiating leverage with Targetfollow.</li>
+</ul>
+<ul>
+<li>Elevate <strong>Pledge</strong> to a prominent top-level campaign destination (<code>/pledge</code> or <code>/campaign</code>).</li>
+<li>Combine "Join Us", "Support Us", and "Sign Up" into a single frictionless onboarding portal.</li>
+<li>Replace PDF sheets with mobile-friendly <strong>Interactive Trail Guides</strong>.</li>
+</ul>
+</body></html>

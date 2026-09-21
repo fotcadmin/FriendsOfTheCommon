@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Head of Comms Handover & Editing Guide | Friends of the Commons</title>
+  <!-- Favicon & Touch Icons -->
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
+  <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#1b4332">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    .guide-box {
+      background: #ffffff;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: var(--shadow-sm);
+    }
+    .step-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      background: var(--color-forest);
+      color: #ffffff;
+      border-radius: 50%;
+      font-weight: 700;
+      font-size: 0.9rem;
+      margin-right: 0.5rem;
+    }
+    .tip-callout {
+      background: var(--color-mint);
+      border-left: 4px solid var(--color-leaf);
+      padding: 1rem 1.25rem;
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      margin: 1rem 0;
+      font-size: 0.92rem;
+      color: var(--color-forest-dark);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Site Header -->
+  <header class="site-header" role="banner">
+    <div class="container header-container">
+      <a href="index.html" class="site-brand">
+        <img src="assets/images/logo-transparent.webp" alt="Friends Logo" class="site-logo" width="54" height="58">
+        <div class="brand-text">
+          <span class="brand-title">Friends of the Commons</span>
+          <span class="brand-subtitle">Head of Comms Guide</span>
+        </div>
+      </a>
+      <div class="header-actions">
+        <a href="index.html" class="btn btn-outline btn-sm">&larr; Back to Public Site</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content" class="container" style="max-width: 900px; padding-top: 3.5rem; padding-bottom: 5rem;">
+
+    <div style="margin-bottom: 3rem;">
+      <span style="background: var(--color-amber-light); color: var(--color-amber-dark); padding: 0.35rem 0.8rem; border-radius: var(--radius-full); font-size: 0.85rem; font-weight: 700; text-transform: uppercase;">
+        Trustee &amp; Comms Handover Documentation
+      </span>
+      <h1 style="margin-top: 0.75rem; margin-bottom: 0.5rem;">Website Content Management Guide</h1>
+      <p style="font-size: 1.15rem; color: var(--color-text-muted);">
+        Prepared specifically for the <strong>Head of Comms</strong>. This guide explains how the modernized site is structured, how to perform routine updates in minutes, and key governance best practices.
+      </p>
+    </div>
+
+    <!-- Section 1: The 6-Pillar Site Map -->
+    <section class="guide-box">
+      <h2 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--color-forest);">1. The 6-Pillar Information Architecture</h2>
+      <p style="color: var(--color-text-muted);">
+        The previous website suffered from 20 scattered, overlapping pages (e.g. separate <em>/join-us</em>, <em>/sign-up</em>, <em>/support-us</em>, <em>/donate</em>, and <em>/volunteer</em>). We have unified the site into 6 purposeful sections:
+      </p>
+      <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.65rem; font-size: 0.95rem; margin-top: 1rem;">
+        <li>🌲 <strong><a href="index.html">1. Home</a>:</strong> The shop window — campaign alert, headline stats, core pillars, public endorsements, and event teasers.</li>
+        <li>📢 <strong><a href="campaign.html">2. Campaign &amp; Sale</a>:</strong> The community bid, media coverage (BBC/Guardian), legal key facts, sale FAQs, and financial pledge form.</li>
+        <li>🗺️ <strong><a href="explore.html">3. Explore &amp; Maps</a>:</strong> Digital Visitor Centre, parking directory &amp; council disclaimer, interactive Leaflet trail map with category filters, downloadable maps, and wildlife guides.</li>
+        <li>🤝 <strong><a href="get-involved.html">4. Get Involved</a>:</strong> Direct Debit membership (GoCardless), one-off donations (+25% Gift Aid calculator), and volunteer sign-ups.</li>
+        <li>📅 <strong><a href="news-events.html">5. News &amp; Events</a>:</strong> Upcoming guided walks, volunteer dates, ranger updates, and photo gallery.</li>
+        <li>🏛️ <strong><a href="about.html">6. About &amp; Contact</a>:</strong> 1987 storm history, Conservators partnership, downloadable PDFs (Constitution, Safeguarding), and contact form.</li>
+      </ul>
+    </section>
+
+    <!-- Section 2: Routine Comms Tasks -->
+    <section class="guide-box">
+      <h2 style="font-size: 1.5rem; margin-bottom: 1.25rem; color: var(--color-forest);">2. Routine Day-to-Day Comms Workflows</h2>
+
+      <!-- Workflow A -->
+      <div style="margin-bottom: 2rem;">
+        <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem;">
+          <span class="step-badge">A</span> Adding a Nature Walk or Event
+        </h3>
+        <p style="font-size: 0.95rem; color: var(--color-text-muted);">
+          All events live on the <strong>News &amp; Events</strong> page in pre-formatted responsive cards with calendar date badges.
+        </p>
+        <div class="tip-callout">
+          <strong>Key fields needed:</strong> Event Title, Month &amp; Day, Category (e.g. <em>Nature Walk</em>, <em>Fungi Foray</em>, <em>Bat Evening</em>), Short Description, and whether booking is required.
+        </div>
+      </div>
+
+      <!-- Workflow B -->
+      <div style="margin-bottom: 2rem;">
+        <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem;">
+          <span class="step-badge">B</span> Updating Volunteer Working Party Dates
+        </h3>
+        <p style="font-size: 0.95rem; color: var(--color-text-muted);">
+          Volunteer dates are prominently featured on both the <strong>Home</strong> and <strong>Get Involved</strong> pages.
+        </p>
+        <div class="tip-callout">
+          <strong>Pro-Tip:</strong> Always mention that tools, gloves, and friendly supervision are provided to reassure first-time volunteers!
+        </div>
+      </div>
+
+      <!-- Workflow C -->
+      <div>
+        <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem;">
+          <span class="step-badge">C</span> Uploading New Documents or Committee Minutes
+        </h3>
+        <p style="font-size: 0.95rem; color: var(--color-text-muted);">
+          Official governance documents (Constitution, Safeguarding Policy, Accounts) are located in the <code>assets/docs/</code> directory and linked from the <strong>About &amp; Contact</strong> page and site footer.
+        </p>
+      </div>
+    </section>
+
+    <!-- Section 3: Charity Commission Governance Check -->
+    <section class="guide-box" style="border-left: 6px solid var(--color-amber);">
+      <h2 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--color-amber-dark);">3. Charity Commission Compliance: Trustee Best Practice</h2>
+      <p style="font-size: 0.95rem; color: var(--color-text-muted);">
+        Under the <strong>UK Charities Act 2011 (Section 185)</strong>, because you are a trustee and Alistair is your spouse (a legally defined "connected person"):
+      </p>
+      <div style="background: var(--color-amber-light); padding: 1.25rem; border-radius: var(--radius-md); font-size: 0.92rem; color: var(--color-amber-dark); margin: 1rem 0;">
+        <ol style="padding-left: 1.25rem; display: flex; flex-direction: column; gap: 0.5rem;">
+          <li><strong>Declaration of Interest:</strong> At any committee meeting discussing website rebuild proposals, quotes, or fees, declare your relationship and step out of the room.</li>
+          <li><strong>Minuted Decision:</strong> The remaining independent trustees must minute that hiring Alistair at a discounted charity rate represents best value for the charity.</li>
+          <li><strong>Written Agreement:</strong> A simple 1-page agreement specifying scope, fee, and milestones must be signed by another trustee.</li>
+        </ol>
+      </div>
+      <p style="font-size: 0.9rem; color: var(--color-text-muted);">
+        Following this straightforward procedure protects your position as a trustee and guarantees 100% compliance with Charity Commission regulations.
+      </p>
+    </section>
+
+    <!-- Section 4: Contact & Technical Support -->
+    <section class="guide-box">
+      <h2 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--color-forest);">4. Division of Responsibilities</h2>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+        <div style="background: var(--color-sandstone-bg); padding: 1.25rem; border-radius: var(--radius-md);">
+          <h4 style="color: var(--color-forest); margin-bottom: 0.5rem;">Head of Comms (Content)</h4>
+          <ul style="font-size: 0.88rem; color: var(--color-text-muted); list-style: disc; padding-left: 1rem;">
+            <li>Publishing walk &amp; event notices</li>
+            <li>Writing Ranger reports &amp; news stories</li>
+            <li>Sharing updates to social media / press</li>
+            <li>Reviewing volunteer &amp; contact messages</li>
+          </ul>
+        </div>
+        <div style="background: var(--color-sandstone-bg); padding: 1.25rem; border-radius: var(--radius-md);">
+          <h4 style="color: var(--color-forest); margin-bottom: 0.5rem;">Technical Webmaster (Code)</h4>
+          <ul style="font-size: 0.88rem; color: var(--color-text-muted); list-style: disc; padding-left: 1rem;">
+            <li>Hosting &amp; domain DNS management</li>
+            <li>SSL certificates &amp; security encryption</li>
+            <li>Payment gateway &amp; Gift Aid compliance</li>
+            <li>Performance &amp; mobile compatibility checks</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <div style="text-align: center; margin-top: 3rem;">
+      <a href="index.html" class="btn btn-primary btn-lg">Return to Prototype Homepage &rarr;</a>
+    </div>
+
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container" style="text-align: center; font-size: 0.85rem;">
+      &copy; 2026 The Friends of Tunbridge Wells and Rusthall Commons. Internal Comms Handover Documentation.
+    </div>
+  </footer>
+
+</body>
+</html>

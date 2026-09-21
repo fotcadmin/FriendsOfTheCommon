@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Modernising the Friends of the Commons Digital Presence - Trustee Proposal</title>
+<style>
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11pt;
+    line-height: 1.5;
+    color: #24292f;
+    background-color: #ffffff;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 30px;
+  }
+  .doc-header {
+    border-bottom: 2px solid #2d6a4f;
+    padding-bottom: 12px;
+    margin-bottom: 20px;
+  }
+  .charity-meta {
+    font-size: 9.5pt;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #2d6a4f;
+    margin-bottom: 6px;
+  }
+  h1 {
+    font-size: 20pt;
+    color: #1b4332;
+    margin: 0 0 6px 0;
+    font-weight: bold;
+    line-height: 1.25;
+  }
+  .doc-subtitle {
+    font-size: 13pt;
+    color: #40514e;
+    margin: 0 0 8px 0;
+    font-weight: 600;
+  }
+  .meeting-tag {
+    font-size: 10pt;
+    color: #64748b;
+    font-style: italic;
+    margin: 0;
+  }
+  h2 {
+    font-size: 13pt;
+    color: #1b4332;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 4px;
+    margin-top: 24px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  h3 {
+    font-size: 11.5pt;
+    color: #2d6a4f;
+    margin-top: 14px;
+    margin-bottom: 6px;
+  }
+  p {
+    margin: 0 0 10px 0;
+  }
+  ul {
+    margin: 0 0 12px 0;
+    padding-left: 22px;
+  }
+  li {
+    margin-bottom: 5px;
+  }
+  .executive-box {
+    background-color: #f8fafc;
+    border-left: 4px solid #2d6a4f;
+    padding: 12px 16px;
+    margin: 16px 0;
+    border-radius: 0 4px 4px 0;
+  }
+  .callout-confidential {
+    background-color: #fefce8;
+    border-left: 4px solid #ca8a04;
+    padding: 10px 14px;
+    margin: 12px 0;
+  }
+  .decision-box {
+    background-color: #f0fdf4;
+    border: 1.5px solid #86efac;
+    border-left: 5px solid #16a34a;
+    padding: 14px 18px;
+    margin: 20px 0;
+    border-radius: 4px;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 16px 0;
+    font-size: 10pt;
+  }
+  th, td {
+    border: 1px solid #cbd5e1;
+    padding: 8px 12px;
+    text-align: left;
+  }
+  th {
+    background-color: #f1f5f9;
+    color: #0f172a;
+    font-weight: bold;
+  }
+  tr:nth-child(even) {
+    background-color: #f8fafc;
+  }
+  .highlight-cell {
+    font-weight: bold;
+    color: #166534;
+  }
+  .metric-badge {
+    background-color: #dcfce7;
+    color: #166534;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-weight: bold;
+  }
+</style>
+
+<style>
+  @media print {
+    .toolbar, .toast { display: none !important; }
+    body { padding: 0 !important; }
+  }
+  .toolbar {
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: #1b4332;
+    color: #ffffff;
+    padding: 12px 24px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    z-index: 1000;
+    margin: -30px -30px 25px -30px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+  .toolbar-content {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .toolbar-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .toolbar-icon {
+    font-size: 26px;
+  }
+  .toolbar-title {
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  .toolbar-desc {
+    font-size: 12px;
+    color: #d8f3dc;
+    margin-top: 1px;
+  }
+  .toolbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .btn-primary {
+    background: #ca8a04;
+    color: #ffffff;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s ease;
+  }
+  .btn-primary:hover { background: #b45309; }
+  .btn-secondary {
+    background: rgba(255,255,255,0.15);
+    color: #ffffff;
+    text-decoration: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    border: 1px solid rgba(255,255,255,0.3);
+  }
+  .btn-secondary:hover { background: rgba(255,255,255,0.25); }
+  .btn-outline {
+    background: transparent;
+    color: #ffffff;
+    border: 1px solid rgba(255,255,255,0.4);
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    cursor: pointer;
+  }
+  .btn-outline:hover { background: rgba(255,255,255,0.1); }
+  .toast {
+    display: none;
+    background: #2d6a4f;
+    color: #ffffff;
+    text-align: center;
+    padding: 8px;
+    font-size: 13px;
+    border-radius: 4px;
+    margin-top: 8px;
+  }
+</style>
+<script>
+function copyForGoogleDocs() {
+  const content = document.getElementById('document-content');
+  const range = document.createRange();
+  range.selectNode(content);
+  window.getSelection().removeAllRanges();
+  window.getSelection().addRange(range);
+  try {
+    document.execCommand('copy');
+    const toast = document.getElementById('toast');
+    toast.style.display = 'block';
+    setTimeout(() => { toast.style.display = 'none'; }, 4000);
+  } catch (err) {
+    alert('Please select the text and press Cmd+C to copy.');
+  }
+}
+</script>
+
+</head>
+<body>
+
+<div class="toolbar" id="toolbar">
+  <div class="toolbar-content">
+    <div class="toolbar-left">
+      <span class="toolbar-icon">📄</span>
+      <div>
+        <div class="toolbar-title">Trustee Proposal Ready for Google Docs</div>
+        <div class="toolbar-desc">Share with Lucy or print for the Trustees' meeting on Monday</div>
+      </div>
+    </div>
+    <div class="toolbar-actions">
+      <button id="copyBtn" onclick="copyForGoogleDocs()" class="btn-primary">📋 Copy Formatted Text</button>
+      <button onclick="window.print()" class="btn-outline">🖨️ Print / Save as PDF</button>
+    </div>
+  </div>
+  <div id="toast" class="toast">✅ Formatted text copied to clipboard! Open a new tab to <strong>docs.new</strong> in your browser and press <strong>Cmd + V</strong></div>
+</div>
+
+<div id="document-content">
+
+<div class="doc-header">
+  <div class="charity-meta">The Friends of Tunbridge Wells &amp; Rusthall Commons &bull; Charity No. 1013975</div>
+  <h1>Modernising the Friends of the Commons Digital Presence</h1>
+  <div class="doc-subtitle">A Strategic 3-Pillar Proposal for the Board of Trustees</div>
+  <div class="meeting-tag">Prepared for Trustee Board Discussion &bull; Meeting: Monday Afternoon</div>
+</div>
+
+<div class="executive-box">
+  <p><strong>Executive Summary:</strong> The Commons represent 256 acres of irreplaceable natural assets, ancient sandstone crags, and living heritage across Royal Tunbridge Wells and Rusthall. As the charity pursues freehold community ownership, our website must serve as our most trusted, resilient, and persuasive civic asset.</p>
+  <p style="margin: 0;">At present, administrative fragility (demonstrated by recent styling breakdowns) and mobile friction limit our reach and strain volunteer time. This proposal outlines a focused modernisation for a fixed one-off investment of <strong>£1,000</strong> with <strong>£0 ongoing software fees</strong>, built around three core pillars.</p>
+</div>
+
+<h2>Pillar 1: Eliminating Administrative Friction &amp; Volunteer Anxiety</h2>
+<p><em>From fragile visual page builders to stress-free, form-based publishing.</em></p>
+<ul>
+  <li><strong>The Operational Vulnerability:</strong> The current site relies on a brittle WordPress and Elementor setup where design structure and content are interlinked. Routine edits to news posts or events risk corrupting layouts, distorting mobile styling, or breaking global CSS stylesheets (as recently occurred with missing files that disabled public styling). This causes acute stress for administrative volunteers, creates delays in publishing notices, and requires outside technical intervention.</li>
+  <li><strong>The Modern Solution (Dedicated Charity Editorial Portal):</strong>
+    <ul>
+      <li><strong>Simple Form-Field Entry:</strong> Trustees and volunteers update News, Notices, and Events by simply typing into clear boxes (Title, Date, Description, Photo) and clicking "Publish".</li>
+      <li><strong>Guaranteed Unbreakable Formatting:</strong> Visual styling, fonts, and mobile responsiveness are hardcoded. It is physically impossible for an editor to break page layout, misalign text, or delete styling.</li>
+      <li><strong>Zero Maintenance Overhead:</strong> Eliminates plugin update conflicts, security vulnerabilities, and recurring monthly maintenance agency retainers.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2>Pillar 2: Driving Community Discoverability, Traffic &amp; Town Integration</h2>
+<p><em>Transforming a static brochure into the go-to digital pocket guide for the Commons.</em></p>
+<ul>
+  <li><strong>The Audience Challenge:</strong> Over 70% of visits occur on mobile devices. When families, walkers, and dog owners visit the Commons, the current website makes it difficult to quickly find parking near Wellington Rocks or Toad Rock, accessible trail routes, or seasonal notices.</li>
+  <li><strong>The Modern Solution:</strong>
+    <ul>
+      <li><strong>Mobile-First Visitor Guide:</strong> Fast-loading interactive trail guides, walking routes, and parking directions tailored for smartphone users out on the Common.</li>
+      <li><strong>Local Economy &amp; Tourism Synergy:</strong> Curated routes connecting the Commons directly to The Pantiles, Spa Valley Railway, High Rocks, and heritage local pubs—fostering local business backing and community pride.</li>
+      <li><strong>Search Engine Dominance (SEO):</strong> Clean, high-performance architecture ensures top Google ranking for high-volume searches such as <em>"Tunbridge Wells circular walks"</em>, <em>"Toad Rock parking"</em>, and <em>"things to do in Tunbridge Wells"</em>, funneling hundreds of prospective supporters to the charity every month.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2>Pillar 3: Accelerating Memberships, Donations &amp; Strategic Pledges with Commercial Safeguards</h2>
+<p><em>Maximising civic participation while strictly protecting acquisition negotiating leverage.</em></p>
+<ul>
+  <li><strong>The Fundraising Challenge:</strong> Clunky donation forms result in high mobile abandonment. Furthermore, public campaign fundraising must rally the community without jeopardising commercial property negotiations.</li>
+  <li><strong>The Modern Solution:</strong>
+    <ul>
+      <li><strong>One-Touch Mobile Membership &amp; Gift Aid:</strong> Frictionless sign-up flow supporting Apple Pay, Google Pay, and card payments, allowing residents to join for £15/year in under 30 seconds with automated Gift Aid collection.</li>
+      <li><strong>Accessible Community Pledging:</strong> An inviting pledge gateway starting from an accessible £20 tier that collects pledges of support without taking immediate payment.</li>
+      <li><strong>Strategic Commercial Safeguard:</strong> The public-facing campaign showcases widespread town endorsements and community solidarity <strong>without publishing running totals, average pledge values, or financial targets</strong>. This directly protects the Trustees' negotiating leverage with Targetfollow, preventing counterparties from reverse-engineering the charity's reserves or ceiling budget.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2>Financial Business Case &amp; Return on Investment (ROI)</h2>
+<p>A transparent breakdown of costs and financial payback for the charity:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Strategic Dimension</th>
+      <th>Current WordPress Setup</th>
+      <th>Proposed Modernised Platform</th>
+      <th>Charity Impact</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Development Fee</strong></td>
+      <td>Ad-hoc external fixes</td>
+      <td class="highlight-cell">£1,000 fixed one-off fee</td>
+      <td>Full custom build, data migration &amp; launch</td>
+    </tr>
+    <tr>
+      <td><strong>Ongoing CMS &amp; Software Fees</strong></td>
+      <td>£150 – £350 / year (plugins &amp; hosting)</td>
+      <td class="highlight-cell">£0 / year (Approved Charity Plan)</td>
+      <td>Zero recurring software overhead forever</td>
+    </tr>
+    <tr>
+      <td><strong>Volunteer Admin Time</strong></td>
+      <td>4 – 6 hours / month debugging</td>
+      <td class="highlight-cell">&lt; 15 minutes per update</td>
+      <td>Eliminates volunteer burnout &amp; frustration</td>
+    </tr>
+    <tr>
+      <td><strong>Break-Even Threshold</strong></td>
+      <td>N/A</td>
+      <td class="highlight-cell">67 new annual members</td>
+      <td>Fully recouped at £15/member</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="callout-confidential">
+  <p style="margin: 0;"><strong>Financial Return Summary:</strong> Enrolling just <strong>67 new members</strong> across Tunbridge Wells and Rusthall covers the entire £1,000 project fee within year one. Every subsequent year generates pure recurring surplus for Commons conservation with £0 in software license overhead.</p>
+</div>
+
+<h2>Project Delivery &amp; Handover Timeline</h2>
+<ul>
+  <li><strong>Phase 1: Design &amp; Rapid Prototype (Weeks 1–2):</strong> Modern visual design, mobile trail layouts, and member sign-up flow.</li>
+  <li><strong>Phase 2: Platform Build &amp; Content Migration (Weeks 3–4):</strong> Fast static build, SEO metadata configuration, and setup of the zero-cost charity editorial dashboard.</li>
+  <li><strong>Phase 3: Volunteer Handover &amp; Training (Week 5):</strong> A 1-hour friendly, recorded training session with Lucy and volunteers. Comprehensive user guide provided.</li>
+  <li><strong>Phase 4: Launch &amp; Post-Launch Care:</strong> Domain transfer with 30 days of direct post-launch support included.</li>
+</ul>
+
+<div class="decision-box">
+  <p style="margin: 0 0 6px 0; font-size: 11pt; font-weight: bold; color: #166534;">Recommended Trustee Resolution:</p>
+  <p style="margin: 0; font-size: 11pt; color: #14532d;"><strong>"Approve the one-off allocation of £1,000 to commission the modernization of the Friends of the Commons website, securing a high-performing digital platform that protects volunteer capacity, accelerates membership, and supports the community buyout campaign."</strong></p>
+</div>
+
+</div>
+</body>
+</html>
