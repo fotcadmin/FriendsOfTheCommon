@@ -605,13 +605,18 @@ details[open] .summary-icon {
 }
 
 .clean-list li {
-  padding: 0.6rem 0;
+  padding: 0.85rem 0;
   border-bottom: 1px solid var(--nt-border-subtle);
   font-size: 0.95rem;
   color: var(--nt-charcoal);
   display: flex;
   align-items: baseline;
-  gap: 0.75rem;
+  gap: 1.5rem;
+  line-height: 1.6;
+}
+
+.clean-list li:last-child {
+  border-bottom: none;
 }
 
 .clean-list li::before {
@@ -621,6 +626,34 @@ details[open] .summary-icon {
   height: 6px;
   background-color: var(--nt-green-deep);
   flex-shrink: 0;
+  align-self: center;
+}
+
+.clean-list li:has(strong:first-child)::before {
+  display: none;
+}
+
+.clean-list li strong:first-child {
+  width: 220px;
+  min-width: 220px;
+  flex-shrink: 0;
+  display: inline-block;
+  color: var(--nt-green-deep);
+  font-weight: 700;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+@media (max-width: 768px) {
+  .clean-list li:has(strong:first-child) {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .clean-list li strong:first-child {
+    width: 100%;
+    min-width: 0;
+  }
 }
 
 /* Feature Image Card inside Accordion */
