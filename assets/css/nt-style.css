@@ -1,0 +1,845 @@
+/* ==========================================================================
+   THE FRIENDS OF TUNBRIDGE WELLS & RUSTHALL COMMONS
+   Clean Heritage Style (National Trust Inspired)
+   Registered Charity No. 1013975
+   ========================================================================== */
+
+:root {
+  /* Color Palette - Restrained Heritage & Conservation */
+  --nt-green-deep: #133926;
+  --nt-green-mid: #1d4d35;
+  --nt-green-light: #286646;
+  --nt-green-tint: #eaf1ed;
+  
+  --nt-sand-bg: #f8f7f4;
+  --nt-surface: #ffffff;
+  --nt-surface-alt: #f1efe9;
+  
+  --nt-charcoal: #181d1a;
+  --nt-muted: #49544d;
+  --nt-border: #d4dad6;
+  --nt-border-subtle: #e5ebe7;
+  
+  --nt-terracotta: #a63a1e;
+  --nt-terracotta-light: #faece7;
+  --nt-ochre: #8c5b16;
+
+  /* Typography */
+  --font-serif: "Frank Ruhl Libre", "Merriweather", Georgia, "Times New Roman", serif;
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+  /* Zero rounded corners - sharp, authoritative heritage geometry */
+  --radius-sharp: 0px;
+  --max-width: 1180px;
+  --transition-quick: 120ms ease;
+}
+
+/* Reset & Base */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--nt-charcoal);
+  background-color: var(--nt-sand-bg);
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--nt-sand-bg);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: var(--nt-green-deep);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: color var(--transition-quick);
+}
+
+a:hover {
+  color: var(--nt-green-light);
+}
+
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+/* Top Urgent Notice Bar */
+.urgent-notice-bar {
+  background-color: var(--nt-terracotta);
+  color: #ffffff;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.9rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.urgent-notice-content {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.urgent-tag {
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  background: rgba(0, 0, 0, 0.25);
+  padding: 0.2rem 0.55rem;
+  margin-right: 0.6rem;
+  display: inline-block;
+}
+
+.urgent-link {
+  color: #ffffff;
+  font-weight: 600;
+  text-decoration: underline;
+  white-space: nowrap;
+}
+
+.urgent-link:hover {
+  color: #faece7;
+}
+
+/* Site Header */
+.site-header {
+  background-color: var(--nt-surface);
+  border-bottom: 1px solid var(--nt-border);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 84px;
+}
+
+.brand-link {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none;
+  color: var(--nt-charcoal);
+}
+
+.brand-logo {
+  height: 52px;
+  width: auto;
+}
+
+.brand-title-wrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-title {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--nt-green-deep);
+  letter-spacing: -0.01em;
+}
+
+.brand-sub {
+  font-size: 0.8rem;
+  color: var(--nt-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+}
+
+.nav-desktop {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+}
+
+.nav-link {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--nt-charcoal);
+  text-decoration: none;
+  padding: 0.5rem 0;
+  position: relative;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--nt-green-deep);
+}
+
+.nav-link.active::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: var(--nt-green-deep);
+}
+
+.header-cta-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* Buttons - Clean Sharp National Trust Style */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 0.75rem 1.4rem;
+  border-radius: var(--radius-sharp);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all var(--transition-quick);
+  letter-spacing: 0.01em;
+}
+
+.btn-primary {
+  background-color: var(--nt-green-deep);
+  color: #ffffff;
+  border-color: var(--nt-green-deep);
+}
+
+.btn-primary:hover {
+  background-color: var(--nt-green-mid);
+  color: #ffffff;
+  border-color: var(--nt-green-mid);
+}
+
+.btn-secondary {
+  background-color: #ffffff;
+  color: var(--nt-green-deep);
+  border-color: var(--nt-green-deep);
+}
+
+.btn-secondary:hover {
+  background-color: var(--nt-green-tint);
+  color: var(--nt-green-deep);
+}
+
+.btn-terracotta {
+  background-color: var(--nt-terracotta);
+  color: #ffffff;
+  border-color: var(--nt-terracotta);
+}
+
+.btn-terracotta:hover {
+  background-color: #8c3017;
+  color: #ffffff;
+}
+
+.btn-sm {
+  padding: 0.45rem 0.95rem;
+  font-size: 0.875rem;
+}
+
+.btn-lg {
+  padding: 0.95rem 1.85rem;
+  font-size: 1.05rem;
+}
+
+/* Mobile Nav Toggle */
+.mobile-toggle {
+  display: none;
+  background: none;
+  border: 1px solid var(--nt-border);
+  padding: 0.5rem;
+  cursor: pointer;
+  color: var(--nt-charcoal);
+  border-radius: var(--radius-sharp);
+}
+
+/* Hero Section */
+.hero-nt {
+  background-color: var(--nt-surface);
+  border-bottom: 1px solid var(--nt-border);
+  padding-top: 3.5rem;
+  padding-bottom: 3.5rem;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.hero-kicker {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--nt-green-deep);
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  display: block;
+}
+
+.hero-title {
+  font-family: var(--font-serif);
+  font-size: 2.75rem;
+  line-height: 1.15;
+  color: var(--nt-green-deep);
+  margin-bottom: 1.25rem;
+  letter-spacing: -0.02em;
+}
+
+.hero-lead {
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: var(--nt-charcoal);
+  margin-bottom: 1.75rem;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+}
+
+.hero-media-box {
+  position: relative;
+  border: 1px solid var(--nt-border);
+  background-color: var(--nt-surface-alt);
+}
+
+.hero-media-box img {
+  width: 100%;
+  height: 380px;
+  object-fit: cover;
+}
+
+.hero-media-caption {
+  padding: 0.75rem 1rem;
+  font-size: 0.85rem;
+  color: var(--nt-muted);
+  border-top: 1px solid var(--nt-border);
+  background: #ffffff;
+}
+
+/* Sharp Key Facts Bar (National Trust Pattern) */
+.at-a-glance-bar {
+  background-color: var(--nt-surface);
+  border-bottom: 1px solid var(--nt-border);
+}
+
+.glance-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-left: 1px solid var(--nt-border);
+  border-right: 1px solid var(--nt-border);
+}
+
+.glance-cell {
+  padding: 1.75rem 1.5rem;
+  border-right: 1px solid var(--nt-border);
+  background-color: #ffffff;
+}
+
+.glance-cell:last-child {
+  border-right: none;
+}
+
+.glance-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--nt-muted);
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+.glance-value {
+  font-family: var(--font-serif);
+  font-size: 1.65rem;
+  font-weight: 700;
+  color: var(--nt-green-deep);
+  line-height: 1.2;
+}
+
+.glance-sub {
+  font-size: 0.85rem;
+  color: var(--nt-muted);
+  margin-top: 0.25rem;
+}
+
+/* Urgent Philosophy & Campaign Box */
+.urgent-philosophy-section {
+  padding: 4rem 0 3rem;
+}
+
+.editorial-callout {
+  background-color: #ffffff;
+  border: 1px solid var(--nt-border);
+  border-left: 6px solid var(--nt-terracotta);
+  padding: 2.5rem;
+  margin-bottom: 3.5rem;
+}
+
+.editorial-tag {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--nt-terracotta);
+  margin-bottom: 0.75rem;
+  display: inline-block;
+}
+
+.editorial-heading {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  line-height: 1.25;
+  color: var(--nt-charcoal);
+  margin-bottom: 1.25rem;
+}
+
+.editorial-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  margin-top: 1.5rem;
+  font-size: 1.05rem;
+  color: var(--nt-muted);
+  line-height: 1.7;
+}
+
+.editorial-grid p strong {
+  color: var(--nt-charcoal);
+}
+
+.campaign-pledge-action-strip {
+  margin-top: 2rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--nt-border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.campaign-badge-clean {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--nt-green-deep);
+}
+
+/* National Trust Accordions / Collapsible Sections */
+.accordion-wrapper {
+  margin-bottom: 4rem;
+}
+
+.section-intro-header {
+  margin-bottom: 1.75rem;
+}
+
+.section-kicker {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 700;
+  color: var(--nt-green-deep);
+  margin-bottom: 0.35rem;
+  display: block;
+}
+
+.section-title {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  color: var(--nt-green-deep);
+}
+
+.nt-accordion-group {
+  border: 1px solid var(--nt-border);
+  background-color: #ffffff;
+}
+
+.nt-accordion-item {
+  border-bottom: 1px solid var(--nt-border);
+}
+
+.nt-accordion-item:last-child {
+  border-bottom: none;
+}
+
+.nt-accordion-summary {
+  list-style: none;
+  padding: 1.5rem 2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  user-select: none;
+  background-color: #ffffff;
+  transition: background-color var(--transition-quick);
+}
+
+.nt-accordion-summary::-webkit-details-marker {
+  display: none;
+}
+
+.nt-accordion-summary:hover {
+  background-color: var(--nt-surface-alt);
+}
+
+.summary-heading-box {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.summary-title {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--nt-charcoal);
+  letter-spacing: -0.01em;
+}
+
+.summary-subtext {
+  font-size: 0.9rem;
+  color: var(--nt-muted);
+}
+
+.summary-icon {
+  font-size: 1.5rem;
+  font-weight: 300;
+  line-height: 1;
+  color: var(--nt-green-deep);
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--nt-border);
+  flex-shrink: 0;
+  transition: transform var(--transition-quick);
+}
+
+details[open] .summary-icon {
+  transform: rotate(45deg);
+}
+
+.nt-accordion-body {
+  padding: 2rem;
+  border-top: 1px solid var(--nt-border-subtle);
+  background-color: #ffffff;
+}
+
+.content-two-col {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+.prose p {
+  margin-bottom: 1.25rem;
+  color: var(--nt-muted);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.prose p:last-child {
+  margin-bottom: 0;
+}
+
+.prose h4 {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  color: var(--nt-charcoal);
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.clean-list {
+  list-style: none;
+  margin: 1rem 0 1.5rem;
+}
+
+.clean-list li {
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--nt-border-subtle);
+  font-size: 0.95rem;
+  color: var(--nt-charcoal);
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+}
+
+.clean-list li::before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background-color: var(--nt-green-deep);
+  flex-shrink: 0;
+}
+
+/* Feature Image Card inside Accordion */
+.sharp-card-box {
+  border: 1px solid var(--nt-border);
+  background-color: var(--nt-surface-alt);
+  padding: 1rem;
+}
+
+.sharp-card-box img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border: 1px solid var(--nt-border);
+  margin-bottom: 0.85rem;
+}
+
+.sharp-card-title {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  color: var(--nt-charcoal);
+  margin-bottom: 0.35rem;
+}
+
+.sharp-card-desc {
+  font-size: 0.85rem;
+  color: var(--nt-muted);
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+/* Compact Support / Pledge Box */
+.pledge-panel {
+  background-color: var(--nt-green-deep);
+  color: #ffffff;
+  padding: 3rem 2.5rem;
+  border: 1px solid var(--nt-green-mid);
+  margin-bottom: 4rem;
+}
+
+.pledge-panel-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.pledge-panel h2 {
+  font-family: var(--font-serif);
+  font-size: 2.25rem;
+  line-height: 1.2;
+  color: #ffffff;
+  margin-bottom: 1rem;
+}
+
+.pledge-panel p {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.pledge-cards-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.pledge-option-card {
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  text-decoration: none;
+  color: #ffffff;
+  transition: background-color var(--transition-quick);
+}
+
+.pledge-option-card:hover {
+  background-color: rgba(255, 255, 255, 0.16);
+  color: #ffffff;
+}
+
+.pledge-option-card .opt-title {
+  font-weight: 700;
+  font-size: 1.05rem;
+  display: block;
+}
+
+.pledge-option-card .opt-sub {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Site Footer */
+.site-footer {
+  background-color: #121815;
+  color: #e5ece8;
+  border-top: 1px solid #232c27;
+  padding-top: 3.5rem;
+  padding-bottom: 3rem;
+  font-size: 0.9rem;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 3rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid #232c27;
+  margin-bottom: 2rem;
+}
+
+.footer-brand h4 {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  color: #ffffff;
+  margin-bottom: 0.75rem;
+}
+
+.footer-brand p {
+  color: #8c9b93;
+  line-height: 1.6;
+  max-width: 380px;
+}
+
+.footer-col h5 {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 1.25rem;
+}
+
+.footer-links {
+  list-style: none;
+}
+
+.footer-links li {
+  margin-bottom: 0.6rem;
+}
+
+.footer-links a {
+  color: #8c9b93;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #63726a;
+  font-size: 0.8rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .glance-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .glance-cell:nth-child(2) {
+    border-right: none;
+  }
+  
+  .glance-cell:nth-child(1),
+  .glance-cell:nth-child(2) {
+    border-bottom: 1px solid var(--nt-border);
+  }
+
+  .editorial-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .content-two-col {
+    grid-template-columns: 1fr;
+  }
+
+  .pledge-panel-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .nav-desktop,
+  .header-cta-group .btn-secondary {
+    display: none;
+  }
+
+  .nav-desktop.nav-mobile-open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 84px;
+    left: 0;
+    right: 0;
+    background-color: var(--nt-surface);
+    border-bottom: 1px solid var(--nt-border);
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    gap: 1rem;
+    align-items: flex-start;
+  }
+  
+  .mobile-toggle {
+    display: block;
+  }
+
+  .hero-title {
+    font-size: 2.2rem;
+  }
+}
