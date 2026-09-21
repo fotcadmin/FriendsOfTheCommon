@@ -169,22 +169,17 @@ a:hover {
 }
 
 .brand-sub {
-  font-size: 0.75rem;
+  font-size: 0.78rem;
   color: var(--nt-muted);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  font-weight: 500;
-  white-space: nowrap;
-}
-
-.brand-charity-no {
-  white-space: nowrap;
+  letter-spacing: 0.06em;
+  font-weight: 600;
 }
 
 .nav-desktop {
   display: flex;
   align-items: center;
-  gap: 1.75rem;
+  gap: 1.35rem;
 }
 
 .nav-link {
