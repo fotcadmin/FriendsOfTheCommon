@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initHeader();
   initMobileNav();
   initFaqAccordion();
+  initDetailsHashAnchor();
   initDonationCalculator();
   initPledgeCalculator();
   initFormSimulators();
@@ -14,6 +15,49 @@ document.addEventListener('DOMContentLoaded', () => {
   initCampaignProgress();
   initEditorialReview();
 });
+
+/* Auto-open <details> accordions when targeted by hash link */
+function initDetailsHashAnchor() {
+  function checkHash() {
+    const hash = window.location.hash;
+    if (!hash || hash.length <= 1) return;
+    try {
+      const target = document.querySelector(hash);
+      if (target) {
+        const details = target.closest('details') || (target.tagName === 'DETAILS' ? target : null);
+        if (details) {
+          details.open = true;
+          setTimeout(() => {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 120);
+        }
+      }
+    } catch (e) {}
+  }
+
+  window.addEventListener('hashchange', checkHash);
+  if (window.location.hash) {
+    setTimeout(checkHash, 150);
+  }
+
+  // Intercept anchor clicks on the page targeting details
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', () => {
+      const hash = anchor.getAttribute('href');
+      if (hash && hash.length > 1) {
+        try {
+          const target = document.querySelector(hash);
+          if (target) {
+            const details = target.closest('details') || (target.tagName === 'DETAILS' ? target : null);
+            if (details) {
+              details.open = true;
+            }
+          }
+        } catch (err) {}
+      }
+    });
+  });
+}
 
 /* Sticky Header Scroll Effect */
 function initHeader() {
