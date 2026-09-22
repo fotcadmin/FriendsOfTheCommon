@@ -644,6 +644,15 @@ details[open] .summary-icon {
   line-height: 1.4;
 }
 
+.clean-list-compact li {
+  gap: 1rem;
+}
+
+.clean-list-compact li strong:first-child {
+  width: 65px;
+  min-width: 65px;
+}
+
 @media (max-width: 768px) {
   .clean-list li:has(strong:first-child) {
     flex-direction: column;
@@ -654,6 +663,30 @@ details[open] .summary-icon {
     width: 100%;
     min-width: 0;
   }
+
+  .clean-list-compact li:has(strong:first-child) {
+    flex-direction: row;
+    gap: 1rem;
+    align-items: baseline;
+  }
+
+  .clean-list-compact li strong:first-child {
+    width: 65px;
+    min-width: 65px;
+  }
+}
+
+/* Donation Impact & Legacy Sidebar Alignment */
+.donation-impact-grid {
+  align-items: stretch;
+}
+
+.donation-sidebar-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.5rem;
+  height: 100%;
 }
 
 /* Feature Image Card inside Accordion */
