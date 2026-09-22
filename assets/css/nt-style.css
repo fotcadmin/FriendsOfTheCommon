@@ -1015,14 +1015,15 @@ details[open] .summary-icon {
   background-position: center center;
   background-repeat: no-repeat;
   opacity: 0.14;
-  filter: grayscale(85%) contrast(110%);
+  filter: grayscale(100%) contrast(105%);
   pointer-events: none;
-  transition: opacity var(--transition-normal), transform var(--transition-normal);
+  transition: opacity var(--transition-normal), filter var(--transition-normal), transform var(--transition-normal);
   z-index: 0;
 }
 
 .sharp-card-watermark:hover::before {
-  opacity: 0.22;
+  opacity: 0.28;
+  filter: grayscale(0%) saturate(120%) contrast(105%);
   transform: scale(1.03);
 }
 
