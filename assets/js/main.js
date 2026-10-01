@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initSocialSharing();
   initCampaignProgress();
   initEditorialReview();
+  initDirectDebitPopups();
 });
 
 /* Auto-open <details> accordions when targeted by hash link */
@@ -374,5 +375,31 @@ function initEditorialReview() {
     localStorage.setItem('fotc_review_mode', willBeActive);
     toggleBtn.textContent = willBeActive ? 'Hide Highlights' : 'Show Highlights';
     showToast(willBeActive ? 'Editorial Highlights Visible' : 'Editorial Highlights Hidden (Clean View)');
+  });
+}
+
+/* Direct Debit Popup Window Handler for GoCardless */
+function initDirectDebitPopups() {
+  const directDebitLinks = document.querySelectorAll('a[href*="pay.gocardless.com"], .js-gocardless-popup');
+  
+  directDebitLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      const href = link.getAttribute('href');
+      if (!href || href.startsWith('#')) return;
+
+      const width = Math.min(600, window.innerWidth - 40);
+      const height = Math.min(780, window.innerHeight - 40);
+      const left = Math.round(window.screenX + (window.outerWidth - width) / 2);
+      const top = Math.round(window.screenY + (window.outerHeight - height) / 2);
+
+      const windowFeatures = `width=${width},height=${height},left=${left},top=${top},scrollbars=yes,resizable=yes,status=no,toolbar=no,menubar=no,location=yes`;
+
+      const popup = window.open(href, 'GoCardlessDirectDebit', windowFeatures);
+
+      if (popup && !popup.closed) {
+        e.preventDefault();
+        popup.focus();
+      }
+    });
   });
 }
