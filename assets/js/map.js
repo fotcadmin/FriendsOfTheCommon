@@ -77,14 +77,14 @@
     },
     {
       id: 'happy-valley',
-      name: 'Happy Valley & 100 Steps',
+      name: 'Happy Valley & 101 Steps',
       category: 'heritage',
       iconType: 'rock',
       catName: 'Rocks & Heritage',
       lat: 51.130285,
       lng: 0.235182,
       navQuery: 'Happy Valley, Rusthall Common, Tunbridge Wells',
-      desc: 'A spectacular romantic sunken sandstone gorge on Rusthall Common featuring ancient rock-cut stone staircases (the 100 Steps), holloways, spring bluebells, and sandstone cave shelters.'
+      desc: 'A spectacular romantic sunken sandstone gorge on Rusthall Common featuring ancient rock-cut stone staircases (the 101 Steps), holloways, spring bluebells, and sandstone cave shelters.'
     },
     {
       id: 'toad-rock',
