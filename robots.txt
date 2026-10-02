@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+
+# Agentic AI & LLM Standards
+# Reference for AI Agents & Search Crawlers
+# https://llmstxt.org/
+# LLMs-Txt: https://friendsofthecommons.uk/llms.txt
+# LLMs-Full: https://friendsofthecommons.uk/llms-full.txt
+
+Sitemap: https://friendsofthecommons.uk/sitemap.xml
