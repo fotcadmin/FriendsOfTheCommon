@@ -1,0 +1,41 @@
+{
+  "site_title": "The Friends of Tunbridge Wells and Rusthall Commons",
+  "charity_number": "1013975",
+  "membership": {
+    "individual": {
+      "price": 10,
+      "period": "year",
+      "currency": "£",
+      "url": "https://pay.gocardless.com/BRT00035S4J5CTW",
+      "title": "Individual Member",
+      "voting_rights": "1 vote at AGM"
+    },
+    "family": {
+      "price": 20,
+      "period": "year",
+      "currency": "£",
+      "url": "https://pay.gocardless.com/BRT0003629VSFKA",
+      "title": "Family / Household",
+      "voting_rights": "2 votes at AGM"
+    }
+  },
+  "notice_banner": {
+    "enabled": true,
+    "badge": "COMMONS SALE NOTICE",
+    "message": "Over 3,000 residents have backed The Friends' community bid to protect the freehold.",
+    "link_text": "Read bid details & pledge support →",
+    "link_url": "campaign.html#pledge"
+  },
+  "contacts": {
+    "general_email": "info@friendsofthecommons.uk",
+    "membership_email": "membership@friendsofthecommons.uk",
+    "ranger_phone": "01892 554222",
+    "warden_emergency_phone": "07887 655222",
+    "emergency": "999"
+  },
+  "campaign": {
+    "acres_protected": 256,
+    "supporter_count": "3,000+",
+    "charity_status": "Registered Charity No. 1013975"
+  }
+}

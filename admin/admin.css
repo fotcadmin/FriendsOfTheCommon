@@ -1,0 +1,115 @@
+/* Friends of Tunbridge Wells & Rusthall Commons - Custom Decap CMS Styling */
+
+:root {
+  --nt-green-deep: #133926;
+  --nt-green-mid: #22583b;
+  --nt-green-light: #e8f2ec;
+  --nt-terracotta: #c05a3e;
+  --nt-sand: #fbf9f4;
+  --nt-charcoal: #18221b;
+  --nt-border: #d4ded8;
+}
+
+/* Custom Top Bar / Header */
+header[class*="AppHeader"] {
+  background-color: var(--nt-green-deep) !important;
+  border-bottom: 2px solid var(--nt-green-mid) !important;
+}
+
+/* Brand Logo & Title In Header */
+header[class*="AppHeader"] a[class*="AppHeaderButton"] {
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.02em !important;
+}
+
+/* Navigation & Sidebar */
+aside[class*="Sidebar"], nav[class*="Sidebar"] {
+  background-color: #ffffff !important;
+  border-right: 1px solid var(--nt-border) !important;
+}
+
+/* Primary Action Buttons (e.g. "+ New Article", "Publish") */
+button[class*="Button-primary"],
+a[class*="Button-primary"],
+button[class*="Button-success"],
+button[class*="publish-button"] {
+  background-color: var(--nt-green-deep) !important;
+  border-color: var(--nt-green-deep) !important;
+  color: #ffffff !important;
+  border-radius: 4px !important;
+  font-weight: 600 !important;
+  transition: all 0.2s ease !important;
+}
+
+button[class*="Button-primary"]:hover,
+button[class*="publish-button"]:hover {
+  background-color: var(--nt-green-mid) !important;
+}
+
+/* Delete button */
+button[class*="Button-delete"],
+button[class*="Button-danger"] {
+  background-color: #fdedec !important;
+  color: #c0392b !important;
+  border: 1px solid #f5b7b1 !important;
+  border-radius: 4px !important;
+}
+
+button[class*="Button-delete"]:hover {
+  background-color: #f2dede !important;
+}
+
+/* Cards & Collection Grid */
+div[class*="Card"] {
+  border: 1px solid var(--nt-border) !important;
+  border-radius: 4px !important;
+  box-shadow: 0 2px 6px rgba(19, 57, 38, 0.06) !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+div[class*="Card"]:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 12px rgba(19, 57, 38, 0.12) !important;
+  border-color: var(--nt-green-mid) !important;
+}
+
+/* Form Inputs & Labels */
+label[class*="ControlLabel"] {
+  color: var(--nt-charcoal) !important;
+  font-weight: 700 !important;
+  font-size: 0.92rem !important;
+}
+
+input[type="text"], textarea, select {
+  border-radius: 3px !important;
+  border: 1px solid var(--nt-border) !important;
+}
+
+input[type="text"]:focus, textarea:focus, select:focus {
+  border-color: var(--nt-green-deep) !important;
+  box-shadow: 0 0 0 2px rgba(19, 57, 38, 0.2) !important;
+}
+
+/* Custom In-Dashboard Guidance Banner */
+.fotc-guide-banner {
+  background: var(--nt-green-light);
+  border: 1px solid #c2ded0;
+  border-left: 5px solid var(--nt-green-deep);
+  padding: 1.25rem 1.5rem;
+  margin: 1.5rem;
+  border-radius: 4px;
+}
+
+.fotc-guide-banner h3 {
+  margin: 0 0 0.4rem;
+  color: var(--nt-green-deep);
+  font-size: 1.15rem;
+}
+
+.fotc-guide-banner p {
+  margin: 0;
+  color: #2d4536;
+  font-size: 0.92rem;
+  line-height: 1.5;
+}

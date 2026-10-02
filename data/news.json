@@ -1,0 +1,58 @@
+[
+  {
+    "id": "estate-remarketing-update",
+    "title": "An Update on Tunbridge Wells & Rusthall Commons: Bid Status & Estate Remarketing",
+    "category": "Campaign Update",
+    "date": "2026-09-28",
+    "author": "The Friends of Tunbridge Wells & Rusthall Commons",
+    "image": "assets/images/march/march-community-rally.webp",
+    "photo_credit": "Photo: Kelly Wilcox • March for the Commons (21 March 2026)",
+    "summary": "Following our initial April charitable bid to buy the Commons, Targetfollow has remarketed the land as part of a wider portfolio including the Upper Pantiles. While a different proposition, this opens new opportunities to negotiate securing the Commons freehold separately.",
+    "url": "news/estate-remarketing-update.html",
+    "pdf_url": "assets/docs/sales-brochure.pdf",
+    "pdf_label": "Brochure (PDF)",
+    "is_featured": true
+  },
+  {
+    "id": "letter-from-chair-roger",
+    "title": "“Exploring Every Possible Route”: Full Letter from our Chair, Roger",
+    "category": "Chair's Address",
+    "date": "2026-09-25",
+    "author": "Roger, Chair of The Friends of the Commons",
+    "image": "assets/images/roger-john-nick.webp",
+    "photo_credit": "Photograph: Graeme Robertson/The Guardian",
+    "summary": "Chair Roger writes to over 3,000 community backers. Roger clarifies that there are no immediate plans to call on financial pledges, asks supporters to notify us if circumstances have changed, and reaffirms the Trustees’ dedication to community ownership.",
+    "url": "news/letter-from-chair-roger.html",
+    "pdf_url": "",
+    "pdf_label": "",
+    "is_featured": true
+  },
+  {
+    "id": "council-confirms-protections",
+    "title": "Council Reaffirms Strong Statutory Protections for The Pantiles & Commons",
+    "category": "Civic & Planning Protections",
+    "date": "2026-08-20",
+    "author": "Tunbridge Wells Borough Council",
+    "image": "assets/images/march/march-crowd-pantiles.webp",
+    "photo_credit": "Photo: Kelly Wilcox • March for the Commons (21 March 2026)",
+    "summary": "Tunbridge Wells Borough Council has issued a formal statement reaffirming its support for the Friends’ community buyout aspiration and highlighting the legal protections under the 1890 Act and Local Plan ensuring zero development rights.",
+    "url": "news/council-confirms-protections.html",
+    "pdf_url": "https://tunbridgewells.gov.uk/news/2026/august/council-response-to-sale-of-pantiles-and-commons",
+    "pdf_label": "Council Statement",
+    "is_featured": false
+  },
+  {
+    "id": "agm-2026-minutes",
+    "title": "2026 Annual General Meeting Held at The Wells Church: Minutes & Documents",
+    "category": "Charity Governance",
+    "date": "2026-09-02",
+    "author": "The Friends of the Commons Secretariat",
+    "image": "assets/images/march/march-dogs-support.webp",
+    "photo_credit": "Photo: Kelly Wilcox • March for the Commons (21 March 2026)",
+    "summary": "Members gathered on 2nd September 2026 to review the charity’s annual accounts, receive conservation reports from volunteer work parties, and vote on trustee elections. Download the official signed meeting minutes.",
+    "url": "news/agm-2026-minutes.html",
+    "pdf_url": "assets/docs/agm-minutes-2026.pdf",
+    "pdf_label": "Minutes (PDF)",
+    "is_featured": false
+  }
+]

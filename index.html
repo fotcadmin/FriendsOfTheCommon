@@ -33,6 +33,8 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap"
     rel="stylesheet">
+  <!-- Netlify Identity Widget for Decap CMS -->
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 
 <body>
@@ -408,13 +410,13 @@
               legally confirmed.
             </p>
             <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-              <a href="campaign.html#pledge-form" class="btn btn-terracotta btn-lg">Make a Bid Pledge Now &rarr;</a>
-              <a href="get-involved.html#join" class="btn btn-secondary btn-lg">Become an Annual Member</a>
+              <a href="campaign.html#pledge" class="btn btn-terracotta btn-lg">Make a Bid Pledge Now &rarr;</a>
+              <a href="support-us.html#membership" class="btn btn-secondary btn-lg">Become an Annual Member</a>
             </div>
           </div>
 
           <div class="pledge-cards-grid">
-            <a href="campaign.html#pledge-form" class="pledge-option-card">
+            <a href="campaign.html#pledge" class="pledge-option-card">
               <div>
                 <span class="opt-title">Community Bid Pledge</span>
                 <span class="opt-sub">Pledge £50, £100, £500, or more to the acquisition fund.</span>
@@ -519,6 +521,17 @@
   </footer>
 
   <script src="assets/js/main.js"></script>
+  <script>
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", user => {
+        if (!user) {
+          window.netlifyIdentity.on("login", () => {
+            document.location.href = "/admin/";
+          });
+        }
+      });
+    }
+  </script>
 </body>
 
 </html>

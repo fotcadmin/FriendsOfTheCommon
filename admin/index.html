@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Content Management Dashboard | Friends of the Commons</title>
+  <link rel="icon" href="../favicon.ico">
+  <!-- Netlify Identity Widget for cloud authentication -->
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <!-- Custom CMS Admin Styling -->
+  <link rel="stylesheet" href="admin.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Decap CMS Application (v3) -->
+  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  
+  <script>
+    // Netlify Identity Login Handler
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", user => {
+        if (!user) {
+          window.netlifyIdentity.on("login", () => {
+            document.location.href = "/admin/";
+          });
+        }
+      });
+    }
+
+    // Register live CSS styles into the CMS live preview window
+    CMS.registerPreviewStyle("../assets/css/nt-style.css");
+
+    // Custom Live Preview Component for News Articles
+    const NewsPreview = createClass({
+      render: function() {
+        const entry = this.props.entry;
+        const image = this.props.getAsset(entry.getIn(['data', 'image']));
+        const title = entry.getIn(['data', 'title']) || 'Article Title';
+        const category = entry.getIn(['data', 'category']) || 'Campaign Update';
+        const date = entry.getIn(['data', 'date']) || '2026-10-02';
+        const author = entry.getIn(['data', 'author']) || 'The Friends of Tunbridge Wells & Rusthall Commons';
+        const photoCredit = entry.getIn(['data', 'photo_credit']);
+        const summary = entry.getIn(['data', 'summary']);
+        const pdfUrl = entry.getIn(['data', 'pdf_url']);
+        const pdfLabel = entry.getIn(['data', 'pdf_label']) || 'Download Document (PDF)';
+
+        return h('div', { style: { padding: '2rem', fontFamily: 'Inter, sans-serif', maxWidth: '800px', margin: '0 auto', color: '#18221b' } },
+          // Header
+          h('div', { style: { marginBottom: '1.5rem', borderBottom: '2px solid #d4ded8', paddingBottom: '1rem' } },
+            h('span', { style: { fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 700, color: '#133926' } }, category),
+            h('h1', { style: { fontFamily: '"Frank Ruhl Libre", serif', fontSize: '2.2rem', color: '#133926', margin: '0.5rem 0' } }, title),
+            h('div', { style: { fontSize: '0.85rem', color: '#63726a' } }, 'Published: ' + date + ' • By ' + author)
+          ),
+          // Featured Image
+          image ? h('div', { style: { marginBottom: '1.5rem', border: '1px solid #d4ded8', background: '#fbf9f4' } },
+            h('img', { src: image.toString(), style: { width: '100%', maxHeight: '380px', objectFit: 'cover', display: 'block' } }),
+            photoCredit ? h('div', { style: { padding: '0.5rem 0.75rem', fontSize: '0.8rem', color: '#63726a', borderTop: '1px solid #d4ded8' } }, photoCredit) : null
+          ) : null,
+          // Summary Callout
+          summary ? h('div', { style: { background: '#f5f8f6', borderLeft: '4px solid #133926', padding: '1rem 1.25rem', marginBottom: '1.5rem', fontSize: '1.05rem', fontStyle: 'italic', color: '#133926' } }, summary) : null,
+          // Article Body
+          h('div', { className: 'prose', style: { fontSize: '1rem', lineHeight: '1.7', color: '#2d3732' } }, this.props.widgetFor('body')),
+          // PDF Attachment if present
+          pdfUrl ? h('div', { style: { marginTop: '2rem', paddingTop: '1rem', borderTop: '1px solid #d4ded8' } },
+            h('a', { href: pdfUrl, style: { display: 'inline-block', background: '#133926', color: '#ffffff', padding: '0.6rem 1.2rem', textDecoration: 'none', fontWeight: 600, fontSize: '0.9rem' } }, '📄 ' + pdfLabel)
+          ) : null
+        );
+      }
+    });
+
+    CMS.registerPreviewTemplate("news", NewsPreview);
+  </script>
+</body>
+</html>

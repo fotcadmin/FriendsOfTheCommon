@@ -1,0 +1,44 @@
+[
+  {
+    "id": "event-1",
+    "title": "Autumn Fungi & Ancient Turf Foray",
+    "host": "Friends of the Commons",
+    "host_badge": "Friends Event",
+    "category": "Guided Walk",
+    "date": "2026-10-18",
+    "time": "10:00am – 12:30pm",
+    "location": "Rusthall Common (Meet near Toad Rock)",
+    "description": "An illuminating walk exploring undisturbed acidic grassland waxcaps and ancient woodland fungi across Rusthall Common led by local naturalists.",
+    "booking_url": "about.html#contact",
+    "booking_label": "Book Free Place →",
+    "is_active": true
+  },
+  {
+    "id": "event-2",
+    "title": "Volunteer Habitat Conservation Party",
+    "host": "Friends of the Commons",
+    "host_badge": "Volunteer Party",
+    "category": "Working Party",
+    "date": "2026-10-24",
+    "time": "10:00am – 1:00pm",
+    "location": "Higher Common (Meet near Upper Cricket Ground)",
+    "description": "Practical heathland management clearing encroaching birch and bracken to maintain open heather glades. All tools, gloves, and friendly supervision provided.",
+    "booking_url": "support-us.html#volunteer",
+    "booking_label": "Volunteer Sign-up →",
+    "is_active": true
+  },
+  {
+    "id": "event-3",
+    "title": "Commons Conservators Statutory Public Meeting",
+    "host": "The Commons Conservators",
+    "host_badge": "Conservators Statutory Meeting",
+    "category": "Public Meeting",
+    "date": "2026-11-12",
+    "time": "2:00pm – 4:00pm",
+    "location": "Town Hall / Conservators Office",
+    "description": "Quarterly public meeting of the statutory Conservators established under the 1890 Tunbridge Wells Improvement Act to review regulation, maintenance, and warden reports.",
+    "booking_url": "https://twcommons.org/",
+    "booking_label": "Conservator Agenda & Details →",
+    "is_active": true
+  }
+]
