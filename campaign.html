@@ -152,21 +152,8 @@
           </div>
         </div>
 
-        <!-- Press Coverage Strip -->
-        <div style="background: #ffffff; border: 1px solid var(--nt-border); padding: 1.5rem 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; margin-bottom: 3.5rem;">
-          <div style="font-family: var(--font-serif); font-size: 1.15rem; font-weight: 700; color: var(--nt-green-deep);">
-            Featured in National &amp; Regional Journalism
-          </div>
-          <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-            <span class="nt-tag">The Guardian</span>
-            <span class="nt-tag">BBC News</span>
-            <span class="nt-tag">The Telegraph</span>
-            <span class="nt-tag">Times of Tunbridge Wells</span>
-          </div>
-        </div>
-
         <!-- Community March Photo Showcase -->
-        <div class="section-intro-header" id="community-voices" style="margin-top: 2rem;">
+        <div class="section-intro-header" id="community-voices">
           <span class="section-kicker">Town-Wide Solidarity</span>
           <h2 class="section-title">March for the Commons: 21 March 2026</h2>
           <p style="color: var(--nt-muted); margin-top: 0.5rem; font-size: 1rem;">
@@ -300,7 +287,7 @@
             <div class="form-group">
               <label class="form-checkbox-label">
                 <input type="checkbox" required>
-                <span>I understand that this pledge is an expression of intent to contribute to the community purchase if successful, and no funds are deducted today.</span>
+                <span>I understand that this pledge is an expression of intent to contribute to the community purchase if successful, and no funds are deducted today. Data is handled strictly in accordance with our <a href="#pledge-privacy" style="color: inherit; text-decoration: underline; font-weight: 600;">Pledge Data Privacy Notice</a>.</span>
               </label>
             </div>
 
@@ -308,6 +295,43 @@
               Confirm My Confidential Pledge &rarr;
             </button>
           </form>
+        </div>
+
+        <!-- Pledge Data Privacy Notice (UK GDPR & Charity Governance) -->
+        <div id="pledge-privacy" class="sharp-card" style="margin-top: -2rem; margin-bottom: 4rem; background: var(--nt-sand-bg); border-left: 4px solid var(--nt-green-deep);">
+          <div class="sharp-card-content" style="padding: 2rem;">
+            <div style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.75rem;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--nt-green-deep); flex-shrink: 0;" aria-hidden="true">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              </svg>
+              <h3 style="font-size: 1.25rem; margin: 0; color: var(--nt-green-deep);">Pledge Data Privacy Notice (UK GDPR)</h3>
+            </div>
+            <p style="font-size: 0.95rem; color: var(--nt-charcoal); line-height: 1.6; margin-bottom: 1.25rem;">
+              The Friends of Tunbridge Wells and Rusthall Commons (Registered Charity No. 1013975) is committed to protecting your personal information and ensuring complete transparency about how pledge details are stored and used.
+            </p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; font-size: 0.88rem; color: var(--nt-charcoal); line-height: 1.55;">
+              <div style="background: #ffffff; padding: 1.15rem 1.25rem; border: 1px solid var(--nt-border-subtle); border-radius: 4px;">
+                <strong style="color: var(--nt-green-deep); display: block; margin-bottom: 0.35rem; font-size: 0.92rem;">1. Data Controller &amp; Purpose</strong>
+                Your details (name, email, postcode, optional telephone, and pledge amount) are recorded solely by the charity's Trustees. We use this data to calculate collective community support, establish our financial capacity for purchase negotiations, and verify local backing for grant-matching bodies.
+              </div>
+
+              <div style="background: #ffffff; padding: 1.15rem 1.25rem; border: 1px solid var(--nt-border-subtle); border-radius: 4px;">
+                <strong style="color: var(--nt-green-deep); display: block; margin-bottom: 0.35rem; font-size: 0.92rem;">2. Strict Confidentiality Guarantee</strong>
+                Individual pledge sums and identities are held in strict confidence by the Trustees. No individual financial information is ever published, sold, or shared with estate agents, vendors, local councils, or commercial third parties. Only anonymised, aggregated totals (e.g. <em>&ldquo;&pound;350,000 pledged by 500 households&rdquo;</em>) are shared publicly.
+              </div>
+
+              <div style="background: #ffffff; padding: 1.15rem 1.25rem; border: 1px solid var(--nt-border-subtle); border-radius: 4px;">
+                <strong style="color: var(--nt-green-deep); display: block; margin-bottom: 0.35rem; font-size: 0.92rem;">3. No Financial Commitment Now</strong>
+                Registering a pledge does not collect bank details or take money. You will only be contacted to transfer funds if and when a formal freehold acquisition contract is agreed and accepted by the Trustees.
+              </div>
+
+              <div style="background: #ffffff; padding: 1.15rem 1.25rem; border: 1px solid var(--nt-border-subtle); border-radius: 4px;">
+                <strong style="color: var(--nt-green-deep); display: block; margin-bottom: 0.35rem; font-size: 0.92rem;">4. Your Rights &amp; Data Erasure</strong>
+                Under UK GDPR, you have the right to amend your pledge, request a copy of your entry, or ask for your personal details to be permanently erased at any time. To do so, email the Trustees at <a href="mailto:secretary@friendsofthecommons.co.uk" style="color: var(--nt-green-deep); font-weight: 600; text-decoration: underline;">secretary@friendsofthecommons.co.uk</a> or via our <a href="about.html#contact" style="color: var(--nt-green-deep); font-weight: 600; text-decoration: underline;">Contact Page</a>. All pledge records will be securely deleted once the freehold campaign concludes.
+              </div>
+            </div>
+          </div>
         </div>
 
         <!-- Collapsible Campaign FAQs (National Trust Details Pattern) -->
@@ -446,6 +470,7 @@
           <h5>Contact &amp; Legal</h5>
           <ul class="footer-links">
             <li><a href="about.html#contact">Contact Trustees &amp; Secretary</a></li>
+            <li><a href="campaign.html#pledge-privacy">Pledge Data Privacy Notice</a></li>
             <li><a href="assets/docs/objects-and-rules.pdf" target="_blank">Charity Constitution &amp; Rules (PDF)</a></li>
             <li><a href="assets/docs/safeguarding-policy.pdf" target="_blank">Safeguarding Policy (PDF)</a></li>
             <li><a href="comms-guide.html">Communications Handover Guide</a></li>
