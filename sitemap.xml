@@ -67,6 +67,30 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://friendsofthecommons.uk/nature-walks/walk-1-minibeasts-butterflies.html</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://friendsofthecommons.uk/nature-walks/walk-2-birds-trees-wildflowers.html</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://friendsofthecommons.uk/nature-walks/walk-3-ponds-water-life.html</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://friendsofthecommons.uk/nature-walks/walk-4-mammals-reptiles.html</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://friendsofthecommons.uk/llms.txt</loc>
     <lastmod>2026-10-02</lastmod>
     <changefreq>weekly</changefreq>
