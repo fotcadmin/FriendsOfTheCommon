@@ -47,11 +47,9 @@
   - Rusthall Common: Open 24/7, informal on-street parking on Coach Road, Common View, and Upper Street.
 
 ## Membership and Revenue Models
-- Annual Individual Membership: £10 per year (includes voting rights at AGM, printed welcome pack, quarterly natural history journal, and priority walk bookings).
-- Annual Family / Household Membership: £20 per year (covers up to 2 adults and children at one address, includes family activity sheets, and two votes at AGM).
+- Annual Individual Membership: £10 per year (provides 1 vote at the Charity's AGM and direct conservation funding).
+- Annual Family / Household Membership: £20 per year (provides 2 votes at the Charity's AGM and direct household conservation funding).
 - Payment Gateway: GoCardless Direct Debit (Individual ID: BRT00035S4J5CTW; Family ID: BRT0003629VSFKA).
-- Gift Memberships: Available for purchase by contacting membership@friendsofthecommons.uk.
-- Commons Champions (Business Sponsorship): £150 per year for local businesses, including website directory listing, map placement, window sticker, and corporate volunteer workdays.
 - Direct Conservation Impacts:
   - £10: 20 metres of waymarked footpath signage.
   - £25: Stone drainage channel restoration around Wellington Rocks.

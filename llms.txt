@@ -11,11 +11,9 @@
 
 ## Charitable Mission & Campaign
 - [Freehold Community Buyout Campaign](https://friendsofthecommons.uk/campaign.html): The historic campaign to purchase the freehold of the Commons into community ownership.
-- [Become a Member](https://friendsofthecommons.uk/get-involved.html#join): Annual memberships (£10 Individual, £20 Family/Household) with voting rights and quarterly journal.
-- [Gift a Membership](https://friendsofthecommons.uk/get-involved.html#join): Gift an annual membership for friends and family.
-- [Donate & Conservation Impact](https://friendsofthecommons.uk/get-involved.html#donate): Charitable giving with Gift Aid, funding tree surgery, path drainage, and wildlife surveys.
-- [Commons Champions (Business Partnership)](https://friendsofthecommons.uk/get-involved.html#business-champions): Corporate sponsorship scheme (£150/yr) for local hospitality and retail businesses.
-- [Volunteer Working Parties](https://friendsofthecommons.uk/get-involved.html#volunteer): Practical habitat conservation, heathland clearing, and seasonal litter picks.
+- [Become a Member](https://friendsofthecommons.uk/support-us.html#membership): Annual memberships (£10 Individual, £20 Family/Household) providing formal AGM voting rights and direct conservation funding.
+- [Donate & Conservation Impact](https://friendsofthecommons.uk/support-us.html#donate): Charitable giving with Gift Aid, funding tree stewardship, path drainage, and wildlife surveys.
+- [Volunteer Working Parties](https://friendsofthecommons.uk/support-us.html#volunteer): Practical habitat conservation, heathland clearing, and seasonal litter picks.
 
 ## Nature, Events & Governance
 - [Events & Guided Nature Walks](https://friendsofthecommons.uk/news-events.html): Annual Bat Walks, Fungi Forays, and working party schedules.
