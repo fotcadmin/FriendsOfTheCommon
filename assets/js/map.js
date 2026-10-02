@@ -8,7 +8,7 @@
   const mapElement = document.getElementById('leaflet-map');
   if (!mapElement) return;
 
-  // Initialize Map centered between Tunbridge Wells and Rusthall Commons
+  // Initialise Map centred between Tunbridge Wells and Rusthall Commons
   const map = L.map('leaflet-map', {
     center: [51.1310, 0.2470],
     zoom: 14,

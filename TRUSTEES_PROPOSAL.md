@@ -19,7 +19,7 @@ This proposal outlines a focused modernisation of the charity's website for a fi
 
 * **The Problem:** The current site relies on a brittle WordPress & Elementor configuration. Updating a simple news article or event requires navigating complex design layers. A minor edit can accidentally misalign page layouts or break global stylesheets (as recently occurred with missing styling files that disrupted public access). This creates acute anxiety for administrative volunteers, discourages regular updates, and requires external technical intervention for basic upkeep.
 * **The Modernised Solution:** We will implement an intuitive, dedicated editorial dashboard (customised for charities).
-  * **Form-Based Simplicity:** Trustees and volunteers update News, Notices, and Events by simply typing into clearly labeled boxes (Title, Date, Body, Image) and clicking "Publish".
+  * **Form-Based Simplicity:** Trustees and volunteers update News, Notices, and Events by simply typing into clearly labelled boxes (Title, Date, Body, Image) and clicking "Publish".
   * **Unbreakable Formatting:** Volunteers literally *cannot* break the design, font hierarchy, or mobile responsiveness. The layout is decoupled from the content.
   * **Zero Maintenance Overhead:** Eliminates fragile plugins, security update vulnerabilities, and costly monthly maintenance retainers.
 

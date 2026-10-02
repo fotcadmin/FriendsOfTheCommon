@@ -1,6 +1,6 @@
 # Complete Knowledge Dossier: The Friends of Tunbridge Wells and Rusthall Commons
 
-## Organization Identity
+## Organisation Identity
 - Legal Entity: The Friends of Tunbridge Wells and Rusthall Commons
 - Legal Status: Registered Charity in England and Wales
 - Charity Registration Number: 1013975
@@ -21,10 +21,10 @@
 - Total Protected Land: 256 acres (103.6 hectares) of unbuilt, unploughed common land.
   - Tunbridge Wells Common: 170 acres, located immediately adjacent to Royal Tunbridge Wells town centre and The Pantiles.
   - Rusthall Common: 86 acres, located to the north-west surrounding the village of Rusthall.
-- Geology: Underlain by the Tunbridge Wells Sand Formation, part of the Lower Cretaceous Hastings Beds (approximately 135–140 million years old). Exposed rock formations comprise Ardingly Sandstone, characterized by honeycombed weathering, romantic holloways, and dramatic jointing.
+- Geology: Underlain by the Tunbridge Wells Sand Formation, part of the Lower Cretaceous Hastings Beds (approximately 135–140 million years old). Exposed rock formations comprise Ardingly Sandstone, characterised by honeycombed weathering, romantic holloways, and dramatic jointing.
 - Key Formations:
   - Wellington Rocks (TN4 8HA): Celebrated sandstone outcrop on Tunbridge Wells Common, historic natural playground and viewpoint.
-  - Toad Rock (TN4 8NX): Famous mushroom-shaped perched sandstone rock on Rusthall Common, celebrated by Victorian travelers.
+  - Toad Rock (TN4 8NX): Famous mushroom-shaped perched sandstone rock on Rusthall Common, celebrated by Victorian travellers.
   - Happy Valley & The 101 Steps: Steep sunken sandstone gorge connecting Mount Ephraim down to Tea Garden Lane and Rusthall.
   - The Roman Bank: Ancient earthwork embankment traversing Tunbridge Wells Common.
   - Queen Victoria Grove: Commemorative avenue of mature trees planted in 1897 to mark Queen Victoria's Diamond Jubilee.
@@ -33,14 +33,14 @@
 ## Statutory Management and Byelaws
 - Primary Legislation: Tunbridge Wells Improvement Act 1890.
 - Managing Authority: Tunbridge Wells Commons Conservators (composed of representatives from the Freeholder, Tunbridge Wells Borough Council, and local ratepayers).
-- Charity Role: The Friends work in active partnership with the Conservators, funding conservation projects, mobilizing community volunteers, and leading the campaign to acquire the freehold for the town.
+- Charity Role: The Friends work in active partnership with the Conservators, funding conservation projects, mobilising community volunteers, and leading the campaign to acquire the freehold for the town.
 - Core Byelaws & Visitor Code:
   1. No Open Fires or Barbecues: Strictly prohibited year-round due to high subsurface peat and dry gorse wildfire hazard.
   2. No Drones / UAVs: Prohibited by byelaw to safeguard wildlife, roosting pipistrelle bats, ground-nesting birds, and horse riders.
   3. Dog Walking Etiquette: Dogs warmly welcome under close control. Must be kept on short leads during ground-nesting bird season (March–July) and around sensitive wildlife ponds. 10+ red dog waste bins provided across entrances.
   4. Sandstone Preservation: Ardingly Sandstone is fragile. No carving graffiti, no climbing chalk, no chipping edges.
   5. Cycling: Restricted to designated surfaced bridleways and perimeter roadways; pedestrians and equestrians have strict right of way.
-  6. Commercial Group Licenses: Groups of 4+ dogs and commercial fitness groups require a permit from the Commons Conservators.
+  6. Commercial Group Licences: Groups of 4+ dogs and commercial fitness groups require a permit from the Commons Conservators.
 - Parking Access (Open 24/7):
   - Tunbridge Wells Common (Fir Tree Road, TN4 8AH): Completely free, open 24/7, strictly restricted to max 4 hours stay.
   - Upper Pantiles / Major York's Road (Fairground Car Park, TN4 8HA): Open 24/7, pay-and-display parking.
