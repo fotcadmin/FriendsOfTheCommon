@@ -776,6 +776,7 @@ details[open] .summary-icon {
   margin-bottom: 0;
 }
 
+.prose h3,
 .prose h4 {
   font-family: var(--font-serif);
   font-size: 1.2rem;
@@ -1136,7 +1137,9 @@ details[open] .summary-icon {
   color: #ffffff;
 }
 
-.footer-col h5 {
+.footer-col h3,
+.footer-col h5,
+.footer-heading {
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -1167,7 +1170,7 @@ details[open] .summary-icon {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  color: #63726a;
+  color: #9bb5a6;
   font-size: 0.8rem;
   flex-wrap: wrap;
   gap: 1rem;
@@ -1815,6 +1818,7 @@ details[open] .summary-icon {
   }
 }
 
+.nt-event-details h3,
 .nt-event-details h4 {
   font-family: var(--font-serif);
   font-size: 1.28rem;
