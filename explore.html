@@ -93,7 +93,7 @@
 
     <!-- Page Header Banner -->
     <section class="page-header-nt">
-      <div class="container reveal-fade-up">
+      <div class="container">
         <span class="page-kicker">Visitor Field Guide &bull; 256 Acres of Open Land</span>
         <h1 class="page-title">Explore Tunbridge Wells &amp; Rusthall Commons</h1>
         <p class="page-lead">
@@ -122,15 +122,15 @@
           <div id="leaflet-map" role="region" aria-label="Interactive map of Tunbridge Wells and Rusthall Commons"></div>
           <div class="map-sidebar">
             <div class="map-filters" role="toolbar" aria-label="Map category filters">
-              <button class="map-filter-btn active" data-filter="all">All Points</button>
-              <button class="map-filter-btn" data-filter="heritage">Rocks &amp; Heritage</button>
-              <button class="map-filter-btn" data-filter="nature">Nature &amp; Wildlife</button>
-              <button class="map-filter-btn" data-filter="food">Inns &amp; Dining</button>
-              <button class="map-filter-btn" data-filter="hotels">Hotels &amp; Stays</button>
-              <button class="map-filter-btn" data-filter="parking">Parking</button>
-              <button class="map-filter-btn" data-filter="facilities">Facilities</button>
+              <button type="button" class="map-filter-btn active" data-filter="all" aria-pressed="true">All Points</button>
+              <button type="button" class="map-filter-btn" data-filter="heritage" aria-pressed="false">Rocks &amp; Heritage</button>
+              <button type="button" class="map-filter-btn" data-filter="nature" aria-pressed="false">Nature &amp; Wildlife</button>
+              <button type="button" class="map-filter-btn" data-filter="food" aria-pressed="false">Inns &amp; Dining</button>
+              <button type="button" class="map-filter-btn" data-filter="hotels" aria-pressed="false">Hotels &amp; Stays</button>
+              <button type="button" class="map-filter-btn" data-filter="parking" aria-pressed="false">Parking</button>
+              <button type="button" class="map-filter-btn" data-filter="facilities" aria-pressed="false">Facilities</button>
             </div>
-            <div id="map-places-list" class="map-places-list" role="list">
+            <div id="map-places-list" class="map-places-list" aria-label="Landmarks directory">
               <!-- Populated dynamically via assets/js/map.js -->
             </div>
           </div>
@@ -152,7 +152,7 @@
         <div class="grid-2">
           <!-- TW Common Map Card -->
           <div class="sharp-card reveal-from-left">
-            <a href="assets/images/map-tw.jpg" target="_blank" rel="noopener" class="sharp-card-img-wrap" style="display: block; text-decoration: none;" title="Click to view full high-resolution map">
+            <a href="assets/images/map-tw.jpg" target="_blank" rel="noopener" class="sharp-card-img-wrap" style="display: block; text-decoration: none;" title="Click to view full high-resolution map" aria-label="View full high-resolution map of Tunbridge Wells Common (opens in new window)">
               <img src="assets/images/map-tw.webp" alt="Illustrated map of Tunbridge Wells Common" width="550" height="260">
             </a>
             <div class="sharp-card-content">
@@ -170,7 +170,7 @@
 
           <!-- Rusthall Common Map Card -->
           <div class="sharp-card reveal-from-right">
-            <a href="assets/images/map-rusthall.jpg" target="_blank" rel="noopener" class="sharp-card-img-wrap" style="display: block; text-decoration: none;" title="Click to view full high-resolution map">
+            <a href="assets/images/map-rusthall.jpg" target="_blank" rel="noopener" class="sharp-card-img-wrap" style="display: block; text-decoration: none;" title="Click to view full high-resolution map" aria-label="View full high-resolution map of Rusthall Common (opens in new window)">
               <img src="assets/images/map-rusthall.webp" alt="Illustrated map of Rusthall Common" width="550" height="260">
             </a>
             <div class="sharp-card-content">
@@ -531,8 +531,8 @@
     </div>
   </footer>
 
-  <script src="assets/vendor/leaflet/leaflet.js"></script>
-  <script src="assets/js/map.js"></script>
+  <script src="assets/vendor/leaflet/leaflet.js" defer></script>
+  <script src="assets/js/map.js" defer></script>
   <script src="assets/js/main.js" defer></script>
   <!-- Floating Quick Contact Button -->
   <a href="about.html#contact" class="floating-contact-btn">
