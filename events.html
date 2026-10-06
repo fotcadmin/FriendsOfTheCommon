@@ -21,18 +21,21 @@
   <link rel="manifest" href="site.webmanifest">
   <meta name="theme-color" content="#133926">
 
+  <!-- Preload LCP Event Image -->
+  <link rel="preload" as="image" href="assets/images/wildlife-walk.webp" type="image/webp" fetchpriority="high">
+
   <!-- Stylesheets -->
   <link rel="stylesheet" href="assets/css/nt-style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload" as="style"
-    href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap">
+    href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;800&family=Inter:wght@400;500;600;700&display=optional">
   <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;800&family=Inter:wght@400;500;600;700&display=optional"
     media="print" onload="this.media='all'">
   <noscript>
     <link rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap">
+      href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;800&family=Inter:wght@400;500;600;700&display=optional">
   </noscript>
 </head>
 <body>
@@ -54,7 +57,7 @@
   <header class="site-header" role="banner">
     <div class="container header-inner">
       <a href="index.html" class="brand-link">
-        <img src="assets/images/logo-alpha.webp" alt="" aria-hidden="true" class="brand-logo" width="50" height="54">
+        <img src="assets/images/logo-alpha.webp" alt="" aria-hidden="true" class="brand-logo" width="50" height="50">
         <div class="brand-title-wrap">
           <span class="brand-title">Friends of the Commons</span>
           <span class="brand-sub">Tunbridge Wells &amp; Rusthall</span>
@@ -92,7 +95,7 @@
 
     <!-- Page Header Banner -->
     <section class="page-header-nt">
-      <div class="container reveal-fade-up">
+      <div class="container">
         <span class="page-kicker">Activities, Walks &amp; Working Parties</span>
         <h1 class="page-title">Events &amp; Guided Walks</h1>
         <p class="page-lead">
@@ -104,7 +107,7 @@
     <!-- Events Listing Section -->
     <section style="padding: 3.5rem 0;">
       <div class="container">
-        <div class="section-intro-header reveal-fade-up">
+        <div class="section-intro-header">
           <span class="section-kicker">Calendar of Events</span>
           <h2 class="section-title">Upcoming Activities on the Commons</h2>
           <p style="color: var(--nt-muted); margin-top: 0.5rem; font-size: 1rem;">
@@ -112,12 +115,12 @@
           </p>
         </div>
 
-        <div class="reveal-stagger" style="display: flex; flex-direction: column; gap: 1.75rem; margin-bottom: 3.5rem;">
+        <div style="display: flex; flex-direction: column; gap: 1.75rem; margin-bottom: 3.5rem;">
           
           <!-- Event 1: Let's Talk About Fungi (Photo Included) -->
           <article class="nt-event-item">
             <div class="nt-event-media">
-              <img src="assets/images/wildlife-walk.webp" alt="Nature enthusiasts on guided wildlife walk" width="400" height="240" loading="lazy">
+              <img src="assets/images/wildlife-walk.webp" alt="Nature enthusiasts on guided wildlife walk" width="400" height="240" fetchpriority="high" decoding="async">
               <div class="nt-event-date-overlay">
                 <span class="event-month">Oct</span>
                 <span class="event-day">01</span>
@@ -146,7 +149,7 @@
           <!-- Event 2: Volunteer Day Rusthall Common (Photo Included) -->
           <article class="nt-event-item">
             <div class="nt-event-media">
-              <img src="assets/images/happy-valley.webp" alt="Woodland steps and canopy at Happy Valley on Rusthall Common" width="400" height="240" loading="lazy">
+              <img src="assets/images/happy-valley.webp" alt="Woodland steps and canopy at Happy Valley on Rusthall Common" width="400" height="240" loading="lazy" decoding="async">
               <div class="nt-event-date-overlay">
                 <span class="event-month">Oct</span>
                 <span class="event-day">03</span>
@@ -175,7 +178,7 @@
           <!-- Event 3: Ancient Geology Walk (Photo Included) -->
           <article class="nt-event-item">
             <div class="nt-event-media">
-              <img src="assets/images/wellington-rocks.webp" alt="Ancient sandstone outcrops at Wellington Rocks" width="400" height="240" loading="lazy">
+              <img src="assets/images/wellington-rocks.webp" alt="Ancient sandstone outcrops at Wellington Rocks" width="400" height="240" loading="lazy" decoding="async">
               <div class="nt-event-date-overlay">
                 <span class="event-month">Oct</span>
                 <span class="event-day">18</span>
@@ -204,7 +207,7 @@
           <!-- Event 4: Marlpit Ponds & Wetland Ecology (Photo Included) -->
           <article class="nt-event-item">
             <div class="nt-event-media">
-              <img src="assets/images/marlpit-pond.webp" alt="Tranquil water and reedbeds at Marlpit Pond" width="400" height="240" loading="lazy">
+              <img src="assets/images/marlpit-pond.webp" alt="Tranquil water and reedbeds at Marlpit Pond" width="400" height="240" loading="lazy" decoding="async">
               <div class="nt-event-date-overlay">
                 <span class="event-month">Nov</span>
                 <span class="event-day">07</span>
