@@ -26,15 +26,25 @@
   <link rel="manifest" href="site.webmanifest">
   <meta name="theme-color" content="#133926">
 
+  <!-- Preload LCP Hero Image -->
+  <link rel="preload" as="image" href="assets/images/signpost-600.webp" media="(max-width: 600px)" type="image/webp" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/images/signpost.webp" media="(min-width: 601px)" type="image/webp" fetchpriority="high">
+
   <!-- Stylesheets -->
   <link rel="stylesheet" href="assets/css/nt-style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
+  <link rel="preload" as="style"
+    href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap"
-    rel="stylesheet">
-  <!-- Netlify Identity Widget for Decap CMS -->
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    media="print" onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap">
+  </noscript>
+  <!-- Netlify Identity Widget for Decap CMS (deferred to prevent render-blocking) -->
+  <script defer src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 
 <body>
@@ -100,7 +110,7 @@
     <!-- Hero Section -->
     <section class="hero-nt" id="overview">
       <div class="container hero-grid">
-        <div class="hero-text-col reveal-from-left">
+        <div class="hero-text-col">
           <span class="hero-kicker">Registered Charity No. 1013975 &bull; 256 Acres of Historic Common Land</span>
           <h1 class="hero-title">Protecting our historic commons for everyone, forever.</h1>
           <p class="hero-lead">
@@ -113,10 +123,12 @@
           </div>
         </div>
 
-        <div class="hero-media-box reveal-from-right">
+        <div class="hero-media-box">
           <img src="assets/images/signpost.webp"
+            srcset="assets/images/signpost-600.webp 600w, assets/images/signpost.webp 1024w"
+            sizes="(max-width: 600px) 100vw, 560px"
             alt="Historic fingerpost sign pointing towards Rusthall Common, Tunbridge Wells, and High Rocks" width="560"
-            height="380">
+            height="380" fetchpriority="high" decoding="async">
           <div class="hero-media-caption">
             <strong>Tunbridge Wells &amp; Rusthall Commons:</strong> 256 acres of connected common land, free and open
             to explore 365 days a year.
@@ -411,7 +423,7 @@
               <div class="sharp-card-box">
                 <img src="assets/images/march/march-community-rally.webp"
                   alt="Local community march supporting the Commons community purchase bid" width="400" height="220"
-                  style="object-fit: cover;">
+                  style="object-fit: cover;" loading="lazy" decoding="async">
                 <span class="photo-credit">Photo: Kelly Wilcox &bull; March for the Commons, 21 March 2026</span>
                 <div class="sharp-card-title" style="margin-top: 0.5rem;">Over 3,000 Backers</div>
                 <div class="sharp-card-desc">
@@ -459,7 +471,8 @@
               </div>
               <div class="sharp-card-box">
                 <img src="assets/images/wildlife-walk.webp"
-                  alt="Volunteers and nature enthusiasts on a guided wildlife walk" width="400" height="220">
+                  alt="Volunteers and nature enthusiasts on a guided wildlife walk" width="400" height="220"
+                  loading="lazy" decoding="async">
                 <div class="sharp-card-title">Community Conservation Impact</div>
                 <div class="sharp-card-desc">
                   Charity membership and donations fund on-the-ground habitat restoration, boardwalk repairs, and
@@ -507,7 +520,8 @@
               </div>
               <div class="sharp-card-box">
                 <img src="assets/images/map-tw.webp"
-                  alt="Map showing Tunbridge Wells Common trails and parking locations" width="400" height="220">
+                  alt="Map showing Tunbridge Wells Common trails and parking locations" width="400" height="220"
+                  loading="lazy" decoding="async">
                 <div class="sharp-card-title">Trail &amp; Parking Map</div>
                 <div class="sharp-card-desc">
                   Marked footpaths connect the town centre to Wellington Rocks, the Spa Valley Railway, and the Rusthall
@@ -657,17 +671,19 @@
     </div>
   </footer>
 
-  <script src="assets/js/main.js"></script>
+  <script src="assets/js/main.js" defer></script>
   <script>
-    if (window.netlifyIdentity) {
-      window.netlifyIdentity.on("init", user => {
-        if (!user) {
-          window.netlifyIdentity.on("login", () => {
-            document.location.href = "/admin/";
-          });
-        }
-      });
-    }
+    document.addEventListener("DOMContentLoaded", function() {
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.on("init", user => {
+          if (!user) {
+            window.netlifyIdentity.on("login", () => {
+              document.location.href = "/admin/";
+            });
+          }
+        });
+      }
+    });
   </script>
   <!-- Floating Quick Contact Button -->
   <a href="about.html#contact" class="floating-contact-btn">

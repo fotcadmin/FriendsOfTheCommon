@@ -717,14 +717,12 @@ function initScrollAnimations() {
     rootMargin: rootMargin
   });
 
-  // Reveal above-the-fold elements if already at scroll top
+  // Reveal above-the-fold elements immediately if already in viewport
   targets.forEach(el => {
     observer.observe(el);
     const rect = el.getBoundingClientRect();
-    if (rect.top < window.innerHeight * 0.75 && rect.bottom > 0 && window.scrollY < 100) {
-      setTimeout(() => {
-        el.classList.add('is-revealed');
-      }, 150);
+    if (rect.top < window.innerHeight * 0.85 && rect.bottom > 0) {
+      el.classList.add('is-revealed');
     }
   });
 }
