@@ -69,7 +69,7 @@
       </a>
 
       <!-- Desktop Navigation -->
-      <nav class="nav-desktop" role="navigation" aria-label="Primary Navigation">
+      <nav id="nav-desktop" class="nav-desktop" role="navigation" aria-label="Primary Navigation">
         <a href="index.html" class="nav-link">Home</a>
         <a href="campaign.html" class="nav-link active">Campaign</a>
         <a href="explore.html" class="nav-link">Explore</a>
@@ -330,11 +330,11 @@
         </div>
 
         <!-- Single Quote Interactive Carousel Widget -->
-        <div class="quote-slider-section reveal-fade-up" id="endorsements"
-          aria-label="Endorsements from local and conservation leaders">
+        <section class="quote-slider-section reveal-fade-up" id="endorsements"
+          aria-labelledby="endorsements-title">
           <div class="section-intro-header" style="text-align: center; max-width: 800px; margin: 0 auto 2rem auto;">
             <span class="section-kicker">Town &amp; National Endorsements</span>
-            <h2 class="section-title">Voices Supporting Community Ownership</h2>
+            <h2 class="section-title" id="endorsements-title">Voices Supporting Community Ownership</h2>
           </div>
 
           <div class="single-quote-slider" data-quote-slider>
@@ -342,8 +342,8 @@
               aria-label="Endorsement quote carousel (swipe or click arrows to view next quote)">
               <div class="quote-slide-track">
                 <!-- Slide 1: Jenny Scholfield (Woodland Trust) -->
-                <article class="quote-slide-item is-active" data-index="0" role="group" aria-roledescription="slide"
-                  aria-label="1 of 3">
+                <article class="quote-slide-item is-active" id="quote-slide-0" data-index="0" role="tabpanel"
+                  aria-labelledby="quote-dot-0" aria-label="1 of 3">
                   <div class="single-quote-card">
                     <div class="single-quote-card-header">
                       <div class="quote-icon" aria-hidden="true">&ldquo;</div>
@@ -365,8 +365,8 @@
                 </article>
 
                 <!-- Slide 2: Mike Martin MP -->
-                <article class="quote-slide-item" data-index="1" role="group" aria-roledescription="slide"
-                  aria-label="2 of 3">
+                <article class="quote-slide-item" id="quote-slide-1" data-index="1" role="tabpanel"
+                  aria-labelledby="quote-dot-1" aria-label="2 of 3" aria-hidden="true">
                   <div class="single-quote-card">
                     <div class="single-quote-card-header">
                       <div class="quote-icon" aria-hidden="true">&ldquo;</div>
@@ -388,8 +388,8 @@
                 </article>
 
                 <!-- Slide 3: Dale Vince OBE -->
-                <article class="quote-slide-item" data-index="2" role="group" aria-roledescription="slide"
-                  aria-label="3 of 3">
+                <article class="quote-slide-item" id="quote-slide-2" data-index="2" role="tabpanel"
+                  aria-labelledby="quote-dot-2" aria-label="3 of 3" aria-hidden="true">
                   <div class="single-quote-card">
                     <div class="single-quote-card-header">
                       <div class="quote-icon" aria-hidden="true">&ldquo;</div>
@@ -422,13 +422,13 @@
                 </svg>
               </button>
 
-              <div class="quote-dots-wrap" role="tablist" aria-label="Quote selection">
-                <button type="button" class="quote-dot is-active" role="tab" aria-selected="true"
-                  aria-label="Show quote 1 by Jenny Scholfield" data-index="0"></button>
-                <button type="button" class="quote-dot" role="tab" aria-selected="false"
-                  aria-label="Show quote 2 by Mike Martin" data-index="1"></button>
-                <button type="button" class="quote-dot" role="tab" aria-selected="false"
-                  aria-label="Show quote 3 by Dale Vince" data-index="2"></button>
+              <div class="quote-dots-wrap" role="tablist" aria-label="Endorsement quote slides">
+                <button type="button" class="quote-dot is-active" id="quote-dot-0" role="tab" aria-selected="true"
+                  aria-controls="quote-slide-0" aria-label="Quote 1: Jenny Scholfield" data-index="0"></button>
+                <button type="button" class="quote-dot" id="quote-dot-1" role="tab" aria-selected="false"
+                  aria-controls="quote-slide-1" aria-label="Quote 2: Mike Martin" data-index="1"></button>
+                <button type="button" class="quote-dot" id="quote-dot-2" role="tab" aria-selected="false"
+                  aria-controls="quote-slide-2" aria-label="Quote 3: Dale Vince" data-index="2"></button>
               </div>
 
               <button type="button" class="quote-nav-btn quote-next-btn" aria-label="Next quote">
@@ -440,7 +440,7 @@
               </button>
             </div>
           </div>
-        </div>
+        </section>
 
         <!-- Pledge Form Section (Generous Width for Side-by-Side Amounts) -->
         <div class="nt-form-box" id="pledge" style="max-width: 900px; margin: 0 auto 4rem auto; padding: 2.5rem 2.25rem; box-shadow: 0 4px 24px rgba(0,0,0,0.06); border-radius: 8px;">
