@@ -2,7 +2,6 @@ User-agent: *
 Allow: /
 Disallow: /admin/
 Disallow: /internal/
-Disallow: /scratch/
 
 # Agentic AI & LLM Standards
 # Reference for AI Agents & Search Crawlers
