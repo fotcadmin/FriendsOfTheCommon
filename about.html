@@ -24,18 +24,21 @@
   <link rel="manifest" href="site.webmanifest">
   <meta name="theme-color" content="#133926">
 
+  <!-- Preload LCP Hero Banner Image -->
+  <link rel="preload" as="image" href="assets/images/wildlife-walk.webp" type="image/webp" fetchpriority="high">
+
   <!-- Stylesheets -->
   <link rel="stylesheet" href="assets/css/nt-style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload" as="style"
-    href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap">
+    href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;800&family=Inter:wght@400;500;600;700&display=optional">
   <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;800&family=Inter:wght@400;500;600;700&display=optional"
     media="print" onload="this.media='all'">
   <noscript>
     <link rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap">
+      href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;800&family=Inter:wght@400;500;600;700&display=optional">
   </noscript>
 </head>
 
@@ -59,7 +62,7 @@
     <div class="container header-inner">
       <a href="index.html" class="brand-link">
         <img src="assets/images/logo-alpha.webp" alt="" aria-hidden="true"
-          class="brand-logo" width="50" height="54">
+          class="brand-logo" width="50" height="50">
         <div class="brand-title-wrap">
           <span class="brand-title">Friends of the Commons</span>
           <span class="brand-sub">Tunbridge Wells &amp; Rusthall</span>
@@ -103,7 +106,7 @@
     <!-- Page Header Banner with Nature Discovery Photo -->
     <section class="page-header-nt page-header-hero-banner"
       style="position: relative; background: linear-gradient(rgba(10, 20, 15, 0.45), rgba(10, 20, 15, 0.68)), url('assets/images/wildlife-walk.webp') center 35%/cover no-repeat; color: #ffffff; padding: 4.5rem 0 3.8rem 0; border-bottom: 3px solid var(--nt-green-mid);">
-      <div class="container reveal-fade-up">
+      <div class="container">
         <span class="page-kicker"
           style="color: #ffffff; background: rgba(19, 57, 38, 0.85); padding: 0.35rem 0.85rem; display: inline-block; margin-bottom: 0.85rem; border: 1px solid rgba(255, 255, 255, 0.35); text-shadow: 0 1px 2px rgba(0,0,0,0.5);">
           Born from the Great Storm of 1987 &bull; Registered Charity No. 1013975
@@ -127,7 +130,7 @@
     <!-- Mission Statement & Founding Purpose -->
     <section style="padding: 3.5rem 0 2rem 0;">
       <div class="container">
-        <div class="editorial-callout reveal-fade-up" style="margin-bottom: 2rem;">
+        <div class="editorial-callout" style="margin-bottom: 2rem;">
           <span class="editorial-tag">Our Founding Purpose</span>
           <h2 class="editorial-heading">
             &ldquo;To protect, enhance, and secure permanent community ownership of Tunbridge Wells and Rusthall Commons
@@ -159,7 +162,7 @@
             <div class="object-card-media">
               <img src="assets/images/wellington-rocks.webp"
                 alt="Ancient Ardingly sandstone rocks and woodland canopy on Tunbridge Wells Common" width="400"
-                height="155" loading="lazy">
+                height="155" loading="lazy" decoding="async">
             </div>
             <div class="object-card-header">
               <span class="object-num">Objective 01</span>
@@ -184,7 +187,7 @@
             <div class="object-card-media">
               <img src="assets/images/wildlife-walk.webp"
                 alt="Community members and nature guides on an educational wildlife walk" width="400" height="155"
-                loading="lazy">
+                loading="lazy" decoding="async">
             </div>
             <div class="object-card-header">
               <span class="object-num">Objective 02</span>
@@ -208,7 +211,7 @@
             <div class="object-card-media">
               <img src="assets/images/march/march-community-rally.webp"
                 alt="Local community and families enjoying recreation and open space" width="400" height="155"
-                loading="lazy">
+                loading="lazy" decoding="async">
             </div>
             <div class="object-card-header">
               <span class="object-num">Objective 03</span>
@@ -287,7 +290,7 @@
               <div class="sharp-card-img-wrap" style="margin: -1.5rem -1.75rem 1.25rem -1.75rem;">
                 <img src="assets/images/roger-john-nick.webp"
                   alt="Charity leaders Roger Barton, John Barber and Nick Ferrier walking on the Common" width="500"
-                  height="280" style="width: 100%; height: 210px; object-fit: cover;">
+                  height="280" loading="lazy" decoding="async" style="width: 100%; height: 210px; object-fit: cover;">
                 <div
                   style="padding: 0.4rem 1rem; font-size: 0.72rem; color: var(--nt-muted); background: var(--nt-sand-bg); border-bottom: 1px solid var(--nt-border-subtle); font-style: italic;">
                   The Friends Committee &amp; Campaign Team walking through Tunbridge Wells Common.
