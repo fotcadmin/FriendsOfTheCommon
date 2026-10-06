@@ -406,10 +406,11 @@
     // Enable scroll zoom on click/focus
     map.on('click', () => map.scrollWheelZoom.enable());
 
-    // Base Tile Layer (OpenStreetMap standard)
+    // Base Tile Layer (OpenStreetMap standard with Retina support)
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors',
-      maxZoom: 19
+      maxZoom: 19,
+      detectRetina: true
     }).addTo(map);
 
     markerGroup = L.featureGroup().addTo(map);
@@ -557,34 +558,24 @@
     });
   });
 
-  // Lazy Initialization via IntersectionObserver or user interaction
+  // Lazy Initialization via IntersectionObserver (real visibility) or user interaction
   if ('IntersectionObserver' in window) {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
+        if (entry.isIntersecting && entry.intersectionRatio > 0.05) {
           initMap();
           observer.disconnect();
         }
       });
-    }, { rootMargin: '300px 0px' });
+    }, { threshold: [0.05] });
     observer.observe(mapElement);
-  } else {
-    initMap();
   }
 
+  // Trigger on user interactions
   mapElement.addEventListener('pointerdown', initMap, { once: true });
   document.querySelectorAll('a[href="#interactive-map"]').forEach(link => {
     link.addEventListener('click', initMap, { once: true });
   });
-
-  // Idle timeout fallback
-  if ('requestIdleCallback' in window) {
-    requestIdleCallback(() => {
-      setTimeout(() => { if (!mapInitialized) initMap(); }, 3500);
-    });
-  } else {
-    setTimeout(() => { if (!mapInitialized) initMap(); }, 4000);
-  }
 
   // Re-invalidate size on window resize
   window.addEventListener('resize', () => {
