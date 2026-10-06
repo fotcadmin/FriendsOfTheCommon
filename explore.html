@@ -22,7 +22,11 @@
   <meta name="theme-color" content="#133926">
 
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="assets/vendor/leaflet/leaflet.css">
+  <link rel="preload" as="style" href="assets/vendor/leaflet/leaflet.css">
+  <link rel="stylesheet" href="assets/vendor/leaflet/leaflet.css" media="print" onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet" href="assets/vendor/leaflet/leaflet.css">
+  </noscript>
   <link rel="stylesheet" href="assets/css/nt-style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -153,7 +157,7 @@
           <!-- TW Common Map Card -->
           <div class="sharp-card reveal-from-left">
             <a href="assets/images/map-tw.jpg" target="_blank" rel="noopener" class="sharp-card-img-wrap" style="display: block; text-decoration: none;" title="Click to view full high-resolution map" aria-label="View full high-resolution map of Tunbridge Wells Common (opens in new window)">
-              <img src="assets/images/map-tw.webp" alt="Illustrated map of Tunbridge Wells Common" width="550" height="260">
+              <img src="assets/images/map-tw.webp" alt="Illustrated map of Tunbridge Wells Common" width="550" height="260" loading="lazy" decoding="async">
             </a>
             <div class="sharp-card-content">
               <span class="sharp-card-tag">Tunbridge Wells Common &bull; 170 Acres</span>
@@ -171,7 +175,7 @@
           <!-- Rusthall Common Map Card -->
           <div class="sharp-card reveal-from-right">
             <a href="assets/images/map-rusthall.jpg" target="_blank" rel="noopener" class="sharp-card-img-wrap" style="display: block; text-decoration: none;" title="Click to view full high-resolution map" aria-label="View full high-resolution map of Rusthall Common (opens in new window)">
-              <img src="assets/images/map-rusthall.webp" alt="Illustrated map of Rusthall Common" width="550" height="260">
+              <img src="assets/images/map-rusthall.webp" alt="Illustrated map of Rusthall Common" width="550" height="260" loading="lazy" decoding="async">
             </a>
             <div class="sharp-card-content">
               <span class="sharp-card-tag">Rusthall Common &bull; 86 Acres</span>
@@ -517,8 +521,8 @@
             <li><a href="about.html#contact">Contact Trustees &amp; Secretary</a></li>
             <li><a href="legacy.html">Leave a Gift in Your Will (Legacies)</a></li>
             <li><a href="campaign.html#pledge-privacy">Pledge Data Privacy Notice</a></li>
-            <li><a href="assets/docs/objects-and-rules.pdf" target="_blank">Charity Constitution &amp; Rules (PDF)</a></li>
-            <li><a href="assets/docs/safeguarding-policy.pdf" target="_blank">Safeguarding Policy (PDF)</a></li>
+            <li><a href="assets/docs/objects-and-rules.pdf" target="_blank" rel="noopener">Charity Constitution &amp; Rules (PDF)</a></li>
+            <li><a href="assets/docs/safeguarding-policy.pdf" target="_blank" rel="noopener">Safeguarding Policy (PDF)</a></li>
             <li><a href="https://register-of-charities.charitycommission.gov.uk/charity-search/-/charity-details/1013975" target="_blank" rel="noopener">Charity Commission Register (No. 1013975)</a></li>
           </ul>
         </div>

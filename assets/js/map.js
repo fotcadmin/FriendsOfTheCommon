@@ -8,21 +8,12 @@
   const mapElement = document.getElementById('leaflet-map');
   if (!mapElement) return;
 
-  // Initialise Map centred between Tunbridge Wells and Rusthall Commons
-  const map = L.map('leaflet-map', {
-    center: [51.1310, 0.2470],
-    zoom: 14,
-    scrollWheelZoom: false
-  });
-
-  // Enable scroll zoom on click/focus
-  map.on('click', () => map.scrollWheelZoom.enable());
-
-  // Base Tile Layer (OpenStreetMap standard)
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors',
-    maxZoom: 19
-  }).addTo(map);
+  let map = null;
+  let markerGroup = null;
+  const markers = {};
+  let mapInitialized = false;
+  let activeFilter = 'all';
+  let pendingLandmarkId = null;
 
   // High-Legibility Monochrome SVG Icons for Pins and List Items
   const ICONS = {
@@ -367,10 +358,6 @@
     }
   ];
 
-  // Store active markers
-  const markers = {};
-  const markerGroup = L.featureGroup().addTo(map);
-
   // Custom DivIcon generator using sharp monochrome SVGs
   function createPin(iconType, category) {
     const svgContent = getSvg(iconType);
@@ -383,36 +370,98 @@
     });
   }
 
-  // Populate Markers
-  landmarks.forEach(lm => {
-    const pin = createPin(lm.iconType, lm.category);
-    const destinationQuery = lm.navQuery ? encodeURIComponent(lm.navQuery) : `${lm.lat},${lm.lng}`;
-    const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${destinationQuery}`;
+  function applyFilterToMarkers(filter) {
+    if (!markerGroup || !map) return;
+    markerGroup.clearLayers();
+    let hasMarkers = false;
+    landmarks.forEach(lm => {
+      const matches = filter === 'all' ||
+        lm.category === filter ||
+        (Array.isArray(lm.categories) && lm.categories.includes(filter));
+      if (matches && markers[lm.id]) {
+        markerGroup.addLayer(markers[lm.id]);
+        hasMarkers = true;
+      }
+    });
+    if (hasMarkers && markerGroup.getLayers().length > 0) {
+      map.fitBounds(markerGroup.getBounds(), { padding: [40, 40] });
+    }
+  }
 
-    const popupContent = `
-      <div>
-        <span class="popup-tag">${lm.catName}</span>
-        <h4 class="popup-title">${lm.name}</h4>
-        <p class="popup-desc">${lm.desc}</p>
-        <a href="${directionsUrl}" target="_blank" rel="noopener" class="popup-btn">
-          Directions in Google Maps &rarr;
-        </a>
-      </div>
-    `;
+  function initMap() {
+    if (mapInitialized) return;
+    if (typeof L === 'undefined') {
+      setTimeout(initMap, 100);
+      return;
+    }
+    mapInitialized = true;
 
-    const marker = L.marker([lm.lat, lm.lng], {
-      icon: pin,
-      title: lm.name,
-      alt: `${lm.name} marker`
-    }).bindPopup(popupContent);
+    // Initialise Map centred between Tunbridge Wells and Rusthall Commons
+    map = L.map('leaflet-map', {
+      center: [51.1310, 0.2470],
+      zoom: 14,
+      scrollWheelZoom: false
+    });
 
-    marker.landmarkData = lm;
-    markers[lm.id] = marker;
-    markerGroup.addLayer(marker);
-  });
+    // Enable scroll zoom on click/focus
+    map.on('click', () => map.scrollWheelZoom.enable());
 
-  // Fit bounds to show all landmarks
-  map.fitBounds(markerGroup.getBounds(), { padding: [40, 40] });
+    // Base Tile Layer (OpenStreetMap standard)
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors',
+      maxZoom: 19
+    }).addTo(map);
+
+    markerGroup = L.featureGroup().addTo(map);
+
+    // Populate Markers
+    landmarks.forEach(lm => {
+      const pin = createPin(lm.iconType, lm.category);
+      const destinationQuery = lm.navQuery ? encodeURIComponent(lm.navQuery) : `${lm.lat},${lm.lng}`;
+      const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${destinationQuery}`;
+
+      const popupContent = `
+        <div>
+          <span class="popup-tag">${lm.catName}</span>
+          <h4 class="popup-title">${lm.name}</h4>
+          <p class="popup-desc">${lm.desc}</p>
+          <a href="${directionsUrl}" target="_blank" rel="noopener" class="popup-btn">
+            Directions in Google Maps &rarr;
+          </a>
+        </div>
+      `;
+
+      const marker = L.marker([lm.lat, lm.lng], {
+        icon: pin,
+        title: lm.name,
+        alt: `${lm.name} marker`
+      }).bindPopup(popupContent);
+
+      marker.landmarkData = lm;
+      markers[lm.id] = marker;
+      markerGroup.addLayer(marker);
+    });
+
+    if (activeFilter !== 'all') {
+      applyFilterToMarkers(activeFilter);
+    } else {
+      map.fitBounds(markerGroup.getBounds(), { padding: [40, 40] });
+    }
+
+    if (pendingLandmarkId && markers[pendingLandmarkId]) {
+      const lm = landmarks.find(l => l.id === pendingLandmarkId);
+      const marker = markers[pendingLandmarkId];
+      if (lm && marker) {
+        map.flyTo([lm.lat, lm.lng], 16, { duration: 0.8 });
+        setTimeout(() => marker.openPopup(), 400);
+      }
+      pendingLandmarkId = null;
+    }
+
+    setTimeout(() => {
+      if (map) map.invalidateSize();
+    }, 200);
+  }
 
   // Sidebar List Rendering
   const listContainer = document.getElementById('map-places-list');
@@ -445,15 +494,18 @@
       `;
 
       function selectItem() {
-        // Highlight active item
         document.querySelectorAll('.place-item').forEach(el => el.classList.remove('active'));
         item.classList.add('active');
 
-        // Pan and open popup
-        const marker = markers[lm.id];
-        if (marker) {
-          map.flyTo([lm.lat, lm.lng], 16, { duration: 0.8 });
-          setTimeout(() => marker.openPopup(), 400);
+        if (!mapInitialized) {
+          pendingLandmarkId = lm.id;
+          initMap();
+        } else {
+          const marker = markers[lm.id];
+          if (marker && map) {
+            map.flyTo([lm.lat, lm.lng], 16, { duration: 0.8 });
+            setTimeout(() => marker.openPopup(), 400);
+          }
         }
       }
 
@@ -483,29 +535,59 @@
       this.classList.add('active');
       this.setAttribute('aria-pressed', 'true');
 
-      const filter = this.dataset.filter;
+      activeFilter = this.dataset.filter;
 
-      markerGroup.clearLayers();
       const filtered = [];
-
       landmarks.forEach(lm => {
-        const matches = filter === 'all' ||
-          lm.category === filter ||
-          (Array.isArray(lm.categories) && lm.categories.includes(filter));
+        const matches = activeFilter === 'all' ||
+          lm.category === activeFilter ||
+          (Array.isArray(lm.categories) && lm.categories.includes(activeFilter));
         if (matches) {
           filtered.push(lm);
-          markerGroup.addLayer(markers[lm.id]);
         }
       });
 
       renderList(filtered);
 
-      if (filtered.length > 0) {
-        map.fitBounds(markerGroup.getBounds(), { padding: [40, 40] });
+      if (!mapInitialized) {
+        initMap();
+      } else {
+        applyFilterToMarkers(activeFilter);
       }
     });
   });
 
+  // Lazy Initialization via IntersectionObserver or user interaction
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          initMap();
+          observer.disconnect();
+        }
+      });
+    }, { rootMargin: '300px 0px' });
+    observer.observe(mapElement);
+  } else {
+    initMap();
+  }
+
+  mapElement.addEventListener('pointerdown', initMap, { once: true });
+  document.querySelectorAll('a[href="#interactive-map"]').forEach(link => {
+    link.addEventListener('click', initMap, { once: true });
+  });
+
+  // Idle timeout fallback
+  if ('requestIdleCallback' in window) {
+    requestIdleCallback(() => {
+      setTimeout(() => { if (!mapInitialized) initMap(); }, 3500);
+    });
+  } else {
+    setTimeout(() => { if (!mapInitialized) initMap(); }, 4000);
+  }
+
   // Re-invalidate size on window resize
-  window.addEventListener('resize', () => map.invalidateSize());
+  window.addEventListener('resize', () => {
+    if (map) map.invalidateSize();
+  });
 })();
