@@ -69,4 +69,4 @@ This proposal outlines a focused modernisation of the charity's website for a fi
 ---
 
 ### Recommended Trustee Action
-**Approve the one-off allocation of £1,000 to commission the modernised Friends of the Commons website, ensuring our charity has the robust digital infrastructure needed to win the community buyout campaign.**
+**Approve the one-off allocation of £1,000 to commission the modernised Friends of the Commons website, ensuring our charity has the robust digital infrastructure needed to win the community purchase campaign.**

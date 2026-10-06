@@ -35,14 +35,15 @@
 
 <body>
 
+  <!-- Skip to Main Content for Accessibility -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+
   <!-- Urgent Top Announcement Bar -->
   <aside class="urgent-notice-bar" role="region" aria-label="Campaign Notice">
     <div class="urgent-notice-content">
-      <div>
-        <span class="urgent-tag">COMMONS SALE NOTICE</span>
-        <span>Over 3,000 residents have backed The Friends' community bid to protect 256 acres from private
-          equity.</span>
-      </div>
+      <span class="urgent-tag">COMMONS SALE NOTICE</span>
+      <span class="urgent-text">Over 3,000 residents have backed The Friends' community bid to buy the Commons.</span>
       <a href="campaign.html#pledge" class="urgent-link">Read bid details &amp; pledge support &rarr;</a>
     </div>
   </aside>
@@ -68,14 +69,18 @@
         <a href="events.html" class="nav-link">Events</a>
         <a href="support-us.html" class="nav-link">Support Us</a>
         <a href="about.html" class="nav-link">About</a>
+        <a href="about.html#contact" class="nav-link">Contact</a>
+        <div class="nav-mobile-ctas">
+          <a href="campaign.html#pledge" class="btn btn-terracotta btn-sm" style="width: 100%; text-align: center;">Pledge Support</a>
+          <a href="support-us.html#membership" class="btn btn-secondary btn-sm" style="width: 100%; text-align: center;">Become a Member (£10/£20)</a>
+        </div>
       </nav>
 
       <!-- Header Action Buttons -->
       <div class="header-cta-group">
         <a href="campaign.html#pledge" class="btn btn-terracotta btn-sm">Pledge Support</a>
         <a href="support-us.html#membership" class="btn btn-secondary btn-sm">Become a Member</a>
-        <button class="mobile-toggle" aria-label="Toggle navigation menu"
-          onclick="document.querySelector('.nav-desktop').classList.toggle('nav-mobile-open')">
+        <button class="mobile-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-desktop">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M4 6h16M4 12h16M4 18h16" />
           </svg>
@@ -272,11 +277,12 @@
           <h5>Contact &amp; Legal</h5>
           <ul class="footer-links">
             <li><a href="about.html#contact">Contact Trustees &amp; Secretary</a></li>
+            <li><a href="legacy.html">Leave a Gift in Your Will (Legacies)</a></li>
             <li><a href="campaign.html#pledge-privacy">Pledge Data Privacy Notice</a></li>
             <li><a href="assets/docs/objects-and-rules.pdf" target="_blank">Charity Constitution &amp; Rules (PDF)</a>
             </li>
             <li><a href="assets/docs/safeguarding-policy.pdf" target="_blank">Safeguarding Policy (PDF)</a></li>
-            <li><a href="comms-guide.html">Communications Handover Guide</a></li>
+            <li><a href="https://register-of-charities.charitycommission.gov.uk/charity-search/-/charity-details/1013975" target="_blank" rel="noopener">Charity Commission Register (No. 1013975)</a></li>
           </ul>
         </div>
       </div>
@@ -288,6 +294,13 @@
     </div>
   </footer>
   <script src="assets/js/main.js"></script>
+  <!-- Floating Quick Contact Button -->
+  <a href="about.html#contact" class="floating-contact-btn" aria-label="Contact Friends of the Commons">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+    </svg>
+    <span>Contact Us</span>
+  </a>
 </body>
 
 </html>

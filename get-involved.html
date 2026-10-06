@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Support Us | Membership, Donations, Volunteering &amp; Pledging | Friends of the Commons</title>
-  <meta name="description" content="Support Tunbridge Wells and Rusthall Commons. Join as a member from £10/yr, make a Gift-Aided donation, volunteer on conservation working parties, or pledge to the community buyout.">
+  <meta name="description" content="Support Tunbridge Wells and Rusthall Commons. Join as a member from £10/yr, make a Gift-Aided donation, volunteer on conservation working parties, or pledge to the community purchase.">
   
   <!-- Open Graph Meta Tags -->
   <meta property="og:type" content="article">
@@ -29,13 +29,15 @@
 </head>
 <body>
 
+  <!-- Skip to Main Content for Accessibility -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+
   <!-- Urgent Top Announcement Bar -->
   <aside class="urgent-notice-bar" role="region" aria-label="Campaign Notice">
     <div class="urgent-notice-content">
-      <div>
-        <span class="urgent-tag">COMMONS SALE NOTICE</span>
-        <span>Over 3,000 residents have backed The Friends' community bid to protect the freehold from private equity.</span>
-      </div>
+      <span class="urgent-tag">COMMONS SALE NOTICE</span>
+      <span class="urgent-text">Over 3,000 residents have backed The Friends' community bid to buy the Commons.</span>
       <a href="campaign.html#pledge" class="urgent-link">Read bid details &amp; pledge support &rarr;</a>
     </div>
   </aside>
@@ -60,13 +62,18 @@
         <a href="events.html" class="nav-link">Events</a>
         <a href="support-us.html" class="nav-link active">Support Us</a>
         <a href="about.html" class="nav-link">About</a>
+        <a href="about.html#contact" class="nav-link">Contact</a>
+        <div class="nav-mobile-ctas">
+          <a href="campaign.html#pledge" class="btn btn-terracotta btn-sm" style="width: 100%; text-align: center;">Pledge Support</a>
+          <a href="support-us.html#membership" class="btn btn-secondary btn-sm" style="width: 100%; text-align: center;">Become a Member (£10/£20)</a>
+        </div>
       </nav>
 
       <!-- Header Action Buttons -->
       <div class="header-cta-group">
         <a href="campaign.html#pledge" class="btn btn-terracotta btn-sm">Pledge Support</a>
         <a href="#membership" class="btn btn-secondary btn-sm">Become a Member</a>
-        <button class="mobile-toggle" aria-label="Toggle navigation menu" onclick="document.querySelector('.nav-desktop').classList.toggle('nav-mobile-open')">
+        <button class="mobile-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-desktop">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
         </button>
       </div>
@@ -81,13 +88,13 @@
         <span class="page-kicker">Support The Charity &bull; Registered Charity No. 1013975</span>
         <h1 class="page-title">Support Us: Safeguard Our Historic Commons</h1>
         <p class="page-lead">
-          Whether through annual membership, a Gift-Aided donation, volunteering on conservation working parties, or pledging towards our freehold buyout bid, your support directly preserves 256 acres of ancient heathland, woodland, and sandstone crags.
+          Whether through annual membership, a Gift-Aided donation, volunteering on conservation working parties, or pledging towards our freehold purchase bid, your support directly preserves 256 acres of ancient heathland, woodland, and sandstone crags.
         </p>
         <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1.5rem;">
           <a href="#membership" class="btn btn-primary btn-sm">Become a Member</a>
           <a href="#donate" class="btn btn-secondary btn-sm">Make a Donation</a>
           <a href="#volunteer" class="btn btn-secondary btn-sm">Volunteer on the Land</a>
-          <a href="#pledge-info" class="btn btn-secondary btn-sm">Pledge to the Buyout</a>
+          <a href="#pledge-info" class="btn btn-secondary btn-sm">Pledge to Land Fund</a>
         </div>
       </div>
     </section>
@@ -95,15 +102,15 @@
     <!-- Pillar 1: Membership -->
     <section id="membership" style="padding: 3.5rem 0; border-bottom: 1px solid var(--nt-border);">
       <div class="container">
-        <div class="section-intro-header">
+        <div class="section-intro-header" style="text-align: center; max-width: 800px; margin: 0 auto 2.5rem auto;">
           <span class="section-kicker">Annual Stewardship</span>
           <h2 class="section-title">Join as a Member of the Friends</h2>
-          <p style="color: var(--nt-muted); margin-top: 0.5rem; font-size: 1.05rem; max-width: 800px;">
+          <p style="color: var(--nt-muted); margin-top: 0.5rem; font-size: 1.05rem;">
             Annual member subscriptions provide essential, steady funding for practical conservation equipment, woodland management, path drainage, and our community campaign.
           </p>
         </div>
 
-        <div class="grid-2" style="max-width: 840px; margin-bottom: 3.5rem;">
+        <div class="grid-2" style="max-width: 840px; margin: 0 auto 3.5rem auto;">
           <!-- Tier 1: Individual -->
           <div class="tier-card featured">
             <span class="tier-badge">Individual Membership</span>
@@ -166,7 +173,7 @@
                 <li><strong>Conservation Tools:</strong> High-grade saws, loppers, safety equipment, and materials for regular volunteer work parties.</li>
                 <li><strong>Path &amp; Drainage Restoration:</strong> Stone resurfacing on heavily trodden woodland tracks and erosion repair around rock crags.</li>
                 <li><strong>Ecological Surveys:</strong> Specialist species recording for rare bats, insects, fungi, and heathland flora.</li>
-                <li><strong>Community Buyout Campaign:</strong> Legal, surveying, and administrative costs to secure the freehold for public trust.</li>
+                <li><strong>Community Acquisition Campaign:</strong> Legal, surveying, and administrative costs to secure the freehold for public trust.</li>
               </ul>
             </div>
           </div>
@@ -188,45 +195,67 @@
         <div class="content-two-col donation-impact-grid">
           <div class="nt-form-box">
             <h3 style="font-family: var(--font-serif); font-size: 1.35rem; color: var(--nt-charcoal); margin-bottom: 1.25rem;">Online Donation</h3>
-            <form id="donation-form" onsubmit="event.preventDefault(); alert('Thank you for supporting Friends of the Commons.');">
+            <form id="donation-form">
               <div class="form-group">
-                <label class="form-label">Select Amount (£)</label>
-                <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.75rem;">
-                  <button type="button" class="btn btn-secondary btn-sm" onclick="document.getElementById('custom-donation').value=10;">£10</button>
-                  <button type="button" class="btn btn-secondary btn-sm" onclick="document.getElementById('custom-donation').value=25;">£25</button>
-                  <button type="button" class="btn btn-secondary btn-sm" onclick="document.getElementById('custom-donation').value=50;">£50</button>
-                  <button type="button" class="btn btn-secondary btn-sm" onclick="document.getElementById('custom-donation').value=100;">£100</button>
+                <label class="form-label">Select Donation Amount</label>
+                <div class="amount-tier-group" role="group" aria-label="Select donation amount">
+                  <button type="button" class="btn btn-secondary btn-sm donate-amount-btn" data-amount="10" aria-pressed="false">£10</button>
+                  <button type="button" class="btn btn-secondary btn-sm donate-amount-btn selected" data-amount="25" aria-pressed="true">£25</button>
+                  <button type="button" class="btn btn-secondary btn-sm donate-amount-btn" data-amount="50" aria-pressed="false">£50</button>
+                  <button type="button" class="btn btn-secondary btn-sm donate-amount-btn" data-amount="100" aria-pressed="false">£100</button>
                 </div>
-                <input type="number" id="custom-donation" class="form-input" min="5" value="25" style="max-width: 200px;" required>
+                <label for="custom-donate-amount" class="form-label">Or Custom Amount (£)</label>
+                <input type="number" id="custom-donate-amount" class="form-input" min="5" value="25" style="max-width: 200px;" required>
+                <div id="donation-total-display" class="form-calc-summary" aria-live="polite">
+                  Donation Total: £25
+                </div>
               </div>
 
-              <div class="form-group">
-                <label for="donor-name" class="form-label">Full Name *</label>
-                <input type="text" id="donor-name" class="form-input" placeholder="e.g. David Thornley" required>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="donor-first-name" class="form-label">First Name *</label>
+                  <input type="text" id="donor-first-name" class="form-input" placeholder="e.g. David" autocomplete="given-name" required>
+                </div>
+                <div class="form-group">
+                  <label for="donor-last-name" class="form-label">Surname *</label>
+                  <input type="text" id="donor-last-name" class="form-input" placeholder="e.g. Thornley" autocomplete="family-name" required>
+                </div>
               </div>
 
               <div class="form-row">
                 <div class="form-group">
                   <label for="donor-email" class="form-label">Email Address *</label>
-                  <input type="email" id="donor-email" class="form-input" placeholder="name@example.co.uk" required>
+                  <input type="email" id="donor-email" class="form-input" placeholder="name@example.co.uk" autocomplete="email" required>
                 </div>
                 <div class="form-group">
-                  <label for="donor-postcode" class="form-label">Postcode (for Gift Aid) *</label>
-                  <input type="text" id="donor-postcode" class="form-input" placeholder="e.g. TN4 8AH" required>
+                  <label for="donor-address" class="form-label">House Number / Street *</label>
+                  <input type="text" id="donor-address" class="form-input" placeholder="e.g. 14 High Street" autocomplete="address-line1" required>
                 </div>
               </div>
 
-              <div class="form-group" style="padding: 1rem; background: var(--nt-sand-bg); border: 1px solid var(--nt-border);">
-                <label class="form-checkbox-label">
-                  <input type="checkbox" checked>
-                  <span><strong>Gift Aid declaration:</strong> I am a UK taxpayer and understand that if I pay less Income Tax and/or Capital Gains Tax in the current tax year than the amount of Gift Aid claimed on all my donations, it is my responsibility to pay any difference.</span>
-                </label>
+              <div class="form-group">
+                <label for="donor-postcode" class="form-label">Postcode (for Gift Aid) *</label>
+                <input type="text" id="donor-postcode" class="form-input" placeholder="e.g. TN4 8AH" autocomplete="postal-code" required style="max-width: 200px;">
               </div>
 
-              <button type="submit" class="btn btn-primary btn-lg" style="width: 100%; margin-top: 0.5rem;">
-                Proceed to Secure Donation &rarr;
+              <div class="form-group" style="padding: 1.15rem; background: var(--nt-sand-bg); border: 1px solid var(--nt-border); margin-top: 1rem;">
+                <label class="form-checkbox-label">
+                  <input type="checkbox" id="donate-gift-aid">
+                  <span><strong>Gift Aid declaration:</strong> Boost my donation by 25p for every £1 I donate at no extra cost to me. I want to Gift Aid this donation and any donations I make in the future or have made in the past 4 years to <strong>The Friends of Tunbridge Wells and Rusthall Commons (Registered Charity No. 1013975)</strong>. I am a UK taxpayer and understand that if I pay less Income Tax and/or Capital Gains Tax than the amount of Gift Aid claimed on all my donations in that tax year, it is my responsibility to pay any difference.</span>
+                </label>
+                <div id="gift-aid-bonus-display" style="margin-top: 0.6rem; font-size: 0.88rem; color: var(--nt-green-deep); font-weight: 600;">
+                  Tick the box above to add 25% free Gift Aid (£6.25) from the UK Government!
+                </div>
+              </div>
+
+              <button type="submit" id="donate-submit-btn" class="btn btn-primary btn-lg" style="width: 100%; margin-top: 0.75rem;">
+                Donate £25 Securely &rarr;
               </button>
+              <div style="font-size: 0.8rem; color: var(--nt-muted); text-align: center; margin-top: 0.5rem;">
+                Registered Charity No. 1013975 &bull; Direct bank transfer and cheque details also available below
+              </div>
             </form>
+            <div id="donation-confirmation-panel" style="display: none;"></div>
           </div>
 
           <!-- Direct Impact Breakdown & Legacy Giving -->
@@ -246,7 +275,7 @@
               <p style="color: var(--nt-muted); font-size: 0.9rem; line-height: 1.55; margin-bottom: 1rem;">
                 A gift in your will ensures future generations will experience the wild beauty and quiet solace of the Commons. Even a modest legacy creates a lasting conservation endowment.
               </p>
-              <a href="about.html#contact" class="btn btn-secondary btn-sm">Request Confidential Legacy Guide &rarr;</a>
+              <a href="legacy.html" class="btn btn-secondary btn-sm">Read Legacy Guide &amp; Solicitor Wording &rarr;</a>
             </div>
           </div>
         </div>
@@ -291,20 +320,20 @@
           <!-- Volunteer Registration Form -->
           <div class="nt-form-box">
             <h3 style="font-family: var(--font-serif); font-size: 1.35rem; color: var(--nt-charcoal); margin-bottom: 1.25rem;">Volunteer Sign-Up</h3>
-            <form id="volunteer-form" onsubmit="event.preventDefault(); alert('Thank you for volunteering! Our working party coordinator will be in touch with upcoming dates.');">
+            <form id="volunteer-form">
               <div class="form-group">
                 <label for="vol-name" class="form-label">Full Name *</label>
-                <input type="text" id="vol-name" class="form-input" placeholder="e.g. Graham Wright" required>
+                <input type="text" id="vol-name" class="form-input" placeholder="e.g. Graham Wright" autocomplete="name" required>
               </div>
 
               <div class="form-row">
                 <div class="form-group">
                   <label for="vol-email" class="form-label">Email Address *</label>
-                  <input type="email" id="vol-email" class="form-input" placeholder="name@example.co.uk" required>
+                  <input type="email" id="vol-email" class="form-input" placeholder="name@example.co.uk" autocomplete="email" required>
                 </div>
                 <div class="form-group">
                   <label for="vol-phone" class="form-label">Telephone *</label>
-                  <input type="tel" id="vol-phone" class="form-input" placeholder="07123 456789" required>
+                  <input type="tel" id="vol-phone" class="form-input" placeholder="07123 456789" autocomplete="tel" required>
                 </div>
               </div>
 
@@ -319,23 +348,24 @@
                 </select>
               </div>
 
-              <button type="submit" class="btn btn-secondary btn-lg" style="width: 100%; margin-top: 0.5rem;">
+              <button type="submit" id="vol-submit-btn" class="btn btn-secondary btn-lg" style="width: 100%; margin-top: 0.5rem;">
                 Register My Availability &rarr;
               </button>
             </form>
+            <div id="volunteer-confirmation-panel" style="display: none;"></div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Pillar 4: Pledging to the Buyout -->
+    <!-- Pillar 4: Pledging to the Land Acquisition Fund -->
     <section id="pledge-info" style="padding: 3.5rem 0; background: var(--nt-surface-alt);">
       <div class="container">
         <div class="pledge-panel">
           <div class="pledge-panel-grid">
             <div>
               <span class="urgent-tag" style="background: rgba(0,0,0,0.3); margin-bottom: 0.75rem;">Freehold Acquisition Fund</span>
-              <h2>Pledge to the Community Buyout Bid</h2>
+              <h2>Pledge to the Community Purchase Bid</h2>
               <p>
                 A pledge is a confidential promise of financial support to help our registered charity acquire the freehold of Tunbridge Wells and Rusthall Commons. Funds will only be requested when the community sale is legally agreed.
               </p>
@@ -345,14 +375,14 @@
               </div>
             </div>
             <div class="pledge-panel-card">
-              <h3 style="font-family: var(--font-serif); font-size: 1.25rem; color: #ffffff; margin-bottom: 0.75rem;">Why Pledging Matters</h3>
-              <p style="color: #c9d8d0; font-size: 0.9rem; line-height: 1.5; margin-bottom: 1rem;">
+              <h3 style="font-family: var(--font-serif); font-size: 1.35rem; color: #ffffff; margin-bottom: 0.75rem;">Why Pledging Matters</h3>
+              <p style="color: #dbeae0; font-size: 0.95rem; line-height: 1.55; margin-bottom: 1.25rem;">
                 Every registered pledge directly strengthens our negotiating mandate, proving to vendors and grant makers that the town is united behind community ownership.
               </p>
-              <ul class="clean-list" style="font-size: 0.85rem; color: #e5ece8;">
-                <li>Confidential &bull; Zero upfront payment</li>
-                <li>Starting from &pound;20 to &pound;10,000+</li>
-                <li>Fully eligible for Gift Aid (+25%)</li>
+              <ul class="clean-list" style="font-size: 0.95rem; color: #ffffff; margin-bottom: 0;">
+                <li style="color: #ffffff;">Confidential &bull; Zero upfront payment</li>
+                <li style="color: #ffffff;">Starting from &pound;20 to &pound;10,000+</li>
+                <li style="color: #ffffff;">Fully eligible for Gift Aid (+25%)</li>
               </ul>
             </div>
           </div>
@@ -419,10 +449,11 @@
           <h5>Contact &amp; Legal</h5>
           <ul class="footer-links">
             <li><a href="about.html#contact">Contact Trustees &amp; Secretary</a></li>
+            <li><a href="legacy.html">Leave a Gift in Your Will (Legacies)</a></li>
             <li><a href="campaign.html#pledge-privacy">Pledge Data Privacy Notice</a></li>
             <li><a href="assets/docs/objects-and-rules.pdf" target="_blank">Charity Constitution &amp; Rules (PDF)</a></li>
             <li><a href="assets/docs/safeguarding-policy.pdf" target="_blank">Safeguarding Policy (PDF)</a></li>
-            <li><a href="comms-guide.html">Communications Handover Guide</a></li>
+            <li><a href="https://register-of-charities.charitycommission.gov.uk/charity-search/-/charity-details/1013975" target="_blank" rel="noopener">Charity Commission Register (No. 1013975)</a></li>
           </ul>
         </div>
       </div>
@@ -435,5 +466,12 @@
   </footer>
 
   <script src="assets/js/main.js"></script>
+  <!-- Floating Quick Contact Button -->
+  <a href="about.html#contact" class="floating-contact-btn" aria-label="Contact Friends of the Commons">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+    </svg>
+    <span>Contact Us</span>
+  </a>
 </body>
 </html>

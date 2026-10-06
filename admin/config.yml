@@ -1,9 +1,5 @@
 backend:
-  name: git-gateway
-  branch: feature/v2-refined-content
-
-# Local development backend support (via npx decap-server)
-local_backend: true
+  name: test-repo
 
 media_folder: "assets/images"
 public_folder: "/assets/images"

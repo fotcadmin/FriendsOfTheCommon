@@ -1,0 +1,3 @@
+# Netlify Redirects
+/leave-a-legacy    /legacy.html    301
+/leave-a-legacy/   /legacy.html    301

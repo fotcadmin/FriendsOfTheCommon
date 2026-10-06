@@ -29,13 +29,15 @@
 </head>
 <body>
 
+  <!-- Skip to Main Content for Accessibility -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+
   <!-- Urgent Top Announcement Bar -->
   <aside class="urgent-notice-bar" role="region" aria-label="Campaign Notice">
     <div class="urgent-notice-content">
-      <div>
-        <span class="urgent-tag">COMMONS SALE NOTICE</span>
-        <span>Over 3,000 residents have backed The Friends' community bid to protect the freehold from private equity.</span>
-      </div>
+      <span class="urgent-tag">COMMONS SALE NOTICE</span>
+      <span class="urgent-text">Over 3,000 residents have backed The Friends' community bid to buy the Commons.</span>
       <a href="campaign.html#pledge" class="urgent-link">Read bid details &amp; pledge support &rarr;</a>
     </div>
   </aside>
@@ -60,13 +62,18 @@
         <a href="events.html" class="nav-link active">Events</a>
         <a href="support-us.html" class="nav-link">Support Us</a>
         <a href="about.html" class="nav-link">About</a>
+        <a href="about.html#contact" class="nav-link">Contact</a>
+        <div class="nav-mobile-ctas">
+          <a href="campaign.html#pledge" class="btn btn-terracotta btn-sm" style="width: 100%; text-align: center;">Pledge Support</a>
+          <a href="support-us.html#membership" class="btn btn-secondary btn-sm" style="width: 100%; text-align: center;">Become a Member (£10/£20)</a>
+        </div>
       </nav>
 
       <!-- Header Action Buttons -->
       <div class="header-cta-group">
         <a href="campaign.html#pledge" class="btn btn-terracotta btn-sm">Pledge Support</a>
         <a href="support-us.html#membership" class="btn btn-secondary btn-sm">Become a Member</a>
-        <button class="mobile-toggle" aria-label="Toggle navigation menu" onclick="document.querySelector('.nav-desktop').classList.toggle('nav-mobile-open')">
+        <button class="mobile-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-desktop">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
         </button>
       </div>
@@ -77,7 +84,7 @@
 
     <!-- Page Header Banner -->
     <section class="page-header-nt">
-      <div class="container">
+      <div class="container reveal-fade-up">
         <span class="page-kicker">Activities, Walks &amp; Working Parties</span>
         <h1 class="page-title">Events &amp; Guided Walks</h1>
         <p class="page-lead">
@@ -89,7 +96,7 @@
     <!-- Events Listing Section -->
     <section style="padding: 3.5rem 0;">
       <div class="container">
-        <div class="section-intro-header">
+        <div class="section-intro-header reveal-fade-up">
           <span class="section-kicker">Calendar of Events</span>
           <h2 class="section-title">Upcoming Activities on the Commons</h2>
           <p style="color: var(--nt-muted); margin-top: 0.5rem; font-size: 1rem;">
@@ -97,55 +104,193 @@
           </p>
         </div>
 
-        <div style="display: flex; flex-direction: column; gap: 1.5rem; margin-bottom: 3.5rem;">
+        <div class="reveal-stagger" style="display: flex; flex-direction: column; gap: 1.75rem; margin-bottom: 3.5rem;">
           
-          <!-- Event 1: Let's Talk About Fungi -->
+          <!-- Event 1: Let's Talk About Fungi (Photo Included) -->
           <article class="nt-event-item">
-            <div class="nt-event-date-box">
-              <div class="event-month">Oct</div>
-              <div class="event-day">01</div>
-              <div style="font-size: 0.8rem; color: var(--nt-muted); margin-top: 0.2rem;">10am–1pm</div>
+            <div class="nt-event-media">
+              <img src="assets/images/wildlife-walk.webp" alt="Nature enthusiasts on guided wildlife walk" width="400" height="240" loading="lazy">
+              <div class="nt-event-date-overlay">
+                <span class="event-month">Oct</span>
+                <span class="event-day">01</span>
+              </div>
             </div>
             <div class="nt-event-details">
               <span class="nt-tag" style="background: var(--nt-green-deep); color: #ffffff; margin-bottom: 0.35rem;">
                 Guided Walk &amp; Talk &bull; Tunbridge Wells Common
               </span>
               <h4>Let’s Talk About Fungi: Walk &amp; Talk</h4>
-              <div class="nt-event-meta">Thursday 1 October &bull; 10:00am &ndash; 1:00pm &bull; Meeting at Upper Pantiles (Fairground) Car Park</div>
+              <div class="nt-event-meta">
+                <span>🗓️ Thursday 1 October</span> &bull; <span>⏰ 10:00am &ndash; 1:00pm</span> &bull; <span>📍 Meeting at Upper Pantiles Car Park</span>
+              </div>
               <p style="color: var(--nt-muted); font-size: 0.95rem; margin: 0.35rem 0 0.5rem 0;">
                 Join fungi expert Martin Allison for a walk and talk exploring the fascinating fungi of Tunbridge Wells Common, learning how to identify different species and discovering more about the vital role they play in our landscape.
               </p>
-              <div style="font-size: 0.88rem; color: var(--nt-muted); line-height: 1.5; background: #f4f6f4; padding: 0.75rem 1rem; border-radius: 6px; border-left: 3px solid var(--nt-green-deep);">
-                <strong>Essential Details:</strong> Please wear suitable footwear and come prepared for damp weather. A small magnifying glass and notebook are optional. <em>Please note: this is not a foraging event and no fungi will be collected or eaten.</em> Bring your own drink and snack. The Upper Pantiles car park is chargeable (or use the free car park on Fir Tree Road).
+              <div style="font-size: 0.88rem; color: var(--nt-muted); line-height: 1.5; background: #f4f6f4; padding: 0.65rem 0.9rem; border-left: 3px solid var(--nt-green-deep);">
+                <strong>Essential Details:</strong> Please wear suitable footwear for damp weather. Magnifying glass and notebook optional. <em>Note: this is not a foraging event; no fungi will be collected or eaten.</em>
               </div>
             </div>
-            <div>
-              <a href="mailto:gemma.stapeley@twcommons.org?subject=Let's%20Talk%20About%20Fungi%20Booking" class="btn btn-primary btn-sm">Book Free Place &rarr;</a>
+            <div class="nt-event-action">
+              <a href="mailto:gemma.stapeley@twcommons.org?subject=Let's%20Talk%20About%20Fungi%20Booking" class="btn btn-primary btn-sm" style="white-space: nowrap;">Book Free Place &rarr;</a>
             </div>
           </article>
 
-          <!-- Event 2: Volunteer Day Rusthall Common -->
+          <!-- Event 2: Volunteer Day Rusthall Common (Photo Included) -->
           <article class="nt-event-item">
-            <div class="nt-event-date-box">
-              <div class="event-month">Oct</div>
-              <div class="event-day">03</div>
-              <div style="font-size: 0.8rem; color: var(--nt-muted); margin-top: 0.2rem;">10am–12pm</div>
+            <div class="nt-event-media">
+              <img src="assets/images/happy-valley.webp" alt="Woodland steps and canopy at Happy Valley on Rusthall Common" width="400" height="240" loading="lazy">
+              <div class="nt-event-date-overlay">
+                <span class="event-month">Oct</span>
+                <span class="event-day">03</span>
+              </div>
             </div>
             <div class="nt-event-details">
               <span class="nt-tag" style="background: var(--nt-green-deep); color: #ffffff; margin-bottom: 0.35rem;">
                 Volunteer Conservation &bull; Rusthall Common
               </span>
-              <h4>Volunteer Day: Rusthall Common</h4>
-              <div class="nt-event-meta">Saturday 3 October &bull; 10:00am &ndash; 12:00pm &bull; Meet at Happy Valley Entrance (by War Memorial / St Paul’s Church)</div>
+              <h4>Volunteer Working Party: Rusthall Common</h4>
+              <div class="nt-event-meta">
+                <span>🗓️ Saturday 3 October</span> &bull; <span>⏰ 10:00am &ndash; 12:00pm</span> &bull; <span>📍 Happy Valley Entrance (St Paul’s Church)</span>
+              </div>
               <p style="color: var(--nt-muted); font-size: 0.95rem; margin: 0.35rem 0 0.5rem 0;">
-                Join Friends of the Commons for a morning of litter picking and conservation work on Rusthall Common, followed by tea and coffee at the Lodge by St Paul’s Church.
+                Join Friends of the Commons for a morning of litter picking and conservation work on Rusthall Common, followed by tea, coffee, and refreshments at the Lodge by St Paul’s Church.
               </p>
-              <div style="font-size: 0.88rem; color: var(--nt-muted); line-height: 1.5; background: #f4f6f4; padding: 0.75rem 1rem; border-radius: 6px; border-left: 3px solid var(--nt-green-deep);">
-                <strong>Essential Details:</strong> Everyone is welcome, including children accompanied by a responsible adult. No need to stay for the full two hours. Please bring suitable outdoor clothing, sturdy gardening gloves, a drink and snack, and your own litter picker if you have one. We’ll provide the rest!
+              <div style="font-size: 0.88rem; color: var(--nt-muted); line-height: 1.5; background: #f4f6f4; padding: 0.65rem 0.9rem; border-left: 3px solid var(--nt-green-deep);">
+                <strong>Essential Details:</strong> Everyone welcome, including families. Sturdy gardening gloves and outdoor footwear recommended. Tools and guidance provided.
               </div>
             </div>
-            <div>
-              <a href="support-us.html#volunteer" class="btn btn-secondary btn-sm">Join Volunteer Day &rarr;</a>
+            <div class="nt-event-action">
+              <a href="support-us.html#volunteer" class="btn btn-secondary btn-sm" style="white-space: nowrap;">Join Volunteer Day &rarr;</a>
+            </div>
+          </article>
+
+          <!-- Event 3: Ancient Geology Walk (Photo Included) -->
+          <article class="nt-event-item">
+            <div class="nt-event-media">
+              <img src="assets/images/wellington-rocks.webp" alt="Ancient sandstone outcrops at Wellington Rocks" width="400" height="240" loading="lazy">
+              <div class="nt-event-date-overlay">
+                <span class="event-month">Oct</span>
+                <span class="event-day">18</span>
+              </div>
+            </div>
+            <div class="nt-event-details">
+              <span class="nt-tag" style="background: var(--nt-green-deep); color: #ffffff; margin-bottom: 0.35rem;">
+                Geology &amp; Heritage Tour &bull; TW Common
+              </span>
+              <h4>Ancient Sandstone &amp; Geotrail Discovery Tour</h4>
+              <div class="nt-event-meta">
+                <span>🗓️ Sunday 18 October</span> &bull; <span>⏰ 2:00pm &ndash; 4:00pm</span> &bull; <span>📍 Wellington Rocks Guide Post</span>
+              </div>
+              <p style="color: var(--nt-muted); font-size: 0.95rem; margin: 0.35rem 0 0.5rem 0;">
+                Discover 135 million years of Ardingly sandstone history. Learn how prehistoric ice, wind, and water sculpted Wellington Rocks and how rare lichens and bee colonies thrive on these ancient crags.
+              </p>
+              <div style="font-size: 0.88rem; color: var(--nt-muted); line-height: 1.5; background: #f4f6f4; padding: 0.65rem 0.9rem; border-left: 3px solid var(--nt-green-deep);">
+                <strong>Essential Details:</strong> Gentle walking terrain with optional rock scrambles. Illustrated geology field guides provided free of charge.
+              </div>
+            </div>
+            <div class="nt-event-action">
+              <a href="mailto:events@fotcs.org.uk?subject=Geotrail%20Tour%20Booking" class="btn btn-primary btn-sm" style="white-space: nowrap;">Book Free Tour &rarr;</a>
+            </div>
+          </article>
+
+          <!-- Event 4: Marlpit Ponds & Wetland Ecology (Photo Included) -->
+          <article class="nt-event-item">
+            <div class="nt-event-media">
+              <img src="assets/images/marlpit-pond.webp" alt="Tranquil water and reedbeds at Marlpit Pond" width="400" height="240" loading="lazy">
+              <div class="nt-event-date-overlay">
+                <span class="event-month">Nov</span>
+                <span class="event-day">07</span>
+              </div>
+            </div>
+            <div class="nt-event-details">
+              <span class="nt-tag" style="background: var(--nt-green-deep); color: #ffffff; margin-bottom: 0.35rem;">
+                Pond Habitat &amp; Ecology &bull; Rusthall Common
+              </span>
+              <h4>Marlpit Ponds &amp; Wetland Habitat Morning</h4>
+              <div class="nt-event-meta">
+                <span>🗓️ Saturday 7 November</span> &bull; <span>⏰ 10:00am &ndash; 12:30pm</span> &bull; <span>📍 Marlpit Ponds Dipping Platform</span>
+              </div>
+              <p style="color: var(--nt-muted); font-size: 0.95rem; margin: 0.35rem 0 0.5rem 0;">
+                A hands-on conservation and survey morning focusing on the historic Marlpit Ponds. Learn about great crested newts, aquatic dragonfly larvae, and help clear encroaching reeds to preserve open water.
+              </p>
+              <div style="font-size: 0.88rem; color: var(--nt-muted); line-height: 1.5; background: #f4f6f4; padding: 0.65rem 0.9rem; border-left: 3px solid var(--nt-green-deep);">
+                <strong>Essential Details:</strong> Wellies or waterproof boots required. Pond-dipping trays and identification charts provided for all participants.
+              </div>
+            </div>
+            <div class="nt-event-action">
+              <a href="support-us.html#volunteer" class="btn btn-secondary btn-sm" style="white-space: nowrap;">Join Session &rarr;</a>
+            </div>
+          </article>
+
+          <!-- Event 5: Winter Bird Survey (Photo Placeholder) -->
+          <article class="nt-event-item">
+            <div class="nt-event-media">
+              <div class="photo-placeholder-box">
+                <svg class="photo-placeholder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+                  <circle cx="12" cy="13" r="4"/>
+                </svg>
+                <span class="photo-placeholder-label">Winter Bird Watching &amp; Heathland</span>
+                <span class="photo-placeholder-badge">Photo Asset Placeholder</span>
+              </div>
+              <div class="nt-event-date-overlay">
+                <span class="event-month">Nov</span>
+                <span class="event-day">21</span>
+              </div>
+            </div>
+            <div class="nt-event-details">
+              <span class="nt-tag" style="background: var(--nt-ochre); color: #ffffff; margin-bottom: 0.35rem;">
+                Bird Survey &amp; Ornithology &bull; Higher Common
+              </span>
+              <h4>Winter Bird Walk &amp; Dawn Census</h4>
+              <div class="nt-event-meta">
+                <span>🗓️ Saturday 21 November</span> &bull; <span>⏰ 8:00am &ndash; 10:30am</span> &bull; <span>📍 Mount Edgcumbe Steps</span>
+              </div>
+              <p style="color: var(--nt-muted); font-size: 0.95rem; margin: 0.35rem 0 0.5rem 0;">
+                Join our volunteer ornithologists to record winter migrants across the heather glades and mature beech woodlands. Spot redwings, fieldfares, siskins, and resident woodpeckers.
+              </p>
+              <div style="font-size: 0.88rem; color: var(--nt-muted); line-height: 1.5; background: #f4f6f4; padding: 0.65rem 0.9rem; border-left: 3px solid var(--nt-ochre);">
+                <strong>Essential Details:</strong> Bring binoculars if available (spares provided). Warm layers and flask recommended. Suitable for beginner and experienced birders.
+              </div>
+            </div>
+            <div class="nt-event-action">
+              <a href="mailto:events@fotcs.org.uk?subject=Winter%20Bird%20Walk%20Booking" class="btn btn-primary btn-sm" style="white-space: nowrap;">Register Free &rarr;</a>
+            </div>
+          </article>
+
+          <!-- Event 6: Veteran Tree Stewardship (Photo Placeholder) -->
+          <article class="nt-event-item">
+            <div class="nt-event-media">
+              <div class="photo-placeholder-box">
+                <svg class="photo-placeholder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+                  <circle cx="12" cy="13" r="4"/>
+                </svg>
+                <span class="photo-placeholder-label">Ancient Oak &amp; Sweet Chestnut Care</span>
+                <span class="photo-placeholder-badge">Photo Asset Placeholder</span>
+              </div>
+              <div class="nt-event-date-overlay">
+                <span class="event-month">Dec</span>
+                <span class="event-day">12</span>
+              </div>
+            </div>
+            <div class="nt-event-details">
+              <span class="nt-tag" style="background: var(--nt-green-deep); color: #ffffff; margin-bottom: 0.35rem;">
+                Woodland Stewardship &bull; TW &amp; Rusthall
+              </span>
+              <h4>Veteran Tree Survey &amp; Winter Care Session</h4>
+              <div class="nt-event-meta">
+                <span>🗓️ Saturday 12 December</span> &bull; <span>⏰ 9:30am &ndash; 12:30pm</span> &bull; <span>📍 Queen Victoria Grove</span>
+              </div>
+              <p style="color: var(--nt-muted); font-size: 0.95rem; margin: 0.35rem 0 0.5rem 0;">
+                Learn how we survey and protect our 200+ year old veteran oaks, sweet chestnuts, and beeches planted after the Great Storm. Includes deadwood habitat mulching and sapling protection.
+              </p>
+              <div style="font-size: 0.88rem; color: var(--nt-muted); line-height: 1.5; background: #f4f6f4; padding: 0.65rem 0.9rem; border-left: 3px solid var(--nt-green-deep);">
+                <strong>Essential Details:</strong> Hands-on conservation work. Refreshments served around mid-morning. Gloves and high-vis vests provided.
+              </div>
+            </div>
+            <div class="nt-event-action">
+              <a href="support-us.html#volunteer" class="btn btn-secondary btn-sm" style="white-space: nowrap;">Join Tree Party &rarr;</a>
             </div>
           </article>
 
@@ -225,9 +370,10 @@
           <h5>Contact &amp; Legal</h5>
           <ul class="footer-links">
             <li><a href="about.html#contact">Contact Trustees &amp; Secretary</a></li>
+            <li><a href="legacy.html">Leave a Gift in Your Will (Legacies)</a></li>
             <li><a href="assets/docs/objects-and-rules.pdf" target="_blank">Charity Constitution &amp; Rules (PDF)</a></li>
             <li><a href="assets/docs/safeguarding-policy.pdf" target="_blank">Safeguarding Policy (PDF)</a></li>
-            <li><a href="comms-guide.html">Communications Handover Guide</a></li>
+            <li><a href="https://register-of-charities.charitycommission.gov.uk/charity-search/-/charity-details/1013975" target="_blank" rel="noopener">Charity Commission Register (No. 1013975)</a></li>
           </ul>
         </div>
       </div>
@@ -240,5 +386,12 @@
   </footer>
 
   <script src="assets/js/main.js"></script>
+  <!-- Floating Quick Contact Button -->
+  <a href="about.html#contact" class="floating-contact-btn" aria-label="Contact Friends of the Commons">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+    </svg>
+    <span>Contact Us</span>
+  </a>
 </body>
 </html>

@@ -39,14 +39,15 @@
 
 <body>
 
+  <!-- Skip to Main Content for Accessibility -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+
   <!-- Urgent Top Announcement Bar -->
   <aside class="urgent-notice-bar" role="region" aria-label="Campaign Notice">
     <div class="urgent-notice-content">
-      <div>
-        <span class="urgent-tag">COMMONS SALE NOTICE</span>
-        <span>Over 3,000 residents have backed The Friends' community bid to protect the freehold from private
-          equity.</span>
-      </div>
+      <span class="urgent-tag">COMMONS SALE NOTICE</span>
+      <span class="urgent-text">Over 3,000 residents have backed The Friends' community bid to buy the Commons.</span>
       <a href="campaign.html#pledge" class="urgent-link">Read bid details &amp; pledge support &rarr;</a>
     </div>
   </aside>
@@ -55,7 +56,8 @@
   <header class="site-header" role="banner">
     <div class="container header-inner">
       <a href="index.html" class="brand-link" aria-label="Friends of the Commons Home">
-        <img src="assets/images/logo-alpha.webp" alt="Friends of Tunbridge Wells and Rusthall Commons Logo" class="brand-logo" width="50" height="54">
+        <img src="assets/images/logo-alpha.webp" alt="Friends of Tunbridge Wells and Rusthall Commons Logo"
+          class="brand-logo" width="50" height="54">
         <div class="brand-title-wrap">
           <span class="brand-title">Friends of the Commons</span>
           <span class="brand-sub">Tunbridge Wells &amp; Rusthall</span>
@@ -71,14 +73,21 @@
         <a href="events.html" class="nav-link">Events</a>
         <a href="support-us.html" class="nav-link">Support Us</a>
         <a href="about.html" class="nav-link">About</a>
+        <a href="about.html#contact" class="nav-link">Contact</a>
+        <div class="nav-mobile-ctas">
+          <a href="campaign.html#pledge" class="btn btn-terracotta btn-sm"
+            style="width: 100%; text-align: center;">Pledge Support</a>
+          <a href="support-us.html#membership" class="btn btn-secondary btn-sm"
+            style="width: 100%; text-align: center;">Become a Member (£10/£20)</a>
+        </div>
       </nav>
 
       <!-- Header Action Buttons -->
       <div class="header-cta-group">
         <a href="campaign.html#pledge" class="btn btn-terracotta btn-sm">Pledge Support</a>
         <a href="support-us.html#membership" class="btn btn-secondary btn-sm">Become a Member</a>
-        <button class="mobile-toggle" aria-label="Toggle navigation menu"
-          onclick="document.querySelector('.nav-desktop').classList.toggle('nav-mobile-open')">
+        <button class="mobile-toggle" aria-label="Toggle navigation menu" aria-expanded="false"
+          aria-controls="nav-desktop">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M4 6h16M4 12h16M4 18h16" />
           </svg>
@@ -92,11 +101,12 @@
     <!-- Hero Section -->
     <section class="hero-nt" id="overview">
       <div class="container hero-grid">
-        <div class="hero-text-col">
+        <div class="hero-text-col reveal-from-left">
           <span class="hero-kicker">Registered Charity No. 1013975 &bull; 256 Acres of Historic Common Land</span>
           <h1 class="hero-title">Protecting our historic commons for everyone, forever.</h1>
           <p class="hero-lead">
-            The Friends of Tunbridge Wells &amp; Rusthall Commons are a local registered charity working alongside the Commons Conservators to care for the Commons.
+            The Friends of Tunbridge Wells &amp; Rusthall Commons are a local registered charity working alongside the
+            Commons Conservators to care for the Commons.
           </p>
           <div class="hero-actions">
             <a href="campaign.html#pledge" class="btn btn-primary btn-lg">Pledge to Buy the Commons &rarr;</a>
@@ -104,12 +114,13 @@
           </div>
         </div>
 
-        <div class="hero-media-box">
+        <div class="hero-media-box reveal-from-right">
           <img src="assets/images/signpost.webp"
             alt="Historic fingerpost sign pointing towards Rusthall Common, Tunbridge Wells, and High Rocks" width="560"
             height="380">
           <div class="hero-media-caption">
-            <strong>Tunbridge Wells &amp; Rusthall Commons:</strong> 256 acres of connected common land, free and open to explore 365 days a year.
+            <strong>Tunbridge Wells &amp; Rusthall Commons:</strong> 256 acres of connected common land, free and open
+            to explore 365 days a year.
           </div>
         </div>
       </div>
@@ -118,7 +129,7 @@
     <!-- At a Glance Bar (National Trust Pattern) -->
     <section class="at-a-glance-bar" aria-label="Commons at a glance">
       <div class="container">
-        <div class="glance-grid">
+        <div class="glance-grid reveal-stagger">
           <div class="glance-cell">
             <div class="glance-label">Total Parkland</div>
             <div class="glance-value">256 Acres</div>
@@ -143,10 +154,43 @@
       </div>
     </section>
 
+    <!-- Who's Who: The Conservators & The Friends Distinction -->
+    <section class="who-we-are-section" style="padding: 2.75rem 0 0.5rem; background-color: var(--nt-sand-bg);">
+      <div class="container">
+        <div class="distinction-box reveal-fade-up" style="background: #ffffff; border: 1px solid var(--nt-border); padding: 2rem 2.25rem; box-shadow: 0 4px 16px rgba(0,0,0,0.03);">
+          <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem; flex-wrap: wrap;">
+            <span class="editorial-tag" style="background: var(--nt-green-light); color: var(--nt-green-deep); margin: 0; padding: 0.25rem 0.6rem; font-size: 0.72rem; letter-spacing: 0.08em;">Understanding Our Roles</span>
+            <span style="font-size: 0.85rem; color: var(--nt-muted); font-weight: 500;">Two separate organisations working together for the Commons</span>
+          </div>
+          <h2 style="font-family: var(--font-serif); font-size: 1.5rem; color: var(--nt-charcoal); margin-bottom: 1.25rem; line-height: 1.3;">
+            The Commons Conservators and The Friends &mdash; What&rsquo;s the difference?
+          </h2>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.75rem;">
+            <div style="border-left: 3px solid var(--nt-border); padding-left: 1.25rem;">
+              <span style="display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--nt-muted); margin-bottom: 0.35rem;">Statutory Management Body</span>
+              <h3 style="font-family: var(--font-serif); font-size: 1.15rem; color: var(--nt-charcoal); margin-bottom: 0.5rem;">The Commons Conservators</h3>
+              <p style="font-size: 0.92rem; color: var(--nt-muted); line-height: 1.6; margin: 0;">
+                Established under the <strong>1890 Tunbridge Wells Improvement Act</strong> and funded primarily by local council rates. They are the official management body responsible for statutory byelaws, paths, woodland maintenance, tree safety, and employing the Warden and Ranger team.
+              </p>
+              <a href="https://twcommons.org/" target="_blank" rel="noopener" style="display: inline-block; margin-top: 0.75rem; font-size: 0.82rem; font-weight: 600; color: var(--nt-green-deep);">Visit twcommons.org for Conservator bylaws &rarr;</a>
+            </div>
+            <div style="border-left: 3px solid var(--nt-green-deep); padding-left: 1.25rem; background: rgba(22, 56, 43, 0.02); border-radius: 0 4px 4px 0;">
+              <span style="display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--nt-green-deep); margin-bottom: 0.35rem;">Independent Charity (No. 1013975)</span>
+              <h3 style="font-family: var(--font-serif); font-size: 1.15rem; color: var(--nt-green-deep); margin-bottom: 0.5rem;">The Friends of the Commons</h3>
+              <p style="font-size: 0.92rem; color: var(--nt-muted); line-height: 1.6; margin: 0;">
+                Founded in <strong>1991</strong> by local residents after the Great Storm. We are an entirely independent charity of local members and volunteers. We raise charitable funds, host free guided nature walks, organise volunteer working parties, and are currently campaigning to buy the 256-acre freehold into community ownership.
+              </p>
+              <a href="about.html" style="display: inline-block; margin-top: 0.75rem; font-size: 0.82rem; font-weight: 600; color: var(--nt-green-deep);">Read about our history &amp; committee &rarr;</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Urgent Philosophy & Mission Section -->
     <section class="urgent-philosophy-section" id="philosophy">
       <div class="container">
-        <div class="editorial-callout">
+        <div class="editorial-callout reveal-fade-up">
           <span class="editorial-tag">The Threat &amp; Our Philosophy</span>
           <h2 class="editorial-heading">Keeping the Commons in the hands of the people for generations to come</h2>
 
@@ -171,13 +215,14 @@
                 no commercial interest can ever threaten free access, biodiversity, or the quiet solace of the commons.
               </p>
               <p style="margin-top: 1rem;">
-                Whether you walk your dog here every morning, bring your children to climb the rocks, or cherish the quiet
+                Whether you walk your dog here every morning, bring your children to climb the rocks, or cherish the
+                quiet
                 green space in the heart of our town, your voice and support will help keep the Commons safe forever.
               </p>
             </div>
           </div>
 
-          <div class="campaign-pledge-action-strip">
+          <div class="campaign-pledge-action-strip reveal-fade-up">
             <div class="campaign-badge-clean">
               Featured in The Guardian, BBC News, and The Telegraph.
             </div>
@@ -190,14 +235,96 @@
       </div>
     </section>
 
+    <!-- What The Friends Do: Practical Community Action -->
+    <section class="objects-section" style="padding: 3.5rem 0;">
+      <div class="container">
+        <div class="section-intro-header reveal-fade-up" style="margin-bottom: 2rem;">
+          <span class="section-kicker">Charity in Action &bull; Registered Charity No. 1013975</span>
+          <h2 class="section-title">What The Friends Do</h2>
+          <p style="color: var(--nt-muted); margin-top: 0.5rem; font-size: 1rem; max-width: 800px;">
+            We are a community of local residents and volunteers working year-round to care for the Commons, bring people together in nature, and secure the land in permanent community ownership:
+          </p>
+        </div>
+
+        <div class="objects-grid reveal-stagger">
+          <div class="object-card reveal-fade-up">
+            <div class="object-card-media">
+              <img src="assets/images/saturday.webp"
+                alt="Community volunteers on a Saturday conservation working party on the Common" width="400"
+                height="155" loading="lazy">
+            </div>
+            <div class="object-card-header">
+              <span class="object-num">Action 01</span>
+              <span class="object-tag">Conservation</span>
+            </div>
+            <h3 class="object-title">Practical Conservation &amp; Working Parties</h3>
+            <p class="object-body">
+              We roll up our sleeves on regular Saturday mornings to clear invasive scrub, cut back bracken, restore pathways, and protect fragile sandstone crags and pond ecosystems alongside the Ranger.
+            </p>
+            <div class="object-features">
+              <span class="object-pill">Volunteer Mornings</span>
+              <span class="object-pill">Habitat Care</span>
+              <span class="object-pill">Tool Funding</span>
+            </div>
+          </div>
+
+          <div class="object-card reveal-fade-up">
+            <div class="object-card-media">
+              <img src="assets/images/wildlife-walk.webp"
+                alt="Community members and nature guides on an educational wildlife walk" width="400" height="155"
+                loading="lazy">
+            </div>
+            <div class="object-card-header">
+              <span class="object-num">Action 02</span>
+              <span class="object-tag">Community &amp; Nature</span>
+            </div>
+            <h3 class="object-title">Guided Walks &amp; Nature Discovery</h3>
+            <p class="object-body">
+              We connect residents of all ages with our natural heritage through free expert-led guided walks &mdash; from spring dawn chorus birdwatching and bat walks to geology tours and autumn fungus forays.
+            </p>
+            <div class="object-features">
+              <span class="object-pill">Free Guided Walks</span>
+              <span class="object-pill">Wildlife Tracking</span>
+              <span class="object-pill">Local Heritage</span>
+            </div>
+          </div>
+
+          <div class="object-card reveal-fade-up">
+            <div class="object-card-media">
+              <img src="assets/images/march/march-community-rally.webp"
+                alt="Local community and families rallying for community ownership of the Commons" width="400" height="155"
+                loading="lazy">
+            </div>
+            <div class="object-card-header">
+              <span class="object-num">Action 03</span>
+              <span class="object-tag">Community Bid</span>
+            </div>
+            <h3 class="object-title">Securing Freehold Community Ownership</h3>
+            <p class="object-body">
+              We are rallying over 3,000 residents and raising charitable funds to acquire the 256-acre freehold, guaranteeing that no commercial interest or developer can ever compromise our shared green space.
+            </p>
+            <div class="object-features">
+              <span class="object-pill">Community Ownership</span>
+              <span class="object-pill">Free Access Forever</span>
+              <span class="object-pill">Charitable Trust</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 2rem;" class="reveal-fade-up">
+          <a href="about.html" class="btn btn-secondary btn-sm">Read Our Story &amp; Charity Constitution &rarr;</a>
+        </div>
+      </div>
+    </section>
+
     <!-- Self-Contained National Trust Accordions -->
     <section class="container accordion-wrapper">
-      <div class="section-intro-header">
+      <div class="section-intro-header reveal-fade-up">
         <span class="section-kicker">Information &amp; Guidance</span>
         <h2 class="section-title">Everything you need to know</h2>
       </div>
 
-      <div class="nt-accordion-group">
+      <div class="nt-accordion-group reveal-stagger">
 
         <!-- Accordion 1: Explore & Geological Wonders -->
         <details class="nt-accordion-item" id="explore-rocks" open>
@@ -211,41 +338,37 @@
           </summary>
           <div class="nt-accordion-body">
             <div class="content-two-col">
-              <div class="prose">
-                <p>
-                  Tunbridge Wells and Rusthall Commons feature some of the most striking natural rock formations in
-                  southern England. Sculpted over 135 million years from Ardingly sandstone, these immense rock clusters
-                  have captured imaginations for centuries.
-                </p>
-                <h4>Principal Landmarks</h4>
-                <ul class="clean-list">
-                  <li><strong>Wellington Rocks:</strong> Massive sandstone outcrops on Tunbridge Wells Common, popular
-                    with families, climbers, and artists.</li>
-                  <li><strong>Toad Rock:</strong> A famous natural rock formation resembling a giant toad, located on
-                    Rusthall Common.</li>
-                  <li><strong>Happy Valley &amp; The 101 Steps:</strong> A steep wooded ravine with ancient stone steps leading through
-                    tranquil canopy.</li>
-                  <li><strong>Mount Edgcumbe:</strong> Historic high ground offering panoramic
-                    views across the town and High Weald.</li>
-                </ul>
-                <p>
-                  All 256 acres are entirely free to explore at all times. Download our free illustrated trail maps or
-                  join our regular guided walks.
-                </p>
+              <div class="prose" style="display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                  <p>
+                    Tunbridge Wells and Rusthall Commons feature some of the most striking natural rock formations in
+                    southern England. Sculpted over 135 million years from Ardingly sandstone, these immense rock clusters
+                    have captured imaginations for centuries.
+                  </p>
+                  <h4 style="margin-top: 1rem; margin-bottom: 0.5rem;">Principal Landmarks &amp; Features</h4>
+                  <ul class="clean-list" style="margin-bottom: 1rem;">
+                    <li><strong>Wellington Rocks:</strong> Iconic sandstone outcrops on Tunbridge Wells Common, popular with climbers and families.</li>
+                    <li><strong>Toad Rock:</strong> Famous natural curiosity on Rusthall Common sculpted by wind and ice.</li>
+                    <li><strong>Happy Valley &amp; 101 Steps:</strong> Steep wooded ravine with historic steps through ancient woodland canopy.</li>
+                    <li><strong>Mount Edgcumbe:</strong> Elevated viewpoint offering panoramic views across the town and High Weald.</li>
+                  </ul>
+                  <p style="font-size: 0.92rem; color: var(--nt-muted); margin-bottom: 0;">
+                    All 256 acres are free and open to explore 365 days a year.
+                  </p>
+                </div>
                 <div style="margin-top: 1.25rem;">
-                  <a href="explore.html" class="btn btn-secondary btn-sm">View Interactive Maps &amp; Trails &rarr;</a>
+                  <a href="explore.html" class="btn btn-secondary btn-sm" style="width: 100%; text-align: center;">View Interactive Maps &amp; Trails &rarr;</a>
                 </div>
               </div>
+
               <div class="sharp-card-box">
-                <img src="assets/images/crocodile.webp" alt="Sandstone rock outcrop known as Crocodile Rock" width="400"
-                  height="220">
-                <div class="sharp-card-title">Ancient Ardingly Sandstone</div>
-                <div class="sharp-card-desc">
-                  Wind, water, and ice carved these formations during the Pleistocene epoch. They host rare mosses,
-                  lichens, and solitary bee colonies found nowhere else in the district.
+                <img src="assets/images/crocodile.webp" alt="Sandstone rock outcrop known as Crocodile Rock on Rusthall Common" width="400"
+                  height="200" loading="lazy">
+                <div class="sharp-card-title">Ancient Ardingly Sandstone &amp; Ecology</div>
+                <div class="sharp-card-desc" style="flex-grow: 1;">
+                  Wind, water, and periglacial ice carved these dramatic formations during the Pleistocene epoch. The porous rock faces create a unique microclimate supporting rare mosses, lichens, and solitary bee colonies found nowhere else in the district.
                 </div>
-                <a href="explore.html#geology" class="btn btn-secondary btn-sm" style="width: 100%;">Geology Field
-                  Guide</a>
+                <a href="explore.html#geology" class="btn btn-secondary btn-sm" style="width: 100%; text-align: center; margin-top: auto;">Explore Geology Field Guide &rarr;</a>
               </div>
             </div>
           </div>
@@ -287,8 +410,9 @@
                 </div>
               </div>
               <div class="sharp-card-box">
-                <img src="assets/images/march/march-community-rally.webp" alt="Local community march supporting the Commons buyout bid"
-                  width="400" height="220" style="object-fit: cover;">
+                <img src="assets/images/march/march-community-rally.webp"
+                  alt="Local community march supporting the Commons community purchase bid" width="400" height="220"
+                  style="object-fit: cover;">
                 <span class="photo-credit">Photo: Kelly Wilcox &bull; March for the Commons, 21 March 2026</span>
                 <div class="sharp-card-title" style="margin-top: 0.5rem;">Over 3,000 Backers</div>
                 <div class="sharp-card-desc">
@@ -307,7 +431,8 @@
           <summary class="nt-accordion-summary">
             <div class="summary-heading-box">
               <span class="summary-title">How You Can Help: Pledge, Membership &amp; Volunteering</span>
-              <span class="summary-subtext">Back the buyout fund, join as an annual member, or volunteer on the
+              <span class="summary-subtext">Back the land acquisition fund, join as an annual member, or volunteer on
+                the
                 land</span>
             </div>
             <span class="summary-icon" aria-hidden="true">+</span>
@@ -316,7 +441,8 @@
             <div class="content-two-col">
               <div class="prose">
                 <p>
-                  Every pledge and membership strengthens our hand. We need supporters from across the community to demonstrate
+                  Every pledge and membership strengthens our hand. We need supporters from across the community to
+                  demonstrate
                   that these historic commons are cherished and protected.
                 </p>
                 <h4>Clear Ways to Take Action</h4>
@@ -337,7 +463,8 @@
                   alt="Volunteers and nature enthusiasts on a guided wildlife walk" width="400" height="220">
                 <div class="sharp-card-title">Community Conservation Impact</div>
                 <div class="sharp-card-desc">
-                  Charity membership and donations fund on-the-ground habitat restoration, boardwalk repairs, and wildlife protection.
+                  Charity membership and donations fund on-the-ground habitat restoration, boardwalk repairs, and
+                  wildlife protection.
                 </div>
                 <a href="about.html#governance" class="btn btn-secondary btn-sm" style="width: 100%;">View Governance
                   &amp; Accounts</a>
@@ -398,16 +525,13 @@
 
     <!-- Support & Pledge Panel (National Trust Pattern Box) -->
     <section class="container" id="pledge-section">
-      <div class="pledge-panel">
+      <div class="pledge-panel reveal-fade-up">
         <div class="pledge-panel-grid">
-          <div>
-            <span class="urgent-tag" style="background: rgba(0,0,0,0.3); margin-bottom: 0.75rem;">Support The
-              Buyout</span>
+          <div class="reveal-from-left">
+            <span class="urgent-tag" style="background: rgba(0,0,0,0.3); margin-bottom: 0.75rem;">Support Our Work</span>
             <h2>Take your place in protecting the commons</h2>
             <p>
-              Your pledge is a formal pledge of intent to support our community bid to purchase the freehold of
-              Tunbridge Wells and Rusthall Commons. Funds will only be requested when the sale to the community is
-              legally confirmed.
+              The Friends are an independent, volunteer-led charity dedicated to caring for the Commons, funding conservation work, running guided community walks, and leading the historic bid to secure the 256-acre freehold in public ownership. Whether you make a pledge, join as an annual member, or make a one-off donation, every contribution directly protects this precious landscape.
             </p>
             <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
               <a href="campaign.html#pledge" class="btn btn-terracotta btn-lg">Make a Bid Pledge Now &rarr;</a>
@@ -415,11 +539,11 @@
             </div>
           </div>
 
-          <div class="pledge-cards-grid">
+          <div class="pledge-cards-grid reveal-from-right reveal-stagger">
             <a href="campaign.html#pledge" class="pledge-option-card">
               <div>
                 <span class="opt-title">Community Bid Pledge</span>
-                <span class="opt-sub">Pledge £50, £100, £500, or more to the acquisition fund.</span>
+                <span class="opt-sub">Pledge £20, £50, £100, £250, or more to the acquisition fund.</span>
               </div>
               <span style="font-size: 1.25rem; font-weight: bold;">&rarr;</span>
             </a>
@@ -446,26 +570,30 @@
 
   </main>
 
-    <!-- Clean Editorial Footer -->
+  <!-- Clean Editorial Footer -->
   <footer class="site-footer" role="contentinfo">
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
           <div class="footer-brand-header">
-            <img src="assets/images/logo-alpha.webp" alt="Friends of the Commons Logo" class="footer-brand-logo" width="60" height="60" loading="lazy" decoding="async">
+            <img src="assets/images/logo-alpha.webp" alt="Friends of the Commons Logo" class="footer-brand-logo"
+              width="60" height="60" loading="lazy" decoding="async">
             <div class="footer-brand-title-wrap">
               <span class="footer-brand-title">Friends of the Commons</span>
               <span class="footer-brand-sub">Tunbridge Wells &amp; Rusthall</span>
             </div>
           </div>
           <p>
-            The Friends of Tunbridge Wells and Rusthall Commons is an independent registered charity (No. 1013975) dedicated to fundraising, community ownership, and protecting 256 acres of historic common land.
+            The Friends of Tunbridge Wells and Rusthall Commons is an independent registered charity (No. 1013975)
+            dedicated to fundraising, community ownership, and protecting 256 acres of historic common land.
           </p>
           <p style="margin-top: 0.75rem; font-size: 0.8rem; color: #8c9b93;">
-            Working in active partnership with <strong>The Commons Conservators</strong>, the statutory management body under the 1890 Act.
+            Working in active partnership with <strong>The Commons Conservators</strong>, the statutory management body
+            under the 1890 Act.
           </p>
           <div style="margin-top: 0.75rem;">
-            <a href="https://twcommons.org/" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 0.35rem; color: #9ee0b8; font-size: 0.82rem; font-weight: 600; text-decoration: none;">
+            <a href="https://twcommons.org/" target="_blank" rel="noopener"
+              style="display: inline-flex; align-items: center; gap: 0.35rem; color: #9ee0b8; font-size: 0.82rem; font-weight: 600; text-decoration: none;">
               <span>Statutory byelaws &amp; Conservator minutes at twcommons.org</span> &rarr;
             </a>
           </div>
@@ -474,16 +602,20 @@
           <div class="footer-social-wrap">
             <span class="footer-social-label">Follow our community</span>
             <div class="footer-social-links">
-              <a href="https://www.facebook.com/friendsofthecommons/" target="_blank" rel="noopener" class="footer-social-btn" aria-label="Follow Friends of the Commons on Facebook">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+              <a href="https://www.facebook.com/friendsofthecommons/" target="_blank" rel="noopener"
+                class="footer-social-btn" aria-label="Follow Friends of the Commons on Facebook">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path
+                    d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                </svg>
                 <span>Facebook</span>
               </a>
-              <a href="https://www.instagram.com/friendsofthecommon/" target="_blank" rel="noopener" class="footer-social-btn" aria-label="Follow Friends of the Commons on Instagram">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                <span>Facebook</span>
-              </a>
-              <a href="https://www.instagram.com/friendsofthecommon/" target="_blank" rel="noopener" class="footer-social-btn" aria-label="Follow Friends of the Commons on Instagram">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+              <a href="https://www.instagram.com/friendsofthecommon/" target="_blank" rel="noopener"
+                class="footer-social-btn" aria-label="Follow Friends of the Commons on Instagram">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path
+                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                </svg>
                 <span>Instagram</span>
               </a>
             </div>
@@ -507,10 +639,14 @@
           <h5>Contact &amp; Legal</h5>
           <ul class="footer-links">
             <li><a href="about.html#contact">Contact Trustees &amp; Secretary</a></li>
+            <li><a href="legacy.html">Leave a Gift in Your Will (Legacies)</a></li>
             <li><a href="campaign.html#pledge-privacy">Pledge Data Privacy Notice</a></li>
-            <li><a href="assets/docs/objects-and-rules.pdf" target="_blank">Charity Constitution &amp; Rules (PDF)</a></li>
+            <li><a href="assets/docs/objects-and-rules.pdf" target="_blank">Charity Constitution &amp; Rules (PDF)</a>
+            </li>
             <li><a href="assets/docs/safeguarding-policy.pdf" target="_blank">Safeguarding Policy (PDF)</a></li>
-            <li><a href="comms-guide.html">Communications Handover Guide</a></li>
+            <li><a
+                href="https://register-of-charities.charitycommission.gov.uk/charity-search/-/charity-details/1013975"
+                target="_blank" rel="noopener">Charity Commission Register (No. 1013975)</a></li>
           </ul>
         </div>
       </div>
@@ -534,6 +670,13 @@
       });
     }
   </script>
+  <!-- Floating Quick Contact Button -->
+  <a href="about.html#contact" class="floating-contact-btn" aria-label="Contact Friends of the Commons">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+    </svg>
+    <span>Contact Us</span>
+  </a>
 </body>
 
 </html>
