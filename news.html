@@ -21,18 +21,22 @@
   <link rel="manifest" href="site.webmanifest">
   <meta name="theme-color" content="#133926">
 
+  <!-- Preload LCP Top Story Image -->
+  <link rel="preload" as="image" href="assets/images/march/march-community-rally-600.webp" media="(max-width: 600px)" type="image/webp" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/images/march/march-community-rally.webp" media="(min-width: 601px)" type="image/webp" fetchpriority="high">
+
   <!-- Stylesheets -->
   <link rel="stylesheet" href="assets/css/nt-style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload" as="style"
-    href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap">
+    href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;800&family=Inter:wght@400;500;600;700&display=optional">
   <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;800&family=Inter:wght@400;500;600;700&display=optional"
     media="print" onload="this.media='all'">
   <noscript>
     <link rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap">
+      href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;800&family=Inter:wght@400;500;600;700&display=optional">
   </noscript>
 </head>
 <body>
@@ -54,7 +58,7 @@
   <header class="site-header" role="banner">
     <div class="container header-inner">
       <a href="index.html" class="brand-link">
-        <img src="assets/images/logo-alpha.webp" alt="" aria-hidden="true" class="brand-logo" width="50" height="54">
+        <img src="assets/images/logo-alpha.webp" alt="" aria-hidden="true" class="brand-logo" width="50" height="50">
         <div class="brand-title-wrap">
           <span class="brand-title">Friends of the Commons</span>
           <span class="brand-sub">Tunbridge Wells &amp; Rusthall</span>
@@ -92,7 +96,7 @@
 
     <!-- Page Header Banner -->
     <section class="page-header-nt">
-      <div class="container reveal-fade-up">
+      <div class="container">
         <span class="page-kicker">News, Field Reports &amp; Campaign Updates</span>
         <h1 class="page-title">Commons News &amp; Stories</h1>
         <p class="page-lead">
@@ -104,7 +108,7 @@
     <!-- News Articles Grid Section -->
     <section style="padding: 3.5rem 0;">
       <div class="container">
-        <div class="section-intro-header reveal-fade-up">
+        <div class="section-intro-header">
           <span class="section-kicker">Latest Announcements &amp; Reports</span>
           <h2 class="section-title">News from The Friends of the Commons</h2>
         </div>
@@ -117,12 +121,17 @@
              - To Edit a Story: Modify the card text below and the corresponding page in the /news/ folder.
              ========================================================================== -->
 
-        <div class="grid-2 reveal-stagger" style="margin-bottom: 3.5rem;">
+        <div class="grid-2" style="margin-bottom: 3.5rem;">
           
           <!-- Article 1: Campaign Update & Remarketing -->
           <article class="sharp-card">
             <div class="sharp-card-img-wrap">
-              <img src="assets/images/march/march-community-rally.webp" alt="Community members rallying for the Commons" width="550" height="260" style="height: 240px; width: 100%; object-fit: cover;">
+              <img src="assets/images/march/march-community-rally.webp"
+                srcset="assets/images/march/march-community-rally-600.webp 600w, assets/images/march/march-community-rally.webp 1200w"
+                sizes="(max-width: 600px) 100vw, 550px"
+                alt="Community members rallying for the Commons" width="550" height="260"
+                fetchpriority="high" decoding="async"
+                style="height: 240px; width: 100%; object-fit: cover;">
             </div>
             <div class="sharp-card-content">
               <span class="photo-credit" style="margin-bottom: 0.5rem;">Photo: Kelly Wilcox &bull; March for the Commons (21 March 2026)</span>
@@ -142,7 +151,7 @@
           <!-- Article 2: Full Message from Chair Roger -->
           <article class="sharp-card">
             <div class="sharp-card-img-wrap">
-              <img src="assets/images/roger-john-nick.webp" alt="Our Chair, Roger, and Friends of the Commons trustees on Tunbridge Wells Common" width="550" height="260" style="height: 240px; width: 100%; object-fit: cover;">
+              <img src="assets/images/roger-john-nick.webp" alt="Our Chair, Roger, and Friends of the Commons trustees on Tunbridge Wells Common" width="550" height="260" loading="lazy" decoding="async" style="height: 240px; width: 100%; object-fit: cover;">
             </div>
             <div class="sharp-card-content" style="background-color: var(--nt-surface-alt);">
               <span class="photo-credit" style="margin-bottom: 0.5rem;">Photograph: Graeme Robertson/The Guardian</span>
@@ -165,7 +174,7 @@
           <!-- Article 3: Council Statement -->
           <article class="sharp-card">
             <div class="sharp-card-img-wrap">
-              <img src="assets/images/march/march-crowd-pantiles.webp" alt="Community march proceeding through The Pantiles" width="550" height="260" style="height: 240px; width: 100%; object-fit: cover;">
+              <img src="assets/images/march/march-crowd-pantiles.webp" alt="Community march proceeding through The Pantiles" width="550" height="260" loading="lazy" decoding="async" style="height: 240px; width: 100%; object-fit: cover;">
             </div>
             <div class="sharp-card-content">
               <span class="photo-credit" style="margin-bottom: 0.5rem;">Photo: Kelly Wilcox &bull; March for the Commons (21 March 2026)</span>
@@ -188,7 +197,7 @@
           <!-- Article 4: 2026 Annual General Meeting & Minutes -->
           <article class="sharp-card">
             <div class="sharp-card-img-wrap">
-              <img src="assets/images/march/march-dogs-support.webp" alt="Members and supporters backing the Commons" width="550" height="260" style="height: 240px; width: 100%; object-fit: cover;">
+              <img src="assets/images/march/march-dogs-support.webp" alt="Members and supporters backing the Commons" width="550" height="260" loading="lazy" decoding="async" style="height: 240px; width: 100%; object-fit: cover;">
             </div>
             <div class="sharp-card-content">
               <span class="photo-credit" style="margin-bottom: 0.5rem;">Photo: Kelly Wilcox &bull; March for the Commons (21 March 2026)</span>
