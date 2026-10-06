@@ -3,7 +3,7 @@
  * Main Client-side Interactive Script
  */
 
-document.addEventListener('DOMContentLoaded', () => {
+function initAll() {
   initHeader();
   initMobileNav();
   initFaqAccordion();
@@ -16,7 +16,13 @@ document.addEventListener('DOMContentLoaded', () => {
   initDirectDebitPopups();
   initScrollAnimations();
   initQuoteSlider();
-});
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initAll);
+} else {
+  initAll();
+}
 
 /* Auto-open <details> accordions when targeted by hash link */
 function initDetailsHashAnchor() {

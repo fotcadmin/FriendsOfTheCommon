@@ -43,8 +43,6 @@
     <link rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap">
   </noscript>
-  <!-- Netlify Identity Widget for Decap CMS (deferred to prevent render-blocking) -->
-  <script defer src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 
 <body>
@@ -673,17 +671,22 @@
 
   <script src="assets/js/main.js" defer></script>
   <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      if (window.netlifyIdentity) {
-        window.netlifyIdentity.on("init", user => {
-          if (!user) {
-            window.netlifyIdentity.on("login", () => {
-              document.location.href = "/admin/";
-            });
-          }
-        });
-      }
-    });
+    if (window.location.hash && window.location.hash.includes("_token")) {
+      var s = document.createElement("script");
+      s.src = "https://identity.netlify.com/v1/netlify-identity-widget.js";
+      s.onload = function() {
+        if (window.netlifyIdentity) {
+          window.netlifyIdentity.on("init", function(user) {
+            if (!user) {
+              window.netlifyIdentity.on("login", function() {
+                document.location.href = "/admin/";
+              });
+            }
+          });
+        }
+      };
+      document.head.appendChild(s);
+    }
   </script>
   <!-- Floating Quick Contact Button -->
   <a href="about.html#contact" class="floating-contact-btn">
