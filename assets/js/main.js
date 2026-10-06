@@ -776,7 +776,11 @@ function initQuoteSlider() {
       dots.forEach((dot, idx) => {
         const isActive = idx === currentIndex;
         dot.classList.toggle('is-active', isActive);
-        dot.setAttribute('aria-selected', isActive);
+        if (isActive) {
+          dot.setAttribute('aria-current', 'true');
+        } else {
+          dot.removeAttribute('aria-current');
+        }
       });
 
       resetAutoPlay();

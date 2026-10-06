@@ -88,8 +88,8 @@
       <div class="header-cta-group">
         <a href="#pledge" class="btn btn-terracotta btn-sm">Pledge Support</a>
         <a href="support-us.html#membership" class="btn btn-secondary btn-sm">Become a Member</a>
-        <button class="mobile-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-desktop">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <button type="button" class="mobile-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-desktop">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false">
             <path d="M4 6h16M4 12h16M4 18h16" />
           </svg>
         </button>
@@ -338,12 +338,11 @@
           </div>
 
           <div class="single-quote-slider" data-quote-slider>
-            <div class="quote-slide-viewport" tabindex="0" role="region"
-              aria-label="Endorsement quote carousel (swipe or click arrows to view next quote)">
+            <div class="quote-slide-viewport" aria-live="polite">
               <div class="quote-slide-track">
                 <!-- Slide 1: Jenny Scholfield (Woodland Trust) -->
-                <article class="quote-slide-item is-active" id="quote-slide-0" data-index="0" role="tabpanel"
-                  aria-labelledby="quote-dot-0" aria-label="1 of 3">
+                <div class="quote-slide-item is-active" id="quote-slide-0" data-index="0"
+                  role="group" aria-roledescription="slide" aria-label="Quote 1 of 3: Jenny Scholfield">
                   <div class="single-quote-card">
                     <div class="single-quote-card-header">
                       <div class="quote-icon" aria-hidden="true">&ldquo;</div>
@@ -362,11 +361,11 @@
                       </div>
                     </div>
                   </div>
-                </article>
+                </div>
 
                 <!-- Slide 2: Mike Martin MP -->
-                <article class="quote-slide-item" id="quote-slide-1" data-index="1" role="tabpanel"
-                  aria-labelledby="quote-dot-1" aria-label="2 of 3" aria-hidden="true">
+                <div class="quote-slide-item" id="quote-slide-1" data-index="1"
+                  role="group" aria-roledescription="slide" aria-label="Quote 2 of 3: Mike Martin" aria-hidden="true">
                   <div class="single-quote-card">
                     <div class="single-quote-card-header">
                       <div class="quote-icon" aria-hidden="true">&ldquo;</div>
@@ -385,11 +384,11 @@
                       </div>
                     </div>
                   </div>
-                </article>
+                </div>
 
                 <!-- Slide 3: Dale Vince OBE -->
-                <article class="quote-slide-item" id="quote-slide-2" data-index="2" role="tabpanel"
-                  aria-labelledby="quote-dot-2" aria-label="3 of 3" aria-hidden="true">
+                <div class="quote-slide-item" id="quote-slide-2" data-index="2"
+                  role="group" aria-roledescription="slide" aria-label="Quote 3 of 3: Dale Vince" aria-hidden="true">
                   <div class="single-quote-card">
                     <div class="single-quote-card-header">
                       <div class="quote-icon" aria-hidden="true">&ldquo;</div>
@@ -408,7 +407,7 @@
                       </div>
                     </div>
                   </div>
-                </article>
+                </div>
               </div>
             </div>
 
@@ -416,24 +415,24 @@
             <div class="quote-slider-controls">
               <button type="button" class="quote-nav-btn quote-prev-btn" aria-label="Previous quote">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
                   <line x1="19" y1="12" x2="5" y2="12"></line>
                   <polyline points="12 19 5 12 12 5"></polyline>
                 </svg>
               </button>
 
-              <div class="quote-dots-wrap" role="tablist" aria-label="Endorsement quote slides">
-                <button type="button" class="quote-dot is-active" id="quote-dot-0" role="tab" aria-selected="true"
-                  aria-controls="quote-slide-0" aria-label="Quote 1: Jenny Scholfield" data-index="0"></button>
-                <button type="button" class="quote-dot" id="quote-dot-1" role="tab" aria-selected="false"
-                  aria-controls="quote-slide-1" aria-label="Quote 2: Mike Martin" data-index="1"></button>
-                <button type="button" class="quote-dot" id="quote-dot-2" role="tab" aria-selected="false"
-                  aria-controls="quote-slide-2" aria-label="Quote 3: Dale Vince" data-index="2"></button>
+              <div class="quote-dots-wrap" role="group" aria-label="Choose quote to display">
+                <button type="button" class="quote-dot is-active" id="quote-dot-0"
+                  aria-label="Show quote 1: Jenny Scholfield" aria-current="true" data-index="0"></button>
+                <button type="button" class="quote-dot" id="quote-dot-1"
+                  aria-label="Show quote 2: Mike Martin" data-index="1"></button>
+                <button type="button" class="quote-dot" id="quote-dot-2"
+                  aria-label="Show quote 3: Dale Vince" data-index="2"></button>
               </div>
 
               <button type="button" class="quote-nav-btn quote-next-btn" aria-label="Next quote">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
                   <line x1="5" y1="12" x2="19" y2="12"></line>
                   <polyline points="12 5 19 12 12 19"></polyline>
                 </svg>
@@ -462,7 +461,7 @@
 
           <!-- Live Tally Form Embed (Unlimited Free Submissions, GDPR Compliant) -->
           <div class="tally-form-embed-wrapper" style="width: 100%; min-height: 480px; margin-top: 1rem;">
-            <iframe data-tally-src="https://tally.so/embed/D4lJgj?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="800" frameborder="0" marginheight="0" marginwidth="0" title="Friends of the Commons — Land Acquisition Pledge"></iframe>
+            <iframe src="https://tally.so/embed/D4lJgj?alignLeft=1&amp;hideTitle=1&amp;transparentBackground=1&amp;dynamicHeight=1" data-tally-src="https://tally.so/embed/D4lJgj?alignLeft=1&amp;hideTitle=1&amp;transparentBackground=1&amp;dynamicHeight=1" loading="lazy" width="100%" height="800" frameborder="0" marginheight="0" marginwidth="0" title="Friends of the Commons — Land Acquisition Pledge"></iframe>
           </div>
           <script>
             var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}
@@ -858,7 +857,7 @@
           </p>
           <div style="margin-top: 1.25rem; display: flex; gap: 1rem; flex-wrap: wrap;">
             <a href="assets/docs/sales-brochure.pdf" target="_blank" rel="noopener" class="btn btn-secondary btn-sm">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 0.35rem;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 0.35rem;" aria-hidden="true" focusable="false"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
               BNP Paribas Estate Sales Brochure (PDF - 3.8 MB)
             </a>
             <a href="about.html#contact" class="btn btn-primary btn-sm">
