@@ -27,6 +27,7 @@
   /* Typography */
   --font-serif: "Frank Ruhl Libre", "Merriweather", Georgia, "Times New Roman", serif;
   --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-condensed: "Roboto Condensed", "Arial Narrow", -apple-system, sans-serif;
 
   /* Zero rounded corners - sharp, authoritative heritage geometry */
   --radius-sharp: 0px;
@@ -125,10 +126,11 @@ a:hover {
 }
 
 .urgent-tag {
+  font-family: var(--font-condensed);
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  font-size: 0.72rem;
+  font-size: 0.76rem;
   background: rgba(0, 0, 0, 0.25);
   padding: 0.2rem 0.5rem;
   border-radius: 2px;
@@ -207,7 +209,7 @@ a:hover {
 
 .brand-title {
   font-family: var(--font-serif);
-  font-size: 1.35rem;
+  font-size: 1.16rem;
   font-weight: 700;
   line-height: 1.15;
   color: var(--nt-green-deep);
@@ -216,12 +218,11 @@ a:hover {
 }
 
 .brand-sub {
-  font-size: 0.75rem;
-  color: #55625a;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-weight: 600;
-  line-height: 1.3;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  color: #2b3930;
+  font-weight: 700;
+  line-height: 1.25;
   margin-top: 0.15rem;
   white-space: nowrap;
 }
@@ -415,6 +416,7 @@ a:hover {
 .hero-title {
   font-family: var(--font-serif);
   font-size: 2.75rem;
+  font-weight: 800;
   line-height: 1.15;
   color: var(--nt-green-deep);
   margin-bottom: 1.25rem;
@@ -570,7 +572,8 @@ a:hover {
 }
 
 .editorial-tag {
-  font-size: 0.75rem;
+  font-family: var(--font-condensed);
+  font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -613,9 +616,11 @@ a:hover {
 }
 
 .campaign-badge-clean {
-  font-size: 0.9rem;
-  font-weight: 600;
+  font-family: var(--font-condensed);
+  font-size: 0.92rem;
+  font-weight: 700;
   color: var(--nt-green-deep);
+  letter-spacing: 0.03em;
 }
 
 /* National Trust Accordions / Collapsible Sections */
@@ -628,7 +633,8 @@ a:hover {
 }
 
 .section-kicker {
-  font-size: 0.75rem;
+  font-family: var(--font-condensed);
+  font-size: 0.82rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;
   font-weight: 700;
@@ -891,7 +897,7 @@ details[open] .summary-icon {
 
 .sharp-card-box img {
   width: 100%;
-  height: 200px;
+  height: 275px;
   object-fit: cover;
   border: 1px solid var(--nt-border);
   margin-bottom: 0.85rem;
@@ -899,16 +905,108 @@ details[open] .summary-icon {
 
 .sharp-card-title {
   font-family: var(--font-serif);
-  font-size: 1.1rem;
+  font-size: 1.15rem;
+  font-weight: 700;
   color: var(--nt-charcoal);
   margin-bottom: 0.35rem;
 }
 
 .sharp-card-desc {
-  font-size: 0.85rem;
+  font-size: 0.88rem;
   color: var(--nt-muted);
-  line-height: 1.5;
+  line-height: 1.55;
   margin-bottom: 1rem;
+}
+
+/* Campaign Subtitles in Roboto Condensed Bold */
+.campaign-subtitle {
+  font-family: var(--font-condensed);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.85rem;
+  color: var(--nt-terracotta);
+}
+
+/* Full-Width Photo Break across site */
+.photo-break-fullwidth {
+  width: 100%;
+  margin: 2rem 0 2.5rem 0;
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid var(--nt-border);
+  border-bottom: 1px solid var(--nt-border);
+  background: var(--nt-sand);
+}
+
+.photo-break-fullwidth img {
+  width: 100%;
+  height: 380px;
+  object-fit: cover;
+  display: block;
+}
+
+.photo-break-caption {
+  position: absolute;
+  bottom: 0.75rem;
+  right: 1.25rem;
+  font-size: 0.75rem;
+  color: #ffffff;
+  background: rgba(0, 0, 0, 0.55);
+  padding: 0.25rem 0.65rem;
+  backdrop-filter: blur(4px);
+  font-style: italic;
+  letter-spacing: 0.02em;
+}
+
+/* Mission Statement & Purpose Feature Box on Home */
+.mission-purpose-strip {
+  background: #ffffff;
+  border: 1px solid var(--nt-border);
+  padding: 2.25rem 2.5rem;
+  margin: 1.5rem 0 2.5rem 0;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+}
+
+.mission-purpose-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+}
+
+.mission-purpose-item {
+  border-left: 3px solid var(--nt-green-deep);
+  padding-left: 1.25rem;
+}
+
+.mission-purpose-label {
+  font-family: var(--font-condensed);
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--nt-green-light);
+  margin-bottom: 0.35rem;
+  display: block;
+}
+
+.mission-purpose-text {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.45;
+  color: var(--nt-charcoal);
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .mission-purpose-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .photo-break-fullwidth img {
+    height: 240px;
+  }
 }
 
 /* Compact Support / Pledge Box */
@@ -1066,17 +1164,20 @@ details[open] .summary-icon {
 
 .footer-brand-title {
   font-family: var(--font-serif);
-  font-size: 1.35rem;
+  font-size: 1.16rem;
+  font-weight: 700;
   color: #ffffff;
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.15rem;
   line-height: 1.2;
 }
 
 .footer-brand-sub {
-  font-size: 0.72rem;
-  color: #8c9b93;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  color: #a4b8ad;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.05em;
 }
 
 .footer-brand h4 {
@@ -1380,7 +1481,8 @@ details[open] .summary-icon {
 }
 
 .page-kicker {
-  font-size: 0.75rem;
+  font-family: var(--font-condensed);
+  font-size: 0.82rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;
   font-weight: 700;
@@ -1479,7 +1581,8 @@ details[open] .summary-icon {
 }
 
 .sharp-card-tag {
-  font-size: 0.75rem;
+  font-family: var(--font-condensed);
+  font-size: 0.8rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;

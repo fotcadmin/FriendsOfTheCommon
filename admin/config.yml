@@ -57,12 +57,12 @@ collections:
       - { label: "Event Title", name: "title", widget: "string", hint: "e.g. Autumn Fungi & Ancient Turf Foray" }
       - { label: "Organised By", name: "host", widget: "select", options: ["Friends of the Commons", "The Commons Conservators"], default: "Friends of the Commons" }
       - { label: "Host Badge Tag", name: "host_badge", widget: "string", default: "Friends Event" }
-      - { label: "Category", name: "category", widget: "select", options: ["Guided Walk", "Working Party", "Public Meeting", "Talk / AGM", "Community Event"], default: "Guided Walk" }
+      - { label: "Category", name: "category", widget: "select", options: ["Guided Walk", "Practical Conservation", "Public Meeting", "Talk / AGM", "Community Event"], default: "Guided Walk" }
       - { label: "Event Date", name: "date", widget: "date", format: "YYYY-MM-DD" }
       - { label: "Time Description", name: "time", widget: "string", default: "10:00am – 12:30pm" }
       - { label: "Meeting Location", name: "location", widget: "string", default: "Rusthall Common (Toad Rock meeting point)" }
       - { label: "Description / Details", name: "description", widget: "text" }
-      - { label: "Booking / Info URL", name: "booking_url", widget: "string", default: "about.html#contact" }
+      - { label: "Booking / Info URL", name: "booking_url", widget: "string", default: "contact.html" }
       - { label: "Booking Button Text", name: "booking_label", widget: "string", default: "Book Free Place →" }
       - { label: "Active on Site?", name: "is_active", widget: "boolean", default: true }
 

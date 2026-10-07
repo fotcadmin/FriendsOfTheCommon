@@ -30,7 +30,8 @@
   <link rel="stylesheet" href="assets/css/nt-style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" as="style"
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700;800&display=swap">
+  <link rel="preload" as="style"
     href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;800&family=Inter:wght@400;500;600;700&display=optional">
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;800&family=Inter:wght@400;500;600;700&display=optional"
@@ -61,8 +62,8 @@
       <a href="index.html" class="brand-link">
         <img src="assets/images/logo-alpha.webp" alt="" aria-hidden="true" class="brand-logo" width="50" height="50">
         <div class="brand-title-wrap">
-          <span class="brand-title">Friends of the Commons</span>
-          <span class="brand-sub">Tunbridge Wells &amp; Rusthall</span>
+          <span class="brand-title">The Friends of</span>
+          <span class="brand-sub">Tunbridge Wells &amp; Rusthall Commons</span>
         </div>
       </a>
 
@@ -75,7 +76,7 @@
         <a href="events.html" class="nav-link">Events</a>
         <a href="support-us.html" class="nav-link">Support Us</a>
         <a href="about.html" class="nav-link">About</a>
-        <a href="about.html#contact" class="nav-link">Contact</a>
+        <a href="contact.html" class="nav-link">Contact</a>
         <div class="nav-mobile-ctas">
           <a href="campaign.html#pledge" class="btn btn-terracotta btn-sm" style="width: 100%; text-align: center;">Pledge Support</a>
           <a href="support-us.html#membership" class="btn btn-secondary btn-sm" style="width: 100%; text-align: center;">Become a Member (£10/£20)</a>
@@ -95,19 +96,29 @@
 
   <main id="main-content" role="main">
 
-    <!-- Page Header Banner -->
-    <section class="page-header-nt">
-      <div class="container">
-        <span class="page-kicker">Visitor Field Guide &bull; 256 Acres of Open Land</span>
-        <h1 class="page-title">Explore Tunbridge Wells &amp; Rusthall Commons</h1>
-        <p class="page-lead">
+    <!-- Page Header Banner with Authentic Commons Photo -->
+    <section class="page-header-nt page-header-hero-banner"
+      style="position: relative; background: linear-gradient(rgba(10, 20, 15, 0.45), rgba(10, 20, 15, 0.68)), url('assets/images/explore.webp') center 40%/cover no-repeat; color: #ffffff; padding: 4.5rem 0 3.8rem 0; border-bottom: 3px solid var(--nt-green-mid);">
+      <div class="container reveal-fade-up">
+        <span class="page-kicker"
+          style="color: #ffffff; background: rgba(19, 57, 38, 0.85); padding: 0.35rem 0.85rem; display: inline-block; margin-bottom: 0.85rem; border: 1px solid rgba(255, 255, 255, 0.35); text-shadow: 0 1px 2px rgba(0,0,0,0.5);">
+          Visitor Field Guide &bull; 256 Acres of Open Land
+        </span>
+        <h1 class="page-title" style="color: #ffffff; font-size: 2.45rem; text-shadow: 0 2px 12px rgba(0,0,0,0.85); max-width: 900px; line-height: 1.18;">
+          Explore Tunbridge Wells &amp; Rusthall Commons
+        </h1>
+        <p class="page-lead" style="color: #ffffff; font-size: 1.15rem; max-width: 820px; line-height: 1.65; margin-top: 0.75rem; text-shadow: 0 2px 6px rgba(0,0,0,0.8);">
           Step off the town streets into ancient woodland, massive Ardingly sandstone outcrops, romantic holloways, and panoramic lookouts. Free to explore 365 days a year.
         </p>
         <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem;">
-          <a href="#interactive-map" class="btn btn-primary btn-sm">Interactive Map &rarr;</a>
-          <a href="#maps" class="btn btn-secondary btn-sm">Download Trail Maps</a>
-          <a href="#plan-visit" class="btn btn-secondary btn-sm">Visitor Information &amp; Parking</a>
+          <a href="#interactive-map" class="btn btn-terracotta btn-sm">Interactive Map &rarr;</a>
+          <a href="#maps" class="btn btn-secondary btn-sm" style="background: rgba(0,0,0,0.45); border-color: rgba(255,255,255,0.6); color: #ffffff;">Download Trail Maps</a>
+          <a href="#landmarks" class="btn btn-secondary btn-sm" style="background: rgba(0,0,0,0.45); border-color: rgba(255,255,255,0.6); color: #ffffff;">Landmarks &amp; Rocks</a>
+          <a href="#plan-visit" class="btn btn-secondary btn-sm" style="background: rgba(0,0,0,0.45); border-color: rgba(255,255,255,0.6); color: #ffffff;">Visitor Information &amp; Parking</a>
         </div>
+      </div>
+      <div style="position: absolute; bottom: 0.5rem; right: 1rem; font-size: 0.70rem; color: #ffffff; background: rgba(0,0,0,0.45); padding: 0.2rem 0.55rem; backdrop-filter: blur(4px); font-style: italic;">
+        Tunbridge Wells and Rusthall Commons &bull; Free to explore 365 days a year
       </div>
     </section>
 
@@ -193,96 +204,15 @@
       </div>
     </section>
 
-    <!-- Plan Your Visit Section (National Trust Accordion Layout) -->
-    <section id="plan-visit" style="padding: 3.5rem 0;">
+    <!-- Four Iconic Landmarks Grid Section -->
+    <section id="landmarks" style="padding: 3.5rem 0 2rem;">
       <div class="container">
-        <div class="section-intro-header">
-          <span class="section-kicker">Visitor Essentials</span>
-          <h2 class="section-title">Practical Planning &amp; Guidance</h2>
-        </div>
-
-        <div class="nt-accordion-group" style="margin-bottom: 3.5rem;">
-          <!-- Accordion Item 1: Transport & Parking -->
-          <details class="nt-accordion-item" open>
-            <summary class="nt-accordion-summary">
-              <div class="summary-heading-box">
-                <span class="summary-title">Getting Here &amp; Free Parking</span>
-                <span class="summary-subtext">Rail connections, bus stops, and designated parking locations</span>
-              </div>
-              <span class="summary-icon" aria-hidden="true">+</span>
-            </summary>
-            <div class="nt-accordion-body prose">
-              <ul class="clean-list">
-                <li><strong>By Train:</strong> Tunbridge Wells Mainline Station is a 5-minute walk (400m) via London Road, with regular direct 50-minute services from London Charing Cross and London Bridge.</li>
-                <li><strong>Fir Tree Road Parking:</strong> Free roadside parking bays on Tunbridge Wells Common immediately adjacent to the Higher Cricket Ground (TN4 8AH, max 4 hours).</li>
-                <li><strong>Rusthall Common Parking:</strong> Informal on-street parking along Coach Road and Upper Street bordering Toad Rock and the cricket ground. Please park considerately for residents.</li>
-                <li><strong>Town Centre Car Parks:</strong> Torrington Multi-Storey (Vale Road, TN1 1DJ) and Pantiles surface car park off Major York's Road (TN4 8SR).</li>
-                <li><strong>Heritage Steam Railway:</strong> The Spa Valley Railway operates heritage steam and diesel trains from Tunbridge Wells West Station bordering the Common directly to High Rocks and Groombridge.</li>
-              </ul>
-            </div>
-          </details>
-
-          <!-- Accordion Item 2: Accessibility & Terrain -->
-          <details class="nt-accordion-item">
-            <summary class="nt-accordion-summary">
-              <div class="summary-heading-box">
-                <span class="summary-title">Accessibility &amp; Trail Terrain</span>
-                <span class="summary-subtext">Step-free paths, wheelchairs, buggies, and rocky steps</span>
-              </div>
-              <span class="summary-icon" aria-hidden="true">+</span>
-            </summary>
-            <div class="nt-accordion-body prose">
-              <ul class="clean-list">
-                <li><strong>Step-Free &amp; Pushchair Routes:</strong> Surfaced tarmac and hard-packed gravel avenues along the Lower Common, Queen Victoria Grove, and Church Road provide flat, accessible routes for manual and powered wheelchairs.</li>
-                <li><strong>Happy Valley &amp; Sandstone Steps:</strong> The sunken gorge of Happy Valley and trails around Wellington Rocks and Toad Rock feature historic stone staircases (the 101 Steps), exposed tree roots, and steep gradients. Sturdy walking shoes recommended.</li>
-                <li><strong>Resting Points:</strong> Traditional wooden benches are situated every 200–300 metres along primary avenues for resting and birdwatching.</li>
-              </ul>
-            </div>
-          </details>
-
-          <!-- Accordion Item 3: Dog Walking Code -->
-          <details class="nt-accordion-item">
-            <summary class="nt-accordion-summary">
-              <div class="summary-heading-box">
-                <span class="summary-title">Dog Walking Guidelines</span>
-                <span class="summary-subtext">Off-lead access, ground-nesting bird season, and waste bins</span>
-              </div>
-              <span class="summary-icon" aria-hidden="true">+</span>
-            </summary>
-            <div class="nt-accordion-body prose">
-              <ul class="clean-list">
-                <li><strong>Year-Round Access:</strong> Well-behaved dogs are welcome across all 256 acres of common land under reliable voice control.</li>
-                <li><strong>Ground-Nesting Birds (March to July):</strong> Please keep dogs on short leads or under close control across heathland areas to protect nesting skylarks, meadow pipits, and reptiles.</li>
-                <li><strong>Pond Protection:</strong> Prevent dogs from swimming in Fir Tree Pond and the Marlpit to protect rare aquatic plants and breeding great crested newts.</li>
-                <li><strong>Waste Disposal:</strong> 10+ dedicated red dog waste bins are positioned at all main common entrances. Please bag and bin all waste.</li>
-              </ul>
-            </div>
-          </details>
-
-          <!-- Accordion Item 4: Commons Code & Protection Byelaws -->
-          <details class="nt-accordion-item">
-            <summary class="nt-accordion-summary">
-              <div class="summary-heading-box">
-                <span class="summary-title">The Commons Code &amp; Statutory Byelaws</span>
-                <span class="summary-subtext">Preserving ancient geology, wildlife habitats, and public safety</span>
-              </div>
-              <span class="summary-icon" aria-hidden="true">+</span>
-            </summary>
-            <div class="nt-accordion-body prose">
-              <ul class="clean-list">
-                <li><strong>No Open Fires or Barbecues:</strong> Strictly prohibited across all seasons due to severe dry heathland and peat wildfire hazard.</li>
-                <li><strong>Leave No Trace:</strong> Please take all litter home to protect wildlife, birds, and grazing areas from plastics and glass.</li>
-                <li><strong>Cycling Regulations:</strong> Cycling is restricted to designated surfaced bridleways and perimeter roads to protect pedestrians and fragile turf.</li>
-                <li><strong>Sandstone Preservation:</strong> Our Ardingly Sandstone formations are 135 million years old. Scramble with care; never carve into or deface rock faces.</li>
-              </ul>
-            </div>
-          </details>
-        </div>
-
-        <!-- Four Iconic Landmarks Grid -->
-        <div class="section-intro-header reveal-fade-up" id="geology" style="margin-top: 2.5rem; margin-bottom: 1.25rem;">
+        <div class="section-intro-header reveal-fade-up" id="geology">
           <span class="section-kicker">Geological Marvels</span>
           <h2 class="section-title">Landmarks of the Commons</h2>
+          <p style="color: var(--nt-muted); margin-top: 0.5rem; font-size: 1rem;">
+            Ancient 135-million-year-old Ardingly sandstone outcrops, romantic ravines, and historic ponds shaped by nature and human history.
+          </p>
         </div>
 
         <div class="grid-4" style="margin-bottom: 2.5rem;">
@@ -342,9 +272,13 @@
             </div>
           </div>
         </div>
+      </div>
+    </section>
 
-        <!-- Family Discovery & I-Spy Nature Trails Section -->
-        <div class="section-intro-header reveal-fade-up" id="nature-walks" style="margin-top: 2.5rem; margin-bottom: 1.25rem;">
+    <!-- Family Discovery & I-Spy Nature Trails Section -->
+    <section id="nature-walks" style="padding: 2.5rem 0 3rem; background: #ffffff; border-top: 1px solid var(--nt-border); border-bottom: 1px solid var(--nt-border);">
+      <div class="container">
+        <div class="section-intro-header reveal-fade-up" style="margin-bottom: 1.75rem;">
           <span class="section-kicker">Junior Ranger Activities</span>
           <h2 class="section-title">Family I-Spy Nature Discovery Sheets</h2>
           <p style="color: var(--nt-muted); margin-top: 0.35rem; font-size: 0.95rem;">
@@ -352,7 +286,7 @@
           </p>
         </div>
 
-        <div class="grid-4" style="margin-bottom: 2.5rem;">
+        <div class="grid-4" style="margin-bottom: 2rem;">
           <!-- Walk 1: Minibeasts with Red Admiral photography -->
           <div class="sharp-card reveal-fade-up">
             <div class="sharp-card-img-wrap">
@@ -425,6 +359,104 @@
             </div>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- Plan Your Visit Section (National Trust Accordion Layout) -->
+    <section id="plan-visit" style="padding: 3.5rem 0;">
+      <div class="container">
+        <div class="section-intro-header reveal-fade-up">
+          <span class="section-kicker">Visitor Essentials</span>
+          <h2 class="section-title">Practical Planning &amp; Guidance</h2>
+          <p style="color: var(--nt-muted); margin-top: 0.5rem; font-size: 1rem;">
+            Everything you need for an enjoyable visit, from bus routes and parking to accessibility notes and the Commons Code.
+          </p>
+        </div>
+
+        <div class="nt-accordion-group" style="margin-bottom: 3.5rem;">
+          <!-- Accordion Item 1: Transport & Parking -->
+          <details class="nt-accordion-item" open>
+            <summary class="nt-accordion-summary">
+              <div class="summary-heading-box">
+                <span class="summary-title">Getting Here, Public Buses &amp; Free Parking</span>
+                <span class="summary-subtext">Rail connections, direct bus routes, and designated parking locations</span>
+              </div>
+              <span class="summary-icon" aria-hidden="true">+</span>
+            </summary>
+            <div class="nt-accordion-body prose">
+              <ul class="clean-list">
+                <li><strong>By Train:</strong> Tunbridge Wells Mainline Station is a 5-minute walk (400m) via London Road, with regular direct 50-minute services from London Charing Cross, London Bridge, and Hastings.</li>
+                <li><strong>Local Bus Services:</strong> Frequent bus routes connect Tunbridge Wells Station, the town centre, and both Commons:
+                  <ul style="margin-top: 0.35rem; padding-left: 1.25rem; font-size: 0.92rem; list-style-type: disc;">
+                    <li><strong>Route 281 (Arriva):</strong> Runs frequently between Tunbridge Wells town centre/station and Rusthall, stopping right along Rusthall Common and Toad Rock.</li>
+                    <li><strong>Routes 280 &amp; 277 (Arriva / Autocar):</strong> Serve Church Road, Mount Ephraim, and Langton Road along the northern perimeter of Tunbridge Wells Common.</li>
+                    <li><strong>Route 29 (Regency):</strong> Connects the station to The Pantiles and Major York’s Road along the southern edge of the Common.</li>
+                  </ul>
+                </li>
+                <li><strong>Fir Tree Road Parking:</strong> Free roadside parking bays on Tunbridge Wells Common immediately adjacent to the Higher Cricket Ground (TN4 8AH, max 4 hours).</li>
+                <li><strong>Rusthall Common Parking:</strong> Informal on-street parking along Coach Road and Upper Street bordering Toad Rock and the cricket ground. Please park considerately for residents.</li>
+                <li><strong>Town Centre Car Parks:</strong> Torrington Multi-Storey (Vale Road, TN1 1DJ) and Pantiles surface car park off Major York's Road (TN4 8SR).</li>
+                <li><strong>Heritage Steam Railway:</strong> The Spa Valley Railway operates heritage steam and diesel trains from Tunbridge Wells West Station bordering the Common directly to High Rocks and Groombridge.</li>
+              </ul>
+            </div>
+          </details>
+
+          <!-- Accordion Item 2: Accessibility & Terrain -->
+          <details class="nt-accordion-item">
+            <summary class="nt-accordion-summary">
+              <div class="summary-heading-box">
+                <span class="summary-title">Accessibility &amp; Trail Terrain</span>
+                <span class="summary-subtext">Step-free paths, wheelchairs, buggies, and rocky steps</span>
+              </div>
+              <span class="summary-icon" aria-hidden="true">+</span>
+            </summary>
+            <div class="nt-accordion-body prose">
+              <ul class="clean-list">
+                <li><strong>Step-Free &amp; Pushchair Routes:</strong> Surfaced tarmac and hard-packed gravel avenues along the Lower Common, Queen Victoria Grove, and Church Road provide flat, accessible routes for manual and powered wheelchairs.</li>
+                <li><strong>Happy Valley &amp; Sandstone Steps:</strong> The sunken gorge of Happy Valley and trails around Wellington Rocks and Toad Rock feature historic stone staircases (the 101 Steps), exposed tree roots, and steep gradients. Sturdy walking shoes recommended.</li>
+                <li><strong>Resting Points:</strong> Traditional wooden benches are situated every 200–300 metres along primary avenues for resting and birdwatching.</li>
+              </ul>
+            </div>
+          </details>
+
+          <!-- Accordion Item 3: Dog Walking Code -->
+          <details class="nt-accordion-item">
+            <summary class="nt-accordion-summary">
+              <div class="summary-heading-box">
+                <span class="summary-title">Dog Walking Guidelines</span>
+                <span class="summary-subtext">Off-lead access, ground-nesting bird season, and waste bins</span>
+              </div>
+              <span class="summary-icon" aria-hidden="true">+</span>
+            </summary>
+            <div class="nt-accordion-body prose">
+              <ul class="clean-list">
+                <li><strong>Year-Round Access:</strong> Well-behaved dogs are welcome across all 256 acres of common land under reliable voice control.</li>
+                <li><strong>Ground-Nesting Birds (March to July):</strong> Please keep dogs on short leads or under close control across heathland areas to protect nesting skylarks, meadow pipits, and reptiles.</li>
+                <li><strong>Pond Protection:</strong> Prevent dogs from swimming in Fir Tree Pond and the Marlpit to protect rare aquatic plants and breeding great crested newts.</li>
+                <li><strong>Waste Disposal:</strong> 10+ dedicated red dog waste bins are positioned at all main common entrances. Please bag and bin all waste.</li>
+              </ul>
+            </div>
+          </details>
+
+          <!-- Accordion Item 4: Commons Code & Protection Byelaws -->
+          <details class="nt-accordion-item">
+            <summary class="nt-accordion-summary">
+              <div class="summary-heading-box">
+                <span class="summary-title">The Commons Code &amp; Byelaws</span>
+                <span class="summary-subtext">Preserving ancient geology, wildlife habitats, and public safety under the 1890 Act</span>
+              </div>
+              <span class="summary-icon" aria-hidden="true">+</span>
+            </summary>
+            <div class="nt-accordion-body prose">
+              <ul class="clean-list">
+                <li><strong>No Open Fires or Barbecues:</strong> Strictly prohibited across all seasons due to severe dry heathland and peat wildfire hazard.</li>
+                <li><strong>Leave No Trace:</strong> Please take all litter home to protect wildlife, birds, and grazing areas from plastics and glass.</li>
+                <li><strong>Cycling Regulations:</strong> Cycling is restricted to designated surfaced bridleways and perimeter roads to protect pedestrians and fragile turf.</li>
+                <li><strong>Sandstone Preservation:</strong> Our Ardingly Sandstone formations are 135 million years old. Scramble with care; never carve into or deface rock faces.</li>
+              </ul>
+            </div>
+          </details>
+        </div>
 
         <!-- Ecology & Habitat Mosaic Callout Strip -->
         <div class="sharp-card reveal-fade-up" style="padding: 2.25rem; background: #ffffff; margin-bottom: 2.5rem;">
@@ -447,7 +479,7 @@
             <div style="background: var(--nt-surface-alt); padding: 1.5rem; border: 1px solid var(--nt-border); border-radius: 6px;">
               <h4 style="font-size: 1.05rem; color: var(--nt-green-deep); margin-bottom: 0.5rem;">Experience It in Person</h4>
               <p style="font-size: 0.88rem; color: var(--nt-muted); line-height: 1.55; margin-bottom: 1rem;">
-                Join our volunteer rangers and ecological experts on free seasonal guided walks across both Commons.
+                Join volunteer rangers and ecological experts on free seasonal guided walks across both Commons.
               </p>
               <div style="display: flex; flex-direction: column; gap: 0.6rem;">
                 <a href="events.html" class="btn btn-primary btn-sm" style="width: 100%; text-align: center; justify-content: center;">Upcoming Guided Nature Walks &rarr;</a>
@@ -470,19 +502,19 @@
           <div class="footer-brand-header">
             <img src="assets/images/logo-alpha.webp" alt="Friends of the Commons Logo" class="footer-brand-logo" width="60" height="60" loading="lazy" decoding="async">
             <div class="footer-brand-title-wrap">
-              <span class="footer-brand-title">Friends of the Commons</span>
-              <span class="footer-brand-sub">Tunbridge Wells &amp; Rusthall</span>
+              <span class="footer-brand-title">The Friends of</span>
+              <span class="footer-brand-sub">Tunbridge Wells &amp; Rusthall Commons</span>
             </div>
           </div>
           <p>
             The Friends of Tunbridge Wells and Rusthall Commons is an independent registered charity (No. 1013975) dedicated to fundraising, community ownership, and protecting 256 acres of historic common land.
           </p>
           <p style="margin-top: 0.75rem; font-size: 0.8rem; color: #8c9b93;">
-            Working in active partnership with <strong>The Commons Conservators</strong>, the statutory management body under the 1890 Act.
+            Working in active partnership with <strong>The Commons Conservators</strong>, caring for the land under the 1890 Act.
           </p>
           <div style="margin-top: 0.75rem;">
             <a href="https://twcommons.org/" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 0.35rem; color: #9ee0b8; font-size: 0.82rem; font-weight: 600; text-decoration: none;">
-              <span>Statutory byelaws &amp; Conservator minutes at twcommons.org</span> &rarr;
+              <span>Byelaws &amp; Conservator minutes at twcommons.org</span> &rarr;
             </a>
           </div>
 
@@ -518,19 +550,19 @@
         <div class="footer-col">
           <h3 class="footer-heading">Contact &amp; Legal</h3>
           <ul class="footer-links">
-            <li><a href="about.html#contact">Contact Trustees &amp; Secretary</a></li>
+            <li><a href="contact.html">Contact Trustees &amp; Secretary</a></li>
             <li><a href="legacy.html">Leave a Gift in Your Will (Legacies)</a></li>
             <li><a href="campaign.html#pledge-privacy">Pledge Data Privacy Notice</a></li>
             <li><a href="assets/docs/objects-and-rules.pdf" target="_blank" rel="noopener">Charity Constitution &amp; Rules (PDF)</a></li>
             <li><a href="assets/docs/safeguarding-policy.pdf" target="_blank" rel="noopener">Safeguarding Policy (PDF)</a></li>
-            <li><a href="https://register-of-charities.charitycommission.gov.uk/charity-search/-/charity-details/1013975" target="_blank" rel="noopener">Charity Commission Register (No. 1013975)</a></li>
+            <li><a href="https://register-of-charities.charitycommission.gov.uk/charity-search/-/charity-details/1013975" target="_blank" rel="noopener">Charity Commission Register</a></li>
           </ul>
         </div>
       </div>
 
       <div class="footer-bottom">
-        <div>&copy; 2026 The Friends of Tunbridge Wells and Rusthall Commons (Charity No. 1013975)</div>
-        <div style="font-size: 0.8rem;">Independent charity supporting the statutory Commons Conservators</div>
+        <div>&copy; 2026 The Friends of Tunbridge Wells and Rusthall Commons</div>
+        <div style="font-size: 0.8rem;">Independent charity working alongside the Commons Conservators</div>
       </div>
     </div>
   </footer>
@@ -539,7 +571,7 @@
   <script src="assets/js/map.js" defer></script>
   <script src="assets/js/main.js" defer></script>
   <!-- Floating Quick Contact Button -->
-  <a href="about.html#contact" class="floating-contact-btn">
+  <a href="contact.html" class="floating-contact-btn">
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
       <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
     </svg>

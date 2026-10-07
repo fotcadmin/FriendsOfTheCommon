@@ -483,7 +483,7 @@ function initSiteForms() {
               Welcome to the Team, ${name.split(' ')[0]}!
             </h3>
             <p style="color: var(--nt-charcoal); font-size: 0.95rem; line-height: 1.6;">
-              Thank you for offering your time. Our working party coordinator will be in touch at <strong>${email}</strong> ahead of the next scheduled session.
+              Thank you for offering your time. Our volunteer coordinator will be in touch at <strong>${email}</strong> ahead of the next scheduled session.
             </p>
           </div>
         `;
