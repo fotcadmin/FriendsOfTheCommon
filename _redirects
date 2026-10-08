@@ -4,3 +4,6 @@
 /news-events       /news.html      301
 /news-events/      /news.html      301
 /news-events.html  /news.html      301
+/get-involved    /support-us.html    301!
+/get-involved/   /support-us.html    301!
+/get-involved.html /support-us.html   301!

@@ -27,25 +27,24 @@
   <meta name="theme-color" content="#133926">
 
   <!-- Preload LCP Hero Image -->
-  <link rel="preload" as="image" href="assets/images/signpost-600.webp" media="(max-width: 600px)" type="image/webp" fetchpriority="high">
-  <link rel="preload" as="image" href="assets/images/signpost.webp" media="(min-width: 601px)" type="image/webp" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/images/explore.webp" type="image/webp" fetchpriority="high">
 
   <!-- Stylesheets -->
   <link rel="stylesheet" href="assets/css/nt-style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style"
-    href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;800&family=Inter:wght@400;500;600;700&family=Roboto+Condensed:wght@700;800&display=swap">
+    href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;800;900&family=Inter:wght@400;500;600;700&family=Roboto+Condensed:wght@700;800&display=swap">
   <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;800&family=Inter:wght@400;500;600;700&family=Roboto+Condensed:wght@700;800&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;800;900&family=Inter:wght@400;500;600;700&family=Roboto+Condensed:wght@700;800&display=swap"
     media="print" onload="this.media='all'">
   <noscript>
     <link rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;800&family=Inter:wght@400;500;600;700&family=Roboto+Condensed:wght@700;800&display=swap">
+      href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;800;900&family=Inter:wght@400;500;600;700&family=Roboto+Condensed:wght@700;800&display=swap">
   </noscript>
 </head>
 
-<body>
+<body class="page-home">
 
   <!-- Skip to Main Content for Accessibility -->
   <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -63,8 +62,8 @@
   <!-- Site Header -->
   <header class="site-header" role="banner">
     <div class="container header-inner">
-      <a href="index.html" class="brand-link" aria-label="The Friends of Tunbridge Wells &amp; Rusthall Commons Home">
-        <img src="assets/images/logo-alpha.webp" alt="The Friends of Tunbridge Wells and Rusthall Commons Logo" class="brand-logo" width="50" height="54">
+      <a href="index.html" class="brand-link" title="The Friends of Tunbridge Wells &amp; Rusthall Commons" aria-label="The Friends of Tunbridge Wells &amp; Rusthall Commons Home">
+        <img src="assets/images/logo-alpha.webp" alt="" aria-hidden="true" class="brand-logo" width="52" height="56">
         <div class="brand-title-wrap">
           <span class="brand-title">The Friends of</span>
           <span class="brand-sub">Tunbridge Wells &amp; Rusthall Commons</span>
@@ -73,19 +72,15 @@
 
       <!-- Desktop Navigation -->
       <nav id="nav-desktop" class="nav-desktop" role="navigation" aria-label="Primary Navigation">
-        <a href="index.html" class="nav-link active">Home</a>
         <a href="campaign.html" class="nav-link">Campaign</a>
         <a href="explore.html" class="nav-link">Explore</a>
         <a href="news.html" class="nav-link">News</a>
         <a href="events.html" class="nav-link">Events</a>
-        <a href="support-us.html" class="nav-link">Support Us</a>
+        <a href="support-us.html" class="nav-link">Support</a>
         <a href="about.html" class="nav-link">About</a>
-        <a href="contact.html" class="nav-link">Contact</a>
         <div class="nav-mobile-ctas">
-          <a href="campaign.html#pledge" class="btn btn-terracotta btn-sm"
-            style="width: 100%; text-align: center;">Pledge Support</a>
-          <a href="support-us.html#membership" class="btn btn-secondary btn-sm"
-            style="width: 100%; text-align: center;">Become a Member (£10/£20)</a>
+          <a href="campaign.html#pledge" class="btn btn-terracotta btn-sm btn-block">Pledge Support</a>
+          <a href="support-us.html#membership" class="btn btn-secondary btn-sm btn-block">Become a Member (£10/£20)</a>
         </div>
       </nav>
 
@@ -105,44 +100,40 @@
 
   <main id="main-content" role="main">
 
-    <!-- Hero Section -->
-    <section class="hero-nt" id="overview">
+    <!-- 1. Place & Charity First -->
+    <section class="hero-nt hero-with-bg" id="overview" aria-labelledby="hero-title">
+      <img class="hero-bg-img" src="assets/images/explore.webp"
+        alt="Two walkers and a dog crossing open grassland in front of the ancient sandstone outcrops of Tunbridge Wells Common"
+        width="1024" height="433" fetchpriority="high" decoding="async">
       <div class="container hero-grid">
         <div class="hero-text-col">
-          <h1 class="hero-title">Protecting our historic commons for everyone, forever.</h1>
+          <span class="hero-kicker">Tunbridge Wells &amp; Rusthall Commons</span>
+          <h1 class="hero-title" id="hero-title">Protecting our historic commons for everyone, forever.</h1>
           <p class="hero-lead">
             The Friends of Tunbridge Wells &amp; Rusthall Commons are a local registered charity working alongside the
-            Commons Conservators to care for the Commons.
+            Commons Conservators to care for 256 acres of sandstone rocks, woodland and heath in the heart of the town.
           </p>
           <div class="hero-actions">
-            <a href="campaign.html#pledge" class="btn btn-primary btn-lg">Pledge to Buy the Commons &rarr;</a>
-            <a href="#philosophy" class="btn btn-secondary btn-lg">Find Out More</a>
+            <a href="campaign.html#pledge" class="btn btn-terracotta btn-lg">Pledge to Buy the Commons &rarr;</a>
+            <a href="#visit" class="btn btn-secondary btn-lg">Plan Your Visit</a>
           </div>
-        </div>
-
-        <div class="hero-media-box">
-          <img src="assets/images/signpost.webp"
-            srcset="assets/images/signpost-600.webp 600w, assets/images/signpost.webp 1024w"
-            sizes="(max-width: 600px) 100vw, 560px"
-            alt="Historic fingerpost sign pointing towards Rusthall Common, Tunbridge Wells, and High Rocks" width="560"
-            height="380" fetchpriority="high" decoding="async">
         </div>
       </div>
     </section>
 
-    <!-- New Mission Statement & Purpose in Plain Sight -->
-    <section class="container" aria-label="Mission Statement and Purpose">
-      <div class="mission-purpose-strip reveal-fade-up">
-        <div class="mission-purpose-grid">
-          <div class="mission-purpose-item">
-            <span class="mission-purpose-label">New Mission Statement</span>
-            <p class="mission-purpose-text">
+    <!-- Mission & Purpose -->
+    <section class="band band--parchment" aria-label="Mission and purpose">
+      <div class="container">
+        <div class="mission-editorial reveal-fade-up">
+          <div class="mission-statement">
+            <h2 class="band-kicker">Our Mission</h2>
+            <p class="mission-statement-text">
               Working with the community for the preservation, enhancement and enjoyment of the Commons.
             </p>
           </div>
-          <div class="mission-purpose-item" style="border-left-color: var(--nt-ochre);">
-            <span class="mission-purpose-label" style="color: var(--nt-ochre);">Purpose</span>
-            <p class="mission-purpose-text">
+          <div class="mission-statement">
+            <h2 class="band-kicker">Our Purpose</h2>
+            <p class="mission-statement-text">
               To protect the Commons, celebrate their place in our community, and safeguard their future.
             </p>
           </div>
@@ -150,179 +141,195 @@
       </div>
     </section>
 
-    <!-- At a Glance Bar (National Trust Pattern) -->
-    <section class="at-a-glance-bar" aria-label="Commons at a glance">
+    <!-- Commons at a glance -->
+    <section class="band band--sage band--compact" aria-label="Commons at a glance">
       <div class="container">
-        <div class="glance-grid reveal-stagger">
-          <div class="glance-cell">
-            <div class="glance-label">Total Parkland</div>
-            <div class="glance-value">256 Acres</div>
-            <div class="glance-sub">Heathland, woods &amp; ponds</div>
+        <dl class="stat-strip reveal-stagger">
+          <div class="stat">
+            <dt class="stat-label">Total Parkland</dt>
+            <dd class="stat-value">256 Acres</dd>
+            <dd class="stat-note">Heathland, woods &amp; ponds</dd>
           </div>
-          <div class="glance-cell">
-            <div class="glance-label">Public Access</div>
-            <div class="glance-value">100% Free</div>
-            <div class="glance-sub">Open 365 days a year</div>
+          <div class="stat">
+            <dt class="stat-label">Public Access</dt>
+            <dd class="stat-value">100% Free</dd>
+            <dd class="stat-note">Open 365 days a year</dd>
           </div>
-          <div class="glance-cell">
-            <div class="glance-label">Ancient Geology</div>
-            <div class="glance-value">135M Yrs</div>
-            <div class="glance-sub">Ardingly sandstone outcrops</div>
+          <div class="stat">
+            <dt class="stat-label">Ancient Geology</dt>
+            <dd class="stat-value">135M Yrs</dd>
+            <dd class="stat-note">Ardingly sandstone outcrops</dd>
           </div>
-          <div class="glance-cell">
-            <div class="glance-label">Community Stewardship</div>
-            <div class="glance-value">34+ Years</div>
-            <div class="glance-sub">Independent Registered Charity</div>
+          <div class="stat">
+            <dt class="stat-label">Community Stewardship</dt>
+            <dd class="stat-value">34+ Years</dd>
+            <dd class="stat-note">Independent Registered Charity</dd>
           </div>
-        </div>
+        </dl>
       </div>
     </section>
 
-    <!-- Who's Who: The Conservators & The Friends Distinction -->
-    <section class="who-we-are-section" style="padding: 2.75rem 0 0.5rem; background-color: var(--nt-sand-bg);">
+    <!-- Conservators vs Friends -->
+    <section class="band band--parchment" aria-labelledby="roles-heading">
       <div class="container">
-        <div class="distinction-box reveal-fade-up" style="background: #ffffff; border: 1px solid var(--nt-border); padding: 2rem 2.25rem; box-shadow: 0 4px 16px rgba(0,0,0,0.03);">
-          <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem; flex-wrap: wrap;">
-            <span class="editorial-tag" style="background: var(--nt-green-deep); color: #ffffff; margin: 0; padding: 0.25rem 0.65rem; font-size: 0.75rem; letter-spacing: 0.08em;">Understanding Our Roles</span>
-            <span style="font-size: 0.85rem; color: var(--nt-muted); font-weight: 500;">Two separate organisations working together for the Commons</span>
-          </div>
-          <h2 style="font-family: var(--font-serif); font-size: 1.5rem; color: var(--nt-charcoal); margin-bottom: 1.25rem; line-height: 1.3;">
+        <header class="band-header reveal-fade-up">
+          <span class="band-kicker band-kicker--pill">Understanding Our Roles</span>
+          <h2 class="band-title" id="roles-heading">
             The Commons Conservators and The Friends &mdash; What&rsquo;s the difference?
           </h2>
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.75rem;">
-            <div style="border-left: 3px solid var(--nt-border); padding-left: 1.25rem;">
-              <h3 style="font-family: var(--font-serif); font-size: 1.2rem; color: var(--nt-charcoal); margin-bottom: 0.5rem;">The Commons Conservators</h3>
-              <p style="font-size: 0.92rem; color: var(--nt-muted); line-height: 1.6; margin: 0;">
-                The Conservators have cared for and managed the Commons since the 1890 Tunbridge Wells Improvement Act. They are responsible for the practical management of the land, including byelaws, paths, woodland maintenance and tree safety, as well as employing the Warden and Ranger team. They are funded primarily through local council rates.
-              </p>
-              <a href="https://twcommons.org/" target="_blank" rel="noopener" style="display: inline-block; margin-top: 0.75rem; font-size: 0.82rem; font-weight: 600; color: var(--nt-green-deep);">Visit twcommons.org for Conservator byelaws &rarr;</a>
-            </div>
-            <div style="border-left: 3px solid var(--nt-green-deep); padding-left: 1.25rem; background: rgba(22, 56, 43, 0.02); border-radius: 0 4px 4px 0;">
-              <span style="display: inline-block; font-family: var(--font-condensed); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--nt-green-deep); margin-bottom: 0.35rem;">Independent Charity</span>
-              <h3 style="font-family: var(--font-serif); font-size: 1.2rem; color: var(--nt-green-deep); margin-bottom: 0.5rem;">Friends of the Commons</h3>
-              <p style="font-size: 0.92rem; color: var(--nt-muted); line-height: 1.6; margin: 0;">
-                Established in 1991, following the increased community interest in the Commons after the Great Storm of 1987, we are an independent local charity supporting the long-term protection and enjoyment of Tunbridge Wells and Rusthall Commons. We raise funds for projects on the Commons, organise volunteer working parties and nature-based events, and work alongside the Commons Conservators to care for this much-loved landscape.
-              </p>
-              <a href="about.html" style="display: inline-block; margin-top: 0.75rem; font-size: 0.82rem; font-weight: 600; color: var(--nt-green-deep);">Read about our history &rarr;</a>
-            </div>
-          </div>
+          <p class="band-lede">Two separate organisations working together for the Commons.</p>
+        </header>
+        <div class="roles-compare reveal-stagger">
+          <article class="role">
+            <span class="role-tag">Since 1890</span>
+            <h3 class="role-title">The Commons Conservators</h3>
+            <p class="role-text">
+              The Conservators have cared for and managed the Commons since the 1890 Tunbridge Wells Improvement Act. They are responsible for the practical management of the land, including byelaws, paths, woodland maintenance and tree safety, as well as employing the Warden and Ranger team. They are funded primarily through local council rates.
+            </p>
+            <a href="https://twcommons.org/" target="_blank" rel="noopener" class="text-link">Visit twcommons.org for Conservator byelaws &rarr;</a>
+          </article>
+          <article class="role role--friends">
+            <span class="role-tag">Independent Charity (No. 1013975)</span>
+            <h3 class="role-title">Friends of the Commons</h3>
+            <p class="role-text">
+              Established in 1991, following the increased community interest in the Commons after the Great Storm of 1987, we are an independent local charity supporting the long-term protection and enjoyment of Tunbridge Wells and Rusthall Commons. We raise funds for projects on the Commons, organise volunteer sessions and nature-based events, and work alongside the Commons Conservators to care for this much-loved landscape.
+            </p>
+            <a href="about.html" class="text-link">Read about our history &rarr;</a>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- Full-Width Panoramic Photo Break of the Commons -->
-    <div class="photo-break-fullwidth reveal-fade-up">
-      <img src="assets/images/march/march-panoramic.webp"
-        alt="Panoramic view across Tunbridge Wells and Rusthall Commons" width="1200" height="335" loading="lazy" decoding="async">
-      <div class="photo-break-caption">
-        Tunbridge Wells &amp; Rusthall Commons &bull; 256 acres of protected community landscape
-      </div>
-    </div>
-
-    <!-- Philosophy & Why Community Ownership Matters Section -->
-    <section class="urgent-philosophy-section" id="philosophy">
+    <!-- Visit -->
+    <section class="band band--sage" id="visit" aria-labelledby="visit-heading">
       <div class="container">
-        <div class="editorial-callout reveal-fade-up">
-          <span class="editorial-tag">The Threat &amp; Our Philosophy</span>
-          <h2 class="editorial-heading">Keeping the Commons in the hands of the people for generations to come</h2>
+        <header class="band-header reveal-fade-up">
+          <span class="band-kicker">Plan your visit</span>
+          <h2 class="band-title" id="visit-heading">Visiting the Commons</h2>
+        </header>
 
-          <div class="editorial-grid">
-            <div>
-              <p>
-                <strong>The freehold of Tunbridge Wells and Rusthall Commons is currently on the open market.</strong>
-                For over a century, the 1890 Tunbridge Wells Improvement Act has guaranteed public access, but ownership still matters. A private freeholder may have different priorities from those of the local community, particularly around access, land use, maintenance and the commercial use of the estate.
-              </p>
-              <p style="margin-top: 1rem;">
-                Our philosophy is simple: this landscape belongs to everyone. We want people from near and far to walk beneath the towering Wellington Rocks, spot rare heathland wildlife, and feel the freedom that only ancient common land provides.
-              </p>
-            </div>
-            <div>
-              <p>
-                <strong>Why community ownership matters:</strong> Community ownership would give the Friends a long-term opportunity to keep the freehold in charitable ownership, with decisions guided by the protection and enjoyment of the Commons rather than commercial interests.
-              </p>
-              <p style="margin-top: 1rem;">
-                As a charity, the Friends are accountable to our members, trustees and the Charity Commission, with the protection, enhancement and public enjoyment of the Commons at the heart of our work. Over 3,000 residents and supporters have already pledged their backing.
-              </p>
-            </div>
-          </div>
-
-          <div class="campaign-pledge-action-strip reveal-fade-up">
-            <div class="campaign-badge-clean">
-              Featured in The Guardian, BBC News, and The Telegraph.
-            </div>
-            <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
-              <a href="campaign.html#pledge" class="btn btn-terracotta">Make a Pledge</a>
-              <a href="campaign.html" class="btn btn-secondary">Read More &rarr;</a>
-            </div>
-          </div>
+        <div class="visit-strip reveal-stagger">
+          <article class="visit-item">
+            <h3 class="visit-item-title">Opening hours</h3>
+            <p>Open 24 hours a day, 365 days a year. Admission is always free.</p>
+          </article>
+          <article class="visit-item">
+            <h3 class="visit-item-title">Location</h3>
+            <p>Tunbridge Wells Common and Rusthall Common, Royal Tunbridge Wells, Kent. Tunbridge Wells station is a 7-minute walk from the edge of the Common.</p>
+          </article>
+          <article class="visit-item">
+            <h3 class="visit-item-title">Access</h3>
+            <p>Waymarked footpaths link the town centre to Wellington Rocks, Toad Rock and Happy Valley. Dogs are welcome; please keep them under close control during ground-nesting bird season (March&ndash;July).</p>
+          </article>
+          <article class="visit-item">
+            <h3 class="visit-item-title">Facilities</h3>
+            <p>Free visitor parking bays on Fir Tree Road (TN4 8AH) and by the Coach &amp; Horses on Rusthall Common. Please take litter home; no open fires or disposable barbecues.</p>
+          </article>
         </div>
-      </div>
-    </section>
 
-    <!-- Self-Contained National Trust Accordions -->
-    <section class="container accordion-wrapper">
-      <div class="section-intro-header reveal-fade-up">
-        <span class="section-kicker">Information &amp; Guidance</span>
-        <h2 class="section-title">Everything you need to know</h2>
-      </div>
+        <div class="action-row">
+          <a href="explore.html#plan-visit" class="btn btn-primary">Complete Visitor Guide &rarr;</a>
+          <a href="explore.html" class="btn btn-secondary">Open Map Viewer</a>
+        </div>
 
-      <div class="nt-accordion-group reveal-stagger">
-
-        <!-- Accordion 1: Explore & Geological Wonders -->
-        <details class="nt-accordion-item" id="explore-rocks" open>
+        <details class="nt-accordion-item visit-accordion" id="explore-rocks">
           <summary class="nt-accordion-summary">
             <div class="summary-heading-box">
               <span class="summary-title">Explore the Commons &amp; Ancient Geology</span>
-              <span class="summary-subtext">Wellington Rocks, Toad Rock, Happy Valley, and self-guided nature
-                trails</span>
+              <span class="summary-subtext">Wellington Rocks, Toad Rock, Happy Valley, and self-guided nature trails</span>
             </div>
             <span class="summary-icon" aria-hidden="true">+</span>
           </summary>
           <div class="nt-accordion-body">
             <div class="content-two-col">
-              <div class="prose" style="display: flex; flex-direction: column; justify-content: space-between;">
+              <div class="prose prose--spread">
                 <div>
                   <p>
                     Tunbridge Wells and Rusthall Commons feature some of the most striking natural rock formations in
                     southern England. Sculpted over 135 million years from Ardingly sandstone, these immense rock clusters
                     have captured imaginations for centuries.
                   </p>
-                  <h3 style="margin-top: 1rem; margin-bottom: 0.5rem;">Principal Landmarks &amp; Features</h3>
-                  <ul class="clean-list" style="margin-bottom: 1rem;">
+                  <h3 class="prose-subheading">Principal Landmarks &amp; Features</h3>
+                  <ul class="clean-list clean-list--spaced">
                     <li><strong>Wellington Rocks:</strong> Iconic sandstone outcrops on Tunbridge Wells Common, popular with climbers and families.</li>
                     <li><strong>Toad Rock:</strong> Famous natural curiosity on Rusthall Common sculpted by wind and ice.</li>
                     <li><strong>Happy Valley &amp; 101 Steps:</strong> Steep wooded ravine with historic steps through ancient woodland canopy.</li>
                     <li><strong>Mount Edgcumbe:</strong> Elevated viewpoint offering panoramic views across the town and High Weald.</li>
                   </ul>
-                  <p style="font-size: 0.92rem; color: var(--nt-muted); margin-bottom: 0;">
-                    All 256 acres are free and open to explore 365 days a year.
-                  </p>
+                  <p class="prose-note">All 256 acres are free and open to explore 365 days a year.</p>
                 </div>
-                <div style="margin-top: 1.25rem;">
-                  <a href="explore.html" class="btn btn-secondary btn-sm" style="width: 100%; text-align: center;">View Interactive Maps &amp; Trails &rarr;</a>
+                <div class="prose-footer">
+                  <a href="explore.html" class="btn btn-secondary btn-sm btn-block">View Interactive Maps &amp; Trails &rarr;</a>
                 </div>
               </div>
 
               <div class="sharp-card-box">
                 <img src="assets/images/toad-rock.webp" alt="Ancient Ardingly sandstone formation at Toad Rock on Rusthall Common" width="400"
-                  height="275" style="height: 275px; object-fit: cover;" loading="lazy">
+                  height="275" class="card-img-tall" loading="lazy" decoding="async">
                 <div class="sharp-card-title">Ancient Ardingly Sandstone &amp; Ecology</div>
                 <div class="sharp-card-desc">
                   Wind, water, and periglacial ice carved these dramatic formations during the Pleistocene epoch. The porous rock faces create a unique microclimate supporting rare mosses, lichens, and solitary bee colonies found nowhere else in the district.
                 </div>
-                <a href="explore.html#geology" class="btn btn-secondary btn-sm" style="width: 100%; text-align: center; margin-top: auto;">Explore Geology Field Guide &rarr;</a>
+                <a href="explore.html#geology" class="btn btn-secondary btn-sm btn-block btn-block--bottom">Explore Geology Field Guide &rarr;</a>
               </div>
             </div>
           </div>
         </details>
+      </div>
+    </section>
 
-        <!-- Accordion 2: The Commons Sale & The Threat -->
+    <!-- 3. Campaign Chapter -->
+    <div class="photo-break-fullwidth reveal-fade-up">
+      <img src="assets/images/commons-panorama.webp"
+        alt="Panoramic landscape of Tunbridge Wells Common featuring sandstone rocks and woodland" width="1200" height="335" loading="lazy" decoding="async">
+    </div>
+
+    <section class="band band--parchment campaign-story" id="philosophy" aria-labelledby="campaign-heading">
+      <div class="container">
+        <header class="campaign-story-head reveal-fade-up">
+          <span class="band-kicker">The Campaign</span>
+          <h2 class="campaign-story-title" id="campaign-heading">Keeping the Commons in the hands of the people for generations to come</h2>
+        </header>
+
+        <div class="campaign-story-body reveal-fade-up">
+          <div class="campaign-story-text">
+            <p class="campaign-story-lede">
+              <strong>The freehold of Tunbridge Wells and Rusthall Commons is currently on the open market.</strong>
+              For over a century, the 1890 Tunbridge Wells Improvement Act has guaranteed public access, but ownership still matters. A private freeholder may have different priorities from those of the local community, particularly around access, land use, maintenance and the commercial use of the estate.
+            </p>
+            <p>
+              Our philosophy is simple: this landscape belongs to everyone. We want people from near and far to walk beneath the towering Wellington Rocks, spot rare heathland wildlife, and feel the freedom that only ancient common land provides.
+            </p>
+            <p>
+              <strong>Why community ownership matters:</strong> Community ownership would give the Friends a long-term opportunity to keep the freehold in charitable ownership, with decisions guided by the protection and enjoyment of the Commons rather than commercial interests.
+            </p>
+            <p>
+              As a charity, the Friends are accountable to our members, trustees and the Charity Commission, with the protection, enhancement and public enjoyment of the Commons at the heart of our work. Over 3,000 residents and supporters have already pledged their backing.
+            </p>
+          </div>
+          <blockquote class="pull-quote">
+            <p>This landscape belongs to everyone.</p>
+            <footer class="pull-quote-credit">Over 3,000 residents and supporters have pledged their backing</footer>
+          </blockquote>
+        </div>
+
+        <div class="cta-bar reveal-fade-up">
+          <p class="cta-bar-text">Reported by The Guardian, BBC News and The Telegraph.</p>
+          <div class="action-row action-row--tight">
+            <a href="campaign.html#pledge" class="btn btn-terracotta btn-lg">Make a Pledge</a>
+            <a href="campaign.html" class="btn btn-ghost-light btn-lg">Read More &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container accordion-wrapper" aria-label="Campaign details">
+      <div class="nt-accordion-group reveal-stagger">
         <details class="nt-accordion-item" id="campaign-details">
           <summary class="nt-accordion-summary">
             <div class="summary-heading-box">
               <span class="summary-title">The Commons Sale &amp; Why Community Ownership Matters</span>
-              <span class="summary-subtext">The threat of private equity, the 1890 Act, and the status of our charity
-                bid</span>
+              <span class="summary-subtext">The threat of private equity, the 1890 Act, and the status of our charity bid</span>
             </div>
             <span class="summary-icon" aria-hidden="true">+</span>
           </summary>
@@ -347,167 +354,38 @@
                   acquisition proposal. Owning the freehold ensures the land remains in public charitable stewardship
                   forever, protected against speculation.
                 </p>
-                <div style="margin-top: 1.25rem;">
-                  <a href="campaign.html" class="btn btn-secondary btn-sm">Read the Full Campaign FAQs &rarr;</a>
-                </div>
               </div>
               <div class="sharp-card-box">
                 <img src="assets/images/march/march-community-rally.webp"
                   alt="Local community march supporting the Commons community purchase bid" width="400" height="220"
-                  style="object-fit: cover;" loading="lazy" decoding="async">
+                  class="card-img-cover" loading="lazy" decoding="async">
                 <span class="photo-credit">Photo: Kelly Wilcox &bull; March for the Commons, 21 March 2026</span>
-                <div class="sharp-card-title" style="margin-top: 0.5rem;">Over 3,000 Backers</div>
+                <div class="sharp-card-title sharp-card-title--spaced">Over 3,000 Backers</div>
                 <div class="sharp-card-desc">
                   Cross-party support from local councillors, conservation bodies, wildlife trusts, and thousands of
                   residents united behind community ownership.
                 </div>
-                <a href="campaign.html#community-voices" class="btn btn-secondary btn-sm" style="width: 100%;">Read
-                  Community Backing</a>
+                <a href="campaign.html#community-voices" class="btn btn-secondary btn-sm btn-block">Read Community Backing</a>
               </div>
             </div>
           </div>
         </details>
-
-        <!-- Accordion 3: How to Support the Campaign -->
-        <details class="nt-accordion-item" id="how-to-help">
-          <summary class="nt-accordion-summary">
-            <div class="summary-heading-box">
-              <span class="summary-title">How You Can Help: Pledge, Membership &amp; Volunteering</span>
-              <span class="summary-subtext">Back the land acquisition fund, join as an annual member, or volunteer on
-                the
-                land</span>
-            </div>
-            <span class="summary-icon" aria-hidden="true">+</span>
-          </summary>
-          <div class="nt-accordion-body">
-            <div class="content-two-col">
-              <div class="prose">
-                <p>
-                  Every pledge and membership strengthens our hand. We need supporters from across the community to
-                  demonstrate
-                  that these historic commons are cherished and protected.
-                </p>
-                <h3>Clear Ways to Take Action</h3>
-                <ul class="clean-list">
-                  <li><strong>Make a Pledge:</strong> Commit an amount to the Land Acquisition Fund. No money is taken
-                    until the bid is accepted and contracts are ready.</li>
-                  <li><strong>Join as a Member (from £10/year):</strong> Provides reliable annual revenue for practical
-                    conservation tools, tree surveys, and ranger equipment.</li>
-                  <li><strong>Volunteer on Conservation Mornings:</strong> Join regular hands-on sessions clearing invasive
-                    scrub, maintaining footpaths, and preserving rock faces.</li>
-                </ul>
-                <div style="margin-top: 1.25rem;">
-                  <a href="support-us.html" class="btn btn-primary btn-sm">Support Us Details &rarr;</a>
-                </div>
-              </div>
-              <div class="sharp-card-box">
-                <img src="assets/images/wildlife-walk.webp"
-                  alt="Volunteers and nature enthusiasts on a guided wildlife walk" width="400" height="220"
-                  loading="lazy" decoding="async">
-                <div class="sharp-card-title">Community Conservation Impact</div>
-                <div class="sharp-card-desc">
-                  Charity membership and donations fund on-the-ground habitat restoration, boardwalk repairs, and
-                  wildlife protection.
-                </div>
-                <a href="about.html#governance" class="btn btn-secondary btn-sm" style="width: 100%;">View Governance
-                  &amp; Accounts</a>
-              </div>
-            </div>
-          </div>
-        </details>
-
-        <!-- Accordion 4: Visiting Information & Practical Details -->
-        <details class="nt-accordion-item" id="visit-info">
-          <summary class="nt-accordion-summary">
-            <div class="summary-heading-box">
-              <span class="summary-title">Visiting Information, Parking &amp; Access</span>
-              <span class="summary-subtext">Transport links, free parking, accessibility, dog code, and
-                regulations</span>
-            </div>
-            <span class="summary-icon" aria-hidden="true">+</span>
-          </summary>
-          <div class="nt-accordion-body">
-            <div class="content-two-col">
-              <div class="prose">
-                <p>
-                  The Commons are located in the heart of Royal Tunbridge Wells and Rusthall, accessible easily by foot,
-                  rail, or car.
-                </p>
-                <h3>Practical Visitor Essentials</h3>
-                <ul class="clean-list">
-                  <li><strong>Admission:</strong> Always free and open 24 hours a day, 365 days a year.</li>
-                  <li><strong>By Train:</strong> Tunbridge Wells railway station is a 7-minute walk from the edge of the
-                    Common (direct 50-minute trains from London Charing Cross).</li>
-                  <li><strong>Parking:</strong> Free visitor parking bays along Fir Tree Road (TN4 8AH) and Coach &amp;
-                    Horses / Rusthall Common bays.</li>
-                  <li><strong>Dog Walkers:</strong> Welcome throughout. Please keep dogs under close control during
-                    ground-nesting bird season (March–July) and bag all waste.</li>
-                  <li><strong>Protection Code:</strong> No unauthorised motor vehicles, no open fires or disposable
-                    barbecues, and please take all litter home.</li>
-                </ul>
-                <div style="margin-top: 1.25rem;">
-                  <a href="explore.html#plan-visit" class="btn btn-secondary btn-sm">Complete Visitor Guide &rarr;</a>
-                </div>
-              </div>
-              <div class="sharp-card-box">
-                <img src="assets/images/map-tw.webp"
-                  alt="Map showing Tunbridge Wells Common trails and parking locations" width="400" height="220"
-                  loading="lazy" decoding="async">
-                <div class="sharp-card-title">Trail &amp; Parking Map</div>
-                <div class="sharp-card-desc">
-                  Marked footpaths connect the town centre to Wellington Rocks, the Spa Valley Railway, and the Rusthall
-                  toad rock outcrops.
-                </div>
-                <a href="explore.html" class="btn btn-secondary btn-sm" style="width: 100%;">Open Map Viewer</a>
-              </div>
-            </div>
-          </div>
-        </details>
-
       </div>
     </section>
 
-    <!-- Support & Pledge Panel (National Trust Pattern Box) -->
-    <section class="container" id="pledge-section">
-      <div class="pledge-panel reveal-fade-up">
-        <div class="pledge-panel-grid">
-          <div class="reveal-from-left">
-            <span class="urgent-tag" style="background: rgba(0,0,0,0.3); margin-bottom: 0.75rem;">Support Our Work</span>
-            <h2>Take your place in protecting the commons</h2>
-            <p>
-              The Friends are an independent, volunteer-led charity dedicated to caring for the Commons, funding conservation work, running guided community walks, and leading the historic bid to secure the 256-acre freehold in public ownership. Whether you make a pledge, join as an annual member, or make a one-off donation, every contribution directly protects this precious landscape.
-            </p>
-            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-              <a href="campaign.html#pledge" class="btn btn-terracotta btn-lg">Make a Bid Pledge Now &rarr;</a>
-              <a href="support-us.html#membership" class="btn btn-secondary btn-lg">Become an Annual Member</a>
-            </div>
-          </div>
-
-          <div class="pledge-cards-grid reveal-from-right reveal-stagger">
-            <a href="campaign.html#pledge" class="pledge-option-card">
-              <div>
-                <span class="opt-title">Community Bid Pledge</span>
-                <span class="opt-sub">Pledge £20, £50, £100, £250, or more to the acquisition fund.</span>
-              </div>
-              <span style="font-size: 1.25rem; font-weight: bold;">&rarr;</span>
-            </a>
-
-            <a href="support-us.html#membership" class="pledge-option-card">
-              <div>
-                <span class="opt-title">Annual Membership (from £10/yr)</span>
-                <span class="opt-sub">Provides voting rights at the AGM and funds direct conservation.</span>
-              </div>
-              <span style="font-size: 1.25rem; font-weight: bold;">&rarr;</span>
-            </a>
-
-            <a href="support-us.html#donate" class="pledge-option-card">
-              <div>
-                <span class="opt-title">One-off Donation</span>
-                <span class="opt-sub">Support ongoing legal, surveyor, and conservation costs.</span>
-              </div>
-              <span style="font-size: 1.25rem; font-weight: bold;">&rarr;</span>
-            </a>
-          </div>
+    <!-- 4. Support chapter -->
+    <section class="band band--forest support-chapter" id="pledge-section" aria-labelledby="support-heading">
+      <div class="container">
+        <header class="support-head reveal-fade-up">
+          <span class="band-kicker">Support Our Work</span>
+          <h2 class="band-title" id="support-heading">Take your place in protecting the commons</h2>
+          <p class="band-lede">
+            The Friends are an independent, volunteer-led charity dedicated to caring for the Commons, funding conservation work, running guided community walks, and leading the historic bid to secure the 256-acre freehold in public ownership. Whether you donate, volunteer, join as an annual member or make a pledge, every contribution directly protects this precious landscape.
+          </p>
+        </header>
+        <div class="action-row reveal-fade-up">
+          <a href="support-us.html" class="btn btn-terracotta btn-lg">Ways to Support Us &rarr;</a>
+          <a href="campaign.html#pledge" class="btn btn-light btn-lg">Make a Pledge &rarr;</a>
         </div>
       </div>
     </section>
@@ -517,6 +395,13 @@
   <!-- Clean Editorial Footer -->
   <footer class="site-footer" role="contentinfo">
     <div class="container">
+      <div class="footer-contact-band">
+        <div>
+          <h2 class="footer-contact-title">Get in touch</h2>
+          <p class="footer-contact-text">Questions about the Commons, volunteering or the campaign? Our trustees and secretary are happy to help.</p>
+        </div>
+        <a href="contact.html" class="btn btn-terracotta btn-lg">Contact the Friends &rarr;</a>
+      </div>
       <div class="footer-grid">
         <div class="footer-brand">
           <div class="footer-brand-header">
@@ -531,12 +416,11 @@
             The Friends of Tunbridge Wells and Rusthall Commons is an independent registered charity (No. 1013975)
             dedicated to fundraising, community ownership, and protecting 256 acres of historic common land.
           </p>
-          <p style="margin-top: 0.75rem; font-size: 0.8rem; color: #8c9b93;">
+          <p class="footer-note">
             Working in active partnership with <strong>The Commons Conservators</strong>, caring for the land under the 1890 Act.
           </p>
-          <div style="margin-top: 0.75rem;">
-            <a href="https://twcommons.org/" target="_blank" rel="noopener"
-              style="display: inline-flex; align-items: center; gap: 0.35rem; color: #9ee0b8; font-size: 0.82rem; font-weight: 600; text-decoration: none;">
+          <div class="footer-ext">
+            <a href="https://twcommons.org/" target="_blank" rel="noopener" class="footer-ext-link">
               <span>Conservator byelaws &amp; minutes at twcommons.org</span> &rarr;
             </a>
           </div>
@@ -596,7 +480,7 @@
 
       <div class="footer-bottom">
         <div>&copy; 2026 The Friends of Tunbridge Wells and Rusthall Commons</div>
-        <div style="font-size: 0.8rem;">Independent charity supporting The Commons Conservators</div>
+        <div class="footer-bottom-note">Independent charity supporting The Commons Conservators</div>
       </div>
     </div>
   </footer>

@@ -59,7 +59,7 @@
   <!-- Site Header -->
   <header class="site-header" role="banner">
     <div class="container header-inner">
-      <a href="index.html" class="brand-link">
+      <a href="index.html" class="brand-link" aria-label="The Friends of Tunbridge Wells &amp; Rusthall Commons Home">
         <img src="assets/images/logo-alpha.webp" alt="" aria-hidden="true" class="brand-logo" width="50" height="50">
         <div class="brand-title-wrap">
           <span class="brand-title">The Friends of</span>
@@ -69,14 +69,12 @@
 
       <!-- Desktop Navigation -->
       <nav id="nav-desktop" class="nav-desktop" role="navigation" aria-label="Primary Navigation">
-        <a href="index.html" class="nav-link">Home</a>
         <a href="campaign.html" class="nav-link">Campaign</a>
         <a href="explore.html" class="nav-link active">Explore</a>
         <a href="news.html" class="nav-link">News</a>
         <a href="events.html" class="nav-link">Events</a>
-        <a href="support-us.html" class="nav-link">Support Us</a>
+        <a href="support-us.html" class="nav-link">Support</a>
         <a href="about.html" class="nav-link">About</a>
-        <a href="contact.html" class="nav-link">Contact</a>
         <div class="nav-mobile-ctas">
           <a href="campaign.html#pledge" class="btn btn-terracotta btn-sm" style="width: 100%; text-align: center;">Pledge Support</a>
           <a href="support-us.html#membership" class="btn btn-secondary btn-sm" style="width: 100%; text-align: center;">Become a Member (£10/£20)</a>
@@ -97,30 +95,20 @@
   <main id="main-content" role="main">
 
     <!-- Page Header Banner with Authentic Commons Photo -->
-    <section class="page-header-nt page-header-hero-banner"
-      style="position: relative; background: linear-gradient(rgba(10, 20, 15, 0.45), rgba(10, 20, 15, 0.68)), url('assets/images/explore.webp') center 40%/cover no-repeat; color: #ffffff; padding: 4.5rem 0 3.8rem 0; border-bottom: 3px solid var(--nt-green-mid);">
-      <div class="container reveal-fade-up">
-        <span class="page-kicker"
-          style="color: #ffffff; background: rgba(19, 57, 38, 0.85); padding: 0.35rem 0.85rem; display: inline-block; margin-bottom: 0.85rem; border: 1px solid rgba(255, 255, 255, 0.35); text-shadow: 0 1px 2px rgba(0,0,0,0.5);">
-          Visitor Field Guide &bull; 256 Acres of Open Land
-        </span>
-        <h1 class="page-title" style="color: #ffffff; font-size: 2.45rem; text-shadow: 0 2px 12px rgba(0,0,0,0.85); max-width: 900px; line-height: 1.18;">
-          Explore Tunbridge Wells &amp; Rusthall Commons
-        </h1>
-        <p class="page-lead" style="color: #ffffff; font-size: 1.15rem; max-width: 820px; line-height: 1.65; margin-top: 0.75rem; text-shadow: 0 2px 6px rgba(0,0,0,0.8);">
-          Step off the town streets into ancient woodland, massive Ardingly sandstone outcrops, romantic holloways, and panoramic lookouts. Free to explore 365 days a year.
-        </p>
-        <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem;">
-          <a href="#interactive-map" class="btn btn-terracotta btn-sm">Interactive Map &rarr;</a>
-          <a href="#maps" class="btn btn-secondary btn-sm" style="background: rgba(0,0,0,0.45); border-color: rgba(255,255,255,0.6); color: #ffffff;">Download Trail Maps</a>
-          <a href="#landmarks" class="btn btn-secondary btn-sm" style="background: rgba(0,0,0,0.45); border-color: rgba(255,255,255,0.6); color: #ffffff;">Landmarks &amp; Rocks</a>
-          <a href="#plan-visit" class="btn btn-secondary btn-sm" style="background: rgba(0,0,0,0.45); border-color: rgba(255,255,255,0.6); color: #ffffff;">Visitor Information &amp; Parking</a>
-        </div>
-      </div>
-      <div style="position: absolute; bottom: 0.5rem; right: 1rem; font-size: 0.70rem; color: #ffffff; background: rgba(0,0,0,0.45); padding: 0.2rem 0.55rem; backdrop-filter: blur(4px); font-style: italic;">
-        Tunbridge Wells and Rusthall Commons &bull; Free to explore 365 days a year
+    <section class="subpage-masthead">
+      <div class="subpage-masthead-inner">
+        <span class="masthead-kicker">Visitor Guide &amp; Access</span>
+        <h1 class="masthead-title">Explore the Commons &amp; Ancient Geology</h1>
+        <p class="masthead-lead">Plan your visit across 256 acres of protected woodland, sandstone outcrops, and walking trails open 365 days a year.</p>
       </div>
     </section>
+
+    <!-- Editorial photo anchor -->
+    <div class="photo-break-fullwidth explore-hero-photo">
+      <img src="assets/images/commons-cricket.webp"
+        alt="Cricket match taking place on Tunbridge Wells Common surrounded by historic woodland and sandstone rocks"
+        width="1024" height="433" fetchpriority="high" decoding="async">
+    </div>
 
     <!-- Interactive Landmark & Trail Map Section -->
     <section id="interactive-map" style="padding: 3.5rem 0 2.5rem;">
@@ -369,7 +357,7 @@
           <span class="section-kicker">Visitor Essentials</span>
           <h2 class="section-title">Practical Planning &amp; Guidance</h2>
           <p style="color: var(--nt-muted); margin-top: 0.5rem; font-size: 1rem;">
-            Everything you need for an enjoyable visit, from bus routes and parking to accessibility notes and the Commons Code.
+            Everything you need for an enjoyable visit, from getting here and parking to accessibility notes and the Commons Code.
           </p>
         </div>
 
@@ -378,21 +366,15 @@
           <details class="nt-accordion-item" open>
             <summary class="nt-accordion-summary">
               <div class="summary-heading-box">
-                <span class="summary-title">Getting Here, Public Buses &amp; Free Parking</span>
-                <span class="summary-subtext">Rail connections, direct bus routes, and designated parking locations</span>
+                <span class="summary-title">Getting Here &amp; Free Parking</span>
+                <span class="summary-subtext">Rail connections, local buses, and parking locations</span>
               </div>
               <span class="summary-icon" aria-hidden="true">+</span>
             </summary>
             <div class="nt-accordion-body prose">
               <ul class="clean-list">
                 <li><strong>By Train:</strong> Tunbridge Wells Mainline Station is a 5-minute walk (400m) via London Road, with regular direct 50-minute services from London Charing Cross, London Bridge, and Hastings.</li>
-                <li><strong>Local Bus Services:</strong> Frequent bus routes connect Tunbridge Wells Station, the town centre, and both Commons:
-                  <ul style="margin-top: 0.35rem; padding-left: 1.25rem; font-size: 0.92rem; list-style-type: disc;">
-                    <li><strong>Route 281 (Arriva):</strong> Runs frequently between Tunbridge Wells town centre/station and Rusthall, stopping right along Rusthall Common and Toad Rock.</li>
-                    <li><strong>Routes 280 &amp; 277 (Arriva / Autocar):</strong> Serve Church Road, Mount Ephraim, and Langton Road along the northern perimeter of Tunbridge Wells Common.</li>
-                    <li><strong>Route 29 (Regency):</strong> Connects the station to The Pantiles and Major York’s Road along the southern edge of the Common.</li>
-                  </ul>
-                </li>
+                <li><strong>By Bus:</strong> Local bus services run between Tunbridge Wells station, the town centre and the Commons. Please check current routes and timetables with the operators or a journey planner before you travel.</li>
                 <li><strong>Fir Tree Road Parking:</strong> Free roadside parking bays on Tunbridge Wells Common immediately adjacent to the Higher Cricket Ground (TN4 8AH, max 4 hours).</li>
                 <li><strong>Rusthall Common Parking:</strong> Informal on-street parking along Coach Road and Upper Street bordering Toad Rock and the cricket ground. Please park considerately for residents.</li>
                 <li><strong>Town Centre Car Parks:</strong> Torrington Multi-Storey (Vale Road, TN1 1DJ) and Pantiles surface car park off Major York's Road (TN4 8SR).</li>
@@ -497,6 +479,13 @@
     <!-- Clean Editorial Footer -->
   <footer class="site-footer" role="contentinfo">
     <div class="container">
+      <div class="footer-contact-band">
+        <div>
+          <h2 class="footer-contact-title">Get in touch</h2>
+          <p class="footer-contact-text">Questions about the Commons, volunteering or the campaign? Our trustees and secretary are happy to help.</p>
+        </div>
+        <a href="contact.html" class="btn btn-terracotta btn-lg">Contact the Friends &rarr;</a>
+      </div>
       <div class="footer-grid">
         <div class="footer-brand">
           <div class="footer-brand-header">

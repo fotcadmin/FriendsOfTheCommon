@@ -3,6 +3,13 @@
  * Main Client-side Interactive Script
  */
 
+/* Route legacy /get-involved URLs to the canonical Support page */
+(function redirectGetInvolved() {
+  if (/\/get-involved(\.html|\/)?$/i.test(window.location.pathname)) {
+    window.location.replace('/support-us.html' + window.location.search + window.location.hash);
+  }
+})();
+
 function initAll() {
   initHeader();
   initMobileNav();
@@ -14,6 +21,7 @@ function initAll() {
   initSocialSharing();
   initEditorialReview();
   initDirectDebitPopups();
+  initMembershipModal();
   initScrollAnimations();
   initQuoteSlider();
 }
@@ -653,8 +661,9 @@ function initEditorialReview() {
   });
 }
 
-/* Direct Debit Popup Window Handler for GoCardless */
+/* Direct Debit Popup Window Handler for GoCardless (pages without the membership modal) */
 function initDirectDebitPopups() {
+  if (document.getElementById('membership-modal')) return;
   const directDebitLinks = document.querySelectorAll('a[href*="pay.gocardless.com"], .js-gocardless-popup');
   
   directDebitLinks.forEach(link => {
@@ -676,6 +685,50 @@ function initDirectDebitPopups() {
         popup.focus();
       }
     });
+  });
+}
+
+/* Membership checkout modal: keeps visitors on the site during GoCardless checkout */
+function initMembershipModal() {
+  const modal = document.getElementById('membership-modal');
+  if (!modal) return;
+
+  const frame = modal.querySelector('.modal-frame');
+  const fallback = modal.querySelector('.modal-fallback-link');
+  const closeBtn = modal.querySelector('.modal-close');
+  let lastTrigger = null;
+
+  const open = (url, trigger) => {
+    lastTrigger = trigger;
+    frame.src = url;
+    fallback.href = url;
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('modal-open');
+    closeBtn.focus();
+  };
+
+  const close = () => {
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('modal-open');
+    frame.src = 'about:blank';
+    if (lastTrigger) lastTrigger.focus();
+  };
+
+  document.querySelectorAll('[data-gocardless-url]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      open(btn.dataset.gocardlessUrl, btn);
+    });
+  });
+
+  closeBtn.addEventListener('click', close);
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) close();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('is-open')) close();
   });
 }
 
