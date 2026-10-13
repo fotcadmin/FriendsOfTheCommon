@@ -11,7 +11,9 @@
   <link rel="stylesheet" href="admin.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;800&family=Inter:wght@400;500;600;700&family=Roboto+Condensed:wght@700;800&display=swap" rel="stylesheet">
+  <!-- Markdown parser for live CMS previews -->
+  <script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
 </head>
 <body>
   <!-- Decap CMS Application (v3) -->
@@ -29,14 +31,566 @@
       });
     }
 
-    // Register live CSS styles into the CMS live preview window
+    // 1. Register Google Fonts (Frank Ruhl Libre, Roboto Condensed, Inter) into preview iframe
+    CMS.registerPreviewStyle("https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;800&family=Inter:wght@400;500;600;700&family=Roboto+Condensed:wght@700;800&display=swap");
+
+    // 2. Register National Trust Design System stylesheets
+    CMS.registerPreviewStyle("/assets/css/nt-style.css");
     CMS.registerPreviewStyle("../assets/css/nt-style.css");
 
-    // Custom Live Preview Component for News Articles
+    // 3. Reset preview iframe body styling for authentic look
+    CMS.registerPreviewStyle(`
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: var(--nt-sand-bg, #faf8f5);
+        color: var(--nt-charcoal, #1e2421);
+        font-family: var(--font-sans, "Inter", sans-serif);
+        -webkit-font-smoothing: antialiased;
+      }
+      .preview-page-wrapper {
+        background-color: var(--nt-sand-bg, #faf8f5);
+        min-height: 100vh;
+      }
+    `, { raw: true });
+
+    // Robust Markdown Helper with graceful fallback
+    function renderMarkdown(md) {
+      if (!md) return '';
+      if (window.marked) {
+        try {
+          return typeof window.marked.parse === 'function' ? window.marked.parse(md) : window.marked(md);
+        } catch (e) {
+          console.warn('Marked parse error', e);
+        }
+      }
+      return md
+        .replace(/^### (.*$)/gim, '<h3>$1</h3>')
+        .replace(/^## (.*$)/gim, '<h2>$1</h2>')
+        .replace(/^# (.*$)/gim, '<h1>$1</h1>')
+        .replace(/\*\*(.*?)\*\*/gim, '<strong>$1</strong>')
+        .replace(/\*(.*?)\*/gim, '<em>$1</em>')
+        .replace(/\[(.*?)\]\((.*?)\)/gim, '<a href="$2">$1</a>')
+        .split(/\n\n+/)
+        .map(p => '<p>' + p.trim().replace(/\n/g, '<br>') + '</p>')
+        .join('');
+    }
+
+    // =========================================================================
+    // 1. CAMPAIGN PAGE LIVE PREVIEW TEMPLATE
+    // =========================================================================
+    const CampaignPreview = createClass({
+      render: function() {
+        const entry = this.props.entry;
+        if (!entry) return null;
+        const data = entry.get('data') ? entry.get('data').toJS() : {};
+
+        const mastheadKicker = data.masthead_kicker || 'Community Land Purchase';
+        const mastheadTitle = data.masthead_title || 'Securing the Freehold for Everyone, Forever';
+        const mastheadLead = data.masthead_lead || '';
+
+        const video = data.video_spotlight || {};
+        const safeguards = data.safeguards || {};
+        const pledgeCard = data.pledge_card || {};
+        const bullets = Array.isArray(pledgeCard.bullets) ? pledgeCard.bullets : [];
+        const press = Array.isArray(data.press_articles) ? data.press_articles : [];
+        const faqs = Array.isArray(data.faqs) ? data.faqs : [];
+
+        return h('div', { className: 'preview-page-wrapper' },
+          // Subpage Masthead Banner
+          h('section', { className: 'subpage-masthead' },
+            h('div', { className: 'subpage-masthead-inner' },
+              mastheadKicker ? h('span', { className: 'masthead-kicker' }, mastheadKicker) : null,
+              h('h1', { className: 'masthead-title' }, mastheadTitle),
+              mastheadLead ? h('p', { className: 'masthead-lead' }, mastheadLead) : null
+            )
+          ),
+
+          // Main Page Layout
+          h('main', { role: 'main', style: { padding: '3.5rem 0' } },
+            h('div', { className: 'container' },
+
+              // Featured Video Spotlight Card
+              h('div', { className: 'campaign-video-spotlight', style: { marginBottom: '2.5rem' } },
+                h('div', {
+                  className: 'sharp-card',
+                  style: { background: '#ffffff', border: '1px solid var(--nt-border)', overflow: 'hidden', boxShadow: 'var(--shadow-sm)' }
+                },
+                  h('div', { className: 'campaign-video-grid' },
+                    h('div', { className: 'video-responsive-wrap' },
+                      video.video_url ? h('iframe', {
+                        src: video.video_url,
+                        width: '560',
+                        height: '314',
+                        style: { border: 'none', overflow: 'hidden', width: '100%', height: '100%' },
+                        scrolling: 'no',
+                        frameBorder: '0',
+                        allowFullScreen: true,
+                        title: video.headline || 'Friends of the Commons Community Video'
+                      }) : h('div', {
+                        style: { padding: '3rem 1.5rem', textAlign: 'center', background: '#e6ede5', color: 'var(--nt-green-deep)', fontWeight: 600 }
+                      }, '🎬 Video Embed URL Preview')
+                    ),
+                    h('div', { className: 'campaign-video-text' },
+                      h('h2', {
+                        style: { fontFamily: 'var(--font-serif)', fontSize: '1.6rem', color: 'var(--nt-green-deep)', lineHeight: 1.25, marginBottom: '0.75rem' }
+                      }, video.headline || 'Watch the Community Movement in Action'),
+                      video.description ? h('p', {
+                        style: { fontSize: '0.95rem', lineHeight: 1.6, color: 'var(--nt-charcoal)', marginBottom: '1.5rem' }
+                      }, video.description) : null,
+                      h('div', { style: { display: 'flex', gap: '0.75rem', flexWrap: 'wrap', alignItems: 'center' } },
+                        h('span', { className: 'btn btn-terracotta btn-sm', style: { cursor: 'default' } }, 'Make a Pledge →'),
+                        video.fb_url ? h('a', {
+                          href: video.fb_url,
+                          target: '_blank',
+                          rel: 'noopener',
+                          className: 'btn btn-secondary btn-sm',
+                          style: { fontSize: '0.85rem' }
+                        }, 'Watch on Facebook ↗') : null
+                      )
+                    )
+                  )
+                )
+              ),
+
+              // Editorial Callout: Community Safeguards (Balanced Two-Column Grid)
+              h('div', { className: 'editorial-callout', style: { marginBottom: '3rem' } },
+                safeguards.tag ? h('span', { className: 'editorial-tag' }, safeguards.tag) : null,
+                h('h2', { className: 'editorial-heading' }, safeguards.heading || 'Why community ownership matters'),
+                h('div', { className: 'editorial-grid' },
+                  h('div', {
+                    className: 'prose',
+                    dangerouslySetInnerHTML: { __html: renderMarkdown(safeguards.left_col || '') }
+                  }),
+                  h('div', {
+                    className: 'prose',
+                    dangerouslySetInnerHTML: { __html: renderMarkdown(safeguards.right_col || '') }
+                  })
+                )
+              ),
+
+              // Why Every Pledge Counts Card
+              h('div', {
+                className: 'pledge-counts-card',
+                style: {
+                  marginTop: '1.25rem',
+                  marginBottom: '3rem',
+                  padding: '1.25rem 1.5rem',
+                  background: 'var(--nt-sand-bg)',
+                  border: '1px solid var(--nt-border)',
+                  borderLeft: '4px solid var(--nt-green-deep)',
+                  borderRadius: '6px'
+                }
+              },
+                h('h3', {
+                  style: {
+                    fontFamily: 'var(--font-serif)',
+                    fontSize: '1.25rem',
+                    color: 'var(--nt-green-deep)',
+                    marginBottom: '0.4rem'
+                  }
+                }, pledgeCard.heading || 'Why Every Pledge Counts'),
+                pledgeCard.intro ? h('p', {
+                  style: {
+                    color: 'var(--nt-charcoal)',
+                    fontSize: '0.95rem',
+                    lineHeight: 1.55,
+                    marginBottom: '0.85rem'
+                  }
+                }, pledgeCard.intro) : null,
+                bullets.length > 0 ? h('ul', {
+                  className: 'clean-list',
+                  style: {
+                    fontSize: '0.92rem',
+                    color: 'var(--nt-charcoal)',
+                    margin: '0 0 0.85rem 0',
+                    paddingLeft: '1.2rem',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '0.35rem'
+                  }
+                }, bullets.map((item, idx) => {
+                  const text = typeof item === 'string' ? item : (item && item.point ? item.point : '');
+                  return h('li', { key: idx }, text);
+                })) : null,
+                pledgeCard.email_blurb ? h('div', {
+                  style: {
+                    fontSize: '0.88rem',
+                    color: 'var(--nt-muted)',
+                    borderTop: '1px solid var(--nt-border-subtle)',
+                    paddingTop: '0.65rem'
+                  },
+                  dangerouslySetInnerHTML: {
+                    __html: pledgeCard.email_blurb.replace(
+                      /([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})/g,
+                      '<a href="mailto:$1" style="color: var(--nt-green-deep); font-weight: 600; text-decoration: underline;">$1</a>'
+                    )
+                  }
+                }) : null
+              ),
+
+              // Press & Media Coverage Grid
+              press.length > 0 ? h('div', { style: { marginBottom: '3.5rem' } },
+                h('div', { className: 'section-intro-header' },
+                  h('span', { className: 'section-kicker' }, 'Press & Media Coverage'),
+                  h('h2', { className: 'section-title' }, 'National & Regional Media Coverage'),
+                  h('p', { style: { color: 'var(--nt-muted)', marginTop: '0.5rem', fontSize: '1rem', maxWidth: '65ch' } },
+                    'National and regional media have reported on and covered the campaign to secure the Commons for the community.'
+                  )
+                ),
+                h('div', {
+                  style: { display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }
+                },
+                  press.map((art, idx) => h('div', {
+                    key: idx,
+                    className: 'sharp-card',
+                    style: { background: '#ffffff', border: '1px solid var(--nt-border)', padding: '1.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }
+                  },
+                    h('div', null,
+                      art.tag ? h('span', {
+                        style: { display: 'block', fontSize: '0.8rem', color: 'var(--nt-muted)', marginBottom: '0.5rem', textTransform: 'uppercase', letterSpacing: '0.05em' }
+                      }, art.tag) : null,
+                      h('h3', {
+                        style: { fontFamily: 'var(--font-serif)', fontSize: '1.15rem', color: 'var(--nt-charcoal)', marginBottom: '0.75rem', lineHeight: '1.3' }
+                      }, art.title || ''),
+                      art.summary ? h('p', {
+                        style: { fontSize: '0.9rem', color: 'var(--nt-muted)', lineHeight: '1.5', marginBottom: '1rem' }
+                      }, art.summary) : null
+                    ),
+                    art.url ? h('div', {
+                      style: { fontSize: '0.85rem', fontWeight: 600, color: 'var(--nt-green-deep)', borderTop: '1px solid var(--nt-border-subtle)', paddingTop: '0.75rem' }
+                    },
+                      h('a', { href: art.url, target: '_blank', rel: 'noopener', style: { color: 'inherit', textDecoration: 'underline' } }, art.link_label || 'Read Article →')
+                    ) : null
+                  ))
+                )
+              ) : null,
+
+              // Frequently Asked Questions Accordions
+              faqs.length > 0 ? h('div', { style: { marginBottom: '3rem' } },
+                h('div', { className: 'section-intro-header' },
+                  h('span', { className: 'section-kicker' }, 'Sale Status & Essential Answers'),
+                  h('h2', { className: 'section-title' }, 'Frequently Asked Questions'),
+                  h('p', { style: { color: 'var(--nt-muted)', marginTop: '0.5rem', fontSize: '1rem' } },
+                    'Answers to key questions regarding the commercial sale of the Commons, our charity bid, and long-term community ownership.'
+                  )
+                ),
+                h('div', { className: 'nt-accordion-group' },
+                  faqs.map((faq, idx) => {
+                    const q = faq.question || 'Question';
+                    const sub = faq.subtext;
+                    const ans = faq.answer || '';
+                    return h('details', { className: 'nt-accordion-item', open: true, key: idx },
+                      h('summary', { className: 'nt-accordion-summary' },
+                        h('div', { className: 'summary-heading-box' },
+                          h('span', { className: 'summary-title' }, q),
+                          sub ? h('span', { className: 'summary-subtext' }, sub) : null
+                        ),
+                        h('span', { className: 'summary-icon', 'aria-hidden': 'true' }, '+')
+                      ),
+                      h('div', {
+                        className: 'nt-accordion-body prose',
+                        dangerouslySetInnerHTML: { __html: renderMarkdown(ans) }
+                      })
+                    );
+                  })
+                )
+              ) : null
+
+            )
+          )
+        );
+      }
+    });
+
+    // =========================================================================
+    // 2. HOMEPAGE LIVE PREVIEW TEMPLATE
+    // =========================================================================
+    const HomePreview = createClass({
+      render: function() {
+        const entry = this.props.entry;
+        if (!entry) return null;
+        const data = entry.get('data') ? entry.get('data').toJS() : {};
+        const ann = data.announcement || {};
+        const hero = data.hero || {};
+        const visiting = data.visiting || {};
+        const heroImg = this.props.getAsset ? this.props.getAsset(hero.image) : hero.image;
+
+        return h('div', { className: 'preview-page-wrapper' },
+          ann.show ? h('div', {
+            className: 'urgent-notice-bar',
+            style: { background: 'var(--nt-terracotta)', color: '#ffffff', padding: '0.75rem 1.5rem', textAlign: 'center', fontSize: '0.9rem', fontWeight: 600 }
+          },
+            ann.tag ? h('span', { style: { textTransform: 'uppercase', letterSpacing: '0.1em', marginRight: '0.75rem', background: 'rgba(0,0,0,0.2)', padding: '0.2rem 0.5rem' } }, ann.tag) : null,
+            ann.text || '',
+            ann.link ? h('a', { href: ann.link, style: { color: '#ffffff', textDecoration: 'underline', marginLeft: '0.5rem' } }, 'Learn More →') : null
+          ) : null,
+
+          h('section', { className: 'subpage-masthead', style: { minHeight: '380px' } },
+            h('div', { className: 'subpage-masthead-inner' },
+              hero.kicker ? h('span', { className: 'masthead-kicker' }, hero.kicker) : null,
+              h('h1', { className: 'masthead-title' }, hero.headline || data.title || 'Friends of the Commons'),
+              hero.lead ? h('p', { className: 'masthead-lead' }, hero.lead) : null
+            )
+          ),
+
+          h('main', { role: 'main', style: { padding: '3.5rem 0' } },
+            h('div', { className: 'container' },
+              heroImg ? h('div', { style: { marginBottom: '2.5rem', border: '1px solid var(--nt-border)', overflow: 'hidden' } },
+                h('img', { src: heroImg.toString(), style: { width: '100%', maxHeight: '420px', objectFit: 'cover', display: 'block' }, alt: 'Hero Preview' })
+              ) : null,
+
+              h('div', { className: 'editorial-callout', style: { marginBottom: '3rem' } },
+                h('span', { className: 'editorial-tag' }, 'Visiting & Facilities'),
+                h('h2', { className: 'editorial-heading' }, 'Plan Your Visit to the Commons'),
+                h('div', { className: 'editorial-grid' },
+                  h('div', { className: 'prose' },
+                    h('h3', { style: { fontFamily: 'var(--font-serif)', color: 'var(--nt-green-deep)', marginBottom: '0.5rem' } }, 'Location & Paths'),
+                    h('p', null, visiting.location || '')
+                  ),
+                  h('div', { className: 'prose' },
+                    h('h3', { style: { fontFamily: 'var(--font-serif)', color: 'var(--nt-green-deep)', marginBottom: '0.5rem' } }, 'Parking & Byelaws'),
+                    h('p', null, visiting.parking || '')
+                  )
+                )
+              )
+            )
+          )
+        );
+      }
+    });
+
+    // =========================================================================
+    // 3. ABOUT & HISTORY LIVE PREVIEW TEMPLATE
+    // =========================================================================
+    const AboutPreview = createClass({
+      render: function() {
+        const entry = this.props.entry;
+        if (!entry) return null;
+        const data = entry.get('data') ? entry.get('data').toJS() : {};
+        const gallery = Array.isArray(data.gallery) ? data.gallery : [];
+        const trustees = Array.isArray(data.trustees) ? data.trustees : [];
+
+        return h('div', { className: 'preview-page-wrapper' },
+          h('section', { className: 'subpage-masthead' },
+            h('div', { className: 'subpage-masthead-inner' },
+              h('span', { className: 'masthead-kicker' }, 'Our Heritage & Charity'),
+              h('h1', { className: 'masthead-title' }, data.heading || 'About The Friends'),
+              h('p', { className: 'masthead-lead' }, 'Conserving Tunbridge Wells & Rusthall Commons for over 30 years.')
+            )
+          ),
+
+          h('main', { role: 'main', style: { padding: '3.5rem 0' } },
+            h('div', { className: 'container' },
+              data.story ? h('div', { className: 'editorial-callout', style: { marginBottom: '3rem' } },
+                h('span', { className: 'editorial-tag' }, 'Charity Mission'),
+                h('h2', { className: 'editorial-heading' }, 'Protecting Our Historic Commons'),
+                h('div', { className: 'prose', dangerouslySetInnerHTML: { __html: renderMarkdown(data.story) } })
+              ) : null,
+
+              gallery.length > 0 ? h('div', { style: { marginBottom: '3.5rem' } },
+                h('div', { className: 'section-intro-header' },
+                  h('span', { className: 'section-kicker' }, 'Photo Highlights'),
+                  h('h2', { className: 'section-title' }, 'Across the 256 Acres')
+                ),
+                h('div', { style: { display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' } },
+                  gallery.map((item, idx) => {
+                    const img = this.props.getAsset ? this.props.getAsset(item.image) : item.image;
+                    return h('div', { key: idx, className: 'sharp-card', style: { background: '#ffffff', border: '1px solid var(--nt-border)' } },
+                      img ? h('img', { src: img.toString(), style: { width: '100%', height: '200px', objectFit: 'cover', display: 'block' }, alt: item.caption || '' }) : null,
+                      h('div', { style: { padding: '1rem' } },
+                        item.caption ? h('p', { style: { fontSize: '0.9rem', color: 'var(--nt-charcoal)', marginBottom: '0.35rem' } }, item.caption) : null,
+                        item.credit ? h('span', { style: { fontSize: '0.75rem', color: 'var(--nt-muted)' } }, 'Photo: ' + item.credit) : null
+                      )
+                    );
+                  })
+                )
+              ) : null,
+
+              trustees.length > 0 ? h('div', { style: { marginBottom: '3rem' } },
+                h('div', { className: 'section-intro-header' },
+                  h('span', { className: 'section-kicker' }, 'Governance'),
+                  h('h2', { className: 'section-title' }, 'Trustees & Officers')
+                ),
+                h('div', { style: { display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1.5rem' } },
+                  trustees.map((tr, idx) => h('div', { key: idx, className: 'sharp-card', style: { background: '#ffffff', border: '1px solid var(--nt-border)', padding: '1.5rem' } },
+                    h('h3', { style: { fontFamily: 'var(--font-serif)', fontSize: '1.2rem', color: 'var(--nt-green-deep)', marginBottom: '0.25rem' } }, tr.name || ''),
+                    h('span', { style: { fontSize: '0.85rem', fontWeight: 600, color: 'var(--nt-terracotta)', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.75rem' } }, tr.role || ''),
+                    tr.bio ? h('p', { style: { fontSize: '0.9rem', color: 'var(--nt-muted)', lineHeight: '1.5' } }, tr.bio) : null
+                  ))
+                )
+              ) : null
+            )
+          )
+        );
+      }
+    });
+
+    // =========================================================================
+    // 4. SUPPORT US LIVE PREVIEW TEMPLATE
+    // =========================================================================
+    const SupportPreview = createClass({
+      render: function() {
+        const entry = this.props.entry;
+        if (!entry) return null;
+        const data = entry.get('data') ? entry.get('data').toJS() : {};
+        const tiers = Array.isArray(data.membership_tiers) ? data.membership_tiers : [];
+        const bacs = data.bacs_notice || {};
+        const volunteers = Array.isArray(data.volunteer_opportunities) ? data.volunteer_opportunities : [];
+
+        return h('div', { className: 'preview-page-wrapper' },
+          h('section', { className: 'subpage-masthead' },
+            h('div', { className: 'subpage-masthead-inner' },
+              h('span', { className: 'masthead-kicker' }, 'Support Our Charity'),
+              h('h1', { className: 'masthead-title' }, 'Membership & Volunteering'),
+              h('p', { className: 'masthead-lead' }, 'Your support funds essential conservation tools, tree surgery, and habitat protection.')
+            )
+          ),
+
+          h('main', { role: 'main', style: { padding: '3.5rem 0' } },
+            h('div', { className: 'container' },
+              data.intro ? h('div', { className: 'editorial-callout', style: { marginBottom: '3rem' } },
+                h('span', { className: 'editorial-tag' }, 'Membership & Donations'),
+                h('div', { className: 'prose', dangerouslySetInnerHTML: { __html: renderMarkdown(data.intro) } })
+              ) : null,
+
+              tiers.length > 0 ? h('div', { style: { marginBottom: '3rem' } },
+                h('div', { className: 'section-intro-header' },
+                  h('span', { className: 'section-kicker' }, 'Annual Direct Debit'),
+                  h('h2', { className: 'section-title' }, 'Membership Tiers')
+                ),
+                h('div', { style: { display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1.5rem' } },
+                  tiers.map((t, idx) => h('div', { key: idx, className: 'sharp-card', style: { background: '#ffffff', border: '1px solid var(--nt-border)', borderTop: '4px solid var(--nt-green-deep)', padding: '1.75rem', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' } },
+                    h('div', null,
+                      h('h3', { style: { fontFamily: 'var(--font-serif)', fontSize: '1.35rem', color: 'var(--nt-green-deep)', marginBottom: '0.25rem' } }, t.name || ''),
+                      h('div', { style: { fontSize: '2rem', fontWeight: 700, color: 'var(--nt-charcoal)', marginBottom: '0.75rem' } }, '£' + (t.price || '0'), h('span', { style: { fontSize: '0.9rem', fontWeight: 400, color: 'var(--nt-muted)' } }, '/year')),
+                      t.description ? h('p', { style: { fontSize: '0.9rem', color: 'var(--nt-muted)', marginBottom: '1rem', lineHeight: 1.5 } }, t.description) : null
+                    ),
+                    t.gocardless_url ? h('span', { className: 'btn btn-primary btn-sm', style: { textAlign: 'center', cursor: 'default' } }, 'Join Online →') : null
+                  ))
+                )
+              ) : null,
+
+              bacs.heading ? h('div', {
+                className: 'pledge-counts-card',
+                style: {
+                  marginBottom: '3rem',
+                  padding: '1.5rem',
+                  background: 'var(--nt-sand-bg)',
+                  border: '1px solid var(--nt-border)',
+                  borderLeft: '4px solid var(--nt-terracotta)',
+                  borderRadius: '6px'
+                }
+              },
+                h('h3', { style: { fontFamily: 'var(--font-serif)', fontSize: '1.25rem', color: 'var(--nt-terracotta)', marginBottom: '0.5rem' } }, bacs.heading),
+                bacs.text ? h('div', { className: 'prose', dangerouslySetInnerHTML: { __html: renderMarkdown(bacs.text) } }) : null,
+                bacs.btn_label ? h('a', { href: bacs.btn_url || '#', className: 'btn btn-secondary btn-sm', style: { marginTop: '1rem', display: 'inline-block', textDecoration: 'none' } }, bacs.btn_label) : null
+              ) : null,
+
+              volunteers.length > 0 ? h('div', { style: { marginBottom: '3rem' } },
+                h('div', { className: 'section-intro-header' },
+                  h('span', { className: 'section-kicker' }, 'Get Hands-On'),
+                  h('h2', { className: 'section-title' }, 'Volunteer Opportunities')
+                ),
+                h('div', { style: { display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1.5rem' } },
+                  volunteers.map((vol, idx) => h('div', { key: idx, className: 'sharp-card', style: { background: '#ffffff', border: '1px solid var(--nt-border)', padding: '1.5rem' } },
+                    h('h3', { style: { fontFamily: 'var(--font-serif)', fontSize: '1.2rem', color: 'var(--nt-green-deep)', marginBottom: '0.35rem' } }, vol.title || ''),
+                    vol.frequency ? h('span', { style: { fontSize: '0.8rem', fontWeight: 600, color: 'var(--nt-muted)', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.75rem' } }, '⏱ ' + vol.frequency) : null,
+                    vol.description ? h('p', { style: { fontSize: '0.9rem', color: 'var(--nt-charcoal)', lineHeight: '1.55' } }, vol.description) : null
+                  ))
+                )
+              ) : null
+            )
+          )
+        );
+      }
+    });
+
+    // =========================================================================
+    // 5. CONTACT PAGE LIVE PREVIEW TEMPLATE
+    // =========================================================================
+    const ContactPreview = createClass({
+      render: function() {
+        const entry = this.props.entry;
+        if (!entry) return null;
+        const data = entry.get('data') ? entry.get('data').toJS() : {};
+        const contacts = Array.isArray(data.contacts) ? data.contacts : [];
+
+        return h('div', { className: 'preview-page-wrapper' },
+          h('section', { className: 'subpage-masthead' },
+            h('div', { className: 'subpage-masthead-inner' },
+              h('span', { className: 'masthead-kicker' }, 'Get In Touch'),
+              h('h1', { className: 'masthead-title' }, data.heading || 'Contact The Friends'),
+              h('p', { className: 'masthead-lead' }, 'Our trustees and honorary officers are always pleased to hear from residents and supporters.')
+            )
+          ),
+
+          h('main', { role: 'main', style: { padding: '3.5rem 0' } },
+            h('div', { className: 'container' },
+              data.intro ? h('div', { className: 'editorial-callout', style: { marginBottom: '3rem' } },
+                h('span', { className: 'editorial-tag' }, 'Enquiries & Questions'),
+                h('div', { className: 'prose', dangerouslySetInnerHTML: { __html: renderMarkdown(data.intro) } })
+              ) : null,
+
+              contacts.length > 0 ? h('div', { style: { marginBottom: '3rem' } },
+                h('div', { className: 'section-intro-header' },
+                  h('span', { className: 'section-kicker' }, 'Directory'),
+                  h('h2', { className: 'section-title' }, 'Trustee & Officer Contacts')
+                ),
+                h('div', { style: { display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1.5rem' } },
+                  contacts.map((c, idx) => h('div', { key: idx, className: 'sharp-card', style: { background: '#ffffff', border: '1px solid var(--nt-border)', padding: '1.5rem' } },
+                    h('h3', { style: { fontFamily: 'var(--font-serif)', fontSize: '1.2rem', color: 'var(--nt-green-deep)', marginBottom: '0.25rem' } }, c.name || ''),
+                    h('span', { style: { fontSize: '0.85rem', fontWeight: 600, color: 'var(--nt-terracotta)', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.75rem' } }, c.role || ''),
+                    c.email ? h('div', { style: { marginBottom: '0.5rem' } },
+                      h('a', { href: 'mailto:' + c.email, style: { color: 'var(--nt-green-deep)', fontWeight: 600, textDecoration: 'underline', fontSize: '0.9rem' } }, c.email)
+                    ) : null,
+                    c.notes ? h('p', { style: { fontSize: '0.85rem', color: 'var(--nt-muted)', margin: 0 } }, c.notes) : null
+                  ))
+                )
+              ) : null
+            )
+          )
+        );
+      }
+    });
+
+    // =========================================================================
+    // 6. MASTER PAGES COLLECTION DISPATCHER
+    // =========================================================================
+    const PageDispatcherPreview = createClass({
+      render: function() {
+        const entry = this.props.entry;
+        if (!entry) return null;
+        const data = entry.get('data') ? entry.get('data').toJS() : {};
+
+        // Route by content indicators
+        if (data.safeguards || data.pledge_card || data.masthead_kicker === 'Community Land Purchase' || data.video_spotlight) {
+          return h(CampaignPreview, this.props);
+        }
+        if (data.hero || data.announcement || data.visiting) {
+          return h(HomePreview, this.props);
+        }
+        if (data.trustees || data.gallery || data.story) {
+          return h(AboutPreview, this.props);
+        }
+        if (data.membership_tiers || data.bacs_notice || data.volunteer_opportunities) {
+          return h(SupportPreview, this.props);
+        }
+        if (data.contacts) {
+          return h(ContactPreview, this.props);
+        }
+        return h(CampaignPreview, this.props);
+      }
+    });
+
+    // =========================================================================
+    // 7. NEWS ARTICLES PREVIEW COMPONENT
+    // =========================================================================
     const NewsPreview = createClass({
       render: function() {
         const entry = this.props.entry;
-        const image = this.props.getAsset(entry.getIn(['data', 'image']));
+        if (!entry) return null;
+        const image = this.props.getAsset ? this.props.getAsset(entry.getIn(['data', 'image'])) : entry.getIn(['data', 'image']);
         const title = entry.getIn(['data', 'title']) || 'Article Title';
         const category = entry.getIn(['data', 'category']) || 'Campaign Update';
         const date = entry.getIn(['data', 'date']) || '2026-10-02';
@@ -47,22 +601,17 @@
         const pdfLabel = entry.getIn(['data', 'pdf_label']) || 'Download Document (PDF)';
 
         return h('div', { style: { padding: '2rem', fontFamily: 'Inter, sans-serif', maxWidth: '800px', margin: '0 auto', color: '#18221b' } },
-          // Header
           h('div', { style: { marginBottom: '1.5rem', borderBottom: '2px solid #d4ded8', paddingBottom: '1rem' } },
             h('span', { style: { fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 700, color: '#133926' } }, category),
             h('h1', { style: { fontFamily: '"Frank Ruhl Libre", serif', fontSize: '2.2rem', color: '#133926', margin: '0.5rem 0' } }, title),
             h('div', { style: { fontSize: '0.85rem', color: '#63726a' } }, 'Published: ' + date + ' • By ' + author)
           ),
-          // Featured Image
           image ? h('div', { style: { marginBottom: '1.5rem', border: '1px solid #d4ded8', background: '#fbf9f4' } },
             h('img', { src: image.toString(), style: { width: '100%', maxHeight: '380px', objectFit: 'cover', display: 'block' } }),
             photoCredit ? h('div', { style: { padding: '0.5rem 0.75rem', fontSize: '0.8rem', color: '#63726a', borderTop: '1px solid #d4ded8' } }, photoCredit) : null
           ) : null,
-          // Summary Callout
           summary ? h('div', { style: { background: '#f5f8f6', borderLeft: '4px solid #133926', padding: '1rem 1.25rem', marginBottom: '1.5rem', fontSize: '1.05rem', fontStyle: 'italic', color: '#133926' } }, summary) : null,
-          // Article Body
           h('div', { className: 'prose', style: { fontSize: '1rem', lineHeight: '1.7', color: '#2d3732' } }, this.props.widgetFor('body')),
-          // PDF Attachment if present
           pdfUrl ? h('div', { style: { marginTop: '2rem', paddingTop: '1rem', borderTop: '1px solid #d4ded8' } },
             h('a', { href: pdfUrl, style: { display: 'inline-block', background: '#133926', color: '#ffffff', padding: '0.6rem 1.2rem', textDecoration: 'none', fontWeight: 600, fontSize: '0.9rem' } }, '📄 ' + pdfLabel)
           ) : null
@@ -70,7 +619,16 @@
       }
     });
 
+    // =========================================================================
+    // 8. REGISTER ALL PREVIEW TEMPLATES WITH DECAP CMS
+    // =========================================================================
     CMS.registerPreviewTemplate("news", NewsPreview);
+    CMS.registerPreviewTemplate("campaign", CampaignPreview);
+    CMS.registerPreviewTemplate("home", HomePreview);
+    CMS.registerPreviewTemplate("about", AboutPreview);
+    CMS.registerPreviewTemplate("support", SupportPreview);
+    CMS.registerPreviewTemplate("contact", ContactPreview);
+    CMS.registerPreviewTemplate("pages", PageDispatcherPreview);
   </script>
 </body>
 </html>
