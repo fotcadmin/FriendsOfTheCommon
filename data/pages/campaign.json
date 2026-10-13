@@ -14,6 +14,51 @@
     "left_col": "The Commons are protected by a range of legal and statutory safeguards, but ownership still matters. A private freeholder may have different priorities from those of the local community—particularly around public access, land management, and commercial pressures on the estate.",
     "right_col": "Charitable community ownership ensures decisions are guided entirely by conservation and public enjoyment. Accountable to its members, local trustees, and the Charity Commission, the Friends would safeguard these historic green spaces for generations to come."
   },
+  "march_showcase": {
+    "kicker": "Town-Wide Solidarity",
+    "title": "March for the Commons: 21 March 2026",
+    "lead": "Hundreds of residents, families, and dog walkers gathered across Tunbridge Wells and Rusthall to demonstrate overwhelming community support behind the freehold purchase bid.",
+    "images": [
+      {
+        "src": "/assets/images/march/march-community-rally.webp",
+        "alt": "Community marchers with banners across Tunbridge Wells",
+        "credit": "Photo: Kelly Wilcox (21 March 2026)"
+      },
+      {
+        "src": "/assets/images/march/march-crowd-pantiles.webp",
+        "alt": "Supporters marching through the town with campaign placards",
+        "credit": "Photo: Kelly Wilcox (21 March 2026)"
+      },
+      {
+        "src": "/assets/images/march/march-dogs-support.webp",
+        "alt": "Dogs and families supporting the Commons community march",
+        "credit": "Photo: Kelly Wilcox (21 March 2026)"
+      }
+    ]
+  },
+  "press_articles": [
+    {
+      "tag": "The Guardian • Feb 2026",
+      "title": "“It’s now or never: Tunbridge Wells residents race to save commons”",
+      "summary": "National coverage of the community mobilisation to protect the Commons from commercial development.",
+      "url": "https://www.theguardian.com/uk-news/2026/feb/20/tunbridge-wells-residents-race-save-commons-from-developers",
+      "link_label": "Read in The Guardian →"
+    },
+    {
+      "tag": "BBC News • Jan 2026",
+      "title": "“Bid for common land to prevent future development”",
+      "summary": "BBC News report on the community bid to secure the Commons and protect them from future development.",
+      "url": "https://www.bbc.co.uk/news/articles/ckgl3jnwdn1o",
+      "link_label": "Read on BBC News →"
+    },
+    {
+      "tag": "The Telegraph • Feb 2026",
+      "title": "“Village green society fights to preserve common land”",
+      "summary": "Report on the historic community campaign to keep the freehold in charitable hands.",
+      "url": "https://www.telegraph.co.uk/news/2026/02/21/village-green-society-planning-war-flats-tunbridge-wells/",
+      "link_label": "Read in The Telegraph →"
+    }
+  ],
   "pledge_card": {
     "heading": "Why Every Pledge Counts",
     "intro": "Every pledge—large or small—shows that our local community stands together to protect the Commons for future generations.",
@@ -24,34 +69,21 @@
     ],
     "email_blurb": "Prefer to pledge by email? Contact johnspbarber@gmail.com"
   },
-  "press_articles": [
-    {
-      "tag": "The Guardian • Feb 2026",
-      "title": "It’s now or never: Tunbridge Wells residents race to save commons",
-      "summary": "National coverage of the community mobilisation to protect the Commons from commercial development.",
-      "url": "https://www.theguardian.com/uk-news/2026/feb/20/tunbridge-wells-residents-race-save-commons-from-developers",
-      "link_label": "Read in The Guardian →"
-    },
-    {
-      "tag": "BBC News • Jan 2026",
-      "title": "Bid for common land to prevent future development",
-      "summary": "BBC News report on the community bid to secure the Commons and protect them from future development.",
-      "url": "https://www.bbc.co.uk/news/articles/cdx0l38y3kro",
-      "link_label": "Read on BBC News →"
-    },
-    {
-      "tag": "The Telegraph • Feb 2026",
-      "title": "Village green society fights to preserve common land",
-      "summary": "Report on the historic community campaign to keep the freehold in charitable hands.",
-      "url": "https://www.telegraph.co.uk/news/2026/02/21/village-green-society-planning-war-flats-tunbridge-wells/",
-      "link_label": "Read in The Telegraph →"
-    }
-  ],
   "faqs": [
     {
       "question": "What happens now?",
       "subtext": "The marketing of the Commons as part of a wider estate",
       "answer": "**The Commons are now being marketed as part of a wider estate that also includes The Pantiles.**\n\nAs this is a significantly different commercial proposition, the Friends will not be seeking to purchase the estate as currently offered, and there are no immediate plans to call on community pledges.\n\nOur long-term ambition remains unchanged: to secure the Commons for the benefit of the community. We will continue to engage constructively with any future owner to explore opportunities for community ownership should they arise.\n\nWe will keep supporters informed of any significant developments."
+    },
+    {
+      "question": "Are the Friends still interested in community ownership?",
+      "subtext": "Our continuing dedication to securing the land",
+      "answer": "**Yes.**\n\nThe Friends continue to believe that ownership by a local charity dedicated solely to the Commons would provide the strongest possible long-term protection for these special places.\n\nShould circumstances change, we remain ready to explore opportunities for community ownership."
+    },
+    {
+      "question": "Why haven’t there been many updates recently?",
+      "subtext": "Commercial timescales and verified updates",
+      "answer": "Property transactions can involve long periods where there is little public information available.\n\nAt the present time there is no significant news to report. Rather than speculate, we will continue to share updates when there are meaningful developments."
     },
     {
       "question": "Do pledges still matter?",

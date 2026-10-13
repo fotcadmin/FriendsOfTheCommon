@@ -4,16 +4,115 @@
     "show": true,
     "tag": "COMMONS SALE NOTICE",
     "text": "Over 3,000 residents have backed The Friends' community bid to buy the Commons.",
-    "link": "campaign.html#pledge"
+    "link": "campaign.html#pledge",
+    "link_text": "Read bid details & pledge support →"
   },
   "hero": {
-    "kicker": "Protecting 256 Acres of Historic Common Land",
-    "headline": "Ancient Woodland, Trails & Sandstone Rocks at the Heart of Our Community",
-    "lead": "Tunbridge Wells and Rusthall Commons are free and open for everyone to explore 365 days a year. The Friends are a registered charity dedicated to keeping this treasured landscape safe, protected, and in community hands forever.",
-    "image": "assets/images/explore.webp"
+    "kicker": "TUNBRIDGE WELLS & RUSTHALL COMMONS",
+    "headline": "Protecting our historic commons for everyone, forever.",
+    "image": "/assets/images/explore.webp",
+    "primary_cta_text": "Pledge to Buy the Commons →",
+    "primary_cta_url": "campaign.html#pledge",
+    "secondary_cta_text": "Plan Your Visit",
+    "secondary_cta_url": "#visit"
+  },
+  "mission_purpose": {
+    "mission_heading": "OUR MISSION",
+    "mission_text": "Working with the community for the preservation, enhancement and enjoyment of the Commons.",
+    "purpose_heading": "OUR PURPOSE",
+    "purpose_text": "To protect the Commons, celebrate their place in our community, and safeguard their future."
+  },
+  "stats": [
+    {
+      "label": "Total Parkland",
+      "value": "256 Acres",
+      "note": "Heathland, woods & ponds"
+    },
+    {
+      "label": "Public Access",
+      "value": "100% Free",
+      "note": "Open 365 days a year"
+    },
+    {
+      "label": "Ancient Geology",
+      "value": "135M Yrs",
+      "note": "Ardingly sandstone outcrops"
+    },
+    {
+      "label": "Community Stewardship",
+      "value": "34+ Years",
+      "note": "Independent Registered Charity"
+    }
+  ],
+  "roles_compare": {
+    "kicker": "Understanding Our Roles",
+    "title": "The Commons Conservators and The Friends: What’s the difference?",
+    "lede": "Two separate organisations working together for the Commons.",
+    "conservators": {
+      "tag": "Since 1890",
+      "title": "The Commons Conservators",
+      "logo": "/assets/images/conservators-badge.webp",
+      "text": "The Conservators have cared for and managed the Commons since the 1890 Tunbridge Wells Improvement Act. They are responsible for the practical management of the land, including byelaws, paths, woodland maintenance and tree safety, as well as employing the Warden and Ranger team. They are funded primarily through local council rates.",
+      "link_text": "Visit twcommons.org →",
+      "link_url": "https://twcommons.org/"
+    },
+    "friends": {
+      "tag": "Independent Charity (No. 1013975)",
+      "title": "Friends of the Commons",
+      "logo": "/assets/images/logo-alpha.webp",
+      "text": "Established in 1991, following the increased community interest in the Commons after the Great Storm of 1987, we are an independent local charity supporting the long-term protection and enjoyment of Tunbridge Wells and Rusthall Commons. We raise funds for projects on the Commons, organise volunteer sessions and nature-based events, and work alongside the Commons Conservators to care for this much-loved landscape.",
+      "link_text": "Read about our history →",
+      "link_url": "about.html"
+    }
   },
   "visiting": {
-    "location": "Tunbridge Wells Common and Rusthall Common, Royal Tunbridge Wells, Kent. Tunbridge Wells station is a 7-minute walk from the edge of the commons.",
+    "kicker": "Plan your visit",
+    "heading": "Visiting the Commons",
+    "items": [
+      {
+        "title": "Admission",
+        "description": "Free and open to explore 365 days a year, with 256 acres of peaceful woodland, sandstone rocks and open glades for you to roam and enjoy."
+      },
+      {
+        "title": "Location",
+        "description": "Tunbridge Wells and Rusthall Commons, Kent. The mainline railway station is just a 7-minute walk from the edge of the Commons."
+      },
+      {
+        "title": "Access",
+        "description": "Waymarked footpaths link the town centre to Wellington Rocks, Toad Rock and Happy Valley."
+      },
+      {
+        "title": "Facilities",
+        "description": "Free visitor parking bays on Fir Tree Road (TN4 8AH). Please take litter home."
+      }
+    ],
+    "primary_btn_text": "Complete Visitor Guide →",
+    "primary_btn_url": "explore.html#plan-visit",
+    "secondary_btn_text": "Open Map Viewer",
+    "secondary_btn_url": "explore.html",
+    "location": "Tunbridge Wells and Rusthall Commons, Kent. The mainline railway station is just a 7-minute walk from the edge of the Commons.",
     "parking": "Free visitor parking bays on Fir Tree Road (TN4 8AH). Please take litter home."
+  },
+  "campaign_story": {
+    "kicker": "The Campaign",
+    "title": "Keeping the Commons in the hands of the people for generations to come",
+    "lede": "The freehold of Tunbridge Wells and Rusthall Commons is currently on the open market. For over a century, the 1890 Tunbridge Wells Improvement Act has guaranteed public access, but ownership still matters. A private freeholder may have different priorities from those of the local community, particularly around access, land use, maintenance and the commercial use of the estate.",
+    "body": "Our philosophy is simple: this landscape belongs to everyone. We want people from near and far to walk beneath the towering Wellington Rocks, spot rare heathland wildlife, and feel the freedom that only ancient common land provides.\n\n**Why community ownership matters:** Community ownership would give the Friends a long-term opportunity to keep the freehold in charitable ownership, with decisions guided by the protection and enjoyment of the Commons rather than commercial interests.\n\nAs a charity, the Friends are accountable to our members, trustees and the Charity Commission, with the protection, enhancement and public enjoyment of the Commons at the heart of our work. Over 3,000 residents and supporters have already pledged their backing.",
+    "quote": "This landscape belongs to everyone.",
+    "quote_credit": "Over 3,000 residents and supporters have pledged their backing",
+    "cta_note": "Reported by The Guardian, BBC News and The Telegraph.",
+    "primary_cta_text": "Make a Pledge",
+    "primary_cta_url": "campaign.html#pledge",
+    "secondary_cta_text": "Read More →",
+    "secondary_cta_url": "campaign.html"
+  },
+  "support_chapter": {
+    "kicker": "Support Our Work",
+    "title": "Take your place in protecting the commons",
+    "lede": "The Friends are an independent, volunteer-led charity dedicated to caring for the Commons, funding conservation work, running guided community walks, and leading the historic bid to secure the 256-acre freehold in public ownership. Whether you donate, volunteer, join as an annual member or make a pledge, every contribution directly protects this precious landscape.",
+    "primary_cta_text": "Ways to Support Us →",
+    "primary_cta_url": "support-us.html",
+    "secondary_cta_text": "Make a Pledge →",
+    "secondary_cta_url": "campaign.html#pledge"
   }
 }
