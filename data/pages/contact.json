@@ -1,0 +1,30 @@
+{
+  "heading": "Contact The Friends of the Commons",
+  "intro": "Whether you have questions about our campaign, becoming a member, volunteering, or safeguarding, please get in touch with our volunteer committee.",
+  "contacts": [
+    {
+      "name": "Roger Barton",
+      "role": "Chairman",
+      "email": "chairman@fotcs.org.uk",
+      "notes": "Governance and charity strategy"
+    },
+    {
+      "name": "John Barber",
+      "role": "Community Bid & Campaign Lead",
+      "email": "johnspbarber@gmail.com",
+      "notes": "Direct liaison for community pledges and acquisition"
+    },
+    {
+      "name": "Chris Gurr",
+      "role": "Treasury & Membership Secretary",
+      "email": "membership@friendsofthecommons.uk",
+      "notes": "Membership allocations and cheque payments (45 Erskine Park Road, Rusthall, TN4 8UT)"
+    },
+    {
+      "name": "General Enquiries",
+      "role": "Charity Secretary",
+      "email": "info@friendsofthecommons.co.uk",
+      "notes": "General information and event questions"
+    }
+  ]
+}

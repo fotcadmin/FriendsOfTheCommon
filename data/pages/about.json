@@ -1,0 +1,35 @@
+{
+  "heading": "Born from the Storm: The Story of The Friends",
+  "story": "On the night of 15–16 October 1987, hurricane-force winds swept across southern England in what became known as the Great Storm. Tunbridge Wells and Rusthall Commons were among the hardest hit landscapes in Kent. Hundreds of ancient oak, beech, and sweet chestnut trees were uprooted overnight, historical pathways were blocked, and the landscape was left in devastation.\n\nIn the days that followed, local residents from Tunbridge Wells and Rusthall came out with hand tools, wheelbarrows, and determination to help clear paths, care for damaged veteran trees, and begin replanting.\n\nWhat started as an urgent community rescue effort quickly revealed a deeper truth: the Commons needed a permanent, dedicated body of local supporters to champion their ecology, fund conservation enhancements, and ensure they would never be neglected.\n\nIn **1991**, following the destruction caused by the Great Storm of 1987, **Patrick Shovelton** founded **The Friends** to support the Commons Conservators in their work to restore them to their former glory. His aim was to raise public awareness of the importance of the Commons and rally the community to care for them.\n\nOver the past three decades, the Friends have proudly continued Patrick's wonderful work: funding tractor and habitat equipment, restoring heritage ponds, running regular practical volunteer conservation mornings, publishing free trail guides, and now leading the historic community bid to secure the freehold for all.",
+  "gallery": [
+    {
+      "image": "assets/images/commons-panorama.webp",
+      "caption": "Panoramic woodland landscape across Tunbridge Wells Common, cared for by the community since 1987",
+      "credit": "Friends of the Commons"
+    },
+    {
+      "image": "assets/images/happy-valley.webp",
+      "caption": "The mature tree canopy and historic pathways of Happy Valley, Rusthall Common",
+      "credit": "Friends of the Commons"
+    }
+  ],
+  "trustees": [
+    {
+      "name": "Roger Barton",
+      "role": "Chairman",
+      "bio": "Leading charity governance, committee direction, and long-term landscape protection strategy.",
+      "photo": "assets/images/roger-john-nick.webp"
+    },
+    {
+      "name": "John Barber",
+      "role": "Trustee & Campaign Lead",
+      "bio": "Directing the community purchase bid, commercial liaison, and financial pledging.",
+      "photo": "assets/images/roger-john-nick.webp"
+    },
+    {
+      "name": "Chris Gurr",
+      "role": "Treasury & Membership Secretary",
+      "bio": "Managing charity financial accounting, annual membership allocations, and Gift Aid."
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "intro": "Support Tunbridge Wells and Rusthall Commons. Join as an annual member from £10/year, make a Gift-Aided donation, join practical conservation volunteering sessions, or pledge to the community purchase.",
+  "membership_tiers": [
+    {
+      "name": "Individual Member",
+      "price": "£10 / year",
+      "description": "Essential annual support to protect ancient woodland, clear historic paths, and maintain 256 acres of common land.",
+      "gocardless_url": "https://pay.gocardless.com/BRT00035S4J5CTW",
+      "benefits": [
+        "1 vote at the Charity's Annual General Meeting (AGM)",
+        "Support practical conservation sessions and tools",
+        "Directly safeguards 256 acres of historic landscape",
+        "Regular newsletters and guided walk invitations"
+      ]
+    },
+    {
+      "name": "Family / Household",
+      "price": "£20 / year",
+      "description": "Covers all adults living at the same address, demonstrating united household support.",
+      "gocardless_url": "https://pay.gocardless.com/BRT0003629VSFKA",
+      "benefits": [
+        "Two votes at the Charity's Annual General Meeting (AGM)",
+        "Household support for practical conservation and equipment",
+        "Strengthens community backing for our freehold acquisition bid",
+        "United household commitment to protecting 256 acres"
+      ]
+    }
+  ],
+  "bacs_notice": {
+    "heading": "Paying by direct bank transfer?",
+    "text": "Please let us know your details so we can allocate your membership and register your Gift Aid.",
+    "btn_label": "Submit Membership Details →",
+    "btn_url": "contact.html"
+  },
+  "volunteer_opportunities": [
+    {
+      "title": "Practical Conservation Volunteer Morning",
+      "description": "Organised by the Commons Conservators & Ranger team and supported by The Friends. Open to all with no prior experience required.",
+      "frequency": "Give time whenever you can."
+    },
+    {
+      "title": "Litter Clearance Sessions",
+      "description": "Community-led clean up walks keeping footpaths, sandstone rocks, and glades free from rubbish.",
+      "frequency": "Monthly or flexible."
+    }
+  ]
+}

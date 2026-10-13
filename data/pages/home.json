@@ -1,0 +1,19 @@
+{
+  "title": "Friends of Tunbridge Wells and Rusthall Commons",
+  "announcement": {
+    "show": true,
+    "tag": "COMMONS SALE NOTICE",
+    "text": "Over 3,000 residents have backed The Friends' community bid to buy the Commons.",
+    "link": "campaign.html#pledge"
+  },
+  "hero": {
+    "kicker": "Protecting 256 Acres of Historic Common Land",
+    "headline": "Ancient Woodland, Trails & Sandstone Rocks at the Heart of Our Community",
+    "lead": "Tunbridge Wells and Rusthall Commons are free and open for everyone to explore 365 days a year. The Friends are a registered charity dedicated to keeping this treasured landscape safe, protected, and in community hands forever.",
+    "image": "assets/images/explore.webp"
+  },
+  "visiting": {
+    "location": "Tunbridge Wells Common and Rusthall Common, Royal Tunbridge Wells, Kent. Tunbridge Wells station is a 7-minute walk from the edge of the commons.",
+    "parking": "Free visitor parking bays on Fir Tree Road (TN4 8AH). Please take litter home."
+  }
+}

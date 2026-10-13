@@ -4,8 +4,9 @@ backend:
 
 local_backend: true
 
+# 1. Global Media Library
 media_folder: "assets/images"
-public_folder: "/assets/images"
+public_folder: "assets/images"
 
 # Dashboard Display & Visual Branding
 display_url: "https://friendsofthecommons.uk"
@@ -13,7 +14,162 @@ logo_url: "/assets/images/logo-alpha.webp"
 
 collections:
   # -------------------------------------------------------------
-  # 1. NEWS & STORIES COLLECTION (Folder-based: 1 file per article)
+  # 1. CORE PAGES COLLECTION (File-based)
+  # -------------------------------------------------------------
+  - name: "pages"
+    label: "Pages"
+    delete: false
+    files:
+      # HOMEPAGE
+      - name: "home"
+        label: "Homepage"
+        file: "data/pages/home.json"
+        fields:
+          - { label: "Page Title", name: "title", widget: "string" }
+          - label: "Urgent Announcement Banner"
+            name: "announcement"
+            widget: "object"
+            fields:
+              - { label: "Show Banner?", name: "show", widget: "boolean", default: true }
+              - { label: "Tag / Kicker", name: "tag", widget: "string" }
+              - { label: "Notice Text", name: "text", widget: "string" }
+              - { label: "Link URL", name: "link", widget: "string" }
+          - label: "Hero Section"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Kicker", name: "kicker", widget: "string" }
+              - { label: "Headline", name: "headline", widget: "string" }
+              - { label: "Subtext / Lead", name: "lead", widget: "text" }
+              - { label: "Hero Image", name: "image", widget: "image" }
+          - label: "Visitor Information"
+            name: "visiting"
+            widget: "object"
+            fields:
+              - { label: "Location Text", name: "location", widget: "text" }
+              - { label: "Parking & Byelaws Text", name: "parking", widget: "text" }
+
+      # CAMPAIGN PAGE
+      - name: "campaign"
+        label: "Campaign Page"
+        file: "data/pages/campaign.json"
+        fields:
+          - { label: "Masthead Kicker", name: "masthead_kicker", widget: "string" }
+          - { label: "Masthead Title", name: "masthead_title", widget: "string" }
+          - { label: "Masthead Lead", name: "masthead_lead", widget: "text" }
+          - label: "Video Spotlight"
+            name: "video_spotlight"
+            widget: "object"
+            fields:
+              - { label: "Video URL / Embed", name: "video_url", widget: "string" }
+              - { label: "Headline", name: "headline", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Facebook Link URL", name: "fb_url", widget: "string" }
+          - label: "Community Safeguards Callout"
+            name: "safeguards"
+            widget: "object"
+            fields:
+              - { label: "Tag", name: "tag", widget: "string" }
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Left Column Text", name: "left_col", widget: "markdown" }
+              - { label: "Right Column Text", name: "right_col", widget: "markdown" }
+          - label: "Why Every Pledge Counts Card"
+            name: "pledge_card"
+            widget: "object"
+            fields:
+              - { label: "Card Heading", name: "heading", widget: "string" }
+              - { label: "Card Intro", name: "intro", widget: "text" }
+              - { label: "Bullets", name: "bullets", widget: "list", field: { label: "Point", name: "point", widget: "string" } }
+              - { label: "Email Contact Blurb", name: "email_blurb", widget: "string" }
+          - label: "Press & Media Coverage Articles"
+            name: "press_articles"
+            widget: "list"
+            fields:
+              - { label: "Outlet & Date Tag", name: "tag", widget: "string" }
+              - { label: "Headline", name: "title", widget: "string" }
+              - { label: "Summary", name: "summary", widget: "text" }
+              - { label: "Article URL", name: "url", widget: "string" }
+              - { label: "Link Label", name: "link_label", widget: "string" }
+          - label: "Frequently Asked Questions"
+            name: "faqs"
+            widget: "list"
+            fields:
+              - { label: "Question", name: "question", widget: "string" }
+              - { label: "Category / Subtext", name: "subtext", widget: "string" }
+              - { label: "Answer", name: "answer", widget: "markdown" }
+
+      # ABOUT PAGE
+      - name: "about"
+        label: "About & History"
+        file: "data/pages/about.json"
+        fields:
+          - { label: "Page Heading", name: "heading", widget: "string" }
+          - { label: "Our Story / Mission", name: "story", widget: "markdown" }
+          - label: "Image Gallery / Photo Highlights"
+            name: "gallery"
+            widget: "list"
+            fields:
+              - { label: "Image", name: "image", widget: "image" }
+              - { label: "Caption", name: "caption", widget: "string" }
+              - { label: "Photo Credit", name: "credit", widget: "string" }
+          - label: "Trustees & Officers"
+            name: "trustees"
+            widget: "list"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Role", name: "role", widget: "string" }
+              - { label: "Bio / Summary", name: "bio", widget: "text" }
+              - { label: "Photo (optional)", name: "photo", widget: "image", required: false }
+
+      # SUPPORT PAGE
+      - name: "support"
+        label: "Support Us"
+        file: "data/pages/support.json"
+        fields:
+          - { label: "Introductory Copy", name: "intro", widget: "markdown" }
+          - label: "Membership Tiers"
+            name: "membership_tiers"
+            widget: "list"
+            fields:
+              - { label: "Tier Name", name: "name", widget: "string" }
+              - { label: "Price (£/yr)", name: "price", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "GoCardless Link URL", name: "gocardless_url", widget: "string" }
+              - { label: "Benefits", name: "benefits", widget: "list", field: { label: "Benefit", name: "benefit", widget: "string" } }
+          - label: "Bank Transfer (BACS) Notice"
+            name: "bacs_notice"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Body Text", name: "text", widget: "markdown" }
+              - { label: "Button Label", name: "btn_label", widget: "string" }
+              - { label: "Button Link", name: "btn_url", widget: "string" }
+          - label: "Volunteer Opportunities"
+            name: "volunteer_opportunities"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Frequency / Commitment", name: "frequency", widget: "string" }
+
+      # CONTACT PAGE
+      - name: "contact"
+        label: "Contact Page"
+        file: "data/pages/contact.json"
+        fields:
+          - { label: "Page Heading", name: "heading", widget: "string" }
+          - { label: "Introductory Note", name: "intro", widget: "markdown" }
+          - label: "Trustee & Officer Contacts"
+            name: "contacts"
+            widget: "list"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Role", name: "role", widget: "string" }
+              - { label: "Email", name: "email", widget: "string" }
+              - { label: "Notes / Details", name: "notes", widget: "string", required: false }
+
+  # -------------------------------------------------------------
+  # 2. NEWS & STORIES COLLECTION (Folder-based: 1 file per article)
   # -------------------------------------------------------------
   - name: "news"
     label: "News & Stories"
@@ -42,7 +198,7 @@ collections:
       - { label: "Feature on Homepage / Top?", name: "is_featured", widget: "boolean", default: false }
 
   # -------------------------------------------------------------
-  # 2. EVENTS & GUIDED WALKS COLLECTION (Folder-based)
+  # 3. EVENTS & GUIDED WALKS COLLECTION (Folder-based)
   # -------------------------------------------------------------
   - name: "events"
     label: "Events & Guided Walks"
@@ -70,7 +226,7 @@ collections:
       - { label: "Active on Site?", name: "is_active", widget: "boolean", default: true }
 
   # -------------------------------------------------------------
-  # 3. SITE SETTINGS & DIRECT DEBIT CONFIGURATION (File-based)
+  # 4. SITE SETTINGS & DIRECT DEBIT CONFIGURATION (File-based)
   # -------------------------------------------------------------
   - name: "settings"
     label: "Site Settings & Direct Debit"
