@@ -119,7 +119,7 @@
       lat: 51.122770,
       lng: 0.225516,
       navQuery: 'The High Rocks, High Rocks Lane, Tunbridge Wells TN3 9JJ',
-      desc: 'Dramatic sister Ardingly Sandstone crags situated 1.5 miles SW of the Common, linked by scenic woodland trails through Broadwater Forest and the heritage Spa Valley Railway.'
+      desc: 'Dramatic sister Ardingly Sandstone crags situated 1.5 miles SW of the commons, linked by scenic woodland trails through Broadwater Forest and the heritage Spa Valley Railway.'
     },
     {
       id: 'spa-valley-west',
@@ -130,7 +130,7 @@
       lat: 51.123589,
       lng: 0.252678,
       navQuery: 'Spa Valley Railway, West Station, Nevill Terrace, Tunbridge Wells TN2 5QY',
-      desc: 'Historic 1866 Victorian terminus of the heritage Spa Valley Railway at the southern boundary of the Common. Regular steam and heritage diesel departures through the High Weald.'
+      desc: 'Historic 1866 Victorian terminus of the heritage Spa Valley Railway at the southern boundary of the commons. Regular steam and heritage diesel departures through the High Weald.'
     },
     {
       id: 'fir-tree-pond',
@@ -164,7 +164,7 @@
       lat: 51.131184,
       lng: 0.255642,
       navQuery: 'The Mount Edgcumbe, Mount Ephraim, Tunbridge Wells TN4 8BX',
-      desc: 'Historic 18th-century country pub and boutique inn built directly into the living sandstone bedrock on the Common edge. Features 6 luxury bedrooms, dog-friendly terrace, and seasonal dining.'
+      desc: 'Historic 18th-century country pub and boutique inn built directly into the living sandstone bedrock on the commons edge. Features 6 luxury bedrooms, dog-friendly terrace, and seasonal dining.'
     },
     {
       id: 'the-beau-nash',
@@ -210,7 +210,7 @@
       lat: 51.130802,
       lng: 0.246222,
       navQuery: 'The Spa Hotel, Mount Ephraim, Tunbridge Wells TN4 8XJ',
-      desc: 'Elegant 18th-century 4-star country-house hotel set in 14 acres bordering the Common. Features luxury spa, afternoon tea, and terrace drinks.'
+      desc: 'Elegant 18th-century 4-star country-house hotel set in 14 acres bordering the commons. Features luxury spa, afternoon tea, and terrace drinks.'
     },
     {
       id: 'tunbridge-wells-hotel',
@@ -221,7 +221,7 @@
       lat: 51.125897,
       lng: 0.257416,
       navQuery: 'The Tunbridge Wells Hotel, 58 The Pantiles, Tunbridge Wells TN2 5TD',
-      desc: 'Charming boutique hotel located right in the heart of The Pantiles colonnade, a 2-minute walk from the Common. Individually styled heritage rooms.'
+      desc: 'Charming boutique hotel located right in the heart of The Pantiles colonnade, a 2-minute walk from the commons. Individually styled heritage rooms.'
     },
     {
       id: 'one-warwick-park',
@@ -232,7 +232,7 @@
       lat: 51.126414,
       lng: 0.259607,
       navQuery: 'One Warwick Park Hotel, 1 Warwick Park, Tunbridge Wells TN2 5TA',
-      desc: 'Contemporary 4-star boutique hotel in the historic Pantiles district. Combining 19th-century architecture with modern luxury, right near the Common.'
+      desc: 'Contemporary 4-star boutique hotel in the historic Pantiles district. Combining 19th-century architecture with modern luxury, right near the commons.'
     },
     {
       id: 'premier-inn',
@@ -299,7 +299,7 @@
       lat: 51.125258,
       lng: 0.258003,
       navQuery: 'Lower Pantiles Car Park, Linden Park Road, Tunbridge Wells TN2 5TP',
-      desc: 'Convenient council-operated car park on Linden Park Road behind The Pantiles (TN2 5TP), just 200m from the Common and Spa Valley Railway.'
+      desc: 'Convenient council-operated car park on Linden Park Road behind The Pantiles (TN2 5TP), just 200m from the commons and Spa Valley Railway.'
     },
     {
       id: 'torrington-parking',
@@ -310,7 +310,7 @@
       lat: 51.130000,
       lng: 0.262139,
       navQuery: 'Torrington Car Park, Vale Road, Tunbridge Wells TN1 1DJ',
-      desc: 'Large council multi-storey car park located next to Tunbridge Wells Station on Vale Road (TN1 1DJ), a 3-minute walk (250m) from the Common.'
+      desc: 'Large council multi-storey car park located next to Tunbridge Wells Station on Vale Road (TN1 1DJ), a 3-minute walk (250m) from the commons.'
     },
     {
       id: 'fir-tree-parking',
@@ -332,7 +332,7 @@
       lat: 51.130096,
       lng: 0.263028,
       navQuery: 'Tunbridge Wells Railway Station, Mount Pleasant Road, Tunbridge Wells TN1 1BT',
-      desc: 'Southeastern mainline railway station with direct services from London Charing Cross, Waterloo East, London Bridge, and Hastings. 400m walk to the Common.'
+      desc: 'Southeastern mainline railway station with direct services from London Charing Cross, Waterloo East, London Bridge, and Hastings. 400m walk to the commons.'
     },
     {
       id: 'public-toilets-rocks',
@@ -343,7 +343,7 @@
       lat: 51.130423,
       lng: 0.253302,
       navQuery: 'Wellington Rocks, Tunbridge Wells Common, Tunbridge Wells TN4 8SR',
-      desc: 'Council-maintained public convenience pavilion situated right on the Common beside Wellington Rocks and the Higher Cricket Ground.'
+      desc: 'Council-maintained public convenience pavilion situated right on the commons beside Wellington Rocks and the Higher Cricket Ground.'
     },
     {
       id: 'public-toilets-pantiles',
@@ -354,7 +354,7 @@
       lat: 51.125652,
       lng: 0.257287,
       navQuery: 'The Pantiles, Tunbridge Wells TN2 5TE',
-      desc: 'Public conveniences located at the lower colonnade of The Pantiles, just 2 minutes from the Common across the London Road pedestrian crossing.'
+      desc: 'Public conveniences located at the lower colonnade of The Pantiles, just 2 minutes from the commons across the London Road pedestrian crossing.'
     }
   ];
 

@@ -9,3 +9,7 @@ playwright-report/
 playwright/.cache/
 scratch/
 tests/reports/
+
+# Media & Videos
+Videos/
+*.mp4
