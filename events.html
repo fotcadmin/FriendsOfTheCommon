@@ -67,7 +67,7 @@
 
       <!-- Desktop Navigation -->
       <nav id="nav-desktop" class="nav-desktop" role="navigation" aria-label="Primary Navigation">
-        <a href="campaign.html" class="nav-link">Campaign</a>
+        <a href="campaign.html" class="nav-link">Sale</a>
         <a href="explore.html" class="nav-link">Explore</a>
         <a href="news.html" class="nav-link">News</a>
         <a href="events.html" class="nav-link active">Events</a>
@@ -75,14 +75,14 @@
         <a href="about.html" class="nav-link">About</a>
         <a href="contact.html" class="nav-link">Contact</a>
         <div class="nav-mobile-ctas">
-          <a href="campaign.html#pledge" class="btn btn-terracotta btn-sm" style="width: 100%; text-align: center;">Pledge Support</a>
+          <a href="support-us.html#donate" class="btn btn-terracotta btn-sm" style="width: 100%; text-align: center;">Donate</a>
           <a href="support-us.html#membership" class="btn btn-secondary btn-sm" style="width: 100%; text-align: center;">Become a Member (£10/£20)</a>
         </div>
       </nav>
 
       <!-- Header Action Buttons -->
       <div class="header-cta-group">
-        <a href="campaign.html#pledge" class="btn btn-terracotta btn-sm">Pledge Support</a>
+        <a href="support-us.html#donate" class="btn btn-terracotta btn-sm">Donate</a>
         <a href="support-us.html#membership" class="btn btn-secondary btn-sm">Become a Member</a>
         <button type="button" class="mobile-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-desktop">
           <svg aria-hidden="true" focusable="false" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
@@ -113,10 +113,13 @@
           </p>
         </div>
 
-        <div style="display: flex; flex-direction: column; gap: 1.75rem; margin-bottom: 3.5rem;">
+        <div id="upcoming-events" class="events-grid upcoming-events-grid" style="display: flex; flex-direction: column; gap: 1.75rem; margin-bottom: 2.5rem;">
+          <div id="no-upcoming-events" style="display: none;" class="empty-notice">
+            <p>There are no upcoming events scheduled at the moment. Please check back soon or follow our newsletter for seasonal volunteer sessions and guided walks.</p>
+          </div>
           
           <!-- Event 1: Let's Talk About Fungi (Photo Included) -->
-          <article class="nt-event-item">
+          <article class="nt-event-item event-card" data-event-date="2026-10-01">
             <div class="nt-event-media">
               <img src="assets/images/wildlife-walk.webp" alt="Nature enthusiasts on guided wildlife walk" width="240" height="240" fetchpriority="high" decoding="async">
               <div class="nt-event-date-overlay">
@@ -142,7 +145,7 @@
           </article>
 
           <!-- Event 2: Volunteer Day Rusthall Common (Photo Included) -->
-          <article class="nt-event-item">
+          <article class="nt-event-item event-card" data-event-date="2026-10-03">
             <div class="nt-event-media">
               <img src="assets/images/happy-valley.webp" alt="Woodland steps and canopy at Happy Valley on Rusthall Common" width="240" height="240" loading="lazy" decoding="async">
               <div class="nt-event-date-overlay">
@@ -168,7 +171,7 @@
           </article>
 
           <!-- Event 3: Ancient Geology Walk (Photo Included) -->
-          <article class="nt-event-item">
+          <article class="nt-event-item event-card" data-event-date="2026-10-18">
             <div class="nt-event-media">
               <img src="assets/images/wellington-rocks.webp" alt="Ancient sandstone outcrops at Wellington Rocks" width="240" height="240" loading="lazy" decoding="async">
               <div class="nt-event-date-overlay">
@@ -194,7 +197,7 @@
           </article>
 
           <!-- Event 4: Marlpit Ponds & Wetland Ecology (Photo Included) -->
-          <article class="nt-event-item">
+          <article class="nt-event-item event-card" data-event-date="2026-11-07">
             <div class="nt-event-media">
               <img src="assets/images/marlpit-pond.webp" alt="Tranquil water and reedbeds at Marlpit Pond" width="240" height="240" loading="lazy" decoding="async">
               <div class="nt-event-date-overlay">
@@ -220,7 +223,7 @@
           </article>
 
           <!-- Event 5: Winter Bird Survey (Photo Placeholder) -->
-          <article class="nt-event-item">
+          <article class="nt-event-item event-card" data-event-date="2026-11-21">
             <div class="nt-event-media">
               <div class="photo-placeholder-box">
                 <svg class="photo-placeholder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -253,7 +256,7 @@
           </article>
 
           <!-- Event 6: Veteran Tree Stewardship (Photo Placeholder) -->
-          <article class="nt-event-item">
+          <article class="nt-event-item event-card" data-event-date="2026-12-12">
             <div class="nt-event-media">
               <div class="photo-placeholder-box">
                 <svg class="photo-placeholder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -286,6 +289,12 @@
           </article>
 
         </div>
+
+        <!-- Past Events Archive Section -->
+        <details class="past-events-wrapper" id="past-events-section" style="display: none;">
+          <summary class="past-events-toggle">View Past Events Archive</summary>
+          <div class="events-grid past-events-grid" id="past-events-list"></div>
+        </details>
 
         <!-- Organise an Event Callout Banner -->
         <div class="editorial-callout reveal-fade-up">
@@ -368,6 +377,7 @@
           <ul class="footer-links">
             <li><a href="contact.html">Contact Trustees &amp; Secretary</a></li>
             <li><a href="legacy.html">Leave a Gift in Your Will (Legacies)</a></li>
+            <li><a href="campaign.html#faq-gdpr">Pledge Data Privacy Notice</a></li>
             <li><a href="assets/docs/objects-and-rules.pdf" target="_blank" rel="noopener">Charity Constitution &amp; Rules (PDF)</a></li>
             <li><a href="assets/docs/safeguarding-policy.pdf" target="_blank" rel="noopener">Safeguarding Policy (PDF)</a></li>
             <li><a href="https://register-of-charities.charitycommission.gov.uk/charity-search/-/charity-details/1013975" target="_blank" rel="noopener">Charity Commission Register</a></li>

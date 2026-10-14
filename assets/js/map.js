@@ -571,11 +571,60 @@
     observer.observe(mapElement);
   }
 
-  // Trigger on user interactions
+  // Handle landmark focus from buttons or hash
+  function focusLandmark(landmarkId) {
+    if (!landmarkId) return;
+    const lm = landmarks.find(l => l.id === landmarkId);
+    if (!lm) return;
+
+    // Reset filter to 'all' or lm's category so marker is visible
+    activeFilter = 'all';
+    filterBtns.forEach(b => {
+      const isAll = b.dataset.filter === 'all';
+      b.classList.toggle('active', isAll);
+      b.setAttribute('aria-pressed', isAll ? 'true' : 'false');
+    });
+    renderList(landmarks);
+
+    // Highlight in list
+    document.querySelectorAll('.place-item').forEach(el => {
+      el.classList.toggle('active', el.dataset.id === landmarkId);
+    });
+
+    if (!mapInitialized) {
+      pendingLandmarkId = landmarkId;
+      initMap();
+    } else {
+      applyFilterToMarkers('all');
+      const marker = markers[landmarkId];
+      if (marker && map) {
+        map.flyTo([lm.lat, lm.lng], 16, { duration: 0.8 });
+        setTimeout(() => marker.openPopup(), 400);
+      }
+    }
+  }
+
+  // Trigger on user interactions or direct anchor load
   mapElement.addEventListener('pointerdown', initMap, { once: true });
-  document.querySelectorAll('a[href="#interactive-map"]').forEach(link => {
+  document.querySelectorAll('a[href="#interactive-map"], a[href="#map"], a[href="#leaflet-map"], a[href*="explore.html#interactive-map"], a[href*="explore.html#map"]').forEach(link => {
     link.addEventListener('click', initMap, { once: true });
   });
+
+  document.querySelectorAll('[data-focus-landmark]').forEach(btn => {
+    btn.addEventListener('click', function () {
+      const id = this.dataset.focusLandmark;
+      if (id) {
+        focusLandmark(id);
+      }
+    });
+  });
+
+  const rawHash = (window.location.hash || '').replace('#', '');
+  if (['interactive-map', 'map', 'leaflet-map'].includes(rawHash)) {
+    initMap();
+  } else if (rawHash && landmarks.some(l => l.id === rawHash)) {
+    focusLandmark(rawHash);
+  }
 
   // Re-invalidate size on window resize
   window.addEventListener('resize', () => {

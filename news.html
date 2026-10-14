@@ -66,7 +66,7 @@
 
       <!-- Desktop Navigation -->
       <nav id="nav-desktop" class="nav-desktop" role="navigation" aria-label="Primary Navigation">
-        <a href="campaign.html" class="nav-link">Campaign</a>
+        <a href="campaign.html" class="nav-link">Sale</a>
         <a href="explore.html" class="nav-link">Explore</a>
         <a href="news.html" class="nav-link active">News</a>
         <a href="events.html" class="nav-link">Events</a>
@@ -74,14 +74,14 @@
         <a href="about.html" class="nav-link">About</a>
         <a href="contact.html" class="nav-link">Contact</a>
         <div class="nav-mobile-ctas">
-          <a href="campaign.html#pledge" class="btn btn-terracotta btn-sm" style="width: 100%; text-align: center;">Pledge Support</a>
+          <a href="support-us.html#donate" class="btn btn-terracotta btn-sm" style="width: 100%; text-align: center;">Donate</a>
           <a href="support-us.html#membership" class="btn btn-secondary btn-sm" style="width: 100%; text-align: center;">Become a Member (£10/£20)</a>
         </div>
       </nav>
 
       <!-- Header Action Buttons -->
       <div class="header-cta-group">
-        <a href="campaign.html#pledge" class="btn btn-terracotta btn-sm">Pledge Support</a>
+        <a href="support-us.html#donate" class="btn btn-terracotta btn-sm">Donate</a>
         <a href="support-us.html#membership" class="btn btn-secondary btn-sm">Become a Member</a>
         <button type="button" class="mobile-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-desktop">
           <svg aria-hidden="true" focusable="false" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
@@ -117,10 +117,10 @@
              - To Edit a Story: Modify the card text below and the corresponding page in the /news/ folder.
              ========================================================================== -->
 
-        <div class="grid-2" style="margin-bottom: 3.5rem;">
+        <div id="news-grid" class="grid-2 news-article-grid" style="margin-bottom: 2.5rem;">
           
           <!-- Article 1: Campaign Update & Remarketing -->
-          <article class="sharp-card">
+          <article class="sharp-card news-card">
             <div class="sharp-card-img-wrap">
               <img src="assets/images/march/march-community-rally.webp" alt="Community members rallying for the Commons" width="550" height="260" fetchpriority="high" decoding="async" style="height: 240px; width: 100%; object-fit: cover;">
             </div>
@@ -140,7 +140,7 @@
           </article>
 
           <!-- Article 2: Full Message from Chair Roger -->
-          <article class="sharp-card">
+          <article class="sharp-card news-card">
             <div class="sharp-card-img-wrap">
               <img src="assets/images/roger-john-nick.webp" alt="Our Chair, Roger, and Friends of the Commons trustees on Tunbridge Wells Common" width="550" height="260" loading="lazy" decoding="async" style="height: 240px; width: 100%; object-fit: cover;">
             </div>
@@ -163,7 +163,7 @@
           </article>
 
           <!-- Article 3: Council Statement -->
-          <article class="sharp-card">
+          <article class="sharp-card news-card">
             <div class="sharp-card-img-wrap">
               <img src="assets/images/march/march-crowd-pantiles.webp" alt="Community march proceeding through The Pantiles" width="550" height="260" loading="lazy" decoding="async" style="height: 240px; width: 100%; object-fit: cover;">
             </div>
@@ -186,7 +186,7 @@
           </article>
 
           <!-- Article 4: 2026 Annual General Meeting & Minutes -->
-          <article class="sharp-card">
+          <article class="sharp-card news-card">
             <div class="sharp-card-img-wrap">
               <img src="assets/images/march/march-dogs-support.webp" alt="Members and supporters backing the Commons" width="550" height="260" loading="lazy" decoding="async" style="height: 240px; width: 100%; object-fit: cover;">
             </div>
@@ -208,6 +208,12 @@
             </div>
           </article>
 
+        </div>
+
+        <div class="load-more-wrapper" id="load-more-container" style="text-align: center; margin: 3rem 0;">
+          <button id="load-more-btn" type="button" class="btn btn--outline" aria-label="Load more news articles">
+            Load More Stories &darr;
+          </button>
         </div>
       </div>
     </section>
@@ -279,7 +285,7 @@
           <ul class="footer-links">
             <li><a href="contact.html">Contact Trustees &amp; Secretary</a></li>
             <li><a href="legacy.html">Leave a Gift in Your Will (Legacies)</a></li>
-            <li><a href="campaign.html#pledge-privacy">Pledge Data Privacy Notice</a></li>
+            <li><a href="campaign.html#faq-gdpr">Pledge Data Privacy Notice</a></li>
             <li><a href="assets/docs/objects-and-rules.pdf" target="_blank" rel="noopener">Charity Constitution &amp; Rules (PDF)</a></li>
             <li><a href="assets/docs/safeguarding-policy.pdf" target="_blank" rel="noopener">Safeguarding Policy (PDF)</a></li>
             <li><a href="https://register-of-charities.charitycommission.gov.uk/charity-search/-/charity-details/1013975" target="_blank" rel="noopener">Charity Commission Register</a></li>

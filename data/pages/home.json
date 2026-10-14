@@ -40,7 +40,7 @@
     },
     {
       "label": "Community Stewardship",
-      "value": "34+ Years",
+      "value": "35+ Years",
       "note": "Independent Registered Charity"
     }
   ],
@@ -86,10 +86,8 @@
         "description": "Free visitor parking bays on Fir Tree Road (TN4 8AH). Please take litter home."
       }
     ],
-    "primary_btn_text": "Complete Visitor Guide →",
-    "primary_btn_url": "explore.html#plan-visit",
     "secondary_btn_text": "Open Map Viewer",
-    "secondary_btn_url": "explore.html",
+    "secondary_btn_url": "explore.html#interactive-map",
     "location": "Tunbridge Wells and Rusthall Commons, Kent. The mainline railway station is just a 7-minute walk from the edge of the Commons.",
     "parking": "Free visitor parking bays on Fir Tree Road (TN4 8AH). Please take litter home."
   },

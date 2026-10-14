@@ -56,7 +56,34 @@ html {
   color: var(--nt-charcoal);
   background-color: var(--nt-sand-bg);
   scroll-behavior: smooth;
+  scroll-padding-top: 100px;
   -webkit-text-size-adjust: 100%;
+}
+
+@media (max-width: 768px) {
+  html {
+    scroll-padding-top: 72px;
+  }
+}
+
+#interactive-map,
+#leaflet-map,
+#map,
+.interactive-map-section,
+#faq-gdpr,
+#pledge-privacy {
+  scroll-margin-top: 100px;
+}
+
+@media (max-width: 768px) {
+  #interactive-map,
+  #leaflet-map,
+  #map,
+  .interactive-map-section,
+  #faq-gdpr,
+  #pledge-privacy {
+    scroll-margin-top: 72px;
+  }
 }
 
 body {
@@ -189,7 +216,7 @@ h3 {
   border-bottom: 1px solid var(--nt-border-subtle);
   position: sticky;
   top: 0;
-  z-index: 50;
+  z-index: 1000;
 }
 
 .site-header .container {
@@ -205,7 +232,7 @@ h3 {
   box-sizing: border-box;
   padding: 0 1.5rem;
   gap: 1.25rem;
-  height: calc(var(--seal) + var(--pad) - var(--spill));
+  min-height: calc(var(--seal) + var(--pad) - var(--spill));
   position: relative;
 }
 
@@ -364,25 +391,184 @@ h3 {
   }
 }
 
-/* Small screens: logo sits inline, no spill or curve */
+/* Mobile header layout (< 768px): logo, title and navigation controls sit cleanly without overlap */
 @media (max-width: 768px) {
   .site-header {
-    --seal: 48px;
-    --spill: 0px;
-    --pad: 12px;
+    background-color: #ffffff !important;
+    border-bottom: 1px solid var(--nt-border-subtle);
+    overflow: visible;
+    z-index: 1000;
+  }
+
+  .site-header .container {
+    overflow: visible;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .header-inner {
+    background-color: #ffffff !important;
+    overflow: visible;
+    height: 60px;
+    min-height: 60px;
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    position: relative;
   }
 
   .brand-link {
+    background: transparent;
+    display: flex;
     align-items: center;
-    gap: 0.75rem;
+    align-self: center;
+    margin-top: 0;
+    gap: 0;
+    min-width: 0;
+    flex: 1 1 auto;
+    position: relative;
+    z-index: 2;
+    overflow: visible;
+    text-decoration: none !important;
   }
 
   .brand-link::before {
-    display: none;
+    display: none !important;
+  }
+
+  .brand-logo {
+    width: 68px;
+    height: 68px;
+    padding: 5px;
+    box-sizing: border-box;
+    border-radius: 50%;
+    background-color: #ffffff !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: 0 8px 12px -2px rgba(0, 0, 0, 0.12);
+    flex-shrink: 0;
+    object-fit: contain;
+    object-position: center;
+    position: relative;
+    z-index: 10;
+    margin-top: 8px;
+    margin-bottom: -16px;
+    display: block;
+  }
+
+  .brand-text {
+    height: auto;
+    min-width: 0;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+    margin-left: 0.75rem;
   }
 
   .brand-line {
-    font-size: 0.85rem;
+    font-family: 'Frank Ruhl Libre', var(--font-serif), serif;
+    font-size: 0.82rem;
+    line-height: 1.2;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    color: #1e3a2f;
+    white-space: normal;
+    word-break: normal;
+    overflow-wrap: break-word;
+  }
+
+  /* Hide header CTA buttons from mobile top bar; visitors have the red notice bar and the prominent drawer button */
+  .header-cta-group .btn,
+  .header-cta-group .btn-sm,
+  .header-cta-group #donate-btn {
+    display: none !important;
+  }
+
+  .header-cta-group {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    flex-shrink: 0;
+    margin-left: auto;
+    position: relative;
+    z-index: 2;
+  }
+
+  .mobile-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 0.45rem;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 2;
+  }
+}
+
+/* Narrow mobile screens (< 480px) */
+@media (max-width: 480px) {
+  .site-header {
+    background-color: #ffffff !important;
+  }
+
+  .site-header .container {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+
+  .header-inner {
+    background-color: #ffffff !important;
+    padding: 0 0.75rem;
+    height: 60px;
+    min-height: 60px;
+  }
+
+  .brand-text {
+    margin-left: 0.7rem;
+  }
+
+  .brand-line {
+    font-size: 0.8rem;
+    line-height: 1.2;
+    letter-spacing: 0.02em;
+  }
+
+  .mobile-toggle {
+    min-width: 44px;
+    min-height: 44px;
+    padding: 0.45rem;
+  }
+}
+
+/* Small mobile screens (<= 390px, e.g. iPhone SE / iPhone 12 Mini) */
+@media (max-width: 390px) {
+  .brand-logo {
+    width: 64px;
+    height: 64px;
+    padding: 4px;
+    margin-top: 12px;
+    margin-bottom: -16px;
+    border: none !important;
+    outline: none !important;
+    box-shadow: 0 8px 12px -2px rgba(0, 0, 0, 0.12);
+  }
+
+  .brand-text {
+    margin-left: 0.65rem;
+  }
+
+  .brand-line {
+    font-size: 0.76rem;
+    line-height: 1.18;
+    letter-spacing: 0.02em;
   }
 }
 
@@ -970,6 +1156,7 @@ details[open] .summary-icon {
 .photo-break-fullwidth {
   width: 100%;
   margin: 0;
+  padding: 0;
   position: relative;
   overflow: hidden;
   background: var(--nt-sand);
@@ -979,6 +1166,9 @@ details[open] .summary-icon {
   width: 100%;
   height: 380px;
   object-fit: cover;
+  object-position: center;
+  border-radius: 0;
+  box-shadow: none;
   display: block;
 }
 
@@ -1533,6 +1723,24 @@ details[open] .summary-icon {
 @media (max-width: 400px) {
   .masthead-title {
     font-size: 2.25rem;
+  }
+}
+
+
+/* Standalone Legacy Highlight Banner */
+.legacy-highlight-grid {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  align-items: stretch;
+}
+
+@media (max-width: 768px) {
+  .legacy-highlight-grid {
+    grid-template-columns: 1fr;
+  }
+  .legacy-highlight-grid img {
+    height: 200px;
+    max-height: 200px;
   }
 }
 
@@ -2784,7 +2992,7 @@ html.reveal-ready .reveal-stagger>*:nth-child(6).reveal-init {
 }
 
 /* ==========================================================================
-   CHARITABLE OBJECTS OF THE ASSOCIATION DESIGN
+   CHARITABLE OBJECTS OF THE CHARITY DESIGN
    ========================================================================== */
 
 .objects-section {
@@ -3100,38 +3308,50 @@ html.reveal-ready .reveal-stagger>*:nth-child(6).reveal-init {
 }
 
 .quote-nav-btn {
-  width: 42px;
-  height: 42px;
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  min-height: 48px;
+  border-radius: 50%;
   background: #ffffff;
-  border: 1px solid var(--nt-border);
+  border: 2px solid var(--nt-green-deep);
   color: var(--nt-green-deep);
   display: inline-flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(19, 57, 38, 0.12);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .quote-nav-btn:hover {
   background: var(--nt-green-deep);
   color: #ffffff;
   border-color: var(--nt-green-deep);
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(19, 57, 38, 0.2);
 }
 
 .quote-nav-btn:active {
   transform: translateY(0);
 }
 
+.quote-nav-btn:focus-visible {
+  outline: 3px solid var(--nt-terracotta);
+  outline-offset: 3px;
+}
+
 .quote-dots-wrap {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.85rem;
 }
 
 .quote-dot {
-  width: 12px;
-  height: 12px;
+  width: 14px;
+  height: 14px;
+  min-width: 14px;
+  min-height: 14px;
   border-radius: 50%;
   border: 2px solid var(--nt-green-deep);
   background: transparent;
@@ -3143,6 +3363,15 @@ html.reveal-ready .reveal-stagger>*:nth-child(6).reveal-init {
 .quote-dot.is-active {
   background: var(--nt-green-deep);
   transform: scale(1.3);
+}
+
+.quote-dot:hover:not(.is-active) {
+  background: rgba(19, 57, 38, 0.3);
+}
+
+.quote-dot:focus-visible {
+  outline: 2px solid var(--nt-terracotta);
+  outline-offset: 2px;
 }
 
 .quote-dot:hover:not(.is-active) {
@@ -4239,47 +4468,9 @@ section[aria-label*="Mission" i],
   }
 }
 
-/* Header must fit narrow phones so the menu toggle is never pushed off-screen */
 @media (max-width: 600px) {
-  .site-header {
-    --seal: 40px;
-    --pad: 16px;
-  }
-
-  .header-inner {
-    gap: 0.5rem;
-  }
-
-  .brand-link {
-    gap: 0.6rem;
-    min-width: 0;
-    flex-shrink: 1;
-  }
-
-  .brand-line {
-    font-size: 0.7rem;
-    letter-spacing: 0.02em;
-    white-space: normal;
-  }
-
-  .header-cta-group {
-    gap: 0.4rem;
-  }
-
-  .header-cta-group .btn-sm {
-    padding: 0.4rem 0.6rem;
-    font-size: 0.95rem;
-    white-space: nowrap;
-  }
-
   .campaign-story-text .campaign-story-lede {
     font-size: 1.15rem;
-  }
-}
-
-@media (max-width: 360px) {
-  .brand-text {
-    display: none;
   }
 }
 
@@ -4357,39 +4548,61 @@ section[aria-label*="Mission" i],
   overflow: visible;
 }
 
+.contact-committee-img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  object-position: center 65%;
+}
+
 #pledge {
   height: auto;
   max-height: none;
   overflow: visible;
 }
 
-.tally-form-embed-wrapper.pledge-embed {
-  margin-top: 1rem;
-  min-height: 900px;
-}
-
-.tally-form-embed-wrapper.pledge-embed iframe {
-  min-height: 900px;
-  height: 100%;
-  width: 100%;
-  border: 0;
-  overflow: hidden;
-}
-
 .tally-form-embed-wrapper {
   flex: 1;
   width: 100%;
-  min-height: 750px;
-  overflow: visible;
+  min-height: 0;
+  position: relative;
+  overflow: hidden;
+  border-radius: 6px;
 }
 
 .tally-form-embed-wrapper iframe {
   display: block;
   width: 100%;
-  min-height: 750px;
-  height: 100%;
+  min-height: 0;
+  height: auto;
   border: 0;
   overflow: hidden;
+  margin-bottom: 0;
+  clip-path: none;
+}
+
+.tally-form-embed-wrapper.pledge-embed,
+#pledge .tally-form-embed-wrapper {
+  margin-top: 1rem;
+}
+
+/* Bottom-right corner mask to cover the "Made with Tally" badge across all Tally embeds */
+.tally-form-embed-wrapper::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 175px;
+  height: 60px;
+  background: #ffffff;
+  pointer-events: none;
+  z-index: 20;
+}
+
+@media (max-width: 600px) {
+  .tally-form-embed-wrapper::after {
+    max-width: 45%;
+  }
 }
 
 @media (max-width: 900px) {
@@ -4767,80 +4980,303 @@ body.modal-open {
   }
 }
 
-/* Civic voices: static quote stack (replaces carousel) */
-.civic-voices-layout {
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: 2rem;
+/* ==========================================================================
+   COMMUNITY SAFEGUARDS & OWNERSHIP GRID (2-Column Desktop + Constrained 9:16 Video)
+   ========================================================================== */
+.community-ownership-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(260px, 305px);
+  gap: 2.5rem;
   align-items: start;
+  margin-top: 0;
 }
 
-.civic-voices-quotes {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+.community-ownership-narrative {
   min-width: 0;
 }
 
-.civic-quote-card {
-  margin: 0;
-  padding: 1.5rem 1.5rem 1.25rem;
-  background: #fff;
-  border: 1px solid var(--nt-border);
-  border-left: 3px solid var(--nt-terracotta);
-  border-radius: 8px;
+.community-ownership-narrative .editorial-tag {
+  display: inline-block;
+  margin-bottom: 0.35rem;
 }
 
-.civic-quote-card .single-quote-body {
-  margin: 0.75rem 0 1.1rem;
-  font-style: italic;
-  line-height: 1.7;
+.community-ownership-narrative .editorial-heading {
+  margin-top: 0;
+  margin-bottom: 1.15rem;
+  line-height: 1.2;
 }
 
-.civic-quote-author {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
+.ownership-lead {
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: var(--nt-charcoal);
+  margin-bottom: 1.25rem;
 }
 
-.civic-quote-author .single-quote-meta {
+.ownership-subheading {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  color: var(--nt-green-deep);
+  margin: 1.35rem 0 0.85rem 0;
+  line-height: 1.3;
+}
+
+.ownership-risks-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.25rem 0;
   display: flex;
   flex-direction: column;
+  gap: 0.85rem;
+}
+
+.ownership-risks-list li {
+  position: relative;
+  padding-left: 1.5rem;
+  font-size: 0.98rem;
+  line-height: 1.6;
+  color: var(--nt-charcoal);
+}
+
+.ownership-risks-list li strong {
+  color: var(--nt-green-deep);
+}
+
+.ownership-risks-list li::before {
+  content: "•";
+  position: absolute;
+  left: 0.25rem;
+  color: var(--nt-terracotta);
+  font-size: 1.3rem;
+  line-height: 1;
+}
+
+.community-solution-box {
+  background: var(--nt-sand-bg);
+  border: 1px solid var(--nt-border);
+  border-left: 4px solid var(--nt-green-deep);
+  border-radius: 6px;
+  padding: 1.15rem 1.35rem;
+  margin-top: 1.25rem;
+}
+
+.community-solution-box p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--nt-charcoal);
+}
+
+.community-solution-box strong {
+  color: var(--nt-green-deep);
+}
+
+.community-ownership-media {
+  display: flex;
+  justify-content: center;
+  align-self: start;
+  margin-top: 0.2rem;
+}
+
+.community-ownership-media .portrait-video-card {
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
+  height: auto;
+  background: #f4f6f3;
+  border: 1px solid var(--nt-border);
+  border-radius: 8px;
+  padding: 0.95rem;
+  box-shadow: 0 4px 16px rgba(19, 57, 38, 0.06);
+}
+
+.community-ownership-media .portrait-video-frame {
+  position: relative;
+  width: 100%;
+  max-width: 270px;
+  aspect-ratio: 9 / 16;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 6px;
+  background: #1b382b;
+}
+
+.community-ownership-media .portrait-video-caption {
+  max-width: 270px;
+  margin: 0.75rem auto 0;
+}
+
+.community-ownership-media .portrait-video-kicker {
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+}
+
+.community-ownership-media .portrait-video-title {
+  font-size: 1.05rem;
+  margin: 0.2rem 0 0.35rem;
+}
+
+.community-ownership-media .portrait-video-note {
+  font-size: 0.82rem;
+  line-height: 1.45;
+  margin: 0;
 }
 
 @media (max-width: 850px) {
-  .civic-voices-layout {
+  .community-ownership-grid {
     grid-template-columns: minmax(0, 1fr);
+    gap: 2rem;
   }
-}
 
-/* Civic voices: lock quote column and video card to equal height */
-.civic-voices-layout {
-  align-items: stretch;
-}
-
-.civic-voices-quotes {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
-  margin: 0;
-  box-sizing: border-box;
-}
-
-.portrait-video-card {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
-  margin: 0;
-  box-sizing: border-box;
-}
-
-.civic-quote-card {
-  box-sizing: border-box;
+  .community-ownership-media {
+    max-width: 300px;
+    margin: 1.5rem auto 0;
+    width: 100%;
+  }
 }
 
 /* Replace Inter with native British Humanist Sans */
 body {
   font-family: "Gill Sans", "Gill Sans MT", "Segoe UI", sans-serif;
+}
+
+/* ==========================================================================
+   EVENTS PAGE: CLIENT-SIDE DATE SORTING & ARCHIVE
+   ========================================================================== */
+
+.past-events-wrapper {
+  margin: 2.5rem 0 3.5rem;
+  border-top: 1px solid var(--nt-border);
+  padding-top: 1.5rem;
+}
+
+.past-events-toggle {
+  cursor: pointer;
+  user-select: none;
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--nt-green-deep);
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.6rem 1.25rem;
+  background: var(--nt-surface-alt);
+  border: 1px solid var(--nt-border);
+  border-radius: 6px;
+  transition: all var(--transition-quick);
+  list-style: none;
+}
+
+.past-events-toggle::-webkit-details-marker {
+  display: none;
+}
+
+.past-events-toggle::after {
+  content: "↓";
+  font-family: inherit;
+  font-size: 1.15rem;
+  font-weight: 600;
+  line-height: 1;
+  transition: transform var(--transition-quick);
+  display: inline-block;
+}
+
+details.past-events-wrapper[open] .past-events-toggle::after {
+  transform: rotate(180deg);
+}
+
+.past-events-toggle:hover {
+  background: var(--nt-sand-bg);
+  border-color: var(--nt-green-deep);
+}
+
+.past-events-toggle:focus-visible {
+  outline: 2px solid var(--nt-green-deep);
+  outline-offset: 3px;
+}
+
+.past-events-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  margin-top: 1.5rem;
+}
+
+/* Dim past events slightly */
+.event-card--past {
+  opacity: 0.85;
+  filter: grayscale(20%);
+  transition: opacity var(--transition-quick), filter var(--transition-quick);
+}
+
+.event-card--past:hover {
+  opacity: 1;
+  filter: grayscale(0%);
+}
+
+/* Empty state notice */
+.empty-notice {
+  background: var(--nt-sand-bg);
+  border: 1px dashed var(--nt-border);
+  border-radius: 8px;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  color: var(--nt-muted);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  max-width: 720px;
+  margin: 1.5rem auto;
+}
+
+/* ==========================================================================
+   NEWS PAGE: PROGRESSIVE 6-CARD "LOAD MORE"
+   ========================================================================== */
+
+.news-card.is-hidden {
+  display: none !important;
+}
+
+.load-more-wrapper {
+  text-align: center;
+  margin: 3rem 0;
+}
+
+#load-more-btn,
+.btn--outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.85rem 2rem;
+  border: 2px solid var(--nt-green-deep);
+  border-radius: 6px;
+  background-color: transparent;
+  color: var(--nt-green-deep);
+  cursor: pointer;
+  text-decoration: none;
+  transition: all var(--transition-quick);
+}
+
+#load-more-btn:hover,
+.btn--outline:hover {
+  background-color: var(--nt-green-deep);
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+#load-more-btn:active,
+.btn--outline:active {
+  transform: translateY(0);
+}
+
+#load-more-btn:focus-visible,
+.btn--outline:focus-visible {
+  outline: 2px solid var(--nt-green-deep);
+  outline-offset: 3px;
 }

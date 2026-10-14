@@ -24,6 +24,9 @@ function initAll() {
   initMembershipModal();
   initScrollAnimations();
   initQuoteSlider();
+  initContactTopicPreload();
+  initEventsDateFilter();
+  initNewsLoadMore();
 }
 
 if (document.readyState === 'loading') {
@@ -35,41 +38,55 @@ if (document.readyState === 'loading') {
 /* Auto-open <details> accordions when targeted by hash link */
 function initDetailsHashAnchor() {
   function checkHash() {
-    const hash = window.location.hash;
-    if (!hash || hash.length <= 1) return;
+    const rawHash = window.location.hash;
+    if (!rawHash || rawHash.length <= 1) return;
     try {
-      const target = document.querySelector(hash);
+      let targetId = rawHash.replace(/^#/, '');
+      if (targetId === 'pledge-privacy' || targetId === 'faq-gdpr' || targetId === 'pledge-data-privacy') {
+        targetId = 'faq-gdpr';
+      }
+      const target = document.getElementById(targetId) || document.querySelector(rawHash);
       if (target) {
-        const details = target.closest('details') || (target.tagName === 'DETAILS' ? target : null);
+        const details = (target.tagName === 'DETAILS' ? target : null) ||
+                        target.closest('details') ||
+                        (target.nextElementSibling && target.nextElementSibling.tagName === 'DETAILS' ? target.nextElementSibling : null);
         if (details) {
           details.open = true;
-          setTimeout(() => {
-            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          }, 120);
+          details.setAttribute('open', '');
+          const summary = details.querySelector('summary');
+          if (summary) {
+            summary.setAttribute('aria-expanded', 'true');
+          }
         }
+        // Custom accordion item support (if any)
+        const customItem = target.closest('.faq-item') || (target.classList && target.classList.contains('faq-item') ? target : null);
+        if (customItem) {
+          customItem.classList.add('active');
+        }
+
+        setTimeout(() => {
+          const scrollTarget = details || customItem || target;
+          scrollTarget.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 120);
       }
     } catch (e) {}
   }
 
   window.addEventListener('hashchange', checkHash);
   if (window.location.hash) {
-    setTimeout(checkHash, 150);
+    setTimeout(checkHash, 100);
+    setTimeout(checkHash, 450);
   }
 
   // Intercept anchor clicks on the page targeting details
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  document.querySelectorAll('a[href*="#"]').forEach(anchor => {
     anchor.addEventListener('click', () => {
-      const hash = anchor.getAttribute('href');
-      if (hash && hash.length > 1) {
-        try {
-          const target = document.querySelector(hash);
-          if (target) {
-            const details = target.closest('details') || (target.tagName === 'DETAILS' ? target : null);
-            if (details) {
-              details.open = true;
-            }
-          }
-        } catch (err) {}
+      const href = anchor.getAttribute('href');
+      if (href) {
+        const hash = href.includes('#') ? '#' + href.split('#')[1] : '';
+        if (hash && hash.length > 1) {
+          setTimeout(checkHash, 50);
+        }
       }
     });
   });
@@ -962,5 +979,125 @@ function initQuoteSlider() {
       startAutoPlay();
     }
   });
+}
+
+/* Smart Preloading for Contact Page Topics (e.g. ?topic=membership) */
+function initContactTopicPreload() {
+  if (!window.location.pathname.includes('contact')) return;
+
+  const urlParams = new URLSearchParams(window.location.search);
+  const topic = urlParams.get('topic');
+  if (!topic) return;
+
+  if (topic.toLowerCase() === 'membership') {
+    // 1. Update form card heading & subtext
+    const formCard = document.querySelector('.contact-form-card');
+    if (formCard) {
+      const heading = formCard.querySelector('h2');
+      const intro = formCard.querySelector('p');
+      if (heading) {
+        heading.textContent = 'Membership & Subscription Enquiries';
+      }
+      if (intro) {
+        intro.textContent = 'Please use the form below to submit your details for annual membership or bank transfer allocation. Our membership secretary will register your support.';
+      }
+    }
+
+    // 2. Pre-select dropdown if native <select> exists
+    const select = document.querySelector('select[name="enquiry"], select[name="topic"], #enquiry-topic');
+    if (select) {
+      for (let i = 0; i < select.options.length; i++) {
+        if (select.options[i].text.toLowerCase().includes('membership') || select.options[i].value.toLowerCase().includes('membership')) {
+          select.selectedIndex = i;
+          select.dispatchEvent(new Event('change', { bubbles: true }));
+          break;
+        }
+      }
+    }
+
+    // 3. Update Tally embed iframe src and data-tally-src to pre-populate enquiry
+    const tallyIframe = document.querySelector('.tally-form-embed-wrapper iframe');
+    if (tallyIframe) {
+      const tallyVal = encodeURIComponent('Membership & Subscriptions');
+      const extraParams = '&topic=membership&What%20is%20your%20enquiry%20regarding%3F=' + tallyVal + '&enquiry=' + tallyVal;
+
+      const src = tallyIframe.getAttribute('src');
+      if (src && !src.includes('topic=membership')) {
+        tallyIframe.setAttribute('src', src + extraParams);
+      }
+      const dataSrc = tallyIframe.getAttribute('data-tally-src');
+      if (dataSrc && !dataSrc.includes('topic=membership')) {
+        tallyIframe.setAttribute('data-tally-src', dataSrc + extraParams);
+      }
+    }
+  }
+}
+
+/* Events Page: Client-Side Date Sorting & Past Events Archive */
+function initEventsDateFilter() {
+  const eventCards = document.querySelectorAll('[data-event-date]');
+  if (!eventCards || eventCards.length === 0) return;
+
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  const pastList = document.getElementById('past-events-list');
+  const pastSection = document.getElementById('past-events-section');
+  const emptyNotice = document.getElementById('no-upcoming-events');
+  let upcomingCount = 0;
+  let pastCount = 0;
+
+  eventCards.forEach(card => {
+    const rawDate = card.getAttribute('data-event-date');
+    if (!rawDate) return;
+    const eventDate = new Date(rawDate + 'T00:00:00');
+    if (eventDate < today) {
+      card.classList.add('event-card--past');
+      if (pastList) pastList.appendChild(card);
+      pastCount++;
+    } else {
+      upcomingCount++;
+    }
+  });
+
+  if (upcomingCount === 0 && emptyNotice) emptyNotice.style.display = 'block';
+  if (pastCount > 0 && pastSection) pastSection.style.display = 'block';
+}
+
+/* News Page: Progressive 6-Card "Load More" Interaction */
+function initNewsLoadMore() {
+  const newsGrid = document.querySelector('.news-article-grid, #news-grid');
+  if (!newsGrid) return;
+
+  const articles = Array.from(newsGrid.querySelectorAll('.news-card, article'));
+  if (articles.length === 0) return;
+
+  const batchSize = 6;
+  let visibleCount = batchSize;
+
+  articles.forEach((card, index) => {
+    if (index >= batchSize) {
+      card.classList.add('is-hidden');
+    }
+  });
+
+  const loadMoreBtn = document.getElementById('load-more-btn');
+  const loadMoreContainer = document.getElementById('load-more-container');
+
+  if (articles.length <= batchSize && loadMoreContainer) {
+    loadMoreContainer.style.display = 'none';
+  }
+
+  if (loadMoreBtn) {
+    loadMoreBtn.addEventListener('click', () => {
+      const nextBatch = articles.slice(visibleCount, visibleCount + batchSize);
+      nextBatch.forEach(card => card.classList.remove('is-hidden'));
+      visibleCount += batchSize;
+
+      if (visibleCount >= articles.length && loadMoreContainer) {
+        loadMoreContainer.style.display = 'none';
+      }
+    });
+  }
 }
 

@@ -74,7 +74,7 @@
 
       <!-- Desktop Navigation -->
       <nav id="nav-desktop" class="nav-desktop" role="navigation" aria-label="Primary Navigation">
-        <a href="campaign.html" class="nav-link">Campaign</a>
+        <a href="campaign.html" class="nav-link">Sale</a>
         <a href="explore.html" class="nav-link active">Explore</a>
         <a href="news.html" class="nav-link">News</a>
         <a href="events.html" class="nav-link">Events</a>
@@ -82,8 +82,8 @@
         <a href="about.html" class="nav-link">About</a>
         <a href="contact.html" class="nav-link">Contact</a>
         <div class="nav-mobile-ctas">
-          <a href="campaign.html#pledge" class="btn btn-terracotta btn-sm"
-            style="width: 100%; text-align: center;">Pledge Support</a>
+          <a href="support-us.html#donate" class="btn btn-terracotta btn-sm"
+            style="width: 100%; text-align: center;">Donate</a>
           <a href="support-us.html#membership" class="btn btn-secondary btn-sm"
             style="width: 100%; text-align: center;">Become a Member (£10/£20)</a>
         </div>
@@ -91,7 +91,7 @@
 
       <!-- Header Action Buttons -->
       <div class="header-cta-group">
-        <a href="campaign.html#pledge" class="btn btn-terracotta btn-sm">Pledge Support</a>
+        <a href="support-us.html#donate" class="btn btn-terracotta btn-sm">Donate</a>
         <a href="support-us.html#membership" class="btn btn-secondary btn-sm">Become a Member</a>
         <button type="button" class="mobile-toggle" aria-label="Toggle navigation menu" aria-expanded="false"
           aria-controls="nav-desktop">
@@ -124,7 +124,8 @@
     </div>
 
     <!-- Interactive Landmark & Trail Map Section -->
-    <section id="interactive-map" style="padding: 3.5rem 0 2.5rem;">
+    <section id="interactive-map" class="interactive-map-section" style="padding: 3.5rem 0 2.5rem; scroll-margin-top: 100px;">
+      <div id="map" style="scroll-margin-top: 100px;"></div>
       <div class="container">
         <div class="section-intro-header reveal-fade-up">
           <span class="section-kicker">Digital Map Viewer</span>
@@ -212,7 +213,7 @@
               <span class="sharp-card-tag">Rusthall Common &bull; 86 Acres</span>
               <h3 class="sharp-card-h3">Rusthall Common Trail Map</h3>
               <p class="sharp-card-p">
-                Covers Toad Rock, Happy Valley and the 101 Steps, the ancient Freehold rock clusters, Marlpit ponds, and
+                Covers Toad Rock, Happy Valley and the 101 Steps, the ancient Freehold rock clusters, Bulls Hollow, and
                 sheltered heather glades.
               </p>
               <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
@@ -234,13 +235,13 @@
           <span class="section-kicker">Geological Marvels</span>
           <h2 class="section-title">Landmarks of the Commons</h2>
           <p style="color: var(--nt-muted); margin-top: 0.5rem; font-size: 1rem;">
-            Ancient 135-million-year-old Ardingly sandstone outcrops, romantic ravines, and historic ponds shaped by
+            Ancient 135-million-year-old Ardingly sandstone outcrops, romantic ravines, and historic quarries shaped by
             nature and human history.
           </p>
         </div>
 
         <div class="grid-4" style="margin-bottom: 2.5rem;">
-          <div class="sharp-card reveal-fade-up">
+          <div class="sharp-card reveal-fade-up" id="wellington-rocks">
             <div class="sharp-card-img-wrap">
               <img src="assets/images/wellington-rocks.webp"
                 alt="Wellington Rocks sandstone outcrop on Tunbridge Wells Common" width="640" height="346"
@@ -253,10 +254,14 @@
                 Celebrated 135-million-year-old Ardingly sandstone outcrop, loved for scrambling and family exploration.
               </p>
               <span class="photo-credit">Photo: Nigel Chadwick (CC BY-SA 2.0)</span>
+              <div style="margin-top: auto; padding-top: 0.75rem;">
+                <a href="#interactive-map" data-focus-landmark="wellington-rocks" class="btn btn-secondary btn-sm"
+                  style="width: 100%; text-align: center; justify-content: center;">View on Map &rarr;</a>
+              </div>
             </div>
           </div>
 
-          <div class="sharp-card reveal-fade-up">
+          <div class="sharp-card reveal-fade-up" id="toad-rock">
             <div class="sharp-card-img-wrap">
               <img src="assets/images/toad-rock.webp" alt="Toad Rock natural sandstone formation on Rusthall Common"
                 width="640" height="430" loading="lazy" decoding="async">
@@ -269,10 +274,14 @@
                 times.
               </p>
               <span class="photo-credit">Photo: Nigel Chadwick (CC BY-SA 2.0)</span>
+              <div style="margin-top: auto; padding-top: 0.75rem;">
+                <a href="#interactive-map" data-focus-landmark="toad-rock" class="btn btn-secondary btn-sm"
+                  style="width: 100%; text-align: center; justify-content: center;">View on Map &rarr;</a>
+              </div>
             </div>
           </div>
 
-          <div class="sharp-card reveal-fade-up">
+          <div class="sharp-card reveal-fade-up" id="happy-valley">
             <div class="sharp-card-img-wrap">
               <img src="assets/images/happy-valley.webp" alt="Happy Valley and 101 Steps path on Rusthall Common"
                 width="640" height="430" loading="lazy" decoding="async">
@@ -284,22 +293,30 @@
                 Romantic sandstone ravine featuring historic rock-cut stone steps, cave hollows, and High Weald views.
               </p>
               <span class="photo-credit">Photo: Nigel Chadwick (CC BY-SA 2.0)</span>
+              <div style="margin-top: auto; padding-top: 0.75rem;">
+                <a href="#interactive-map" data-focus-landmark="happy-valley" class="btn btn-secondary btn-sm"
+                  style="width: 100%; text-align: center; justify-content: center;">View on Map &rarr;</a>
+              </div>
             </div>
           </div>
 
-          <div class="sharp-card reveal-fade-up">
+          <div class="sharp-card reveal-fade-up" id="bulls-hollow">
             <div class="sharp-card-img-wrap">
-              <img src="assets/images/marlpit-pond.webp"
-                alt="The Marlpit pond and freshwater sanctuary on Rusthall Common" width="640" height="430"
+              <img src="assets/images/bulls-hollow.webp"
+                alt="Bulls Hollow historic disused sandstone quarry and rock faces on Rusthall Common" width="640" height="430"
                 loading="lazy" decoding="async">
             </div>
             <div class="sharp-card-content">
-              <span class="sharp-card-tag">Freshwater &bull; Habitat</span>
-              <h3 class="sharp-card-h3">The Marlpit &amp; Ponds</h3>
+              <span class="sharp-card-tag">Rusthall &bull; Sandstone Quarry</span>
+              <h3 class="sharp-card-h3">Bulls Hollow</h3>
               <p class="sharp-card-p">
-                Historic excavation pits transformed into sanctuaries for dragonflies, breeding newts, and rare flora.
+                A historic disused sandstone quarry and tranquil wooded enclave on Rusthall Common, known for its distinctive rock faces and wildlife habitat.
               </p>
-              <span class="photo-credit">Photo: Nigel Chadwick (CC BY-SA 2.0)</span>
+              <span class="photo-credit">Photo: Friends of the Commons (March 2026)</span>
+              <div style="margin-top: auto; padding-top: 0.75rem;">
+                <a href="#interactive-map" data-focus-landmark="bulls-hollow" class="btn btn-secondary btn-sm"
+                  style="width: 100%; text-align: center; justify-content: center;">View on Map &rarr;</a>
+              </div>
             </div>
           </div>
         </div>
@@ -649,7 +666,7 @@
           <ul class="footer-links">
             <li><a href="contact.html">Contact Trustees &amp; Secretary</a></li>
             <li><a href="legacy.html">Leave a Gift in Your Will (Legacies)</a></li>
-            <li><a href="campaign.html#pledge-privacy">Pledge Data Privacy Notice</a></li>
+            <li><a href="campaign.html#faq-gdpr">Pledge Data Privacy Notice</a></li>
             <li><a href="assets/docs/objects-and-rules.pdf" target="_blank" rel="noopener">Charity Constitution &amp;
                 Rules (PDF)</a></li>
             <li><a href="assets/docs/safeguarding-policy.pdf" target="_blank" rel="noopener">Safeguarding Policy

@@ -11,8 +11,28 @@
   "safeguards": {
     "tag": "Community Safeguards",
     "heading": "Why community ownership matters",
-    "left_col": "The Commons are protected by a range of legal and statutory safeguards, but ownership still matters. A private freeholder may have different priorities from those of the local community—particularly around public access, land management, and commercial pressures on the estate.",
-    "right_col": "Charitable community ownership ensures decisions are guided entirely by conservation and public enjoyment. Accountable to its members, local trustees, and the Charity Commission, the Friends would safeguard these historic green spaces for generations to come."
+    "lead": "The Commons are protected by landmark statutory safeguards, but legal ownership still holds vital power. While the 1890 Tunbridge Wells Improvement Act guarantees public access and mandates management by the Commons Conservators, the freehold landowner retains crucial property rights, licensing powers, and legal standing.",
+    "risks_heading": "The Risks of Private Equity Acquisition",
+    "risks": [
+      {
+        "title": "Commercial Exploitation",
+        "description": "Pressure to commercialise the land by monetising car parks, access easements, concessions, and paid events."
+      },
+      {
+        "title": "Encroachment & Boundary Disputes",
+        "description": "Costly legal battles over boundaries, licences, and rights of way across 256 acres."
+      },
+      {
+        "title": "Underfunding Stewardship",
+        "description": "Failure to co-fund vital ecological restoration, tree safety works, and essential path maintenance."
+      }
+    ],
+    "solution": "Charitable community ownership removes commercial speculation and ensures decisions are guided solely by conservation and public benefit. Backed by **over 3,000 local pledges**, cross-party civic leaders, and major conservation trusts, the Friends stand ready to protect these irreplaceable green spaces for generations to come.",
+    "video": {
+      "src": "https://drive.google.com/file/d/1AMjsrXkYSvRvTKI4PPOgF5C6gdJfkOxn/preview",
+      "title": "Video Message from Mike Martin MP",
+      "note": "Tunbridge Wells Borough Council (TWBC) and our local MP support the community purchase bid."
+    }
   },
   "march_showcase": {
     "kicker": "Town-Wide Solidarity",
@@ -94,6 +114,12 @@
       "question": "Can I still make a pledge?",
       "subtext": "Submitting new pledges towards future acquisition",
       "answer": "**Yes.**\n\nNew pledges are still welcome and help demonstrate continuing community support for ownership of the Commons by a local charity.\n\nYou can submit a pledge through our online form or by emailing [johnspbarber@gmail.com](mailto:johnspbarber@gmail.com)."
+    },
+    {
+      "id": "faq-gdpr",
+      "question": "How is my pledge data protected under UK GDPR?",
+      "subtext": "Pledge Data Privacy Notice, data controller details, and your rights",
+      "answer": "The Friends of Tunbridge Wells and Rusthall Commons is committed to protecting your personal information and ensuring complete transparency:\n\n* **1. Data Controller & Purpose:** Your details (name, email, postcode, optional telephone, and pledge amount) are recorded solely by the charity's Trustees to calculate collective community support, establish our financial capacity for purchase negotiations, and verify local backing for grant-matching bodies.\n* **2. Strict Confidentiality Guarantee:** Individual pledge sums, personal identities, and aggregate financial totals are held in strict confidence by the Trustees. To protect the charity's negotiating position, campaign pledge sums and financial targets are not disclosed to estate agents, vendors, or commercial third parties. Only broad, non-financial backing metrics (such as the breadth of local household participation across TN1, TN2 and TN4) may be referenced to demonstrate community mandate.\n* **3. No Financial Commitment Now:** Registering a pledge does not collect bank details or take money. You will only be contacted to transfer funds if and when a formal freehold acquisition contract is agreed and accepted by the Trustees.\n* **4. Your Rights & Data Erasure:** Under UK GDPR, you have the right to amend your pledge, request a copy of your entry, or ask for your personal details to be permanently erased at any time. To do so, email the Trustees at [secretary@friendsofthecommons.uk](mailto:secretary@friendsofthecommons.uk) or via our [Contact Page](contact.html). All pledge records will be securely deleted once the freehold campaign concludes."
     }
   ]
 }

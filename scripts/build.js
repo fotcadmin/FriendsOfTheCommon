@@ -146,9 +146,8 @@ ${itemsMarkup}
         </div>
 
         <div class="action-row">
-          <a href="${v.primary_btn_url || 'explore.html#plan-visit'}" class="btn btn-primary">${v.primary_btn_text || 'Complete Visitor Guide &rarr;'}</a>
-          <a href="${v.secondary_btn_url || 'explore.html'}" class="btn btn-secondary">${v.secondary_btn_text || 'Open Map Viewer'}</a>
-        </div>\n`;
+          <a href="${v.secondary_btn_url || 'explore.html#interactive-map'}" class="btn btn-secondary">${v.secondary_btn_text || 'Open Map Viewer'}</a>
+        </div>`;
       html = html.replace(visitPattern, newVisit);
     }
   }
@@ -156,7 +155,7 @@ ${itemsMarkup}
   // 5. Campaign Story Chapter
   if (data.campaign_story) {
     const cs = data.campaign_story;
-    const csPattern = /<section class="band band--parchment campaign-story" id="philosophy"[\s\S]*?(?=\s*<section class="container accordion-wrapper" aria-label="Campaign details">)/;
+    const csPattern = /<section class="band band--parchment campaign-story" id="philosophy"[\s\S]*?(?=\s*(?:<section class="container accordion-wrapper" aria-label="Campaign details">|<!-- 4\. Support chapter -->))/;
     if (csPattern.test(html)) {
       const newCs = `<section class="band band--parchment campaign-story" id="philosophy" aria-labelledby="campaign-heading">
       <div class="container">
@@ -203,7 +202,7 @@ ${itemsMarkup}
           </div>
         </div>
       </div>
-    </section>\n`;
+    </section>`;
       html = html.replace(csPattern, newCs);
     }
   }
@@ -228,7 +227,7 @@ ${itemsMarkup}
           <a href="${sc.secondary_cta_url || 'campaign.html#pledge'}" class="btn btn-light btn-lg">${sc.secondary_cta_text || 'Make a Pledge &rarr;'}</a>
         </div>
       </div>
-    </section>\n`;
+    </section>`;
       html = html.replace(scPattern, newSc);
     }
   }
@@ -320,25 +319,56 @@ function buildCampaignPage() {
   // 3. Safeguards Editorial Callout
   if (data.safeguards) {
     const s = data.safeguards;
-    const leftText = s.left_col || s.left_column || '';
-    const rightText = s.right_col || s.right_column || '';
+    const tag = s.tag || 'Community Safeguards';
+    const heading = s.heading || 'Why community ownership matters';
+    const lead = s.lead || s.left_col || '';
+    const risksHeading = s.risks_heading || 'The Risks of Private Equity Acquisition';
+    const risks = s.risks || [];
+    const risksHtml = risks.map(r => `                <li><strong>${r.title}:</strong> ${r.description}</li>`).join('\n');
+    const solution = (s.solution || s.right_col || '').replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+
+    const v = s.video || {};
+    const videoSrc = v.src || 'https://drive.google.com/file/d/1AMjsrXkYSvRvTKI4PPOgF5C6gdJfkOxn/preview';
+    const videoKicker = v.kicker || '';
+    const videoTitle = v.title || 'Video Message from Mike Martin MP';
+    const videoNote = v.note || 'Tunbridge Wells Borough Council (TWBC) and our local MP support the community purchase bid.';
 
     const safeguardsPattern = /<div class="editorial-callout reveal-fade-up" style="margin-bottom: 3rem;">[\s\S]*?(?=\s*<!-- Community March Photo Showcase -->)/;
     if (safeguardsPattern.test(html)) {
+      const kickerMarkup = videoKicker ? `<span class="portrait-video-kicker">${videoKicker}</span>\n                  ` : '';
       const newSafeguards = `<div class="editorial-callout reveal-fade-up" style="margin-bottom: 3rem;">
-          <span class="editorial-tag">${s.tag || 'Community Safeguards'}</span>
-          <h2 class="editorial-heading">${s.heading || 'Why community ownership matters'}</h2>
+          <div class="community-ownership-grid">
+            <div class="community-ownership-narrative">
+              <span class="editorial-tag">${tag}</span>
+              <h2 class="editorial-heading">${heading}</h2>
 
-          <div class="editorial-grid">
-            <div class="reveal-from-left">
-              <p>
-                ${leftText}
+              <p class="ownership-lead">
+                ${lead}
               </p>
+
+              <h3 class="ownership-subheading">${risksHeading}</h3>
+              <ul class="ownership-risks-list">
+${risksHtml}
+              </ul>
+
+              <div class="community-solution-box">
+                <p>
+                  <strong>The Community Solution:</strong> ${solution}
+                </p>
+              </div>
             </div>
-            <div class="reveal-from-right">
-              <p>
-                ${rightText}
-              </p>
+
+            <div class="community-ownership-media">
+              <aside class="portrait-video-card" aria-label="Video message from Mike Martin MP">
+                <div class="portrait-video-frame">
+                  <iframe src="${videoSrc}" allow="autoplay"
+                    allowfullscreen loading="lazy" title="Mike Martin MP: support for the Commons community bid"></iframe>
+                </div>
+                <div class="portrait-video-caption">
+                  ${kickerMarkup}<h3 class="portrait-video-title">${videoTitle}</h3>
+                  <p class="portrait-video-note">${videoNote}</p>
+                </div>
+              </aside>
             </div>
           </div>
         </div>
@@ -462,14 +492,14 @@ function buildAboutPage() {
   // 3. Objectives Section Intro
   if (data.objectives) {
     const os = data.objectives;
-    const osPattern = /<!-- The Charitable Objectives of the Association \(Constitutional Purposes\) -->[\s\S]*?<div class="section-intro-header reveal-fade-up">[\s\S]*?(?=\s*<div class="objects-grid reveal-stagger">)/;
+    const osPattern = /<!-- The Charitable Objectives of the (?:Association|Charity) \(Constitutional Purposes\) -->[\s\S]*?<div class="section-intro-header reveal-fade-up">[\s\S]*?(?=\s*<div class="objects-grid reveal-stagger">)/;
     if (osPattern.test(html)) {
-      const newOs = `<!-- The Charitable Objectives of the Association (Constitutional Purposes) -->
+      const newOs = `<!-- The Charitable Objectives of the Charity (Constitutional Purposes) -->
     <section class="objects-section" id="objects">
       <div class="container">
         <div class="section-intro-header reveal-fade-up">
           <span class="section-kicker">${os.kicker || 'Charity Constitution &bull; Governance'}</span>
-          <h2 class="section-title">${os.title || 'The Charitable Objectives of the Association'}</h2>
+          <h2 class="section-title">${os.title || 'The Charitable Objectives of the Charity'}</h2>
           <p style="color: var(--nt-muted); margin-top: 0.5rem; font-size: 1.05rem; max-width: 820px;">
             ${os.intro || os.description || ''}
           </p>
@@ -498,12 +528,14 @@ function buildSupportPage() {
   const data = JSON.parse(fs.readFileSync(dataPath, 'utf8'));
   let html = fs.readFileSync(targetPath, 'utf8');
 
-  // 1. Masthead
+  // 1. Masthead & Hero Feature Visual Banner
   const kicker = data.masthead_kicker || 'Get Involved';
   const title = data.masthead_title || 'Support Our Work';
   const lead = data.masthead_lead || '';
+  const heroImg = (data.hero_image && data.hero_image.src) ? data.hero_image.src : 'assets/images/commons-high-weald-view.webp';
+  const heroAlt = (data.hero_image && data.hero_image.alt) ? data.hero_image.alt : 'Tunbridge Wells and Rusthall Commons scenic view';
 
-  const mastheadPattern = /<section class="subpage-masthead">[\s\S]*?<\/section>/;
+  const mastheadPattern = /<section class="subpage-masthead">[\s\S]*?\s*(?=(?:<!-- Pillar 1: Membership -->|<section id="membership"))/i;
   if (mastheadPattern.test(html)) {
     const newMasthead = `<section class="subpage-masthead">
       <div class="subpage-masthead-inner">
@@ -511,7 +543,14 @@ function buildSupportPage() {
         <h1 class="masthead-title">${title}</h1>
         <p class="masthead-lead">${lead}</p>
       </div>
-    </section>`;
+    </section>
+
+    <!-- Editorial photo anchor -->
+    <div class="photo-break-fullwidth support-hero-photo">
+      <img src="${heroImg}" alt="${heroAlt}" width="1100" height="380" fetchpriority="high" decoding="async">
+    </div>
+
+    `;
     html = html.replace(mastheadPattern, newMasthead);
   }
 
@@ -549,7 +588,7 @@ function buildSupportPage() {
                 ${bn.callout_text || 'Please let us know your details so we can allocate your membership and register your Gift Aid.'}
               </p>
               <div>
-                <a href="${bn.callout_btn_url || 'contact.html'}" class="btn btn-primary btn-sm">${bn.callout_btn_label || 'Submit Membership Details &rarr;'}</a>
+                <a href="${bn.callout_btn_url || 'membership-details.html'}" class="btn btn-primary btn-sm">${bn.callout_btn_label || 'Submit Membership Details &rarr;'}</a>
               </div>
             </div>
           </div>`;
@@ -557,7 +596,150 @@ function buildSupportPage() {
     }
   }
 
-  // 3. Campaign Pledge Panel
+  // 3. Pillar 2: Donations & Gift Aid (2-Column Grid + Standalone Legacy Banner)
+  if (data.donations) {
+    const d = data.donations;
+    const dKicker = d.kicker || 'Charitable Giving';
+    const dTitle = d.title || 'Make a Donation';
+    const dIntro = d.intro || 'One-off and regular donations fund urgent storm repairs, pond restoration, and wildlife surveys. If you are a UK taxpayer, Gift Aid increases the value of your donation by 25% at no extra cost to you.';
+
+    const og = d.online_giving || {};
+    const ogKicker = og.kicker || 'Online Donation';
+    const ogTitle = og.title || 'Donate Online (Card & Direct Debit)';
+    const ogText = og.text || 'We are currently setting up our secure GoCardless online donation facility for seamless one-off gifts and regular monthly contributions. This option will be live shortly.';
+    const ogStatus = og.status_label || 'Online Giving Launching Shortly';
+
+    const dg = d.direct_giving || {};
+    const dgKicker = dg.kicker || 'Direct Giving';
+    const dgTitle = dg.title || 'Bank Transfer or Cheque';
+    const dgIntro = dg.intro || 'If you prefer not to donate online, you can transfer funds directly to our charity account or post a cheque.';
+    const dgBank = dg.bank_name || 'NatWest';
+    const dgAccName = dg.account_name || 'Friends of Tunbridge Wells and Rusthall Commons';
+    const dgSort = dg.sort_code || '55-70-13';
+    const dgAccNo = dg.account_number || '01028774';
+    const dgRef = dg.reference || 'Your Surname + “DONATION”';
+    const dgPayable = dg.cheque_payable || 'Friends of Tunbridge Wells and Rusthall Commons';
+    const dgAddress = (dg.cheque_address || 'Chris Gurr\n45 Erskine Park Road, Rusthall\nTunbridge Wells, TN4 8UT').replace(/\n/g, '<br>\n                  ');
+    const dgGiftAid = dg.gift_aid_note || 'Gift Aid on Bank Transfers: If you are a UK taxpayer and would like us to claim 25% Gift Aid, please submit your details via our <a href="membership-details.html" style="color: var(--nt-green-deep); font-weight: 600; text-decoration: underline;">membership details form</a> or <a href="contact.html" style="color: var(--nt-green-deep); font-weight: 600; text-decoration: underline;">contact page</a>.';
+
+    const leg = d.legacy_banner || {};
+    const legKicker = leg.kicker || 'Lasting Conservation';
+    const legTitle = leg.title || 'Legacy Giving in Your Will';
+    const legImg = leg.image || 'assets/images/happy-valley.webp';
+    const legAlt = leg.alt || 'Ancient sandstone gorge, mossy crags and woodland canopy in Happy Valley on Tunbridge Wells Common';
+    const legText = leg.text || 'A gift in your will ensures future generations will experience the wild beauty and quiet solace of the Commons. Even a modest legacy creates a lasting conservation endowment for ancient trees, sandstone rocks, and footpaths.';
+    const legBtnText = (leg.btn_text || 'Read Legacy Guide & Solicitor Wording →').replace(/→|&rarr;/, '').trim();
+    const legBtnUrl = leg.btn_url || 'legacy.html';
+
+    const donatePattern = /<!-- Pillar 2: Donations & Gift Aid -->[\s\S]*?(?=\s*<!-- Pillar 3: Volunteering -->)/;
+    if (donatePattern.test(html)) {
+      const newDonate = `<!-- Pillar 2: Donations & Gift Aid -->
+    <section id="donate" style="padding: 3.5rem 0; background: #ffffff; border-bottom: 1px solid var(--nt-border);">
+      <div class="container">
+        <div class="section-intro-header reveal-fade-up">
+          <span class="section-kicker">${dKicker}</span>
+          <h2 class="section-title">${dTitle}</h2>
+          <p style="color: var(--nt-muted); margin-top: 0.5rem; font-size: 1.05rem; max-width: 800px;">
+            ${dIntro}
+          </p>
+        </div>
+
+        <!-- 2-Column Donation Grid -->
+        <div class="grid-2 reveal-stagger" style="align-items: stretch; gap: 2rem;">
+          <!-- Column 1: Online Giving / GoCardless Placeholder -->
+          <div class="sharp-card reveal-fade-up"
+            style="background: var(--nt-sand-bg); border: 2px dashed var(--nt-border); padding: 2rem; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <span class="sharp-card-tag"
+                style="color: var(--nt-ochre); margin-bottom: 0.35rem; display: inline-block;">${ogKicker}</span>
+              <h3 style="font-family: var(--font-serif); font-size: 1.4rem; color: var(--nt-charcoal); margin: 0 0 0.75rem 0;">
+                ${ogTitle}
+              </h3>
+              <p style="color: var(--nt-charcoal); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem;">
+                ${ogText}
+              </p>
+            </div>
+            <div>
+              <div
+                style="padding: 0.85rem 1.25rem; background: rgba(0,0,0,0.04); border-radius: 4px; display: inline-flex; align-items: center; gap: 0.6rem; color: var(--nt-muted); font-size: 0.9rem; font-weight: 600;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="opacity: 0.7;">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+                ${ogStatus}
+              </div>
+            </div>
+          </div>
+
+          <!-- Column 2: Direct Giving via Bank Transfer or Cheque -->
+          <div class="offline-banking-card reveal-fade-up"
+            style="margin-top: 0; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <span class="sharp-card-tag"
+                style="color: var(--nt-green-deep); margin-bottom: 0.35rem; display: inline-block;">${dgKicker}</span>
+              <h3 style="font-family: var(--font-serif); font-size: 1.4rem; color: var(--nt-charcoal); margin: 0 0 0.75rem 0;">
+                ${dgTitle}
+              </h3>
+              <p style="color: var(--nt-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1rem;">
+                ${dgIntro}
+              </p>
+              <div class="offline-banking-grid">
+                <div>
+                  <strong>Bank Transfer (BACS / Standing Order):</strong><br>
+                  Bank: ${dgBank}<br>
+                  Account Name: ${dgAccName}<br>
+                  Sort Code: <strong>${dgSort}</strong><br>
+                  Account Number: <strong>${dgAccNo}</strong><br>
+                  Reference: <em>${dgRef}</em>
+                </div>
+                <div>
+                  <strong>By Cheque:</strong><br>
+                  Payable to: <em>${dgPayable}</em><br>
+                  Please send to:<br>
+                  ${dgAddress}
+                </div>
+              </div>
+            </div>
+
+            <div
+              style="font-size: 0.85rem; color: var(--nt-muted); line-height: 1.5; border-top: 1px solid var(--nt-border); padding-top: 0.75rem; margin-top: 1rem;">
+              ${dgGiftAid}
+            </div>
+          </div>
+        </div>
+
+        <!-- Standalone Horizontal Legacy Highlight Banner -->
+        <div class="sharp-card reveal-fade-up"
+          style="background: var(--nt-surface-alt); overflow: hidden; border: 1px solid var(--nt-border); box-shadow: var(--shadow-sm); margin-top: 2.5rem;">
+          <div class="legacy-highlight-grid">
+            <div style="position: relative; min-height: 220px; overflow: hidden;">
+              <img src="${legImg}"
+                alt="${legAlt}"
+                width="500" height="300"
+                style="width: 100%; height: 100%; object-fit: cover; display: block;" loading="lazy">
+            </div>
+            <div style="padding: 2rem 2.25rem; display: flex; flex-direction: column; justify-content: center; gap: 0.75rem;">
+              <span class="sharp-card-tag" style="color: var(--nt-green-deep); margin-bottom: 0;">${legKicker}</span>
+              <h3 style="font-family: var(--font-serif); font-size: 1.45rem; color: var(--nt-charcoal); margin: 0;">
+                ${legTitle}
+              </h3>
+              <p style="color: var(--nt-muted); font-size: 0.95rem; line-height: 1.6; margin: 0; max-width: 65ch;">
+                ${legText}
+              </p>
+              <div style="margin-top: 0.5rem;">
+                <a href="${legBtnUrl}" class="btn btn-secondary btn-sm">${legBtnText} &rarr;</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+`;
+      html = html.replace(donatePattern, newDonate);
+    }
+  }
+
+  // 4. Campaign Pledge Panel
   if (data.pledge_panel) {
     const pp = data.pledge_panel;
     const cpPattern = /<!-- Pillar 4: Pledging to The Commons Campaign -->[\s\S]*?<div class="pledge-panel reveal-fade-up">[\s\S]*?(?=\s*<\/div>\s*<\/section>\s*<\/main>)/;
@@ -573,6 +755,7 @@ function buildSupportPage() {
       const bulletItems = bulletPoints.map(b => `<li style="color: #ffffff;">${b}</li>`).join('\n                ');
       const emailLead = countsCard.email_lead || 'Prefer to pledge by email? Contact';
       const email = countsCard.email_address || 'johnspbarber@gmail.com';
+      const tagHtml = pp.tag ? `<span class="urgent-tag" style="background: rgba(0,0,0,0.3); margin-bottom: 0.75rem;">${pp.tag}</span>\n              ` : '';
 
       const newCp = `<!-- Pillar 4: Pledging to The Commons Campaign -->
     <section id="pledge-info" style="padding: 3.5rem 0; background: var(--nt-surface-alt);">
@@ -580,8 +763,7 @@ function buildSupportPage() {
         <div class="pledge-panel reveal-fade-up">
           <div class="pledge-panel-grid">
             <div class="reveal-from-left">
-              <span class="urgent-tag" style="background: rgba(0,0,0,0.3); margin-bottom: 0.75rem;">${pp.tag || 'The Commons Campaign'}</span>
-              <h2>${pp.title || 'Pledge to the Community Purchase Bid'}</h2>
+              ${tagHtml}<h2>${pp.title || 'Pledge to the Community Purchase Bid'}</h2>
               <p>
                 ${pp.lead || 'A pledge is a confidential promise of financial support to help our registered charity acquire the freehold of Tunbridge Wells and Rusthall Commons. Funds will only be requested when the community sale is legally agreed.'}
               </p>
@@ -648,7 +830,31 @@ function buildContactPage() {
     html = html.replace(mastheadPattern, newMasthead);
   }
 
-  // 2. Privacy Notice
+  // 2. Committee Contacts List
+  if (data.committee_card && data.committee_card.contacts) {
+    const contacts = data.committee_card.contacts;
+    const contactsHtml = contacts.map(c => {
+      let info = '';
+      if (c.email) {
+        info = `Email: <a href="mailto:${c.email}" style="color: var(--nt-green-deep); text-decoration: underline;">${c.email}</a>`;
+      } else if (c.details) {
+        info = c.details;
+      }
+      return `                <li>
+                  <div>
+                    <strong>${c.role}:</strong>${c.name ? ' ' + c.name : ''}<br>
+                    <span style="font-size: 0.88rem; color: var(--nt-muted);">${info}</span>
+                  </div>
+                </li>`;
+    }).join('\n');
+
+    const committeePattern = /<ul class="clean-list" style="margin-bottom: 1.5rem; display: flex; flex-direction: column; gap: 1rem;">[\s\S]*?<\/ul>/;
+    if (committeePattern.test(html)) {
+      html = html.replace(committeePattern, `<ul class="clean-list" style="margin-bottom: 1.5rem; display: flex; flex-direction: column; gap: 1rem;">\n${contactsHtml}\n              </ul>`);
+    }
+  }
+
+  // 3. Privacy Notice
   if (data.privacy_notice) {
     const p = data.privacy_notice;
     const privacyPattern = /<!-- Privacy & UK GDPR Notice -->[\s\S]*?<div id="privacy" class="sharp-card"[\s\S]*?(?=\s*<\/div>\s*<!-- Right Column: Interactive Tally Contact Form -->)/;
