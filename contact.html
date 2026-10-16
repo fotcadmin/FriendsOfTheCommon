@@ -24,23 +24,21 @@
   <link rel="manifest" href="site.webmanifest">
   <meta name="theme-color" content="#133926">
 
-  <!-- Preload LCP Hero Banner Image -->
-  <link rel="preload" as="image" href="assets/images/signpost.webp" type="image/webp" fetchpriority="high">
+  <!-- Preload LCP Image -->
+  <link rel="preload" as="image" href="assets/images/roger-john-nick-mobile.webp" media="(max-width: 640px)" fetchpriority="high" type="image/webp">
+  <link rel="preload" as="image" href="assets/images/roger-john-nick.webp" media="(min-width: 641px)" fetchpriority="high" type="image/webp">
 
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="assets/css/nt-style.css">
+  <link rel="stylesheet" href="assets/css/nt-style.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;800&family=Inter:wght@400;500;600;700&family=Roboto+Condensed:wght@700&display=optional"
+    href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;800&family=Inter:wght@400;500;600;700&family=Roboto+Condensed:wght@700&display=swap"
     media="print" onload="this.media='all'">
   <noscript>
     <link rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;800&family=Inter:wght@400;500;600;700&family=Roboto+Condensed:wght@700&display=optional">
+      href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;800&family=Inter:wght@400;500;600;700&family=Roboto+Condensed:wght@700&display=swap">
   </noscript>
-
-  <!-- Tally Forms Embed Script -->
-  <script async src="https://tally.so/widgets/embed.js"></script>
 </head>
 
 <body>
@@ -60,7 +58,7 @@
   <!-- Site Header -->
   <header class="site-header" role="banner">
     <div class="container header-inner">
-      <a href="index.html" class="brand-link" aria-label="The Friends of Tunbridge Wells &amp; Rusthall Commons Home">
+      <a href="index.html" class="brand-link">
         <img src="assets/images/logo-alpha.webp" alt="Friends of Tunbridge Wells and Rusthall Commons"
           class="brand-logo" width="100" height="100">
         <div class="brand-text">
@@ -123,10 +121,16 @@
             <!-- The Friends Charity Committee -->
             <div class="sharp-card" style="padding: 1.75rem 2rem;">
               <div class="sharp-card-img-wrap" style="margin: -1.75rem -2rem 1.25rem -2rem;">
-                <img src="assets/images/roger-john-nick.webp"
-                  alt="Charity leaders Roger Barton, John Barber and Nick Ferrier walking on the commons" width="500"
-                  height="260" loading="lazy" decoding="async" class="contact-committee-img"
-                  style="width: 100%; height: 250px; object-fit: cover; object-position: center 65%;">
+                <picture>
+                  <source media="(max-width: 640px)" srcset="assets/images/roger-john-nick-mobile.webp" type="image/webp">
+                  <img src="assets/images/roger-john-nick.webp" 
+                       alt="Charity leaders Roger Barton, John Barber and Nick Ferrier walking on the commons" 
+                       width="500" height="260" 
+                       fetchpriority="high" 
+                       decoding="async" 
+                       class="contact-committee-img"
+                       style="width: 100%; height: 250px; object-fit: cover; object-position: center 65%; display: block;">
+                </picture>
                 <div
                   style="padding: 0.4rem 1rem; font-size: 0.72rem; color: var(--nt-muted); background: var(--nt-sand-bg); border-bottom: 1px solid var(--nt-border-subtle); font-style: italic;">
                   The Friends Committee &amp; Campaign Team walking through Tunbridge Wells Common.
@@ -179,6 +183,20 @@
                 The Friends only holds personal details provided voluntarily for membership administration, newsletter distribution, pledge tracking, or volunteer coordination. We never sell or share personal data with commercial third parties.
               </p>
             </div>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
           
           
           
@@ -417,7 +435,22 @@
     </div>
   </footer>
 
-  <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/main.min.js" defer></script>
+  <script>
+    (function() {
+      function loadTally() {
+        if (window.__tallyLoaded) return;
+        window.__tallyLoaded = true;
+        var s = document.createElement('script');
+        s.src = 'https://tally.so/widgets/embed.js';
+        s.async = true;
+        document.body.appendChild(s);
+      }
+      ['scroll', 'mousemove', 'pointerdown', 'touchstart', 'keydown', 'click'].forEach(function(e) {
+        window.addEventListener(e, loadTally, { once: true, passive: true });
+      });
+    })();
+  </script>
   <!-- Floating Quick Contact Button -->
   <a href="contact.html" class="floating-contact-btn">
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"

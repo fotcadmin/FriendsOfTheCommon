@@ -4,6 +4,7 @@
   "masthead_lead": "Whether through annual membership, donations, volunteering, or pledging to the freehold fund, your support keeps the Commons thriving.",
   "hero_image": {
     "src": "assets/images/commons-high-weald-view.webp",
+    "mobile_src": "assets/images/commons-high-weald-view-mobile.webp",
     "alt": "Tunbridge Wells and Rusthall Commons scenic view"
   },
   "membership": {

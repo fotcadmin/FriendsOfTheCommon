@@ -60,7 +60,7 @@
   <!-- Site Header -->
   <header class="site-header" role="banner">
     <div class="container header-inner">
-      <a href="index.html" class="brand-link" aria-label="The Friends of Tunbridge Wells &amp; Rusthall Commons Home">
+      <a href="index.html" class="brand-link">
         <img src="assets/images/logo-alpha.webp" alt="Friends of Tunbridge Wells and Rusthall Commons"
           class="brand-logo" width="100" height="100">
         <div class="brand-text">
@@ -197,6 +197,20 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         <div class="editorial-callout reveal-fade-up" style="margin-bottom: 3rem;">
           <div class="community-ownership-grid">
             <div class="community-ownership-narrative">
@@ -222,10 +236,19 @@
             </div>
 
             <div class="community-ownership-media">
-              <aside class="portrait-video-card" aria-label="Video message from Mike Martin MP">
-                <div class="portrait-video-frame">
-                  <iframe src="https://drive.google.com/file/d/1AMjsrXkYSvRvTKI4PPOgF5C6gdJfkOxn/preview" allow="autoplay"
-                    allowfullscreen loading="lazy" title="Mike Martin MP: support for the Commons community bid"></iframe>
+              <aside class="portrait-video-card video-card" aria-label="Video message from Mike Martin MP">
+                <div class="portrait-video-frame video-wrapper" id="mike-martin-video-frame" style="position: relative; background: #1b382b; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+                  <button type="button" class="video-facade-btn" aria-label="Play video message from Mike Martin MP" style="background: none; border: none; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 0.75rem; color: #ffffff; padding: 1rem; text-align: center;">
+                    <span style="width: 64px; height: 64px; border-radius: 50%; background: var(--nt-terracotta, #a8422b); display: inline-flex; align-items: center; justify-content: center; box-shadow: 0 4px 14px rgba(0,0,0,0.4);">
+                      <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                    </span>
+                    <span style="font-size: 0.95rem; font-weight: 600; text-shadow: 0 1px 3px rgba(0,0,0,0.8);">Play Video Message</span>
+                  </button>
+                  <template id="mike-martin-iframe-tmpl">
+                    <iframe src="https://drive.google.com/file/d/1AMjsrXkYSvRvTKI4PPOgF5C6gdJfkOxn/preview" allow="autoplay; fullscreen"
+                      allowfullscreen loading="lazy" sandbox="allow-scripts allow-same-origin allow-presentation"
+                      title="Video Message from Mike Martin MP" style="position: absolute; top:0; left:0; width:100%; height:100%; border:0;"></iframe>
+                  </template>
                 </div>
                 <div class="portrait-video-caption">
                   <h3 class="portrait-video-title">Video Message from Mike Martin MP</h3>
@@ -283,6 +306,20 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         <!-- Community March Photo Showcase -->
         <div class="section-intro-header reveal-fade-up" id="community-voices">
           <span class="section-kicker">Town-Wide Solidarity</span>
@@ -291,6 +328,20 @@
             Hundreds of residents, families, and dog walkers gathered across Tunbridge Wells and Rusthall to demonstrate overwhelming community support behind the freehold purchase bid.
           </p>
         </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

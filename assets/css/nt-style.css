@@ -1162,6 +1162,11 @@ details[open] .summary-icon {
   background: var(--nt-sand);
 }
 
+.photo-break-fullwidth picture {
+  display: block;
+  width: 100%;
+}
+
 .photo-break-fullwidth img {
   width: 100%;
   height: 380px;
@@ -1681,7 +1686,7 @@ details[open] .summary-icon {
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #c86d51;
+  color: #df8a6f;
 }
 
 .masthead-title {
@@ -1704,6 +1709,7 @@ details[open] .summary-icon {
 
 /* Normalize Inner Container & Margins */
 .subpage-masthead .masthead-kicker {
+  color: #df8a6f;
   margin-top: 0;
   margin-bottom: 0.5rem;
 }
@@ -1833,6 +1839,11 @@ details[open] .summary-icon {
   overflow: hidden;
   border-bottom: 1px solid var(--nt-border);
   background-color: var(--nt-sand);
+}
+
+.sharp-card-img-wrap picture {
+  display: block;
+  width: 100%;
 }
 
 .sharp-card-img-wrap img {
@@ -2352,6 +2363,7 @@ details[open] .summary-icon {
   border-radius: 6px;
 }
 
+.offline-banking-card h3,
 .offline-banking-card h4 {
   font-family: 'Frank Ruhl Libre', serif;
   font-size: 1.25rem;
@@ -2791,7 +2803,7 @@ body.review-mode-active .review-note {
 /* Photo Credit & March Gallery Styling */
 .photo-credit {
   font-size: 0.75rem;
-  color: #6e7770;
+  color: #4f5952;
   margin-top: 0.35rem;
   font-style: italic;
   display: block;
@@ -4592,11 +4604,18 @@ section[aria-label*="Mission" i],
   position: absolute;
   bottom: 0;
   right: 0;
-  width: 175px;
-  height: 60px;
+  width: 135px;
+  height: 36px;
   background: #ffffff;
   pointer-events: none;
   z-index: 20;
+}
+
+@media (max-width: 768px) {
+  .tally-form-embed-wrapper.pledge-embed::after,
+  #pledge .tally-form-embed-wrapper::after {
+    display: none !important;
+  }
 }
 
 @media (max-width: 600px) {
@@ -4916,32 +4935,45 @@ body.modal-open {
   min-width: 0;
 }
 
-.portrait-video-card {
+.portrait-video-card,
+.video-card {
   padding: 1.25rem;
   background: #f1f5ef;
   border: 1px solid var(--nt-border);
   border-radius: 8px;
 }
 
-.portrait-video-frame {
+.portrait-video-frame,
+.video-wrapper {
   position: relative;
   width: 100%;
   max-width: 320px;
   aspect-ratio: 9 / 16;
   margin: 0 auto;
   overflow: hidden;
-  border-radius: 6px;
+  border-radius: 8px;
   background: #1b382b;
 }
 
+.video-card iframe,
+.video-wrapper iframe,
+.video-card video,
 .portrait-video-frame iframe,
 .portrait-video-frame video {
   position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  border: 0;
-  object-fit: cover;
+  top: 0;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  transform: none !important;
+  display: block !important;
+  border: 0 !important;
+  object-fit: cover !important;
+  object-position: center center !important;
 }
 
 .portrait-video-caption {
@@ -5078,9 +5110,10 @@ body.modal-open {
   margin-top: 0.2rem;
 }
 
-.community-ownership-media .portrait-video-card {
+.community-ownership-media .portrait-video-card,
+.community-ownership-media .video-card {
   width: 100%;
-  max-width: 300px;
+  max-width: 340px;
   margin: 0 auto;
   height: auto;
   background: #f4f6f3;
@@ -5090,19 +5123,20 @@ body.modal-open {
   box-shadow: 0 4px 16px rgba(19, 57, 38, 0.06);
 }
 
-.community-ownership-media .portrait-video-frame {
+.community-ownership-media .portrait-video-frame,
+.community-ownership-media .video-wrapper {
   position: relative;
   width: 100%;
-  max-width: 270px;
+  max-width: 320px;
   aspect-ratio: 9 / 16;
   margin: 0 auto;
   overflow: hidden;
-  border-radius: 6px;
+  border-radius: 8px;
   background: #1b382b;
 }
 
 .community-ownership-media .portrait-video-caption {
-  max-width: 270px;
+  max-width: 320px;
   margin: 0.75rem auto 0;
 }
 
@@ -5129,7 +5163,7 @@ body.modal-open {
   }
 
   .community-ownership-media {
-    max-width: 300px;
+    max-width: 340px;
     margin: 1.5rem auto 0;
     width: 100%;
   }

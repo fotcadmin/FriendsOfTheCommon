@@ -24,19 +24,22 @@
   <link rel="manifest" href="site.webmanifest">
   <meta name="theme-color" content="#133926">
 
+  <!-- Preload LCP Hero Image -->
+  <link rel="preload" as="image" href="assets/images/commons-high-weald-view-mobile.webp" media="(max-width: 640px)" fetchpriority="high" type="image/webp">
+  <link rel="preload" as="image" href="assets/images/commons-high-weald-view.webp" media="(min-width: 641px)" fetchpriority="high" type="image/webp">
+
   <!-- Stylesheets -->
   <link rel="stylesheet" href="assets/css/nt-style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700;800&display=swap">
   <link rel="preload" as="style"
-    href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap">
+    href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;800&family=Inter:wght@400;500;600;700&family=Roboto+Condensed:wght@700;800&display=swap">
   <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;800&family=Inter:wght@400;500;600;700&family=Roboto+Condensed:wght@700;800&display=swap"
     media="print" onload="this.media='all'">
   <noscript>
     <link rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap">
+      href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;800&family=Inter:wght@400;500;600;700&family=Roboto+Condensed:wght@700;800&display=swap">
   </noscript>
 </head>
 
@@ -58,7 +61,7 @@
   <!-- Site Header -->
   <header class="site-header" role="banner">
     <div class="container header-inner">
-      <a href="index.html" class="brand-link" aria-label="The Friends of Tunbridge Wells &amp; Rusthall Commons Home">
+      <a href="index.html" class="brand-link">
         <img src="assets/images/logo-alpha.webp" alt="Friends of Tunbridge Wells and Rusthall Commons"
           class="brand-logo" width="100" height="100">
         <div class="brand-text">
@@ -112,7 +115,10 @@
 
     <!-- Editorial photo anchor -->
     <div class="photo-break-fullwidth support-hero-photo">
-      <img src="assets/images/commons-high-weald-view.webp" alt="Tunbridge Wells and Rusthall Commons scenic view" width="1100" height="380" fetchpriority="high" decoding="async">
+      <picture>
+        <source media="(max-width: 640px)" srcset="assets/images/commons-high-weald-view-mobile.webp" type="image/webp">
+        <img src="assets/images/commons-high-weald-view.webp" alt="Tunbridge Wells and Rusthall Commons scenic view" width="1100" height="380" fetchpriority="high" decoding="async">
+      </picture>
     </div>
 
     <!-- Pillar 1: Membership -->
@@ -180,7 +186,7 @@
 
         <div class="reveal-fade-up" style="max-width: 840px; margin: 0 auto 3.5rem auto;">
           <div class="offline-banking-card">
-            <h4>Prefer to Join by Bank Transfer or Cheque?</h4>
+            <h3>Prefer to Join by Bank Transfer or Cheque?</h3>
             <p>
               We also welcome annual memberships paid directly via online banking, standing order, or posted cheque.
             </p>
@@ -337,6 +343,20 @@
         </div>
       </div>
     </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -558,17 +558,29 @@
     });
   });
 
-  // Lazy Initialization via IntersectionObserver (real visibility) or user interaction
+  // Lazy Initialization via IntersectionObserver: defer until user approaches map container
   if ('IntersectionObserver' in window) {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting && entry.intersectionRatio > 0.05) {
-          initMap();
-          observer.disconnect();
-        }
-      });
-    }, { threshold: [0.05] });
-    observer.observe(mapElement);
+    const observerTarget = mapElement || document.getElementById('leaflet-map');
+    if (observerTarget) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            initMap();
+            observer.disconnect();
+          }
+        });
+      }, { rootMargin: '200px 0px' });
+      observer.observe(observerTarget);
+    } else {
+      initMap();
+    }
+  } else {
+    // Fallback: initialize on first user scroll or interaction
+    const scrollFallback = () => {
+      initMap();
+      window.removeEventListener('scroll', scrollFallback);
+    };
+    window.addEventListener('scroll', scrollFallback, { passive: true, once: true });
   }
 
   // Handle landmark focus from buttons or hash

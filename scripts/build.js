@@ -13,6 +13,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const { minifyAll } = require('./minify');
 
 const rootDir = path.resolve(__dirname, '..');
 
@@ -359,10 +360,19 @@ ${risksHtml}
             </div>
 
             <div class="community-ownership-media">
-              <aside class="portrait-video-card" aria-label="Video message from Mike Martin MP">
-                <div class="portrait-video-frame">
-                  <iframe src="${videoSrc}" allow="autoplay"
-                    allowfullscreen loading="lazy" title="Mike Martin MP: support for the Commons community bid"></iframe>
+              <aside class="portrait-video-card video-card" aria-label="Video message from Mike Martin MP">
+                <div class="portrait-video-frame video-wrapper" id="mike-martin-video-frame" style="position: relative; background: #1b382b; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+                  <button type="button" class="video-facade-btn" aria-label="Play video message from Mike Martin MP" style="background: none; border: none; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 0.75rem; color: #ffffff; padding: 1rem; text-align: center;">
+                    <span style="width: 64px; height: 64px; border-radius: 50%; background: var(--nt-terracotta, #a8422b); display: inline-flex; align-items: center; justify-content: center; box-shadow: 0 4px 14px rgba(0,0,0,0.4);">
+                      <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                    </span>
+                    <span style="font-size: 0.95rem; font-weight: 600; text-shadow: 0 1px 3px rgba(0,0,0,0.8);">Play Video Message</span>
+                  </button>
+                  <template id="mike-martin-iframe-tmpl">
+                    <iframe src="${videoSrc}" allow="autoplay; fullscreen"
+                      allowfullscreen loading="lazy" sandbox="allow-scripts allow-same-origin allow-presentation"
+                      title="${videoTitle}" style="position: absolute; top:0; left:0; width:100%; height:100%; border:0;"></iframe>
+                  </template>
                 </div>
                 <div class="portrait-video-caption">
                   ${kickerMarkup}<h3 class="portrait-video-title">${videoTitle}</h3>
@@ -533,6 +543,7 @@ function buildSupportPage() {
   const title = data.masthead_title || 'Support Our Work';
   const lead = data.masthead_lead || '';
   const heroImg = (data.hero_image && data.hero_image.src) ? data.hero_image.src : 'assets/images/commons-high-weald-view.webp';
+  const heroMobileImg = (data.hero_image && data.hero_image.mobile_src) ? data.hero_image.mobile_src : 'assets/images/commons-high-weald-view-mobile.webp';
   const heroAlt = (data.hero_image && data.hero_image.alt) ? data.hero_image.alt : 'Tunbridge Wells and Rusthall Commons scenic view';
 
   const mastheadPattern = /<section class="subpage-masthead">[\s\S]*?\s*(?=(?:<!-- Pillar 1: Membership -->|<section id="membership"))/i;
@@ -547,7 +558,10 @@ function buildSupportPage() {
 
     <!-- Editorial photo anchor -->
     <div class="photo-break-fullwidth support-hero-photo">
-      <img src="${heroImg}" alt="${heroAlt}" width="1100" height="380" fetchpriority="high" decoding="async">
+      <picture>
+        <source media="(max-width: 640px)" srcset="${heroMobileImg}" type="image/webp">
+        <img src="${heroImg}" alt="${heroAlt}" width="1100" height="380" fetchpriority="high" decoding="async">
+      </picture>
     </div>
 
     `;
@@ -560,7 +574,7 @@ function buildSupportPage() {
     const bcPattern = /<div class="offline-banking-card">[\s\S]*?(?=\s*<\/div>\s*<!-- What Your Membership Supports -->)/;
     if (bcPattern.test(html)) {
       const newBc = `<div class="offline-banking-card">
-            <h4>${bn.heading || 'Prefer to Join by Bank Transfer or Cheque?'}</h4>
+            <h3>${bn.heading || 'Prefer to Join by Bank Transfer or Cheque?'}</h3>
             <p>
               ${bn.intro || 'We also welcome annual memberships paid directly via online banking, standing order, or posted cheque.'}
             </p>
@@ -889,6 +903,7 @@ function buildAll() {
   buildAboutPage();
   buildSupportPage();
   buildContactPage();
+  minifyAll();
   console.log('--- Build Finished Successfully ---');
 }
 

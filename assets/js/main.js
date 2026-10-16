@@ -1046,6 +1046,7 @@ function initEventsDateFilter() {
   const emptyNotice = document.getElementById('no-upcoming-events');
   let upcomingCount = 0;
   let pastCount = 0;
+  const toMove = [];
 
   eventCards.forEach(card => {
     const rawDate = card.getAttribute('data-event-date');
@@ -1053,12 +1054,18 @@ function initEventsDateFilter() {
     const eventDate = new Date(rawDate + 'T00:00:00');
     if (eventDate < today) {
       card.classList.add('event-card--past');
-      if (pastList) pastList.appendChild(card);
+      toMove.push(card);
       pastCount++;
     } else {
       upcomingCount++;
     }
   });
+
+  if (toMove.length > 0 && pastList) {
+    const frag = document.createDocumentFragment();
+    toMove.forEach(card => frag.appendChild(card));
+    pastList.appendChild(frag);
+  }
 
   if (upcomingCount === 0 && emptyNotice) emptyNotice.style.display = 'block';
   if (pastCount > 0 && pastSection) pastSection.style.display = 'block';
@@ -1100,4 +1107,15 @@ function initNewsLoadMore() {
     });
   }
 }
+
+// Lightweight Click-to-Play Video Facade Handler
+document.addEventListener('click', function (e) {
+  const frame = e.target.closest('#mike-martin-video-frame, .video-facade-wrapper');
+  if (frame) {
+    const tmpl = frame.querySelector('template');
+    if (tmpl) {
+      frame.innerHTML = tmpl.innerHTML;
+    }
+  }
+});
 
