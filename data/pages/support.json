@@ -71,8 +71,31 @@
     "online_giving": {
       "kicker": "Online Donation",
       "title": "Donate Online (Card & Direct Debit)",
-      "text": "We are currently setting up our secure GoCardless online donation facility for seamless one-off gifts and regular monthly contributions. This option will be live shortly.",
-      "status_label": "Online Giving Launching Shortly"
+      "text": "Make an immediate, secure one-off gift via GoCardless to support urgent conservation, path restoration, and habitat care across our 256 acres.",
+      "tiers": [
+        {
+          "amount": "20",
+          "sub": "One-off gift",
+          "gocardless_url": "https://pay.gocardless.com/BRT01M5CN95T9YF61V8PJ22V6DN22",
+          "button_text": "Donate £20 →",
+          "featured": false
+        },
+        {
+          "amount": "50",
+          "sub": "One-off gift",
+          "gocardless_url": "https://pay.gocardless.com/BRT01M5CNA0AVQF9G66SHSF4AD9W7",
+          "button_text": "Donate £50 →",
+          "featured": true
+        },
+        {
+          "amount": "100",
+          "sub": "One-off gift",
+          "gocardless_url": "https://pay.gocardless.com/BRT01M5CNB5QPGWY9524HYESEG97V",
+          "button_text": "Donate £100 →",
+          "featured": false
+        }
+      ],
+      "custom_note": "For custom or larger donation amounts, please use a direct bank transfer (see details alongside)."
     },
     "direct_giving": {
       "kicker": "Direct Giving",
@@ -84,8 +107,7 @@
       "account_number": "01028774",
       "reference": "Your Surname + “DONATION”",
       "cheque_payable": "Friends of Tunbridge Wells and Rusthall Commons",
-      "cheque_address": "Chris Gurr\n45 Erskine Park Road, Rusthall\nTunbridge Wells, TN4 8UT",
-      "gift_aid_note": "Gift Aid on Bank Transfers: If you are a UK taxpayer and would like us to claim 25% Gift Aid, please submit your details via our <a href=\"membership-details.html\" style=\"color: var(--nt-green-deep); font-weight: 600; text-decoration: underline;\">membership details form</a> or <a href=\"contact.html\" style=\"color: var(--nt-green-deep); font-weight: 600; text-decoration: underline;\">contact page</a>."
+      "cheque_address": "Chris Gurr\n45 Erskine Park Road, Rusthall\nTunbridge Wells, TN4 8UT"
     },
     "legacy_banner": {
       "kicker": "Lasting Conservation",
@@ -105,14 +127,14 @@
       "image": "/assets/images/saturday.webp",
       "title": "Practical Conservation Mornings",
       "text": "From litter-picking and invasive species clearance to scrub control and pond care, volunteer mornings offer a friendly way to spend time outdoors while making a tangible difference to our commons.",
-      "footer": "Tools and guidance provided by the Commons Ranger team."
+      "footer": "Tools and guidance provided by the Commons Conservators."
     },
     "join_card": {
       "kicker": "Get Involved",
       "title": "Join a Volunteer Morning",
       "text": "Sessions are open to everyone, whether you can spare an hour occasionally or wish to join regularly. No prior experience is needed.",
       "bullets": [
-        "Organised by the Commons Conservators & Ranger team",
+        "Organised by the Commons Conservators",
         "Supported by The Friends",
         "Give time whenever you can."
       ],

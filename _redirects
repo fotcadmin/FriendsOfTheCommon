@@ -10,3 +10,5 @@
 /support         /support-us.html    301!
 /support/        /support-us.html    301!
 /support.html    /support-us.html    301!
+/admin/optimizer.html /admin/optimiser.html 301
+/admin/optimizer     /admin/optimiser.html 301

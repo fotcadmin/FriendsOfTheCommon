@@ -97,7 +97,7 @@ function buildHomePage() {
     const mpSectionPattern = /<!-- Mission & Purpose -->[\s\S]*?<\/section>/;
     if (mpSectionPattern.test(html)) {
       const missionHeading = mp.mission_heading || 'Our Mission';
-      const missionText = mp.mission_text || 'Working with the community for the preservation, enhancement and enjoyment of the Commons.';
+      const missionText = mp.mission_text || 'Working with the community to preserve, enhance and enjoy the Commons.';
       const purposeHeading = mp.purpose_heading || 'Our Purpose';
       const purposeText = mp.purpose_text || 'To protect the Commons, celebrate their place in our community, and safeguard their future.';
 
@@ -121,6 +121,76 @@ function buildHomePage() {
       </div>
     </section>`;
       html = html.replace(mpSectionPattern, newMp);
+    }
+  }
+
+  // 3b. Roles Comparison (Conservators vs Friends)
+  if (data.roles_compare) {
+    const rc = data.roles_compare;
+    const cons = rc.conservators || {};
+    const fr = rc.friends || {};
+    const rolesPattern = /<!-- Conservators vs Friends -->[\s\S]*?<\/section>/;
+    if (rolesPattern.test(html)) {
+      const kicker = rc.kicker || 'Understanding Our Roles';
+      const title = (rc.title || 'The Commons Conservators and The Friends: What&rsquo;s the difference?').replace(/’|'/g, '&rsquo;');
+      const lede = rc.lede || 'Two separate organisations working together for the Commons.';
+
+      const consTag = cons.tag || 'Since 1890';
+      const consTitle = cons.title || 'The Commons Conservators';
+      const consLogo = (cons.logo || '/assets/images/conservators-badge.webp').replace(/^\//, '');
+      const consText = cons.text || '';
+      const consLinkText = (cons.link_text || 'Visit twcommons.org &rarr;').replace(/→|&rarr;/g, '&rarr;');
+      const consLinkUrl = cons.link_url || 'https://twcommons.org/';
+
+      const frTag = fr.tag || 'Independent Charity (No. 1013975)';
+      const frTitle = fr.title || 'Friends of the Commons';
+      const frLogo = (fr.logo || '/assets/images/logo-alpha.webp').replace(/^\//, '');
+      const frText = fr.text || '';
+      const frLinkText = (fr.link_text || 'Read about our history &rarr;').replace(/→|&rarr;/g, '&rarr;');
+      const frLinkUrl = fr.link_url || 'about.html';
+
+      const newRoles = `<!-- Conservators vs Friends -->
+    <section class="band band--parchment" aria-labelledby="roles-heading">
+      <div class="container">
+        <header class="band-header reveal-fade-up">
+          <span class="band-kicker band-kicker--pill">${kicker}</span>
+          <h2 class="band-title" id="roles-heading">
+            ${title}
+          </h2>
+          <p class="band-lede">${lede}</p>
+        </header>
+        <div class="roles-compare reveal-stagger">
+          <article class="role">
+            <span class="role-tag">${consTag}</span>
+            <div class="role-header-row">
+              <a href="${consLinkUrl}" target="_blank" rel="noopener" class="role-logo-link"
+                aria-label="Visit the Commons Conservators website at twcommons.org">
+                <img src="${consLogo}" alt="${consTitle} Logo" class="role-logo"
+                  width="52" height="52" loading="lazy" decoding="async">
+              </a>
+              <h3 class="role-title">${consTitle}</h3>
+            </div>
+            <p class="role-text">
+              ${consText}
+            </p>
+            <a href="${consLinkUrl}" target="_blank" rel="noopener" class="text-link">${consLinkText}</a>
+          </article>
+          <article class="role role--friends">
+            <span class="role-tag">${frTag}</span>
+            <div class="role-header-row">
+              <img src="${frLogo}" alt="${frTitle} Logo" class="role-logo" width="52"
+                height="52" loading="lazy" decoding="async">
+              <h3 class="role-title">${frTitle}</h3>
+            </div>
+            <p class="role-text">
+              ${frText}
+            </p>
+            <a href="${frLinkUrl}" class="text-link">${frLinkText}</a>
+          </article>
+        </div>
+      </div>
+    </section>`;
+      html = html.replace(rolesPattern, newRoles);
     }
   }
 
@@ -619,9 +689,38 @@ function buildSupportPage() {
 
     const og = d.online_giving || {};
     const ogKicker = og.kicker || 'Online Donation';
-    const ogTitle = og.title || 'Donate Online (Card & Direct Debit)';
-    const ogText = og.text || 'We are currently setting up our secure GoCardless online donation facility for seamless one-off gifts and regular monthly contributions. This option will be live shortly.';
-    const ogStatus = og.status_label || 'Online Giving Launching Shortly';
+    const ogTitle = og.title || 'Donate Online (Card &amp; Direct Debit)';
+    const ogText = og.text || 'Make an immediate, secure one-off gift via GoCardless to support urgent conservation, path restoration, and habitat care across our 256 acres.';
+    const ogCustomNote = og.custom_note || 'For custom or larger donation amounts, please use a direct bank transfer (see details alongside).';
+
+    const ogTiers = og.tiers || [
+      { amount: '20', sub: 'One-off gift', gocardless_url: 'https://pay.gocardless.com/BRT01M5CN95T9YF61V8PJ22V6DN22', button_text: 'Donate £20 →', featured: false },
+      { amount: '50', sub: 'One-off gift', gocardless_url: 'https://pay.gocardless.com/BRT01M5CNA0AVQF9G66SHSF4AD9W7', button_text: 'Donate £50 →', featured: true },
+      { amount: '100', sub: 'One-off gift', gocardless_url: 'https://pay.gocardless.com/BRT01M5CNB5QPGWY9524HYESEG97V', button_text: 'Donate £100 →', featured: false }
+    ];
+
+    const ogTiersHtml = ogTiers.map(tier => {
+      const isFeatured = tier.featured;
+      const featuredClass = isFeatured ? ' donation-tier-card--featured' : '';
+      const badgeHtml = tier.badge ? `\n                  <span class="donation-tier-badge">${tier.badge}</span>` : '';
+      const btnClass = isFeatured ? 'btn btn-primary btn-sm js-gocardless-popup' : 'btn btn-secondary btn-sm js-gocardless-popup';
+      const cleanBtnText = (tier.button_text || `Donate £${tier.amount} →`).replace('£', '&pound;').replace(/→|&rarr;/, '&rarr;');
+      return `                <!-- Tier: £${tier.amount} -->
+                <div class="donation-tier-card${featuredClass}">${badgeHtml}
+                  <div class="donation-tier-content">
+                    <div class="donation-tier-val">&pound;${tier.amount}</div>
+                    <div class="donation-tier-sub">${tier.sub || 'One-off gift'}</div>
+                  </div>
+                  <a href="${tier.gocardless_url}" target="_blank" rel="noopener"
+                    class="${btnClass}"
+                    data-gocardless-url="${tier.gocardless_url}"
+                    data-title="Make a Donation"
+                    data-amount="${tier.amount}"
+                    aria-label="Donate £${tier.amount} online via GoCardless">
+                    ${cleanBtnText}
+                  </a>
+                </div>`;
+    }).join('\n\n');
 
     const dg = d.direct_giving || {};
     const dgKicker = dg.kicker || 'Direct Giving';
@@ -634,7 +733,6 @@ function buildSupportPage() {
     const dgRef = dg.reference || 'Your Surname + “DONATION”';
     const dgPayable = dg.cheque_payable || 'Friends of Tunbridge Wells and Rusthall Commons';
     const dgAddress = (dg.cheque_address || 'Chris Gurr\n45 Erskine Park Road, Rusthall\nTunbridge Wells, TN4 8UT').replace(/\n/g, '<br>\n                  ');
-    const dgGiftAid = dg.gift_aid_note || 'Gift Aid on Bank Transfers: If you are a UK taxpayer and would like us to claim 25% Gift Aid, please submit your details via our <a href="membership-details.html" style="color: var(--nt-green-deep); font-weight: 600; text-decoration: underline;">membership details form</a> or <a href="contact.html" style="color: var(--nt-green-deep); font-weight: 600; text-decoration: underline;">contact page</a>.';
 
     const leg = d.legacy_banner || {};
     const legKicker = leg.kicker || 'Lasting Conservation';
@@ -660,28 +758,28 @@ function buildSupportPage() {
 
         <!-- 2-Column Donation Grid -->
         <div class="grid-2 reveal-stagger" style="align-items: stretch; gap: 2rem;">
-          <!-- Column 1: Online Giving / GoCardless Placeholder -->
-          <div class="sharp-card reveal-fade-up"
-            style="background: var(--nt-sand-bg); border: 2px dashed var(--nt-border); padding: 2rem; display: flex; flex-direction: column; justify-content: space-between;">
+          <!-- Column 1: Online Giving via GoCardless -->
+          <div class="sharp-card offline-banking-card reveal-fade-up"
+            style="margin-top: 0; display: flex; flex-direction: column; justify-content: space-between;">
             <div>
               <span class="sharp-card-tag"
                 style="color: var(--nt-ochre); margin-bottom: 0.35rem; display: inline-block;">${ogKicker}</span>
               <h3 style="font-family: var(--font-serif); font-size: 1.4rem; color: var(--nt-charcoal); margin: 0 0 0.75rem 0;">
                 ${ogTitle}
               </h3>
-              <p style="color: var(--nt-charcoal); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem;">
+              <p style="color: var(--nt-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1rem;">
                 ${ogText}
               </p>
-            </div>
-            <div>
-              <div
-                style="padding: 0.85rem 1.25rem; background: rgba(0,0,0,0.04); border-radius: 4px; display: inline-flex; align-items: center; gap: 0.6rem; color: var(--nt-muted); font-size: 0.9rem; font-weight: 600;">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="opacity: 0.7;">
-                  <circle cx="12" cy="12" r="10"></circle>
-                  <polyline points="12 6 12 12 16 14"></polyline>
-                </svg>
-                ${ogStatus}
+
+              <!-- Three GoCardless Donation Tiers -->
+              <div class="donation-tier-grid">
+${ogTiersHtml}
               </div>
+
+              <!-- Clear note beneath the card/buttons -->
+              <p style="font-size: 0.88rem; color: var(--nt-muted); line-height: 1.5; margin: 0;">
+                <em>${ogCustomNote}</em>
+              </p>
             </div>
           </div>
 
@@ -713,11 +811,6 @@ function buildSupportPage() {
                   ${dgAddress}
                 </div>
               </div>
-            </div>
-
-            <div
-              style="font-size: 0.85rem; color: var(--nt-muted); line-height: 1.5; border-top: 1px solid var(--nt-border); padding-top: 0.75rem; margin-top: 1rem;">
-              ${dgGiftAid}
             </div>
           </div>
         </div>

@@ -2399,6 +2399,119 @@ details[open] .summary-icon {
   margin-top: 0;
 }
 
+/* GoCardless One-off Donation Tier Selector */
+.donation-tier-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.85rem;
+  margin: 1.25rem 0 1rem 0;
+}
+
+.donation-tier-card {
+  background: #ffffff;
+  border: 1px solid var(--nt-border);
+  padding: 1.25rem 0.65rem 1rem 0.65rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: space-between;
+  position: relative;
+  transition: transform var(--transition-quick), box-shadow var(--transition-quick), border-color var(--transition-quick);
+}
+
+.donation-tier-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(27, 56, 43, 0.08);
+  border-color: var(--nt-green-mid);
+}
+
+.donation-tier-card--featured {
+  border: 2px solid var(--nt-green-deep);
+  box-shadow: 0 2px 8px rgba(27, 56, 43, 0.06);
+}
+
+.donation-tier-badge {
+  position: absolute;
+  top: -10px;
+  background: var(--nt-green-deep);
+  color: #ffffff;
+  font-family: var(--font-condensed);
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.15rem 0.55rem;
+}
+
+.donation-tier-val {
+  font-family: var(--font-serif);
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: var(--nt-green-deep);
+  line-height: 1;
+  margin-bottom: 0.25rem;
+}
+
+.donation-tier-sub {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--nt-muted);
+  margin-bottom: 0.85rem;
+}
+
+.donation-tier-card .btn {
+  width: 100%;
+  padding: 0.55rem 0.5rem;
+  font-size: 0.92rem;
+  text-align: center;
+  justify-content: center;
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+@media (max-width: 540px) {
+  .donation-tier-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .donation-tier-card {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0.85rem 1rem;
+    text-align: left;
+  }
+
+  .donation-tier-card .donation-tier-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .donation-tier-val {
+    font-size: 1.5rem;
+    margin-bottom: 0;
+  }
+
+  .donation-tier-sub {
+    margin-bottom: 0;
+  }
+
+  .donation-tier-card .btn {
+    width: auto;
+    min-width: 135px;
+  }
+
+  .donation-tier-badge {
+    top: -8px;
+    right: 12px;
+  }
+}
+
 /* Interactive Map Layout (National Trust Sharp Style) */
 .map-layout {
   display: grid;
@@ -4598,7 +4711,7 @@ section[aria-label*="Mission" i],
   margin-top: 1rem;
 }
 
-/* Bottom-right corner mask to cover the "Made with Tally" badge across all Tally embeds */
+/* Bottom-right corner mask to cover the "Made with Tally" badge across general Tally embeds */
 .tally-form-embed-wrapper::after {
   content: "";
   position: absolute;
@@ -4611,16 +4724,15 @@ section[aria-label*="Mission" i],
   z-index: 20;
 }
 
-@media (max-width: 768px) {
-  .tally-form-embed-wrapper.pledge-embed::after,
-  #pledge .tally-form-embed-wrapper::after {
-    display: none !important;
-  }
+/* Ensure pledge form submit button ("REGISTER CONFIDENTIALLY") is never covered or clipped */
+.tally-form-embed-wrapper.pledge-embed::after,
+#pledge .tally-form-embed-wrapper::after {
+  display: none !important;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .tally-form-embed-wrapper::after {
-    max-width: 45%;
+    display: none !important;
   }
 }
 
@@ -5313,4 +5425,53 @@ details.past-events-wrapper[open] .past-events-toggle::after {
 .btn--outline:focus-visible {
   outline: 2px solid var(--nt-green-deep);
   outline-offset: 3px;
+}
+
+/* ==========================================================================
+   Responsive Pledge Layout & CTA Wrap Rules (< 480px / < 450px)
+   ========================================================================== */
+@media (max-width: 480px) {
+  #pledge {
+    padding: 1.5rem 0.85rem !important;
+  }
+  .pledge-panel {
+    padding: 1.5rem 1rem !important;
+  }
+  .pledge-embed,
+  .tally-form-embed-wrapper {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+@media (max-width: 450px) {
+  .btn,
+  .btn-sm,
+  .btn-lg,
+  .sharp-card-tag,
+  .urgent-tag,
+  .editorial-tag,
+  .quote-org-badge {
+    white-space: normal !important;
+    word-break: normal !important;
+    overflow-wrap: break-word !important;
+    max-width: 100% !important;
+    text-align: center;
+  }
+  .btn {
+    padding: 0.75rem 1rem;
+    font-size: 0.95rem;
+  }
+  .btn-lg {
+    padding: 0.85rem 1.25rem !important;
+    font-size: 1rem !important;
+  }
+  .urgent-notice-content {
+    white-space: normal !important;
+    flex-wrap: wrap;
+  }
+  .urgent-text,
+  .urgent-link {
+    white-space: normal !important;
+  }
 }

@@ -1,11 +1,11 @@
 {
   "masthead_kicker": "Our Heritage & Mission",
   "masthead_title": "Caring for the Commons Since 1991",
-  "masthead_lead": "An independent charity formed by local residents to protect, enhance, and celebrate the 256 acres of historic common land.",
+  "masthead_lead": "An independent charity formed by local residents to preserve, enhance, and enjoy the 256 acres of historic common land.",
   "founding_purpose": {
     "tag": "Our Founding Purpose",
     "heading": "“To protect, enhance, and secure permanent community ownership of Tunbridge Wells and Rusthall Commons — ensuring these 256 acres remain free, open, and cherished for generations to come.”",
-    "text": "The Friends of Tunbridge Wells and Rusthall Commons is the independent registered charity, membership body, and fundraising charity for our shared commons."
+    "text": "The Friends of Tunbridge Wells and Rusthall Commons is the independent registered fundraising charity and membership body for our beautiful Commons."
   },
   "objectives": {
     "kicker": "Charity Constitution • Governance",
@@ -42,7 +42,7 @@
     "col2_caption": "The mature tree canopy and historic pathways of Happy Valley, Rusthall Common",
     "col2_text": "In **1991**, following the destruction caused by the Great Storm of 1987, **Patrick Shovelton** (now sadly passed) founded **The Friends** to support the Commons Conservators in their work to restore them to their former glory. His aim was to raise public awareness of the importance of the Commons and rally the community to care for them.",
     "quote": "“... the conservation, maintenance, preservation and peaceful enjoyment for the benefit of the public of the Commons by such means as the Society in consultation with the Conservators for the Commons thinks fit.”",
-    "col2_conclusion": "Over the past three decades, the Friends have proudly continued Patrick's wonderful work: funding tractor and habitat equipment, restoring heritage ponds, running regular practical volunteer conservation mornings, publishing free trail guides, and now leading the historic community bid to secure the freehold for all."
+    "col2_conclusion": "Over the past three decades, the Friends have proudly continued Patrick's wonderful work: funding ecological improvements and conservation projects, restoring heritage ponds, running regular practical volunteer conservation mornings, publishing free trail guides, and now leading the historic community bid to secure the freehold for all."
   },
   "living_mosaic": {
     "kicker": "Landscape Evolution • 256 Acres of Wildlife Refuge",
@@ -66,11 +66,11 @@
         "button_label": "Download PDF (74 KB) →"
       },
       {
-        "tag": "Protection Policy",
+        "tag": "Protection Policy • Currently Under Review",
         "title": "Safeguarding Policy",
-        "description": "Our charity commitment to the safety, wellbeing, and protection of children and adults participating in our events.",
+        "description": "Our charity commitment to the safety, wellbeing, and protection of children and adults participating in our events (currently undergoing routine review and update).",
         "url": "assets/docs/safeguarding-policy.pdf",
-        "button_label": "Download PDF (38 KB) →"
+        "button_label": "Download Existing PDF (38 KB) →"
       },
       {
         "tag": "General Meeting",

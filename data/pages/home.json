@@ -18,15 +18,15 @@
   },
   "mission_purpose": {
     "mission_heading": "OUR MISSION",
-    "mission_text": "Working with the community for the preservation, enhancement and enjoyment of the Commons.",
+    "mission_text": "Working with the community to preserve, enhance and enjoy the Commons.",
     "purpose_heading": "OUR PURPOSE",
     "purpose_text": "To protect the Commons, celebrate their place in our community, and safeguard their future."
   },
   "stats": [
     {
-      "label": "Total Parkland",
+      "label": "Total Area of Green Space",
       "value": "256 Acres",
-      "note": "Heathland, woods & ponds"
+      "note": "Woodland, grassland, sandstone rock formations & ponds"
     },
     {
       "label": "Public Access",
@@ -52,7 +52,7 @@
       "tag": "Since 1890",
       "title": "The Commons Conservators",
       "logo": "/assets/images/conservators-badge.webp",
-      "text": "The Conservators have cared for and managed the Commons since the 1890 Tunbridge Wells Improvement Act. They are responsible for the practical management of the land, including byelaws, paths, woodland maintenance and tree safety, as well as employing the Warden and Ranger team. They are funded primarily through local council rates.",
+      "text": "Since 1890, Tunbridge Wells Commons Conservators have been the statutory body responsible for the strategic management and protection of Tunbridge Wells and Rusthall Commons. Made up of 12 voluntary members representing Tunbridge Wells Borough Council, the Manor of Rusthall and the Freehold Tenants, the Conservators work to preserve the Commons’ unique landscapes, ecology and heritage, helping to keep them welcoming, accessible and enjoyable for everyone.",
       "link_text": "Visit twcommons.org →",
       "link_url": "https://twcommons.org/"
     },
@@ -83,13 +83,13 @@
       },
       {
         "title": "Facilities",
-        "description": "Free visitor parking bays on Fir Tree Road (TN4 8AH). Please take litter home."
+        "description": "Up to 4 hours of free parking in Fir Tree Road car park (TN4 8AH). Please take litter home."
       }
     ],
     "secondary_btn_text": "Open Map Viewer",
     "secondary_btn_url": "explore.html#interactive-map",
     "location": "Tunbridge Wells and Rusthall Commons, Kent. The mainline railway station is just a 7-minute walk from the edge of the Commons.",
-    "parking": "Free visitor parking bays on Fir Tree Road (TN4 8AH). Please take litter home."
+    "parking": "Up to 4 hours of free parking in Fir Tree Road car park (TN4 8AH). Please take litter home."
   },
   "campaign_story": {
     "kicker": "The Campaign",

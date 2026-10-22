@@ -280,6 +280,17 @@
       desc: 'Classic Victorian townhouse hotel situated on London Road directly facing the leafy edge of Tunbridge Wells Common.'
     },
     {
+      id: 'fir-tree-parking',
+      name: 'Fir Tree Road Parking (Free 4h)',
+      category: 'parking',
+      iconType: 'parking',
+      catName: 'Parking & Access',
+      lat: 51.129523,
+      lng: 0.251694,
+      navQuery: 'Fir Tree Road, Tunbridge Wells Common, Tunbridge Wells TN4 8AH',
+      desc: 'Free designated roadside parking area (max 4 hours) on Tunbridge Wells Common immediately adjacent to the Higher Cricket Ground.'
+    },
+    {
       id: 'rcp-parking',
       name: 'Fairground Car Park (Upper Pantiles)',
       category: 'parking',
@@ -313,17 +324,6 @@
       desc: 'Large council multi-storey car park located next to Tunbridge Wells Station on Vale Road (TN1 1DJ), a 3-minute walk (250m) from the commons.'
     },
     {
-      id: 'fir-tree-parking',
-      name: 'Fir Tree Road Parking (Free 4h)',
-      category: 'parking',
-      iconType: 'parking',
-      catName: 'Parking & Access',
-      lat: 51.129523,
-      lng: 0.251694,
-      navQuery: 'Fir Tree Road, Tunbridge Wells Common, Tunbridge Wells TN4 8AH',
-      desc: 'Free designated roadside parking area (max 4 hours) on Tunbridge Wells Common immediately adjacent to the Higher Cricket Ground.'
-    },
-    {
       id: 'station',
       name: 'Tunbridge Wells Station (5-min walk)',
       category: 'parking',
@@ -353,8 +353,8 @@
       catName: 'Public Restrooms',
       lat: 51.125652,
       lng: 0.257287,
-      navQuery: 'The Pantiles, Tunbridge Wells TN2 5TE',
-      desc: 'Public conveniences located at the lower colonnade of The Pantiles, just 2 minutes from the commons across the London Road pedestrian crossing.'
+      navQuery: 'Public Toilets, The Pantiles, Tunbridge Wells TN2 5TN',
+      desc: 'Public conveniences located at the lower colonnade of The Pantiles (near Union Square), just 2 minutes from the commons across the London Road pedestrian crossing.'
     }
   ];
 

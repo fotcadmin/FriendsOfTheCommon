@@ -253,28 +253,74 @@
 
         <!-- 2-Column Donation Grid -->
         <div class="grid-2 reveal-stagger" style="align-items: stretch; gap: 2rem;">
-          <!-- Column 1: Online Giving / GoCardless Placeholder -->
-          <div class="sharp-card reveal-fade-up"
-            style="background: var(--nt-sand-bg); border: 2px dashed var(--nt-border); padding: 2rem; display: flex; flex-direction: column; justify-content: space-between;">
+          <!-- Column 1: Online Giving via GoCardless -->
+          <div class="sharp-card offline-banking-card reveal-fade-up"
+            style="margin-top: 0; display: flex; flex-direction: column; justify-content: space-between;">
             <div>
               <span class="sharp-card-tag"
                 style="color: var(--nt-ochre); margin-bottom: 0.35rem; display: inline-block;">Online Donation</span>
               <h3 style="font-family: var(--font-serif); font-size: 1.4rem; color: var(--nt-charcoal); margin: 0 0 0.75rem 0;">
                 Donate Online (Card & Direct Debit)
               </h3>
-              <p style="color: var(--nt-charcoal); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem;">
-                We are currently setting up our secure GoCardless online donation facility for seamless one-off gifts and regular monthly contributions. This option will be live shortly.
+              <p style="color: var(--nt-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1rem;">
+                Make an immediate, secure one-off gift via GoCardless to support urgent conservation, path restoration, and habitat care across our 256 acres.
               </p>
-            </div>
-            <div>
-              <div
-                style="padding: 0.85rem 1.25rem; background: rgba(0,0,0,0.04); border-radius: 4px; display: inline-flex; align-items: center; gap: 0.6rem; color: var(--nt-muted); font-size: 0.9rem; font-weight: 600;">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="opacity: 0.7;">
-                  <circle cx="12" cy="12" r="10"></circle>
-                  <polyline points="12 6 12 12 16 14"></polyline>
-                </svg>
-                Online Giving Launching Shortly
+
+              <!-- Three GoCardless Donation Tiers -->
+              <div class="donation-tier-grid">
+                <!-- Tier: £20 -->
+                <div class="donation-tier-card">
+                  <div class="donation-tier-content">
+                    <div class="donation-tier-val">&pound;20</div>
+                    <div class="donation-tier-sub">One-off gift</div>
+                  </div>
+                  <a href="https://pay.gocardless.com/BRT01M5CN95T9YF61V8PJ22V6DN22" target="_blank" rel="noopener"
+                    class="btn btn-secondary btn-sm js-gocardless-popup"
+                    data-gocardless-url="https://pay.gocardless.com/BRT01M5CN95T9YF61V8PJ22V6DN22"
+                    data-title="Make a Donation"
+                    data-amount="20"
+                    aria-label="Donate £20 online via GoCardless">
+                    Donate &pound;20 &rarr;
+                  </a>
+                </div>
+
+                <!-- Tier: £50 -->
+                <div class="donation-tier-card donation-tier-card--featured">
+                  <div class="donation-tier-content">
+                    <div class="donation-tier-val">&pound;50</div>
+                    <div class="donation-tier-sub">One-off gift</div>
+                  </div>
+                  <a href="https://pay.gocardless.com/BRT01M5CNA0AVQF9G66SHSF4AD9W7" target="_blank" rel="noopener"
+                    class="btn btn-primary btn-sm js-gocardless-popup"
+                    data-gocardless-url="https://pay.gocardless.com/BRT01M5CNA0AVQF9G66SHSF4AD9W7"
+                    data-title="Make a Donation"
+                    data-amount="50"
+                    aria-label="Donate £50 online via GoCardless">
+                    Donate &pound;50 &rarr;
+                  </a>
+                </div>
+
+                <!-- Tier: £100 -->
+                <div class="donation-tier-card">
+                  <div class="donation-tier-content">
+                    <div class="donation-tier-val">&pound;100</div>
+                    <div class="donation-tier-sub">One-off gift</div>
+                  </div>
+                  <a href="https://pay.gocardless.com/BRT01M5CNB5QPGWY9524HYESEG97V" target="_blank" rel="noopener"
+                    class="btn btn-secondary btn-sm js-gocardless-popup"
+                    data-gocardless-url="https://pay.gocardless.com/BRT01M5CNB5QPGWY9524HYESEG97V"
+                    data-title="Make a Donation"
+                    data-amount="100"
+                    aria-label="Donate £100 online via GoCardless">
+                    Donate &pound;100 &rarr;
+                  </a>
+                </div>
               </div>
+
+              <!-- Clear note beneath the card/buttons -->
+              <p style="font-size: 0.88rem; color: var(--nt-muted); line-height: 1.5; margin: 0;">
+                <em>For custom or larger donation amounts, please use a direct bank transfer (see details alongside).</em>
+              </p>
             </div>
           </div>
 
@@ -309,11 +355,6 @@
                 </div>
               </div>
             </div>
-
-            <div
-              style="font-size: 0.85rem; color: var(--nt-muted); line-height: 1.5; border-top: 1px solid var(--nt-border); padding-top: 0.75rem; margin-top: 1rem;">
-              Gift Aid on Bank Transfers: If you are a UK taxpayer and would like us to claim 25% Gift Aid, please submit your details via our <a href="membership-details.html" style="color: var(--nt-green-deep); font-weight: 600; text-decoration: underline;">membership details form</a> or <a href="contact.html" style="color: var(--nt-green-deep); font-weight: 600; text-decoration: underline;">contact page</a>.
-            </div>
           </div>
         </div>
 
@@ -343,6 +384,20 @@
         </div>
       </div>
     </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -409,7 +464,7 @@
               </div>
               <div
                 style="margin-top: 1.25rem; font-size: 0.85rem; color: var(--nt-muted); border-top: 1px solid var(--nt-border-subtle); padding-top: 0.75rem;">
-                Tools and guidance provided by the Commons Ranger team.
+                Tools and guidance provided by the Commons Conservators.
               </div>
             </div>
           </div>
@@ -433,7 +488,7 @@
                 style="padding: 1.15rem 1.25rem; background: var(--nt-surface-alt); border-left: 3px solid var(--nt-green-deep); margin-bottom: 1.5rem;">
                 <ul class="clean-list"
                   style="font-size: 0.88rem; color: var(--nt-charcoal); margin: 0 0 0.75rem 0; line-height: 1.6; list-style: none;">
-                  <li>Organised by the Commons Conservators &amp; Ranger team</li>
+                  <li>Organised by the Commons Conservators</li>
                   <li>Supported by The Friends</li>
                   <li>Give time whenever you can.</li>
                 </ul>

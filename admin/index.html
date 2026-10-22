@@ -421,7 +421,7 @@
               h('div', { className: 'mission-editorial' },
                 h('div', { className: 'mission-statement' },
                   h('h2', { className: 'band-kicker' }, mp.mission_heading || 'OUR MISSION'),
-                  h('p', { className: 'mission-statement-text' }, mp.mission_text || 'Working with the community for the preservation, enhancement and enjoyment of the Commons.')
+                  h('p', { className: 'mission-statement-text' }, mp.mission_text || 'Working with the community to preserve, enhance and enjoy the Commons.')
                 ),
                 h('div', { className: 'mission-statement' },
                   h('h2', { className: 'band-kicker' }, mp.purpose_heading || 'OUR PURPOSE'),
@@ -1037,6 +1037,20 @@
     CMS.registerPreviewTemplate("support", SupportPreview);
     CMS.registerPreviewTemplate("contact", ContactPreview);
     CMS.registerPreviewTemplate("pages", PageDispatcherPreview);
+
+    // 9. Floating shortcut button to open Web Media Optimiser in a new tab
+    window.addEventListener('DOMContentLoaded', () => {
+      const btn = document.createElement('a');
+      btn.href = '/admin/optimiser.html';
+      btn.target = '_blank';
+      btn.rel = 'noopener';
+      btn.innerHTML = '📷 Media Optimiser';
+      btn.title = 'Convert images to WebP before uploading';
+      btn.style.cssText = 'position:fixed; bottom:20px; right:20px; z-index:999999; background:#133926; color:#ffffff; padding:10px 16px; border-radius:30px; font-family:Inter,sans-serif; font-size:13px; font-weight:600; text-decoration:none; box-shadow:0 4px 14px rgba(0,0,0,0.25); display:flex; align-items:center; gap:6px; transition:transform 0.2s, background 0.2s;';
+      btn.onmouseover = () => { btn.style.background = '#22583b'; btn.style.transform = 'scale(1.05)'; };
+      btn.onmouseout = () => { btn.style.background = '#133926'; btn.style.transform = 'scale(1)'; };
+      document.body.appendChild(btn);
+    });
   </script>
 </body>
 </html>
