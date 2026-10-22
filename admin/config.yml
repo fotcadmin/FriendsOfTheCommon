@@ -2,8 +2,6 @@ backend:
   name: git-gateway
   branch: feature/v4-site-overhaul
 
-local_backend: true
-
 # 1. Global Media Library
 media_folder: "assets/images"
 public_folder: "/assets/images"

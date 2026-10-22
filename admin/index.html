@@ -16,18 +16,31 @@
   <script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
 </head>
 <body>
+  <script>
+    window.CMS_MANUAL_INIT = true;
+  </script>
   <!-- Decap CMS Application (v3) -->
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
   
   <script>
-    // Netlify Identity Login Handler (Active only when running on production Netlify domain)
-    if (window.netlifyIdentity && window.location.hostname.includes("netlify.app")) {
+    const isLocal = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
+    CMS.init({
+      config: {
+        local_backend: isLocal
+      }
+    });
+
+    // Netlify Identity Login & Logout Handlers
+    if (window.netlifyIdentity && !isLocal) {
       window.netlifyIdentity.on("init", user => {
         if (!user) {
           window.netlifyIdentity.on("login", () => {
             document.location.href = "/admin/";
           });
         }
+      });
+      window.netlifyIdentity.on("logout", () => {
+        document.location.href = "/admin/";
       });
     }
 
