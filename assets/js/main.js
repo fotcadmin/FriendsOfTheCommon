@@ -1133,3 +1133,22 @@ document.addEventListener('click', function (e) {
   }
 });
 
+// Suppress Netlify injected HUD badge / toolbar
+(function () {
+  function removeBadge() {
+    const b = document.getElementById('nl-badge-frame') || document.getElementById('nl-hud-frame') || document.querySelector('iframe[title="Powered by Netlify"]');
+    if (b) b.remove();
+  }
+  removeBadge();
+  document.addEventListener('DOMContentLoaded', removeBadge);
+  window.addEventListener('load', removeBadge);
+  const observer = new MutationObserver(function () {
+    const badge = document.getElementById('nl-badge-frame') || document.getElementById('nl-hud-frame');
+    if (badge) {
+      badge.remove();
+      observer.disconnect();
+    }
+  });
+  observer.observe(document.documentElement, { childList: true, subtree: true });
+})();
+
