@@ -96,13 +96,13 @@
 }
 
 .poster-tab-btn.active {
-  background: #40916c;
+  background: #1b382b;
   color: #ffffff;
   box-shadow: 0 1px 3px rgba(0,0,0,0.2);
 }
 
 .btn-print {
-  background: #d97706;
+  background: #a8422b;
   color: #ffffff;
   font-weight: 700;
   font-size: 0.95rem;
@@ -118,7 +118,7 @@
 }
 
 .btn-print:hover {
-  background: #b45309;
+  background: #8b3420;
   transform: translateY(-1px);
 }
 
@@ -202,7 +202,7 @@
   text-transform: uppercase;
   letter-spacing: 0.12em;
   font-weight: 700;
-  color: #40916c;
+  color: #1b382b;
   margin-bottom: 2mm;
   border-bottom: 1px solid #e9eee9;
   padding-bottom: 1.5mm;
@@ -237,7 +237,7 @@
 
 .poster-brand-sub {
   font-size: 8pt;
-  color: #8c7355;
+  color: #766042;
   font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -380,6 +380,8 @@
   line-height: 1.15;
 }
 
+.poster-action-text h2,
+.poster-action-text h3,
 .poster-action-text h4 {
   font-family: var(--font-serif, "Frank Ruhl Libre", Georgia, serif);
   font-size: 11pt;

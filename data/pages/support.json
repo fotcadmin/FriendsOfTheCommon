@@ -1,0 +1,169 @@
+{
+  "masthead_kicker": "Get Involved",
+  "masthead_title": "Support Our Work",
+  "masthead_lead": "Whether through annual membership, donations, volunteering, or pledging to the freehold fund, your support keeps the Commons thriving.",
+  "hero_image": {
+    "src": "assets/images/commons-high-weald-view.webp",
+    "mobile_src": "assets/images/commons-high-weald-view-mobile.webp",
+    "alt": "Tunbridge Wells and Rusthall Commons scenic view"
+  },
+  "membership": {
+    "kicker": "Annual Stewardship",
+    "title": "Join as a Member of the Friends",
+    "intro": "Annual member subscriptions provide essential funding for practical conservation equipment, woodland care, path maintenance, and our community campaign.",
+    "tiers": [
+      {
+        "name": "Individual Member",
+        "badge": "Individual Membership",
+        "price": "10",
+        "period": "/ year",
+        "description": "Full voting membership for individual residents supporting our year-round stewardship.",
+        "benefits": [
+          "Full voting rights at the Charity's Annual General Meeting (AGM)",
+          "Direct contribution to practical tools and path restoration",
+          "Strengthens the charity's mandate for community ownership",
+          "Registered supporter status for Tunbridge Wells & Rusthall Commons"
+        ],
+        "gocardless_url": "https://pay.gocardless.com/BRT00035S4J5CTW",
+        "button_text": "Join via Direct Debit (£10/yr) →"
+      },
+      {
+        "name": "Family / Household",
+        "badge": "Family Membership",
+        "price": "20",
+        "period": "/ year",
+        "description": "Covers all adults living at the same address, demonstrating united household support.",
+        "benefits": [
+          "Two votes at the Charity's Annual General Meeting (AGM)",
+          "Household support for practical conservation and equipment",
+          "Strengthens community backing for our freehold acquisition bid",
+          "United household commitment to protecting 256 acres"
+        ],
+        "gocardless_url": "https://pay.gocardless.com/BRT0003629VSFKA",
+        "button_text": "Join via Direct Debit (£20/yr) →"
+      }
+    ],
+    "bacs_notice": {
+      "heading": "Prefer to Join by Bank Transfer or Cheque?",
+      "intro": "We also welcome annual memberships paid directly via online banking, standing order, or posted cheque.",
+      "bank_name": "NatWest",
+      "account_name": "Friends of Tunbridge Wells and Rusthall Commons",
+      "sort_code": "55-70-13",
+      "account_number": "01028774",
+      "reference": "Your Surname + “MEM”",
+      "cheque_payable": "Friends of Tunbridge Wells and Rusthall Commons",
+      "cheque_address": "Chris Gurr\n45 Erskine Park Road, Rusthall\nTunbridge Wells, TN4 8UT",
+      "callout_text": "Paying by direct bank transfer? Please let us know your details so we can allocate your membership and register your Gift Aid.",
+      "callout_btn_label": "Submit Membership Details →",
+      "callout_btn_url": "membership-details.html"
+    },
+    "support_impact": {
+      "tag": "Community Support",
+      "heading": "What does your membership support?",
+      "p1": "The funds we raise have financed many projects over the years, such as major clearance, new paths, purchasing tools and key equipment, and supporting conservation projects alongside the Conservators.",
+      "p2": "Some of our members join the committee, and some take an active part in practical conservation and volunteer work. From litter-picking and clearance of invasive species to pond and rock clearance, your support helps protect this landscape for everyone."
+    }
+  },
+  "donations": {
+    "kicker": "Charitable Giving",
+    "title": "Make a Donation",
+    "intro": "One-off and regular donations fund urgent storm repairs, pond restoration, and wildlife surveys. If you are a UK taxpayer, Gift Aid increases the value of your donation by 25% at no extra cost to you.",
+    "online_giving": {
+      "kicker": "Online Donation",
+      "title": "Donate Online (Card & Direct Debit)",
+      "text": "Make an immediate, secure one-off gift via GoCardless to support urgent conservation, path restoration, and habitat care across our 256 acres.",
+      "tiers": [
+        {
+          "amount": "20",
+          "sub": "One-off gift",
+          "gocardless_url": "https://pay.gocardless.com/BRT01M5CN95T9YF61V8PJ22V6DN22",
+          "button_text": "Donate £20 →",
+          "featured": false
+        },
+        {
+          "amount": "50",
+          "sub": "One-off gift",
+          "gocardless_url": "https://pay.gocardless.com/BRT01M5CNA0AVQF9G66SHSF4AD9W7",
+          "button_text": "Donate £50 →",
+          "featured": true
+        },
+        {
+          "amount": "100",
+          "sub": "One-off gift",
+          "gocardless_url": "https://pay.gocardless.com/BRT01M5CNB5QPGWY9524HYESEG97V",
+          "button_text": "Donate £100 →",
+          "featured": false
+        }
+      ],
+      "custom_note": "For custom or larger donation amounts, please use a direct bank transfer (see details alongside)."
+    },
+    "direct_giving": {
+      "kicker": "Direct Giving",
+      "title": "Bank Transfer or Cheque",
+      "intro": "If you prefer not to donate online, you can transfer funds directly to our charity account or post a cheque.",
+      "bank_name": "NatWest",
+      "account_name": "Friends of Tunbridge Wells and Rusthall Commons",
+      "sort_code": "55-70-13",
+      "account_number": "01028774",
+      "reference": "Your Surname + “DONATION”",
+      "cheque_payable": "Friends of Tunbridge Wells and Rusthall Commons",
+      "cheque_address": "Chris Gurr\n45 Erskine Park Road, Rusthall\nTunbridge Wells, TN4 8UT"
+    },
+    "legacy_banner": {
+      "kicker": "Lasting Conservation",
+      "title": "Legacy Giving in Your Will",
+      "image": "assets/images/happy-valley.webp",
+      "alt": "Ancient sandstone gorge, mossy crags and woodland canopy in Happy Valley on Tunbridge Wells Common",
+      "text": "A gift in your will ensures future generations will experience the wild beauty and quiet solace of the Commons. Even a modest legacy creates a lasting conservation endowment for ancient trees, sandstone rocks, and footpaths.",
+      "btn_text": "Read Legacy Guide & Solicitor Wording →",
+      "btn_url": "legacy.html"
+    }
+  },
+  "volunteering": {
+    "kicker": "Practical Conservation & Support",
+    "title": "Volunteering on the Commons",
+    "intro": "Practical conservation on the Commons is organised and led by The Commons Conservators, caring for the land under the 1890 Act. The Friends actively support these efforts, funding tools and equipment and encouraging community involvement.",
+    "image_card": {
+      "image": "/assets/images/saturday.webp",
+      "title": "Practical Conservation Mornings",
+      "text": "From litter-picking and invasive species clearance to scrub control and pond care, volunteer mornings offer a friendly way to spend time outdoors while making a tangible difference to our commons.",
+      "footer": "Tools and guidance provided by the Commons Conservators."
+    },
+    "join_card": {
+      "kicker": "Get Involved",
+      "title": "Join a Volunteer Morning",
+      "text": "Sessions are open to everyone, whether you can spare an hour occasionally or wish to join regularly. No prior experience is needed.",
+      "bullets": [
+        "Organised by the Commons Conservators",
+        "Supported by The Friends",
+        "Give time whenever you can."
+      ],
+      "contact_lead": "For volunteering questions or to register your interest:",
+      "contact_name": "Chris Gurr",
+      "contact_email": "chris.gurr@yahoo.co.uk",
+      "primary_btn_text": "Contact Us About Volunteering →",
+      "primary_btn_url": "contact.html",
+      "secondary_btn_text": "View Upcoming Dates on Events Page",
+      "secondary_btn_url": "events.html"
+    }
+  },
+  "pledge_panel": {
+    "tag": "",
+    "title": "Pledge to the Community Purchase Bid",
+    "description": "A pledge is a confidential promise of financial support to help our registered charity acquire the freehold of Tunbridge Wells and Rusthall Commons. Funds will only be requested when the community sale is legally agreed.",
+    "primary_btn_text": "Make a Campaign Pledge Now →",
+    "primary_btn_url": "campaign.html#pledge",
+    "secondary_btn_text": "Read Full Sale FAQs",
+    "secondary_btn_url": "campaign.html",
+    "card_heading": "Why Every Pledge Counts",
+    "card_intro": "Every pledge—large or small—shows that our local community stands together to protect the Commons for future generations.",
+    "card_bullets": [
+      "Completely confidential • No upfront payment",
+      "Pledges of any amount make a genuine difference",
+      "Direct email option with Trustee John Barber"
+    ],
+    "email_contact": "johnspbarber@gmail.com",
+    "pledge_privacy_label": "Pledge Data Privacy Notice",
+    "pledge_privacy_url": "campaign.html#faq-gdpr"
+  }
+}

@@ -13,7 +13,7 @@
   - Membership Enquiries: membership@friendsofthecommons.uk
   - Partnerships: partnerships@friendsofthecommons.uk
   - Ecology Reports: nature@friendsofthecommons.uk
-  - Commons Ranger Office (Weekdays): 01892 554222
+  - Commons Conservators Office (Weekdays): 01892 554222
   - Duty Warden Mobile: 07887 655222
   - Police / Fire / Ambulance Emergency: 999
 
@@ -30,19 +30,19 @@
   - Queen Victoria Grove: Commemorative avenue of mature trees planted in 1897 to mark Queen Victoria's Diamond Jubilee.
   - Mill Pond and The Marlpit: Freshwater clay pits transformed into wildlife sanctuaries supporting breeding amphibians and waterfowl.
 
-## Statutory Management and Byelaws
+## Commons Conservators Management and Byelaws
 - Primary Legislation: Tunbridge Wells Improvement Act 1890.
 - Managing Authority: Tunbridge Wells Commons Conservators (composed of representatives from the Freeholder, Tunbridge Wells Borough Council, and local ratepayers).
 - Charity Role: The Friends work in active partnership with the Conservators, funding conservation projects, mobilising community volunteers, and leading the campaign to acquire the freehold for the town.
 - Core Byelaws & Visitor Code:
   1. No Open Fires or Barbecues: Strictly prohibited year-round due to high subsurface peat and dry gorse wildfire hazard.
-  2. No Drones / UAVs: Prohibited by byelaw to safeguard wildlife, roosting pipistrelle bats, ground-nesting birds, and horse riders.
-  3. Dog Walking Etiquette: Dogs warmly welcome under close control. Must be kept on short leads during ground-nesting bird season (March–July) and around sensitive wildlife ponds. 10+ red dog waste bins provided across entrances.
+  2. No Drones / UAVs: Prohibited by byelaw to safeguard wildlife, roosting pipistrelle bats, and horse riders.
+  3. Dog Walking Etiquette: Dogs warmly welcome under close control. Over 30 litter bins across both Commons are suitable for dog waste.
   4. Sandstone Preservation: Ardingly Sandstone is fragile. No carving graffiti, no climbing chalk, no chipping edges.
   5. Cycling: Restricted to designated surfaced bridleways and perimeter roadways; pedestrians and equestrians have strict right of way.
   6. Commercial Group Licences: Groups of 4+ dogs and commercial fitness groups require a permit from the Commons Conservators.
 - Parking Access (Open 24/7):
-  - Tunbridge Wells Common (Fir Tree Road, TN4 8AH): Completely free, open 24/7, strictly restricted to max 4 hours stay.
+  - Tunbridge Wells Common (Fir Tree Road car park, TN4 8AH): Up to 4 hours of free parking.
   - Upper Pantiles / Major York's Road (Fairground Car Park, TN4 8HA): Open 24/7, pay-and-display parking.
   - Rusthall Common: Open 24/7, informal on-street parking on Coach Road, Common View, and Upper Street.
 
@@ -64,6 +64,6 @@
 
 ## Local Tourism & Town Connections
 - The Pantiles Georgian Colonnade (TN2 5TE): 200 metres from Lower Common; Georgian architecture, independent cafes, Chalybeate Spring, live open-air jazz.
-- The Mount Edgcumbe (TN4 8BX): Historic 18th-century coaching inn built directly into the sandstone rock formations of the Common with cave cellars and terrace garden.
-- Spa Valley Heritage Railway (TN2 5QY): Heritage steam and diesel trains operating from Tunbridge Wells West Station bordering the Common to High Rocks and Groombridge.
+- The Mount Edgcumbe (TN4 8BX): Historic 18th-century coaching inn built directly into the sandstone rock formations of the commons with cave cellars and terrace garden.
+- Spa Valley Heritage Railway (TN2 5QY): Heritage steam and diesel trains operating from Tunbridge Wells West Station bordering the commons to High Rocks and Groombridge.
 - The Toad Rock Retreat (TN4 8NX): Traditional dog-friendly village pub 100m from Toad Rock on Rusthall Common.

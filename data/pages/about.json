@@ -1,0 +1,84 @@
+{
+  "masthead_kicker": "Our Heritage & Mission",
+  "masthead_title": "Caring for the Commons Since 1991",
+  "masthead_lead": "An independent charity formed by local residents to preserve, enhance, and enjoy the 256 acres of historic common land.",
+  "founding_purpose": {
+    "tag": "Our Founding Purpose",
+    "heading": "“To protect, enhance, and secure permanent community ownership of Tunbridge Wells and Rusthall Commons — ensuring these 256 acres remain free, open, and cherished for generations to come.”",
+    "text": "The Friends of Tunbridge Wells and Rusthall Commons is the independent registered fundraising charity and membership body for our beautiful Commons."
+  },
+  "objectives": {
+    "kicker": "Charity Constitution • Governance",
+    "title": "The Charitable Objectives of the Charity",
+    "intro": "The registered constitutional objectives of the Friends of Tunbridge Wells and Rusthall Commons define our purpose, legal guidance, and community stewardship:",
+    "items": [
+      {
+        "num": "Objective 01",
+        "image": "/assets/images/wellington-rocks.webp",
+        "title": "Protection, Conservation & Landscape Heritage",
+        "body": "“To promote the protection, conservation, maintenance and enhancement of Tunbridge Wells and Rusthall Commons for the ongoing benefit of the community, including its natural environment, landscape, biodiversity, historic features and traditional character.”"
+      },
+      {
+        "num": "Objective 02",
+        "image": "/assets/images/wildlife-walk.webp",
+        "title": "Public Education & Environmental Learning",
+        "body": "“To advance the education of the public in the conservation, protection and improvement of the physical and natural environment of Tunbridge Wells and Rusthall Commons.”"
+      },
+      {
+        "num": "Objective 03",
+        "image": "/assets/images/march/march-community-rally.webp",
+        "title": "Recreation, Health & Inclusive Leisure",
+        "body": "“To promote for the benefit of the inhabitants of Tunbridge Wells and Rusthall and the surrounding area the provision of facilities for recreation or other leisure time occupation of individuals who have need of such facilities by reason of their youth, age, infirmity or disablement, financial hardship or social and economic circumstances or for the public at large in the interests of social welfare and with the object of improving the condition of life of the said inhabitants.”"
+      }
+    ]
+  },
+  "history_story": {
+    "kicker": "Charity Origins",
+    "title": "Born from the Storm: The Story of The Friends",
+    "col1_text": "On the night of 15–16 October 1987, hurricane-force winds swept across southern England in what became known as the Great Storm. Tunbridge Wells and Rusthall Commons were among the hardest hit landscapes in Kent. Hundreds of ancient oak, beech, and sweet chestnut trees were uprooted overnight, historical pathways were blocked, and the landscape was left in devastation.\n\nIn the days that followed, local residents from Tunbridge Wells and Rusthall came out with hand tools, wheelbarrows, and determination to help clear paths, care for damaged veteran trees, and begin replanting.\n\nWhat started as an urgent community rescue effort quickly revealed a deeper truth: the Commons needed a permanent, dedicated body of local supporters to champion their ecology, fund conservation enhancements, and ensure they would never be neglected.",
+    "col1_image": "/assets/images/commons-panorama.webp",
+    "col1_caption": "Panoramic woodland landscape across Tunbridge Wells Common, cared for by the community since 1987",
+    "col2_image": "/assets/images/happy-valley.webp",
+    "col2_caption": "The mature tree canopy and historic pathways of Happy Valley, Rusthall Common",
+    "col2_text": "In **1991**, following the destruction caused by the Great Storm of 1987, **Patrick Shovelton** (now sadly passed) founded **The Friends** to support the Commons Conservators in their work to restore them to their former glory. His aim was to raise public awareness of the importance of the Commons and rally the community to care for them.",
+    "quote": "“... the conservation, maintenance, preservation and peaceful enjoyment for the benefit of the public of the Commons by such means as the Society in consultation with the Conservators for the Commons thinks fit.”",
+    "col2_conclusion": "Over the past three decades, the Friends have proudly continued Patrick's wonderful work: funding ecological improvements and conservation projects, restoring heritage ponds, running regular practical volunteer conservation mornings, publishing free trail guides, and now leading the historic community bid to secure the freehold for all."
+  },
+  "living_mosaic": {
+    "kicker": "Landscape Evolution • 256 Acres of Wildlife Refuge",
+    "title": "A Living Mosaic: How Human History Shaped Our Commons",
+    "text": "The 256 acres of Tunbridge Wells and Rusthall Commons provide an important and most unusual refuge for wildlife within our urban area. Unlike traditional municipal parks, **they have never been landscaped or cultivated**. They owe much of their present appearance to centuries of human activity, and active management is required to maintain them in a fashion beneficial to their natural inhabitants.\n\nDeliberate planting of commemorative and ornamental trees—principally between 1860 and 1940—led unintentionally to the re-establishment of woodland as the ancient practice of livestock grazing declined and finally ceased altogether in the inter-war period of the twentieth century.\n\nToday, the Commons consist of an extraordinary **mosaic of habitats**: surviving tracts of heath and acid grassland coexist with open sandy clearings around major Ardingly sandstone outcrops, secondary woodland, and semi-natural ponds like the Marlpit. Current conservation management aims to preserve this rich diversity by containing woodland encroachment and expanding open heath—enabling long-established resident butterflies, dragonflies, and birdlife to flourish.",
+    "primary_btn_text": "Explore Habitats, Rocks & Maps →",
+    "primary_btn_url": "explore.html",
+    "secondary_btn_text": "Join The Friends to Protect This Space",
+    "secondary_btn_url": "support-us.html#membership"
+  },
+  "governance_docs": {
+    "kicker": "Public Accountability",
+    "title": "Official Charity Documents",
+    "intro": "Download our governing constitution, safeguarding policy, and latest Annual General Meeting minutes.",
+    "documents": [
+      {
+        "tag": "Constitution",
+        "title": "Objects & Rules (2023)",
+        "description": "The formal constitution and operating rules governing the charity, committee elections, and member rights.",
+        "url": "assets/docs/objects-and-rules.pdf",
+        "button_label": "Download PDF (74 KB) →"
+      },
+      {
+        "tag": "Protection Policy • Currently Under Review",
+        "title": "Safeguarding Policy",
+        "description": "Our charity commitment to the safety, wellbeing, and protection of children and adults participating in our events (currently undergoing routine review and update).",
+        "url": "assets/docs/safeguarding-policy.pdf",
+        "button_label": "Download Existing PDF (38 KB) →"
+      },
+      {
+        "tag": "General Meeting",
+        "title": "2026 AGM Minutes",
+        "description": "Approved minutes of the 2026 Annual General Meeting of The Friends, covering trustee reports, accounts, and elections.",
+        "url": "assets/docs/agm-minutes-2026.pdf",
+        "button_label": "Download PDF (257 KB) →"
+      }
+    ]
+  }
+}

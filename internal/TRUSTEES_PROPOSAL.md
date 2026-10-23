@@ -30,7 +30,7 @@ This proposal outlines a focused modernisation of the charity's website for a fi
 
 * **The Problem:** The existing website functions primarily as a static brochure. Mobile visitors—who make up over 70% of web traffic—struggle to find practical visitor information (accessible walking trails, parking near Wellington Rocks or Toad Rock, dog-walking guidelines, and family-friendly routes).
 * **The Modernised Solution:**
-  * **Interactive Mobile-First Commons Guide:** Clear, fast-loading trail maps, heritage spotters' guides, and parking directions optimised for walkers using smartphones on the Common.
+  * **Interactive Mobile-First Commons Guide:** Clear, fast-loading trail maps, heritage spotters' guides, and parking directions optimised for walkers using smartphones on the commons.
   * **Civic & Tourism Integration:** Dedicated trails connecting the Commons with the Spa Valley Railway, High Rocks, The Pantiles, and local heritage pubs, encouraging local business partnerships and town-wide pride.
   * **Search Engine Dominance (SEO):** Clean, fast code ensures that anyone searching for *"things to do in Tunbridge Wells"*, *"Tunbridge Wells circular walks"*, or *"Toad Rock parking"* lands directly on the Friends' website, introducing hundreds of new residents to the charity each month.
 

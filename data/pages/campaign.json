@@ -1,0 +1,126 @@
+{
+  "masthead_kicker": "Community Land Purchase",
+  "masthead_title": "Securing the Freehold for Everyone, Forever",
+  "masthead_lead": "Our landmark community campaign to bring Tunbridge Wells and Rusthall Commons into permanent charitable ownership.",
+  "video_spotlight": {
+    "video_url": "https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1489325402778662%2F&show_text=false&width=560&t=0",
+    "headline": "Watch the Community Movement in Action",
+    "description": "See our community standing together across Tunbridge Wells and Rusthall to secure 256 acres of ancient woodlands and sandstone rocks forever.",
+    "fb_url": "https://www.facebook.com/reel/1489325402778662/"
+  },
+  "safeguards": {
+    "tag": "Community Safeguards",
+    "heading": "Why community ownership matters",
+    "lead": "The Commons are protected by landmark statutory safeguards, but legal ownership still holds vital power. While the 1890 Tunbridge Wells Improvement Act guarantees public access and mandates management by the Commons Conservators, the freehold landowner retains crucial property rights, licensing powers, and legal standing.",
+    "risks_heading": "The Risks of Private Equity Acquisition",
+    "risks": [
+      {
+        "title": "Commercial Exploitation",
+        "description": "Pressure to commercialise the land by monetising car parks, access easements, concessions, and paid events."
+      },
+      {
+        "title": "Encroachment & Boundary Disputes",
+        "description": "Costly legal battles over boundaries, licences, and rights of way across 256 acres."
+      },
+      {
+        "title": "Underfunding Stewardship",
+        "description": "Failure to co-fund vital ecological restoration, tree safety works, and essential path maintenance."
+      }
+    ],
+    "solution": "Charitable community ownership removes commercial speculation and ensures decisions are guided solely by conservation and public benefit. Backed by **over 3,000 local pledges**, cross-party civic leaders, and major conservation trusts, the Friends stand ready to protect these irreplaceable green spaces for generations to come.",
+    "video": {
+      "src": "assets/videos/mike-martin.mp4",
+      "poster": "assets/images/mike-martin-poster.webp",
+      "title": "Video Message from Mike Martin MP",
+      "note": "Tunbridge Wells Borough Council (TWBC) and our local MP support the community purchase bid."
+    }
+  },
+  "march_showcase": {
+    "kicker": "Town-Wide Solidarity",
+    "title": "March for the Commons: 21 March 2026",
+    "lead": "Hundreds of residents, families, and dog walkers gathered across Tunbridge Wells and Rusthall to demonstrate overwhelming community support behind the freehold purchase bid.",
+    "images": [
+      {
+        "src": "/assets/images/march/march-community-rally.webp",
+        "alt": "Community marchers with banners across Tunbridge Wells",
+        "credit": "Photo: Kelly Wilcox (21 March 2026)"
+      },
+      {
+        "src": "/assets/images/march/march-crowd-pantiles.webp",
+        "alt": "Supporters marching through the town with campaign placards",
+        "credit": "Photo: Kelly Wilcox (21 March 2026)"
+      },
+      {
+        "src": "/assets/images/march/march-dogs-support.webp",
+        "alt": "Dogs and families supporting the Commons community march",
+        "credit": "Photo: Kelly Wilcox (21 March 2026)"
+      }
+    ]
+  },
+  "press_articles": [
+    {
+      "tag": "The Guardian • Feb 2026",
+      "title": "“It’s now or never: Tunbridge Wells residents race to save commons”",
+      "summary": "National coverage of the community mobilisation to protect the Commons from commercial development.",
+      "url": "https://www.theguardian.com/uk-news/2026/feb/20/tunbridge-wells-residents-race-save-commons-from-developers",
+      "link_label": "Read in The Guardian →"
+    },
+    {
+      "tag": "BBC News • Jan 2026",
+      "title": "“Bid for common land to prevent future development”",
+      "summary": "BBC News report on the community bid to secure the Commons and protect them from future development.",
+      "url": "https://www.bbc.co.uk/news/articles/ckgl3jnwdn1o",
+      "link_label": "Read on BBC News →"
+    },
+    {
+      "tag": "The Telegraph • Feb 2026",
+      "title": "“Village green society fights to preserve common land”",
+      "summary": "Report on the historic community campaign to keep the freehold in charitable hands.",
+      "url": "https://www.telegraph.co.uk/news/2026/02/21/village-green-society-planning-war-flats-tunbridge-wells/",
+      "link_label": "Read in The Telegraph →"
+    }
+  ],
+  "pledge_card": {
+    "heading": "Why Every Pledge Counts",
+    "intro": "Every pledge—large or small—shows that our local community stands together to protect the Commons for future generations.",
+    "bullets": [
+      "Completely confidential • No upfront payment",
+      "Every contribution helps, from £20 to £10,000+",
+      "Direct email option with Trustee John Barber"
+    ],
+    "email_blurb": "Prefer to pledge by email? Contact johnspbarber@gmail.com"
+  },
+  "faqs": [
+    {
+      "question": "What happens now?",
+      "subtext": "The marketing of the Commons as part of a wider estate",
+      "answer": "**The Commons are now being marketed as part of a wider estate that also includes The Pantiles.**\n\nAs this is a significantly different commercial proposition, the Friends will not be seeking to purchase the estate as currently offered, and there are no immediate plans to call on community pledges.\n\nOur long-term ambition remains unchanged: to secure the Commons for the benefit of the community. We will continue to engage constructively with any future owner to explore opportunities for community ownership should they arise.\n\nWe will keep supporters informed of any significant developments."
+    },
+    {
+      "question": "Are the Friends still interested in community ownership?",
+      "subtext": "Our continuing dedication to securing the land",
+      "answer": "**Yes.**\n\nThe Friends continue to believe that ownership by a local charity dedicated solely to the Commons would provide the strongest possible long-term protection for these special places.\n\nShould circumstances change, we remain ready to explore opportunities for community ownership."
+    },
+    {
+      "question": "Why haven’t there been many updates recently?",
+      "subtext": "Commercial timescales and verified updates",
+      "answer": "Property transactions can involve long periods where there is little public information available.\n\nAt the present time there is no significant news to report. Rather than speculate, we will continue to share updates when there are meaningful developments."
+    },
+    {
+      "question": "Do pledges still matter?",
+      "subtext": "How over 3,000 pledges demonstrate local mandate",
+      "answer": "**Yes.**\n\nMore than 3,000 residents have already pledged their support for community ownership. These pledges demonstrate the depth of community commitment to protecting the Commons for future generations.\n\nAlthough the Friends are not seeking to purchase the estate in its current form, pledges remain an important expression of support should a future opportunity for community ownership arise."
+    },
+    {
+      "question": "Can I still make a pledge?",
+      "subtext": "Submitting new pledges towards future acquisition",
+      "answer": "**Yes.**\n\nNew pledges are still welcome and help demonstrate continuing community support for ownership of the Commons by a local charity.\n\nYou can submit a pledge through our online form or by emailing [johnspbarber@gmail.com](mailto:johnspbarber@gmail.com)."
+    },
+    {
+      "id": "faq-gdpr",
+      "question": "How is my pledge data protected under UK GDPR?",
+      "subtext": "Pledge Data Privacy Notice, data controller details, and your rights",
+      "answer": "The Friends of Tunbridge Wells and Rusthall Commons is committed to protecting your personal information and ensuring complete transparency:\n\n* **1. Data Controller & Purpose:** Your details (name, email, postcode, optional telephone, and pledge amount) are recorded solely by the charity's Trustees to calculate collective community support, establish our financial capacity for purchase negotiations, and verify local backing for grant-matching bodies.\n* **2. Strict Confidentiality Guarantee:** Individual pledge sums, personal identities, and aggregate financial totals are held in strict confidence by the Trustees. To protect the charity's negotiating position, campaign pledge sums and financial targets are not disclosed to estate agents, vendors, or commercial third parties. Only broad, non-financial backing metrics (such as the breadth of local household participation across TN1, TN2 and TN4) may be referenced to demonstrate community mandate.\n* **3. No Financial Commitment Now:** Registering a pledge does not collect bank details or take money. You will only be contacted to transfer funds if and when a formal freehold acquisition contract is agreed and accepted by the Trustees.\n* **4. Your Rights & Data Erasure:** Under UK GDPR, you have the right to amend your pledge, request a copy of your entry, or ask for your personal details to be permanently erased at any time. To do so, email the Trustees at [secretary@friendsofthecommons.uk](mailto:secretary@friendsofthecommons.uk) or via our [Contact Page](contact.html). All pledge records will be securely deleted once the freehold campaign concludes."
+    }
+  ]
+}

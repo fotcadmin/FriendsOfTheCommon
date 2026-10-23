@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Web Media Optimiser | Friends of the Commons</title>
+  <link rel="icon" href="../favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- heic2any for non-Safari browsers to decode iPhone HEIC photos -->
+  <script src="https://cdn.jsdelivr.net/npm/heic2any@0.0.4/dist/heic2any.min.js"></script>
+  <!-- JSZip for 1-click batch download -->
+  <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+  <style>
+    :root {
+      --nt-green-deep: #1b382b;
+      --nt-green-mid: #2d5a43;
+      --nt-green-light: #e8f0eb;
+      --nt-gold: #c29b38;
+      --nt-sand-bg: #faf8f5;
+      --nt-charcoal: #1e2421;
+      --nt-grey-muted: #5e6963;
+      --nt-border: #e2ddd5;
+      --nt-card-bg: #ffffff;
+      --nt-radius: 12px;
+      --nt-shadow: 0 4px 20px rgba(27, 56, 43, 0.08);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--nt-sand-bg);
+      color: var(--nt-charcoal);
+      line-height: 1.5;
+      padding: 2rem 1rem;
+    }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--nt-border);
+    }
+
+    .header-title h1 {
+      font-family: 'Frank Ruhl Libre', serif;
+      font-size: 1.85rem;
+      color: var(--nt-green-deep);
+      font-weight: 700;
+    }
+
+    .header-title p {
+      font-size: 0.92rem;
+      color: var(--nt-grey-muted);
+      margin-top: 0.25rem;
+    }
+
+    .btn-nav {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.6rem 1rem;
+      background: var(--nt-green-deep);
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      border-radius: 8px;
+      transition: background 0.2s;
+    }
+    .btn-nav:hover {
+      background: var(--nt-green-mid);
+    }
+
+    /* Video Tip Callout */
+    .video-callout {
+      background: #eef5f1;
+      border: 1px solid #c8ded1;
+      border-left: 4px solid var(--nt-green-deep);
+      padding: 1rem 1.25rem;
+      border-radius: 8px;
+      margin-bottom: 1.5rem;
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+      font-size: 0.9rem;
+    }
+    .video-callout-icon {
+      font-size: 1.4rem;
+      line-height: 1;
+    }
+    .video-callout strong {
+      color: var(--nt-green-deep);
+    }
+
+    /* Drop Zone */
+    .dropzone {
+      background: var(--nt-card-bg);
+      border: 2px dashed var(--nt-border);
+      border-radius: var(--nt-radius);
+      padding: 3rem 1.5rem;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: var(--nt-shadow);
+      margin-bottom: 1.5rem;
+    }
+    .dropzone.dragover {
+      border-color: var(--nt-green-mid);
+      background: var(--nt-green-light);
+      transform: scale(1.01);
+    }
+    .dropzone-icon {
+      font-size: 3rem;
+      margin-bottom: 0.75rem;
+    }
+    .dropzone h2 {
+      font-size: 1.25rem;
+      color: var(--nt-green-deep);
+      margin-bottom: 0.5rem;
+    }
+    .dropzone p {
+      font-size: 0.9rem;
+      color: var(--nt-grey-muted);
+      max-width: 480px;
+      margin: 0 auto 1.25rem;
+    }
+    .btn-select {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background: var(--nt-green-deep);
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.9rem;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-select:hover {
+      background: var(--nt-green-mid);
+    }
+
+    /* Settings Bar */
+    .settings-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+      background: #fff;
+      padding: 1rem 1.25rem;
+      border-radius: 8px;
+      border: 1px solid var(--nt-border);
+      margin-bottom: 1.5rem;
+      font-size: 0.88rem;
+      align-items: center;
+    }
+    .setting-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .setting-item label {
+      font-weight: 600;
+      color: var(--nt-green-deep);
+    }
+    .setting-item select {
+      padding: 0.4rem 0.6rem;
+      border-radius: 6px;
+      border: 1px solid var(--nt-border);
+      font-size: 0.88rem;
+      background: #fff;
+    }
+
+    /* Results List */
+    .results-card {
+      background: #fff;
+      border-radius: var(--nt-radius);
+      border: 1px solid var(--nt-border);
+      box-shadow: var(--nt-shadow);
+      overflow: hidden;
+      display: none;
+    }
+    .results-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 1.25rem;
+      background: #f7f5f0;
+      border-bottom: 1px solid var(--nt-border);
+    }
+    .results-header h3 {
+      font-size: 1.05rem;
+      color: var(--nt-green-deep);
+    }
+    .btn-download-all {
+      padding: 0.5rem 1rem;
+      background: var(--nt-gold);
+      color: #1b382b;
+      font-weight: 700;
+      font-size: 0.85rem;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .btn-download-all:hover {
+      filter: brightness(0.95);
+    }
+
+    .item-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 1.25rem;
+      border-bottom: 1px solid var(--nt-border);
+    }
+    .item-row:last-child {
+      border-bottom: none;
+    }
+    .item-thumb {
+      width: 56px;
+      height: 56px;
+      border-radius: 6px;
+      object-fit: cover;
+      background: #eee;
+      border: 1px solid var(--nt-border);
+    }
+    .item-info {
+      flex: 1;
+      min-width: 0;
+    }
+    .item-name {
+      font-weight: 600;
+      font-size: 0.92rem;
+      color: var(--nt-charcoal);
+      word-break: break-all;
+    }
+    .item-meta {
+      font-size: 0.82rem;
+      color: var(--nt-grey-muted);
+      margin-top: 0.2rem;
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+    .pill-saved {
+      display: inline-block;
+      padding: 0.15rem 0.45rem;
+      background: #d4edda;
+      color: #155724;
+      font-weight: 700;
+      border-radius: 4px;
+      font-size: 0.78rem;
+    }
+    .btn-download-item {
+      padding: 0.45rem 0.9rem;
+      background: var(--nt-green-deep);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .btn-download-item:hover {
+      background: var(--nt-green-mid);
+    }
+
+    .status-spinner {
+      display: inline-block;
+      width: 18px;
+      height: 18px;
+      border: 2px solid #ccc;
+      border-top-color: var(--nt-green-deep);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="header-title">
+        <h1>Web Media Optimiser</h1>
+        <p>Friends of Tunbridge Wells & Rusthall Commons</p>
+      </div>
+      <a href="/admin/" class="btn-nav">← Back to Decap CMS</a>
+    </header>
+
+    <!-- Built-in Video tip for Mac -->
+    <div class="video-callout">
+      <div class="video-callout-icon">💡</div>
+      <div>
+        <strong>Have a video to compress?</strong> You don't need any special app! On your Mac, simply <strong>right-click any video in Finder ➔ Quick Actions ➔ "Encode Selected Video Files"</strong> and choose <strong>1080p</strong>. Your Mac compresses it into a lightweight, web-ready file in seconds.
+      </div>
+    </div>
+
+    <!-- Drop Zone -->
+    <div class="dropzone" id="dropzone">
+      <div class="dropzone-icon">📷</div>
+      <h2>Drag & Drop Photos Here</h2>
+      <p>Supports iPhone photos (HEIC), JPG, PNG, and WebP. Automatically resizes, strips metadata, and converts to lightweight, crisp WebP for the website.</p>
+      <button type="button" class="btn-select" id="btn-file-select">Choose Photos from Mac</button>
+      <input type="file" id="file-input" multiple accept="image/*,.heic,.heif" style="display: none;">
+    </div>
+
+    <!-- Optimisation Settings -->
+    <div class="settings-bar">
+      <div class="setting-item">
+        <label for="max-dimension">Max Dimension:</label>
+        <select id="max-dimension">
+          <option value="1920" selected>1920px (Hero / Full Banner)</option>
+          <option value="1200">1200px (Content / Cards)</option>
+          <option value="800">800px (Thumbnails / Headshots)</option>
+          <option value="99999">Original Resolution</option>
+        </select>
+      </div>
+      <div class="setting-item">
+        <label for="quality">Quality:</label>
+        <select id="quality">
+          <option value="0.82" selected>82% (Recommended sweet-spot)</option>
+          <option value="0.75">75% (Smallest file size)</option>
+          <option value="0.90">90% (Maximum quality)</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Results Box -->
+    <div class="results-card" id="results-card">
+      <div class="results-header">
+        <h3 id="results-title">Optimised Files</h3>
+        <button type="button" class="btn-download-all" id="btn-download-all" style="display: none;">
+          📦 Download All (.zip)
+        </button>
+      </div>
+      <div id="results-list"></div>
+    </div>
+  </div>
+
+  <script>
+    const dropzone = document.getElementById('dropzone');
+    const fileInput = document.getElementById('file-input');
+    const btnFileSelect = document.getElementById('btn-file-select');
+    const resultsCard = document.getElementById('results-card');
+    const resultsList = document.getElementById('results-list');
+    const resultsTitle = document.getElementById('results-title');
+    const btnDownloadAll = document.getElementById('btn-download-all');
+    const maxDimSelect = document.getElementById('max-dimension');
+    const qualitySelect = document.getElementById('quality');
+
+    const processedFiles = [];
+
+    btnFileSelect.addEventListener('click', () => fileInput.click());
+    dropzone.addEventListener('click', (e) => {
+      if (e.target !== btnFileSelect) fileInput.click();
+    });
+
+    ['dragenter', 'dragover'].forEach(eventName => {
+      dropzone.addEventListener(eventName, (e) => {
+        e.preventDefault();
+        dropzone.classList.add('dragover');
+      }, false);
+    });
+
+    ['dragleave', 'drop'].forEach(eventName => {
+      dropzone.addEventListener(eventName, (e) => {
+        e.preventDefault();
+        dropzone.classList.remove('dragover');
+      }, false);
+    });
+
+    dropzone.addEventListener('drop', (e) => {
+      const dt = e.dataTransfer;
+      const files = dt.files;
+      if (files.length) handleFiles(Array.from(files));
+    });
+
+    fileInput.addEventListener('change', (e) => {
+      if (e.target.files.length) handleFiles(Array.from(e.target.files));
+      fileInput.value = '';
+    });
+
+    function formatBytes(bytes) {
+      if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+      return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+    }
+
+    function slugify(name) {
+      const stem = name.replace(/\.[^/.]+$/, '');
+      return stem.toLowerCase()
+        .replace(/['"]/g, '')
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-+|-+$/g, '') || 'image';
+    }
+
+    async function handleFiles(files) {
+      resultsCard.style.display = 'block';
+
+      for (const file of files) {
+        await processSingleFile(file);
+      }
+
+      if (processedFiles.length > 1) {
+        btnDownloadAll.style.display = 'inline-flex';
+      }
+    }
+
+    async function processSingleFile(file) {
+      const slug = slugify(file.name);
+      const outFilename = slug + '.webp';
+      const origSize = file.size;
+
+      const row = document.createElement('div');
+      row.className = 'item-row';
+      row.innerHTML = `
+        <div class="item-thumb" style="display:flex; align-items:center; justify-content:center;">
+          <span class="status-spinner"></span>
+        </div>
+        <div class="item-info">
+          <div class="item-name">${file.name} ➔ ${outFilename}</div>
+          <div class="item-meta">Converting to WebP...</div>
+        </div>
+      `;
+      resultsList.prepend(row);
+
+      try {
+        let imageBlob = file;
+
+        // Check if HEIC/HEIF
+        const isHeic = file.name.toLowerCase().endsWith('.heic') || file.name.toLowerCase().endsWith('.heif') || file.type === 'image/heic';
+        if (isHeic && window.heic2any) {
+          try {
+            const converted = await heic2any({ blob: file, toType: 'image/jpeg', quality: 0.95 });
+            imageBlob = Array.isArray(converted) ? converted[0] : converted;
+          } catch (heicErr) {
+            console.warn('heic2any conversion fallback', heicErr);
+          }
+        }
+
+        // Load into Image bitmap
+        const img = new Image();
+        const objectUrl = URL.createObjectURL(imageBlob);
+        await new Promise((resolve, reject) => {
+          img.onload = resolve;
+          img.onerror = reject;
+          img.src = objectUrl;
+        });
+
+        // Compute scaled dimensions
+        const maxDim = parseInt(maxDimSelect.value, 10);
+        let w = img.naturalWidth;
+        let h = img.naturalHeight;
+
+        if (w > maxDim || h > maxDim) {
+          if (w > h) {
+            h = Math.round((h * maxDim) / w);
+            w = maxDim;
+          } else {
+            w = Math.round((w * maxDim) / h);
+            h = maxDim;
+          }
+        }
+
+        // Draw onto Canvas
+        const canvas = document.createElement('canvas');
+        canvas.width = w;
+        canvas.height = h;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0, w, h);
+        URL.revokeObjectURL(objectUrl);
+
+        // Export as WebP
+        const quality = parseFloat(qualitySelect.value);
+        const webpBlob = await new Promise(resolve => canvas.toBlob(resolve, 'image/webp', quality));
+
+        const newSize = webpBlob.size;
+        const savedPct = Math.max(0, Math.round(((origSize - newSize) / origSize) * 100));
+        const downloadUrl = URL.createObjectURL(webpBlob);
+
+        // Store for ZIP
+        processedFiles.push({ filename: outFilename, blob: webpBlob });
+
+        // Update Row
+        row.innerHTML = `
+          <img class="item-thumb" src="${downloadUrl}" alt="Preview">
+          <div class="item-info">
+            <div class="item-name">${outFilename}</div>
+            <div class="item-meta">
+              <span>Original: <strong>${formatBytes(origSize)}</strong></span>
+              <span>WebP: <strong>${formatBytes(newSize)}</strong></span>
+              <span>Dimensions: ${w}×${h}px</span>
+              <span class="pill-saved">Saved ${savedPct}%</span>
+            </div>
+          </div>
+          <a class="btn-download-item" href="${downloadUrl}" download="${outFilename}">Download</a>
+        `;
+      } catch (err) {
+        console.error(err);
+        row.innerHTML = `
+          <div class="item-thumb" style="display:flex; align-items:center; justify-content:center; color:#c00;">⚠️</div>
+          <div class="item-info">
+            <div class="item-name">${file.name}</div>
+            <div class="item-meta" style="color: #c00;">Failed to convert: ${err.message || 'Unsupported format'}</div>
+          </div>
+        `;
+      }
+    }
+
+    // Batch download as ZIP
+    btnDownloadAll.addEventListener('click', async () => {
+      if (!window.JSZip || !processedFiles.length) return;
+      btnDownloadAll.disabled = true;
+      btnDownloadAll.innerText = 'Creating ZIP...';
+
+      const zip = new JSZip();
+      processedFiles.forEach(f => {
+        zip.file(f.filename, f.blob);
+      });
+
+      const content = await zip.generateAsync({ type: 'blob' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(content);
+      a.download = 'optimised-website-media.zip';
+      a.click();
+
+      btnDownloadAll.disabled = false;
+      btnDownloadAll.innerText = '📦 Download All (.zip)';
+    });
+  </script>
+</body>
+</html>

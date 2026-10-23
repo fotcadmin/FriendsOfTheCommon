@@ -1,6 +1,8 @@
 backend:
-  name: test-repo
+  name: git-gateway
+  branch: feature/v4-site-overhaul
 
+# 1. Global Media Library
 media_folder: "assets/images"
 public_folder: "/assets/images"
 
@@ -10,7 +12,415 @@ logo_url: "/assets/images/logo-alpha.webp"
 
 collections:
   # -------------------------------------------------------------
-  # 1. NEWS & STORIES COLLECTION (Folder-based: 1 file per article)
+  # 1. CORE PAGES COLLECTION (File-based)
+  # -------------------------------------------------------------
+  - name: "pages"
+    label: "Pages"
+    delete: false
+    files:
+      # HOMEPAGE
+      - name: "home"
+        label: "Homepage"
+        file: "data/pages/home.json"
+        fields:
+          - { label: "Page Title", name: "title", widget: "string" }
+          - label: "Urgent Announcement Banner"
+            name: "announcement"
+            widget: "object"
+            fields:
+              - { label: "Show Banner?", name: "show", widget: "boolean", default: true }
+              - { label: "Tag / Kicker", name: "tag", widget: "string" }
+              - { label: "Notice Text", name: "text", widget: "string" }
+              - { label: "Link URL", name: "link", widget: "string" }
+              - { label: "Link Text", name: "link_text", widget: "string" }
+          - label: "Hero Section"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Kicker", name: "kicker", widget: "string" }
+              - { label: "Headline", name: "headline", widget: "string" }
+              - { label: "Hero Image", name: "image", widget: "image" }
+              - { label: "Primary CTA Button Text", name: "primary_cta_text", widget: "string" }
+              - { label: "Primary CTA Button URL", name: "primary_cta_url", widget: "string" }
+              - { label: "Secondary CTA Button Text", name: "secondary_cta_text", widget: "string" }
+              - { label: "Secondary CTA Button URL", name: "secondary_cta_url", widget: "string" }
+          - label: "Mission & Purpose"
+            name: "mission_purpose"
+            widget: "object"
+            fields:
+              - { label: "Mission Heading", name: "mission_heading", widget: "string" }
+              - { label: "Mission Text", name: "mission_text", widget: "text" }
+              - { label: "Purpose Heading", name: "purpose_heading", widget: "string" }
+              - { label: "Purpose Text", name: "purpose_text", widget: "text" }
+          - label: "Commons at a Glance Stats"
+            name: "stats"
+            widget: "list"
+            fields:
+              - { label: "Label", name: "label", widget: "string" }
+              - { label: "Stat Value", name: "value", widget: "string" }
+              - { label: "Subtext / Note", name: "note", widget: "string" }
+          - label: "Conservators vs Friends Role Comparison"
+            name: "roles_compare"
+            widget: "object"
+            fields:
+              - { label: "Kicker", name: "kicker", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Lede", name: "lede", widget: "string" }
+              - label: "The Commons Conservators"
+                name: "conservators"
+                widget: "object"
+                fields:
+                  - { label: "Tag", name: "tag", widget: "string" }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Logo", name: "logo", widget: "image" }
+                  - { label: "Description", name: "text", widget: "text" }
+                  - { label: "Link Text", name: "link_text", widget: "string" }
+                  - { label: "Link URL", name: "link_url", widget: "string" }
+              - label: "Friends of the Commons"
+                name: "friends"
+                widget: "object"
+                fields:
+                  - { label: "Tag", name: "tag", widget: "string" }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Logo", name: "logo", widget: "image" }
+                  - { label: "Description", name: "text", widget: "text" }
+                  - { label: "Link Text", name: "link_text", widget: "string" }
+                  - { label: "Link URL", name: "link_url", widget: "string" }
+          - label: "Visiting Information"
+            name: "visiting"
+            widget: "object"
+            fields:
+              - { label: "Kicker", name: "kicker", widget: "string" }
+              - { label: "Heading", name: "heading", widget: "string" }
+              - label: "Visiting Cards (4 Pillars)"
+                name: "items"
+                widget: "list"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "text" }
+              - { label: "Primary Button Text", name: "primary_btn_text", widget: "string" }
+              - { label: "Primary Button URL", name: "primary_btn_url", widget: "string" }
+              - { label: "Secondary Button Text", name: "secondary_btn_text", widget: "string" }
+              - { label: "Secondary Button URL", name: "secondary_btn_url", widget: "string" }
+          - label: "The Campaign Chapter"
+            name: "campaign_story"
+            widget: "object"
+            fields:
+              - { label: "Kicker", name: "kicker", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Lede", name: "lede", widget: "text" }
+              - { label: "Story Body", name: "body", widget: "markdown" }
+              - { label: "Pull Quote", name: "quote", widget: "string" }
+              - { label: "Quote Credit", name: "quote_credit", widget: "string" }
+              - { label: "Media Note", name: "cta_note", widget: "string" }
+              - { label: "Primary Button Text", name: "primary_cta_text", widget: "string" }
+              - { label: "Primary Button URL", name: "primary_cta_url", widget: "string" }
+              - { label: "Secondary Button Text", name: "secondary_cta_text", widget: "string" }
+              - { label: "Secondary Button URL", name: "secondary_cta_url", widget: "string" }
+          - label: "Support Our Work Chapter"
+            name: "support_chapter"
+            widget: "object"
+            fields:
+              - { label: "Kicker", name: "kicker", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Lede", name: "lede", widget: "text" }
+              - { label: "Primary Button Text", name: "primary_cta_text", widget: "string" }
+              - { label: "Primary Button URL", name: "primary_cta_url", widget: "string" }
+              - { label: "Secondary Button Text", name: "secondary_cta_text", widget: "string" }
+              - { label: "Secondary Button URL", name: "secondary_cta_url", widget: "string" }
+
+      # CAMPAIGN PAGE
+      - name: "campaign"
+        label: "Campaign Page"
+        file: "data/pages/campaign.json"
+        fields:
+          - { label: "Masthead Kicker", name: "masthead_kicker", widget: "string" }
+          - { label: "Masthead Title", name: "masthead_title", widget: "string" }
+          - { label: "Masthead Lead", name: "masthead_lead", widget: "text" }
+          - label: "Video Spotlight"
+            name: "video_spotlight"
+            widget: "object"
+            fields:
+              - { label: "Video URL / Embed", name: "video_url", widget: "string" }
+              - { label: "Headline", name: "headline", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Facebook Link URL", name: "fb_url", widget: "string" }
+          - label: "Community Safeguards Callout"
+            name: "safeguards"
+            widget: "object"
+            fields:
+              - { label: "Tag", name: "tag", widget: "string" }
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Left Column Text", name: "left_col", widget: "markdown" }
+              - { label: "Right Column Text", name: "right_col", widget: "markdown" }
+          - label: "Community March Showcase"
+            name: "march_showcase"
+            widget: "object"
+            fields:
+              - { label: "Kicker", name: "kicker", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Lead", name: "lead", widget: "text" }
+              - label: "Gallery Photos"
+                name: "images"
+                widget: "list"
+                fields:
+                  - { label: "Photo", name: "src", widget: "image" }
+                  - { label: "Alt Text", name: "alt", widget: "string" }
+                  - { label: "Photo Credit", name: "credit", widget: "string" }
+          - label: "Press & Media Coverage Articles"
+            name: "press_articles"
+            widget: "list"
+            fields:
+              - { label: "Outlet & Date Tag", name: "tag", widget: "string" }
+              - { label: "Headline", name: "title", widget: "string" }
+              - { label: "Summary", name: "summary", widget: "text" }
+              - { label: "Article URL", name: "url", widget: "string" }
+              - { label: "Link Label", name: "link_label", widget: "string" }
+          - label: "Why Every Pledge Counts Card"
+            name: "pledge_card"
+            widget: "object"
+            fields:
+              - { label: "Card Heading", name: "heading", widget: "string" }
+              - { label: "Card Intro", name: "intro", widget: "text" }
+              - { label: "Bullets", name: "bullets", widget: "list", field: { label: "Point", name: "point", widget: "string" } }
+              - { label: "Email Contact Blurb", name: "email_blurb", widget: "string" }
+          - label: "Frequently Asked Questions"
+            name: "faqs"
+            widget: "list"
+            fields:
+              - { label: "Question", name: "question", widget: "string" }
+              - { label: "Category / Subtext", name: "subtext", widget: "string" }
+              - { label: "Answer", name: "answer", widget: "markdown" }
+
+      # ABOUT PAGE
+      - name: "about"
+        label: "About & History"
+        file: "data/pages/about.json"
+        fields:
+          - { label: "Masthead Kicker", name: "masthead_kicker", widget: "string" }
+          - { label: "Masthead Title", name: "masthead_title", widget: "string" }
+          - { label: "Masthead Lead", name: "masthead_lead", widget: "text" }
+          - label: "Founding Purpose Callout"
+            name: "founding_purpose"
+            widget: "object"
+            fields:
+              - { label: "Tag", name: "tag", widget: "string" }
+              - { label: "Heading Quote", name: "heading", widget: "string" }
+              - { label: "Description", name: "text", widget: "text" }
+          - label: "Charitable Objectives"
+            name: "objectives"
+            widget: "object"
+            fields:
+              - { label: "Kicker", name: "kicker", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Intro", name: "intro", widget: "text" }
+              - label: "Objectives List"
+                name: "items"
+                widget: "list"
+                fields:
+                  - { label: "Objective Number", name: "num", widget: "string" }
+                  - { label: "Card Image", name: "image", widget: "image" }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Objective Text", name: "body", widget: "text" }
+          - label: "Origins Story (Born from the Storm)"
+            name: "history_story"
+            widget: "object"
+            fields:
+              - { label: "Kicker", name: "kicker", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Column 1 Text", name: "col1_text", widget: "markdown" }
+              - { label: "Column 1 Panorama Image", name: "col1_image", widget: "image" }
+              - { label: "Column 1 Caption", name: "col1_caption", widget: "string" }
+              - { label: "Column 2 Image", name: "col2_image", widget: "image" }
+              - { label: "Column 2 Caption", name: "col2_caption", widget: "string" }
+              - { label: "Column 2 Text", name: "col2_text", widget: "markdown" }
+              - { label: "Constitutional Quote", name: "quote", widget: "string" }
+              - { label: "Column 2 Conclusion", name: "col2_conclusion", widget: "markdown" }
+          - label: "The Living Mosaic Card"
+            name: "living_mosaic"
+            widget: "object"
+            fields:
+              - { label: "Kicker", name: "kicker", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Ecological Text", name: "text", widget: "markdown" }
+              - { label: "Primary Button Text", name: "primary_btn_text", widget: "string" }
+              - { label: "Primary Button URL", name: "primary_btn_url", widget: "string" }
+              - { label: "Secondary Button Text", name: "secondary_btn_text", widget: "string" }
+              - { label: "Secondary Button URL", name: "secondary_btn_url", widget: "string" }
+          - label: "Official Charity Governance Documents"
+            name: "governance_docs"
+            widget: "object"
+            fields:
+              - { label: "Kicker", name: "kicker", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Intro", name: "intro", widget: "text" }
+              - label: "Documents List"
+                name: "documents"
+                widget: "list"
+                fields:
+                  - { label: "Tag / Category", name: "tag", widget: "string" }
+                  - { label: "Document Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "text" }
+                  - { label: "PDF Document URL", name: "url", widget: "string" }
+                  - { label: "Download Button Label", name: "button_label", widget: "string" }
+
+      # SUPPORT PAGE
+      - name: "support"
+        label: "Support Us"
+        file: "data/pages/support.json"
+        fields:
+          - { label: "Masthead Kicker", name: "masthead_kicker", widget: "string" }
+          - { label: "Masthead Title", name: "masthead_title", widget: "string" }
+          - { label: "Masthead Lead", name: "masthead_lead", widget: "text" }
+          - label: "Membership Section"
+            name: "membership"
+            widget: "object"
+            fields:
+              - { label: "Kicker", name: "kicker", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Intro", name: "intro", widget: "text" }
+              - label: "Membership Tiers"
+                name: "tiers"
+                widget: "list"
+                fields:
+                  - { label: "Tier Name", name: "name", widget: "string" }
+                  - { label: "Badge Label", name: "badge", widget: "string" }
+                  - { label: "Price (£/yr)", name: "price", widget: "string" }
+                  - { label: "Period", name: "period", widget: "string", default: "/ year" }
+                  - { label: "Description", name: "description", widget: "text" }
+                  - { label: "Benefits", name: "benefits", widget: "list", field: { label: "Benefit", name: "benefit", widget: "string" } }
+                  - { label: "GoCardless Link URL", name: "gocardless_url", widget: "string" }
+                  - { label: "Button Text", name: "button_text", widget: "string" }
+              - label: "Bank Transfer (BACS) & Cheque Details"
+                name: "bacs_notice"
+                widget: "object"
+                fields:
+                  - { label: "Heading", name: "heading", widget: "string" }
+                  - { label: "Intro", name: "intro", widget: "text" }
+                  - { label: "Bank Name", name: "bank_name", widget: "string" }
+                  - { label: "Account Name", name: "account_name", widget: "string" }
+                  - { label: "Sort Code", name: "sort_code", widget: "string" }
+                  - { label: "Account Number", name: "account_number", widget: "string" }
+                  - { label: "Reference", name: "reference", widget: "string" }
+                  - { label: "Cheque Payable To", name: "cheque_payable", widget: "string" }
+                  - { label: "Cheque Postal Address", name: "cheque_address", widget: "text" }
+                  - { label: "Callout Text", name: "callout_text", widget: "text" }
+                  - { label: "Callout Button Label", name: "callout_btn_label", widget: "string" }
+                  - { label: "Callout Button URL", name: "callout_btn_url", widget: "string" }
+              - label: "What Membership Supports Callout"
+                name: "support_impact"
+                widget: "object"
+                fields:
+                  - { label: "Tag", name: "tag", widget: "string" }
+                  - { label: "Heading", name: "heading", widget: "string" }
+                  - { label: "Paragraph 1", name: "p1", widget: "text" }
+                  - { label: "Paragraph 2", name: "p2", widget: "text" }
+          - label: "Charitable Donations Section"
+            name: "donations"
+            widget: "object"
+            fields:
+              - { label: "Kicker", name: "kicker", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Intro", name: "intro", widget: "text" }
+              - label: "Donation Channels (Cards)"
+                name: "cards"
+                widget: "list"
+                fields:
+                  - { label: "Kicker Tag", name: "kicker", widget: "string" }
+                  - { label: "Card Title", name: "title", widget: "string" }
+                  - { label: "Text", name: "text", widget: "markdown" }
+                  - { label: "Image (optional)", name: "image", widget: "image", required: false }
+                  - { label: "Primary Button Text (optional)", name: "primary_btn_text", widget: "string", required: false }
+                  - { label: "Primary Button URL (optional)", name: "primary_btn_url", widget: "string", required: false }
+                  - { label: "Secondary Button Text (optional)", name: "secondary_btn_text", widget: "string", required: false }
+                  - { label: "Secondary Button URL (optional)", name: "secondary_btn_url", widget: "string", required: false }
+                  - { label: "Single Button Text (optional)", name: "btn_text", widget: "string", required: false }
+                  - { label: "Single Button URL (optional)", name: "btn_url", widget: "string", required: false }
+                  - { label: "Gift Aid Note (optional)", name: "gift_aid_note", widget: "string", required: false }
+                  - { label: "Footer Note (optional)", name: "footer_note", widget: "string", required: false }
+          - label: "Volunteering on the Commons"
+            name: "volunteering"
+            widget: "object"
+            fields:
+              - { label: "Kicker", name: "kicker", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Intro", name: "intro", widget: "text" }
+              - label: "Conservation Mornings Photo Card"
+                name: "image_card"
+                widget: "object"
+                fields:
+                  - { label: "Photo", name: "image", widget: "image" }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "text", widget: "text" }
+                  - { label: "Footer", name: "footer", widget: "string" }
+              - label: "Get Involved Join Card"
+                name: "join_card"
+                widget: "object"
+                fields:
+                  - { label: "Kicker", name: "kicker", widget: "string" }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "text", widget: "text" }
+                  - { label: "Bullets", name: "bullets", widget: "list", field: { label: "Bullet", name: "bullet", widget: "string" } }
+                  - { label: "Primary Button Text", name: "primary_btn_text", widget: "string" }
+                  - { label: "Primary Button URL", name: "primary_btn_url", widget: "string" }
+                  - { label: "Secondary Button Text", name: "secondary_btn_text", widget: "string" }
+                  - { label: "Secondary Button URL", name: "secondary_btn_url", widget: "string" }
+          - label: "Campaign Pledging Panel"
+            name: "pledge_panel"
+            widget: "object"
+            fields:
+              - { label: "Tag", name: "tag", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Primary Button Text", name: "primary_btn_text", widget: "string" }
+              - { label: "Primary Button URL", name: "primary_btn_url", widget: "string" }
+              - { label: "Secondary Button Text", name: "secondary_btn_text", widget: "string" }
+              - { label: "Secondary Button URL", name: "secondary_btn_url", widget: "string" }
+              - { label: "Callout Heading", name: "card_heading", widget: "string" }
+              - { label: "Callout Intro", name: "card_intro", widget: "text" }
+              - { label: "Bullets", name: "card_bullets", widget: "list", field: { label: "Bullet", name: "bullet", widget: "string" } }
+              - { label: "Email Contact", name: "email_contact", widget: "string" }
+
+      # CONTACT PAGE
+      - name: "contact"
+        label: "Contact Page"
+        file: "data/pages/contact.json"
+        fields:
+          - { label: "Masthead Kicker", name: "masthead_kicker", widget: "string" }
+          - { label: "Masthead Title", name: "masthead_title", widget: "string" }
+          - { label: "Masthead Lead", name: "masthead_lead", widget: "text" }
+          - label: "Committee & Officers Directory Card"
+            name: "committee_card"
+            widget: "object"
+            fields:
+              - { label: "Card Image", name: "image", widget: "image" }
+              - { label: "Image Caption", name: "caption", widget: "string" }
+              - { label: "Heading", name: "heading", widget: "string" }
+              - label: "Contacts Directory"
+                name: "contacts"
+                widget: "list"
+                fields:
+                  - { label: "Role", name: "role", widget: "string" }
+                  - { label: "Name", name: "name", widget: "string" }
+                  - { label: "Email (optional)", name: "email", widget: "string", required: false }
+                  - { label: "Postal / Other Details (optional)", name: "details", widget: "string", required: false }
+              - { label: "Footer Note", name: "footer_note", widget: "string" }
+          - label: "Privacy & UK GDPR Notice"
+            name: "privacy_notice"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Notice Text", name: "text", widget: "text" }
+          - label: "Contact Form Embed"
+            name: "form"
+            widget: "object"
+            fields:
+              - { label: "Form Heading", name: "heading", widget: "string" }
+              - { label: "Intro", name: "intro", widget: "text" }
+              - { label: "Tally Form ID", name: "tally_id", widget: "string" }
+
+  # -------------------------------------------------------------
+  # 2. NEWS & STORIES COLLECTION (Folder-based: 1 file per article)
   # -------------------------------------------------------------
   - name: "news"
     label: "News & Stories"
@@ -39,7 +449,7 @@ collections:
       - { label: "Feature on Homepage / Top?", name: "is_featured", widget: "boolean", default: false }
 
   # -------------------------------------------------------------
-  # 2. EVENTS & GUIDED WALKS COLLECTION (Folder-based)
+  # 3. EVENTS & GUIDED WALKS COLLECTION (Folder-based)
   # -------------------------------------------------------------
   - name: "events"
     label: "Events & Guided Walks"
@@ -57,17 +467,17 @@ collections:
       - { label: "Event Title", name: "title", widget: "string", hint: "e.g. Autumn Fungi & Ancient Turf Foray" }
       - { label: "Organised By", name: "host", widget: "select", options: ["Friends of the Commons", "The Commons Conservators"], default: "Friends of the Commons" }
       - { label: "Host Badge Tag", name: "host_badge", widget: "string", default: "Friends Event" }
-      - { label: "Category", name: "category", widget: "select", options: ["Guided Walk", "Working Party", "Public Meeting", "Talk / AGM", "Community Event"], default: "Guided Walk" }
+      - { label: "Category", name: "category", widget: "select", options: ["Guided Walk", "Practical Conservation", "Public Meeting", "Talk / AGM", "Community Event"], default: "Guided Walk" }
       - { label: "Event Date", name: "date", widget: "date", format: "YYYY-MM-DD" }
       - { label: "Time Description", name: "time", widget: "string", default: "10:00am – 12:30pm" }
       - { label: "Meeting Location", name: "location", widget: "string", default: "Rusthall Common (Toad Rock meeting point)" }
       - { label: "Description / Details", name: "description", widget: "text" }
-      - { label: "Booking / Info URL", name: "booking_url", widget: "string", default: "about.html#contact" }
+      - { label: "Booking / Info URL", name: "booking_url", widget: "string", default: "contact.html" }
       - { label: "Booking Button Text", name: "booking_label", widget: "string", default: "Book Free Place →" }
       - { label: "Active on Site?", name: "is_active", widget: "boolean", default: true }
 
   # -------------------------------------------------------------
-  # 3. SITE SETTINGS & DIRECT DEBIT CONFIGURATION (File-based)
+  # 4. SITE SETTINGS & DIRECT DEBIT CONFIGURATION (File-based)
   # -------------------------------------------------------------
   - name: "settings"
     label: "Site Settings & Direct Debit"
