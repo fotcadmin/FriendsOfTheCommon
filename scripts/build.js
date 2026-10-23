@@ -399,10 +399,21 @@ function buildCampaignPage() {
     const solution = (s.solution || s.right_col || '').replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
 
     const v = s.video || {};
-    const videoSrc = v.src || 'https://drive.google.com/file/d/1AMjsrXkYSvRvTKI4PPOgF5C6gdJfkOxn/preview';
+    const videoSrc = v.src || 'assets/videos/mike-martin.mp4';
+    const videoPoster = v.poster || 'assets/images/mike-martin-poster.webp';
     const videoKicker = v.kicker || '';
     const videoTitle = v.title || 'Video Message from Mike Martin MP';
     const videoNote = v.note || 'Tunbridge Wells Borough Council (TWBC) and our local MP support the community purchase bid.';
+
+    const isDirectVideo = videoSrc.endsWith('.mp4') || videoSrc.endsWith('.webm');
+    const mediaEmbed = isDirectVideo
+      ? `<video controls autoplay playsinline preload="auto" style="position: absolute; top:0; left:0; width:100%; height:100%; object-fit: cover; border-radius: 8px;">
+                      <source src="${videoSrc}" type="video/mp4">
+                      Your browser does not support the video tag.
+                    </video>`
+      : `<iframe src="${videoSrc}" allow="autoplay; fullscreen"
+                      allowfullscreen loading="lazy" sandbox="allow-scripts allow-same-origin allow-presentation"
+                      title="${videoTitle}" style="position: absolute; top:0; left:0; width:100%; height:100%; border:0;"></iframe>`;
 
     const safeguardsPattern = /<div class="editorial-callout reveal-fade-up" style="margin-bottom: 3rem;">[\s\S]*?(?=\s*<!-- Community March Photo Showcase -->)/;
     if (safeguardsPattern.test(html)) {
@@ -431,17 +442,15 @@ ${risksHtml}
 
             <div class="community-ownership-media">
               <aside class="portrait-video-card video-card" aria-label="Video message from Mike Martin MP">
-                <div class="portrait-video-frame video-wrapper" id="mike-martin-video-frame" style="position: relative; background: #1b382b; display: flex; align-items: center; justify-content: center; cursor: pointer;">
-                  <button type="button" class="video-facade-btn" aria-label="Play video message from Mike Martin MP" style="background: none; border: none; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 0.75rem; color: #ffffff; padding: 1rem; text-align: center;">
+                <div class="portrait-video-frame video-wrapper" id="mike-martin-video-frame" style="position: relative; background: url('${videoPoster}') center/cover no-repeat; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+                  <button type="button" class="video-facade-btn" aria-label="Play video message from Mike Martin MP" style="background: rgba(19, 57, 38, 0.2); border: none; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.75rem; color: #ffffff; padding: 1rem; text-align: center; width: 100%; height: 100%;">
                     <span style="width: 64px; height: 64px; border-radius: 50%; background: var(--nt-terracotta, #a8422b); display: inline-flex; align-items: center; justify-content: center; box-shadow: 0 4px 14px rgba(0,0,0,0.4);">
                       <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg>
                     </span>
                     <span style="font-size: 0.95rem; font-weight: 600; text-shadow: 0 1px 3px rgba(0,0,0,0.8);">Play Video Message</span>
                   </button>
                   <template id="mike-martin-iframe-tmpl">
-                    <iframe src="${videoSrc}" allow="autoplay; fullscreen"
-                      allowfullscreen loading="lazy" sandbox="allow-scripts allow-same-origin allow-presentation"
-                      title="${videoTitle}" style="position: absolute; top:0; left:0; width:100%; height:100%; border:0;"></iframe>
+                    ${mediaEmbed}
                   </template>
                 </div>
                 <div class="portrait-video-caption">

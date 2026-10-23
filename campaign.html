@@ -229,6 +229,7 @@
 
 
 
+
         <div class="editorial-callout reveal-fade-up" style="margin-bottom: 3rem;">
           <div class="community-ownership-grid">
             <div class="community-ownership-narrative">
@@ -255,17 +256,18 @@
 
             <div class="community-ownership-media">
               <aside class="portrait-video-card video-card" aria-label="Video message from Mike Martin MP">
-                <div class="portrait-video-frame video-wrapper" id="mike-martin-video-frame" style="position: relative; background: #1b382b; display: flex; align-items: center; justify-content: center; cursor: pointer;">
-                  <button type="button" class="video-facade-btn" aria-label="Play video message from Mike Martin MP" style="background: none; border: none; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 0.75rem; color: #ffffff; padding: 1rem; text-align: center;">
+                <div class="portrait-video-frame video-wrapper" id="mike-martin-video-frame" style="position: relative; background: url('assets/images/mike-martin-poster.webp') center/cover no-repeat; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+                  <button type="button" class="video-facade-btn" aria-label="Play video message from Mike Martin MP" style="background: rgba(19, 57, 38, 0.2); border: none; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.75rem; color: #ffffff; padding: 1rem; text-align: center; width: 100%; height: 100%;">
                     <span style="width: 64px; height: 64px; border-radius: 50%; background: var(--nt-terracotta, #a8422b); display: inline-flex; align-items: center; justify-content: center; box-shadow: 0 4px 14px rgba(0,0,0,0.4);">
                       <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg>
                     </span>
                     <span style="font-size: 0.95rem; font-weight: 600; text-shadow: 0 1px 3px rgba(0,0,0,0.8);">Play Video Message</span>
                   </button>
                   <template id="mike-martin-iframe-tmpl">
-                    <iframe src="https://drive.google.com/file/d/1AMjsrXkYSvRvTKI4PPOgF5C6gdJfkOxn/preview" allow="autoplay; fullscreen"
-                      allowfullscreen loading="lazy" sandbox="allow-scripts allow-same-origin allow-presentation"
-                      title="Video Message from Mike Martin MP" style="position: absolute; top:0; left:0; width:100%; height:100%; border:0;"></iframe>
+                    <video controls autoplay playsinline preload="auto" style="position: absolute; top:0; left:0; width:100%; height:100%; object-fit: cover; border-radius: 8px;">
+                      <source src="assets/videos/mike-martin.mp4" type="video/mp4">
+                      Your browser does not support the video tag.
+                    </video>
                   </template>
                 </div>
                 <div class="portrait-video-caption">
@@ -276,6 +278,7 @@
             </div>
           </div>
         </div>
+
 
 
 
@@ -444,12 +447,13 @@
 
 
 
+
         <div class="march-gallery-grid reveal-stagger">
           <div class="march-gallery-item">
             <img src="assets/images/march/march-community-rally.webp"
               alt="Community marchers with banners across Tunbridge Wells" width="400" height="220" loading="lazy">
             <div class="march-caption">
-              <span class="photo-credit">Photo: Kelly Wilcox (21 March 2026)</span>
+              <span class="photo-credit">Photo: Kelly Wilcox</span>
             </div>
           </div>
 
@@ -457,7 +461,7 @@
             <img src="assets/images/march/march-crowd-pantiles.webp"
               alt="Supporters marching through the town with campaign placards" width="400" height="220" loading="lazy">
             <div class="march-caption">
-              <span class="photo-credit">Photo: Kelly Wilcox (21 March 2026)</span>
+              <span class="photo-credit">Photo: Kelly Wilcox</span>
             </div>
           </div>
 
@@ -465,7 +469,7 @@
             <img src="assets/images/march/march-dogs-support.webp"
               alt="Dogs and families supporting the Commons community march" width="400" height="220" loading="lazy">
             <div class="march-caption">
-              <span class="photo-credit">Photo: Kelly Wilcox (21 March 2026)</span>
+              <span class="photo-credit">Photo: Kelly Wilcox</span>
             </div>
           </div>
         </div>
@@ -541,18 +545,21 @@
           </div>
 
           <div class="single-quote-slider" data-quote-slider>
-            <div class="quote-slide-viewport" aria-live="polite" tabindex="0" role="region" aria-label="Community quotes carousel">
+            <div class="quote-slide-viewport" aria-live="polite" tabindex="0" role="region"
+              aria-label="Community quotes carousel">
               <div class="quote-slide-track">
                 <!-- Slide 1: Jenny Scholfield (Woodland Trust) -->
-                <div class="quote-slide-item is-active" id="quote-slide-0" data-index="0"
-                  role="group" aria-roledescription="slide" aria-label="Quote 1 of 3: Jenny Scholfield">
+                <div class="quote-slide-item is-active" id="quote-slide-0" data-index="0" role="group"
+                  aria-roledescription="slide" aria-label="Quote 1 of 3: Jenny Scholfield">
                   <div class="single-quote-card">
                     <div class="single-quote-card-header">
                       <div class="quote-icon" aria-hidden="true">&ldquo;</div>
                       <span class="quote-org-badge">The Woodland Trust</span>
                     </div>
                     <blockquote class="single-quote-body">
-                      &ldquo;The Tunbridge Wells and Rusthall Commons are unique natural spaces at the heart of the town. Securing them in community ownership would help ensure they continue to thrive for wildlife and remain inspiring places for future generations.&rdquo;
+                      &ldquo;The Tunbridge Wells and Rusthall Commons are unique natural spaces at the heart of the
+                      town. Securing them in community ownership would help ensure they continue to thrive for wildlife
+                      and remain inspiring places for future generations.&rdquo;
                     </blockquote>
                     <div class="single-quote-footer">
                       <div class="quote-avatar-initials" aria-hidden="true">JS</div>
@@ -565,18 +572,21 @@
                 </div>
 
                 <!-- Slide 2: Mike Martin MP -->
-                <div class="quote-slide-item" id="quote-slide-1" data-index="1"
-                  role="group" aria-roledescription="slide" aria-label="Quote 2 of 3: Mike Martin" aria-hidden="true">
+                <div class="quote-slide-item" id="quote-slide-1" data-index="1" role="group"
+                  aria-roledescription="slide" aria-label="Quote 2 of 3: Mike Martin" aria-hidden="true">
                   <div class="single-quote-card">
                     <div class="single-quote-card-header">
                       <div class="quote-icon" aria-hidden="true">&ldquo;</div>
-                      <span class="quote-org-badge" style="background: rgba(140, 91, 22, 0.09); color: var(--nt-ochre);">Member of Parliament</span>
+                      <span class="quote-org-badge"
+                        style="background: rgba(140, 91, 22, 0.09); color: var(--nt-ochre);">Member of Parliament</span>
                     </div>
                     <blockquote class="single-quote-body">
-                      &ldquo;I support The Friends&rsquo; initiative to purchase the Commons on behalf of the community.&rdquo;
+                      &ldquo;I support The Friends&rsquo; initiative to purchase the Commons on behalf of the
+                      community.&rdquo;
                     </blockquote>
                     <div class="single-quote-footer">
-                      <div class="quote-avatar-initials" style="background: var(--nt-ochre);" aria-hidden="true">MM</div>
+                      <div class="quote-avatar-initials" style="background: var(--nt-ochre);" aria-hidden="true">MM
+                      </div>
                       <div class="single-quote-meta">
                         <div class="quote-author-name">Mike Martin</div>
                         <div class="quote-author-role">Member of Parliament for Tunbridge Wells</div>
@@ -586,18 +596,21 @@
                 </div>
 
                 <!-- Slide 3: Dale Vince OBE -->
-                <div class="quote-slide-item" id="quote-slide-2" data-index="2"
-                  role="group" aria-roledescription="slide" aria-label="Quote 3 of 3: Dale Vince" aria-hidden="true">
+                <div class="quote-slide-item" id="quote-slide-2" data-index="2" role="group"
+                  aria-roledescription="slide" aria-label="Quote 3 of 3: Dale Vince" aria-hidden="true">
                   <div class="single-quote-card">
                     <div class="single-quote-card-header">
                       <div class="quote-icon" aria-hidden="true">&ldquo;</div>
-                      <span class="quote-org-badge" style="background: rgba(166, 58, 30, 0.09); color: var(--nt-terracotta);">Green Energy Pioneer</span>
+                      <span class="quote-org-badge"
+                        style="background: rgba(166, 58, 30, 0.09); color: var(--nt-terracotta);">Green Energy
+                        Pioneer</span>
                     </div>
                     <blockquote class="single-quote-body">
                       &ldquo;I support local efforts to buy the commons.&rdquo;
                     </blockquote>
                     <div class="single-quote-footer">
-                      <div class="quote-avatar-initials" style="background: var(--nt-terracotta);" aria-hidden="true">DV</div>
+                      <div class="quote-avatar-initials" style="background: var(--nt-terracotta);" aria-hidden="true">DV
+                      </div>
                       <div class="single-quote-meta">
                         <div class="quote-author-name">Dale Vince OBE</div>
                         <div class="quote-author-role">Founder of Ecotricity</div>
@@ -621,10 +634,10 @@
               <div class="quote-dots-wrap" role="group" aria-label="Choose quote to display">
                 <button type="button" class="quote-dot is-active" id="quote-dot-0"
                   aria-label="Show quote 1: Jenny Scholfield" aria-current="true" data-index="0"></button>
-                <button type="button" class="quote-dot" id="quote-dot-1"
-                  aria-label="Show quote 2: Mike Martin" data-index="1"></button>
-                <button type="button" class="quote-dot" id="quote-dot-2"
-                  aria-label="Show quote 3: Dale Vince" data-index="2"></button>
+                <button type="button" class="quote-dot" id="quote-dot-1" aria-label="Show quote 2: Mike Martin"
+                  data-index="1"></button>
+                <button type="button" class="quote-dot" id="quote-dot-2" aria-label="Show quote 3: Dale Vince"
+                  data-index="2"></button>
               </div>
 
               <button type="button" class="quote-nav-btn quote-next-btn" aria-label="Next quote">
@@ -675,11 +688,10 @@
 
           <!-- Live Tally Form Embed (Unlimited Free Submissions, GDPR Compliant) -->
           <div class="tally-form-embed-wrapper pledge-embed">
-            <iframe
-              id="pledge-tally-iframe"
+            <iframe id="pledge-tally-iframe"
               src="https://tally.so/embed/D4lJgj?alignLeft=1&amp;hideTitle=1&amp;transparentBackground=1&amp;dynamicHeight=1"
-              loading="lazy" width="100%" height="1150" frameborder="0" marginheight="0"
-              marginwidth="0" scrolling="no" title="Friends of the Commons — Land Acquisition Pledge"></iframe>
+              loading="lazy" width="100%" height="1150" frameborder="0" marginheight="0" marginwidth="0" scrolling="no"
+              title="Friends of the Commons — Land Acquisition Pledge"></iframe>
           </div>
           <script>
             (function () {
@@ -1180,12 +1192,14 @@
         <div class="editorial-callout reveal-fade-up"
           style="border-left-color: var(--nt-green-deep); margin-bottom: 4rem;">
           <span class="editorial-tag" style="color: var(--nt-green-deep);">Campaign Documents &amp; Inquiries</span>
-          <h3 class="editorial-heading" style="font-size: 1.35rem;">Commercial Sales Brochures &amp; Campaign Guidance</h3>
+          <h3 class="editorial-heading" style="font-size: 1.35rem;">Commercial Sales Brochures &amp; Campaign Guidance
+          </h3>
           <p style="color: var(--nt-muted); margin-top: 0.5rem; line-height: 1.6;">
             Review the vendor's commercial sales brochures and campaign background documents below:
           </p>
           <div style="margin-top: 1.25rem; display: flex; gap: 1rem; flex-wrap: wrap;">
-            <a href="https://targetfollow.com/wp-content/uploads/2025/11/TW-Rusthall-Common-Sales-Brochure_V2.pdf" target="_blank" rel="noopener" class="btn btn-secondary btn-sm">
+            <a href="https://targetfollow.com/wp-content/uploads/2025/11/TW-Rusthall-Common-Sales-Brochure_V2.pdf"
+              target="_blank" rel="noopener" class="btn btn-secondary btn-sm">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                 style="margin-right: 0.35rem;" aria-hidden="true" focusable="false">
                 <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
@@ -1206,7 +1220,9 @@
             </a>
           </div>
           <p style="font-size: 0.82rem; color: #7a8a81; margin-top: 0.85rem; margin-bottom: 0; line-height: 1.55;">
-            <em>Note: The Kroll brochure covers the sale of the Commons specifically (the initial campaign bid structure before the separate Pantiles listing). The sales brochures are commercial vendor marketing documents, not official publications of The Friends.</em>
+            <em>Note: The Kroll brochure covers the sale of the Commons specifically (the initial campaign bid structure
+              before the separate Pantiles listing). The sales brochures are commercial vendor marketing documents, not
+              official publications of The Friends.</em>
           </p>
         </div>
 

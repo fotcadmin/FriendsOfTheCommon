@@ -11,6 +11,7 @@ scratch/
 tests/reports/
 
 # Media & Videos
-Videos/
+/Videos/
 *.mp4
+!assets/videos/*.mp4
 assets/extra_photos/

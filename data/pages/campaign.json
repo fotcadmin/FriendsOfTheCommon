@@ -29,7 +29,8 @@
     ],
     "solution": "Charitable community ownership removes commercial speculation and ensures decisions are guided solely by conservation and public benefit. Backed by **over 3,000 local pledges**, cross-party civic leaders, and major conservation trusts, the Friends stand ready to protect these irreplaceable green spaces for generations to come.",
     "video": {
-      "src": "https://drive.google.com/file/d/1AMjsrXkYSvRvTKI4PPOgF5C6gdJfkOxn/preview",
+      "src": "assets/videos/mike-martin.mp4",
+      "poster": "assets/images/mike-martin-poster.webp",
       "title": "Video Message from Mike Martin MP",
       "note": "Tunbridge Wells Borough Council (TWBC) and our local MP support the community purchase bid."
     }

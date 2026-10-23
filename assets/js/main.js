@@ -1125,6 +1125,10 @@ document.addEventListener('click', function (e) {
     const tmpl = frame.querySelector('template');
     if (tmpl) {
       frame.innerHTML = tmpl.innerHTML;
+      const vid = frame.querySelector('video');
+      if (vid) {
+        vid.play().catch(function () {});
+      }
     }
   }
 });
