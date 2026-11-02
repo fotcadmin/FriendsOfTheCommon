@@ -1612,18 +1612,124 @@ p:last-child {
   margin-bottom: 0.75rem;
 }
 
-.popup-btn {
-  display: inline-block;
-  font-size: 0.78rem;
-  font-weight: 700;
-  color: #ffffff;
-  background: var(--color-forest);
-  padding: 0.35rem 0.75rem;
-  border-radius: var(--radius-pill);
-  text-decoration: none;
+.popup-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: stretch;
+  margin-top: 0.65rem;
 }
+
+.leaflet-container .leaflet-popup-content a.popup-btn,
+.leaflet-popup-content .popup-btn,
+.leaflet-popup-content a.popup-btn,
+a.popup-btn,
+.popup-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex: 1 1 135px;
+  min-height: 38px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff;
+  padding: 0.5rem 0.85rem;
+  text-decoration: none !important;
+  border-radius: var(--radius-pill, 4px);
+  cursor: pointer;
+  box-sizing: border-box;
+  transition: background-color var(--transition-quick, 150ms ease), transform var(--transition-quick, 150ms ease), box-shadow var(--transition-quick, 150ms ease);
+}
+
+.leaflet-container .leaflet-popup-content a.popup-btn:not(.popup-btn-website),
+.leaflet-container .leaflet-popup-content a.popup-btn-directions,
+.popup-btn-directions,
+.popup-btn {
+  background-color: var(--color-forest, #1b382b);
+  border: 1px solid var(--color-forest, #1b382b);
+  color: #ffffff !important;
+}
+
+.leaflet-container .leaflet-popup-content a.popup-btn:not(.popup-btn-website):hover,
+.leaflet-container .leaflet-popup-content a.popup-btn-directions:hover,
+.popup-btn-directions:hover,
 .popup-btn:hover {
-  background: var(--color-forest-dark);
+  background-color: var(--color-forest-dark, #13271e);
+  border-color: var(--color-forest-dark, #13271e);
+  color: #ffffff !important;
+  text-decoration: none !important;
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.22);
+}
+
+.leaflet-container .leaflet-popup-content a.popup-btn:not(.popup-btn-website):focus-visible,
+.leaflet-container .leaflet-popup-content a.popup-btn-directions:focus-visible,
+.popup-btn-directions:focus-visible,
+.popup-btn:focus-visible {
+  outline: 2px solid #1e2421;
+  outline-offset: 2px;
+  color: #ffffff !important;
+  text-decoration: none !important;
+}
+
+.leaflet-container .leaflet-popup-content a.popup-btn-website,
+a.popup-btn-website,
+.popup-btn-website {
+  background-color: var(--color-accent-copper, #a8422b);
+  border: 1px solid var(--color-accent-copper, #a8422b);
+  color: #ffffff !important;
+}
+
+.leaflet-container .leaflet-popup-content a.popup-btn-website:hover,
+a.popup-btn-website:hover,
+.popup-btn-website:hover {
+  background-color: #8b3420;
+  border-color: #8b3420;
+  color: #ffffff !important;
+  text-decoration: none !important;
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.22);
+}
+
+.leaflet-container .leaflet-popup-content a.popup-btn-website:focus-visible,
+a.popup-btn-website:focus-visible,
+.popup-btn-website:focus-visible {
+  outline: 2px solid #8b3420;
+  outline-offset: 2px;
+  color: #ffffff !important;
+  text-decoration: none !important;
+}
+
+.leaflet-container .leaflet-popup-content a:not(.popup-btn) {
+  color: var(--color-forest, #1b382b);
+  text-decoration: underline;
+}
+
+.place-address {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  margin-top: 0.15rem;
+}
+
+.place-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin-top: 0.45rem;
+}
+
+.place-badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.68rem;
+  font-weight: 600;
+  background: var(--color-leaf-light);
+  color: var(--color-forest-dark);
+  padding: 0.1rem 0.4rem;
+  border-radius: var(--radius-pill);
 }
 
 /* Responsive Media Queries */

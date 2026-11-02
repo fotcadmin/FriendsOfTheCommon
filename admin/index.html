@@ -11,15 +11,27 @@
   <link rel="stylesheet" href="admin.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;800&family=Inter:wght@400;500;600;700&family=Roboto+Condensed:wght@700;800&display=swap" rel="stylesheet">
+  <!-- Markdown parser for live CMS previews -->
+  <script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
 </head>
 <body>
+  <script>
+    window.CMS_MANUAL_INIT = true;
+  </script>
   <!-- Decap CMS Application (v3) -->
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
   
   <script>
-    // Netlify Identity Login Handler (Active only when running on production Netlify domain)
-    if (window.netlifyIdentity && window.location.hostname.includes("netlify.app")) {
+    const isLocal = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
+    CMS.init({
+      config: {
+        local_backend: isLocal
+      }
+    });
+
+    // Netlify Identity Login & Logout Handlers
+    if (window.netlifyIdentity && !isLocal) {
       window.netlifyIdentity.on("init", user => {
         if (!user) {
           window.netlifyIdentity.on("login", () => {
@@ -27,16 +39,979 @@
           });
         }
       });
+      window.netlifyIdentity.on("logout", () => {
+        document.location.href = "/admin/";
+      });
     }
 
-    // Register live CSS styles into the CMS live preview window
+    // 1. Register Google Fonts (Frank Ruhl Libre, Roboto Condensed, Inter) into preview iframe
+    CMS.registerPreviewStyle("https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;800&family=Inter:wght@400;500;600;700&family=Roboto+Condensed:wght@700;800&display=swap");
+
+    // 2. Register National Trust Design System stylesheets
+    CMS.registerPreviewStyle("/assets/css/nt-style.css");
     CMS.registerPreviewStyle("../assets/css/nt-style.css");
 
-    // Custom Live Preview Component for News Articles
+    // 3. Reset preview iframe body styling for authentic look
+    CMS.registerPreviewStyle(`
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: var(--nt-sand-bg, #faf8f5);
+        color: var(--nt-charcoal, #1e2421);
+        font-family: var(--font-sans, "Inter", sans-serif);
+        -webkit-font-smoothing: antialiased;
+      }
+      .preview-page-wrapper {
+        background-color: var(--nt-sand-bg, #faf8f5);
+        min-height: 100vh;
+      }
+    `, { raw: true });
+
+    // Robust Markdown Helper with graceful fallback
+    function renderMarkdown(md) {
+      if (!md) return '';
+      if (window.marked) {
+        try {
+          return typeof window.marked.parse === 'function' ? window.marked.parse(md) : window.marked(md);
+        } catch (e) {
+          console.warn('Marked parse error', e);
+        }
+      }
+      return md
+        .replace(/^### (.*$)/gim, '<h3>$1</h3>')
+        .replace(/^## (.*$)/gim, '<h2>$1</h2>')
+        .replace(/^# (.*$)/gim, '<h1>$1</h1>')
+        .replace(/\*\*(.*?)\*\*/gim, '<strong>$1</strong>')
+        .replace(/\*(.*?)\*/gim, '<em>$1</em>')
+        .replace(/\[(.*?)\]\((.*?)\)/gim, '<a href="$2">$1</a>')
+        .split(/\n\n+/)
+        .map(p => '<p>' + p.trim().replace(/\n/g, '<br>') + '</p>')
+        .join('');
+    }
+
+    // Robust Asset URL resolver for Decap CMS previews (ensures root domain resolution from /admin/)
+    function resolveAssetUrl(getAsset, path, fallback) {
+      var target = path || fallback;
+      if (!target) return '';
+      var url = '';
+      if (getAsset && path) {
+        try {
+          var asset = getAsset(path);
+          url = asset ? asset.toString() : '';
+        } catch (e) {
+          url = '';
+        }
+      }
+      if (!url) url = target;
+      if (typeof url === 'string') {
+        url = url.trim();
+        if (url && !url.startsWith('http://') && !url.startsWith('https://') && !url.startsWith('blob:') && !url.startsWith('data:') && !url.startsWith('/')) {
+          url = '/' + url;
+        }
+      }
+      return url;
+    }
+
+    // =========================================================================
+    // 1. CAMPAIGN PAGE LIVE PREVIEW TEMPLATE
+    // =========================================================================
+    const CampaignPreview = createClass({
+      render: function() {
+        const entry = this.props.entry;
+        if (!entry) return null;
+        const data = entry.get('data') ? entry.get('data').toJS() : {};
+
+        const mastheadKicker = data.masthead_kicker || 'Community Land Purchase';
+        const mastheadTitle = data.masthead_title || 'Securing the Freehold for Everyone, Forever';
+        const mastheadLead = data.masthead_lead || '';
+
+        const video = data.video_spotlight || {};
+        const safeguards = data.safeguards || {};
+        const march = data.march_showcase || {};
+        const marchImages = Array.isArray(march.images) ? march.images : [];
+        const press = Array.isArray(data.press_articles) ? data.press_articles : [];
+        const pledgeCard = data.pledge_card || {};
+        const bullets = Array.isArray(pledgeCard.bullets) ? pledgeCard.bullets : [];
+        const faqs = Array.isArray(data.faqs) ? data.faqs : [];
+
+        return h('div', { className: 'preview-page-wrapper' },
+          // Subpage Masthead Banner
+          h('section', { className: 'subpage-masthead' },
+            h('div', { className: 'subpage-masthead-inner' },
+              mastheadKicker ? h('span', { className: 'masthead-kicker' }, mastheadKicker) : null,
+              h('h1', { className: 'masthead-title' }, mastheadTitle),
+              mastheadLead ? h('p', { className: 'masthead-lead' }, mastheadLead) : null
+            )
+          ),
+
+          // Main Page Layout
+          h('main', { role: 'main', style: { padding: '3.5rem 0' } },
+            h('div', { className: 'container' },
+
+              // Featured Video Spotlight Card
+              h('div', { className: 'campaign-video-spotlight', style: { marginBottom: '2.5rem' } },
+                h('div', {
+                  className: 'sharp-card',
+                  style: { background: '#ffffff', border: '1px solid var(--nt-border)', overflow: 'hidden', boxShadow: 'var(--shadow-sm)' }
+                },
+                  h('div', { className: 'campaign-video-grid' },
+                    h('div', { className: 'video-responsive-wrap' },
+                      video.video_url ? h('iframe', {
+                        src: video.video_url,
+                        width: '560',
+                        height: '314',
+                        style: { border: 'none', overflow: 'hidden', width: '100%', height: '100%' },
+                        scrolling: 'no',
+                        frameBorder: '0',
+                        allowFullScreen: true,
+                        title: video.headline || 'Friends of the Commons Community Video'
+                      }) : h('div', {
+                        style: { padding: '3rem 1.5rem', textAlign: 'center', background: '#e6ede5', color: 'var(--nt-green-deep)', fontWeight: 600 }
+                      }, '🎬 Video Embed URL Preview')
+                    ),
+                    h('div', { className: 'campaign-video-text' },
+                      h('h2', {
+                        style: { fontFamily: 'var(--font-serif)', fontSize: '1.6rem', color: 'var(--nt-green-deep)', lineHeight: 1.25, marginBottom: '0.75rem' }
+                      }, video.headline || 'Watch the Community Movement in Action'),
+                      video.description ? h('p', {
+                        style: { fontSize: '0.95rem', lineHeight: 1.6, color: 'var(--nt-charcoal)', marginBottom: '1.5rem' }
+                      }, video.description) : null,
+                      h('div', { style: { display: 'flex', gap: '0.75rem', flexWrap: 'wrap', alignItems: 'center' } },
+                        h('span', { className: 'btn btn-terracotta btn-sm', style: { cursor: 'default' } }, 'Make a Pledge →'),
+                        video.fb_url ? h('a', {
+                          href: video.fb_url,
+                          target: '_blank',
+                          rel: 'noopener',
+                          className: 'btn btn-secondary btn-sm',
+                          style: { fontSize: '0.85rem' }
+                        }, 'Watch on Facebook ↗') : null
+                      )
+                    )
+                  )
+                )
+              ),
+
+              // Editorial Callout: Community Safeguards (Balanced Two-Column Grid)
+              h('div', { className: 'editorial-callout', style: { marginBottom: '3rem' } },
+                safeguards.tag ? h('span', { className: 'editorial-tag' }, safeguards.tag) : null,
+                h('h2', { className: 'editorial-heading' }, safeguards.heading || 'Why community ownership matters'),
+                h('div', { className: 'editorial-grid' },
+                  h('div', {
+                    className: 'prose',
+                    dangerouslySetInnerHTML: { __html: renderMarkdown(safeguards.left_col || '') }
+                  }),
+                  h('div', {
+                    className: 'prose',
+                    dangerouslySetInnerHTML: { __html: renderMarkdown(safeguards.right_col || '') }
+                  })
+                )
+              ),
+
+              // Community March Photo Showcase
+              (march.title || marchImages.length > 0) ? h('div', { style: { marginBottom: '3rem' } },
+                h('div', { className: 'section-intro-header' },
+                  march.kicker ? h('span', { className: 'section-kicker' }, march.kicker) : null,
+                  h('h2', { className: 'section-title' }, march.title || 'March for the Commons: 21 March 2026'),
+                  march.lead ? h('p', { style: { color: 'var(--nt-muted)', marginTop: '0.5rem', fontSize: '1rem' } }, march.lead) : null
+                ),
+                h('div', { className: 'march-gallery-grid' },
+                  marchImages.map((imgItem, idx) => {
+                    const src = resolveAssetUrl(this.props.getAsset, imgItem.src, '');
+                    return h('div', { key: idx, className: 'march-gallery-item' },
+                      src ? h('img', { src: src, alt: imgItem.alt || '', width: 400, height: 220 }) : null,
+                      imgItem.credit ? h('div', { className: 'march-caption' },
+                        h('span', { className: 'photo-credit' }, imgItem.credit)
+                      ) : null
+                    );
+                  })
+                )
+              ) : null,
+
+              // Press & Media Coverage Grid
+              press.length > 0 ? h('div', { style: { marginBottom: '3.5rem' } },
+                h('div', { className: 'section-intro-header' },
+                  h('span', { className: 'section-kicker' }, 'Press & Media Coverage'),
+                  h('h2', { className: 'section-title' }, 'National & Regional Media Coverage'),
+                  h('p', { style: { color: 'var(--nt-muted)', marginTop: '0.5rem', fontSize: '1rem', maxWidth: '65ch' } },
+                    'National and regional media have reported on and covered the campaign to secure the Commons for the community.'
+                  )
+                ),
+                h('div', {
+                  style: { display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }
+                },
+                  press.map((art, idx) => h('div', {
+                    key: idx,
+                    className: 'sharp-card',
+                    style: { background: '#ffffff', border: '1px solid var(--nt-border)', padding: '1.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }
+                  },
+                    h('div', null,
+                      art.tag ? h('span', {
+                        style: { display: 'block', fontSize: '0.8rem', color: 'var(--nt-muted)', marginBottom: '0.5rem', textTransform: 'uppercase', letterSpacing: '0.05em' }
+                      }, art.tag) : null,
+                      h('h3', {
+                        style: { fontFamily: 'var(--font-serif)', fontSize: '1.15rem', color: 'var(--nt-charcoal)', marginBottom: '0.75rem', lineHeight: '1.3' }
+                      }, art.title || ''),
+                      art.summary ? h('p', {
+                        style: { fontSize: '0.9rem', color: 'var(--nt-muted)', lineHeight: '1.5', marginBottom: '1rem' }
+                      }, art.summary) : null
+                    ),
+                    art.url ? h('div', {
+                      style: { fontSize: '0.85rem', fontWeight: 600, color: 'var(--nt-green-deep)', borderTop: '1px solid var(--nt-border-subtle)', paddingTop: '0.75rem' }
+                    },
+                      h('a', { href: art.url, target: '_blank', rel: 'noopener', style: { color: 'inherit', textDecoration: 'underline' } }, art.link_label || 'Read Article →')
+                    ) : null
+                  ))
+                )
+              ) : null,
+
+              // Why Every Pledge Counts Card
+              h('div', {
+                className: 'pledge-counts-card',
+                style: {
+                  marginTop: '1.25rem',
+                  marginBottom: '3rem',
+                  padding: '1.25rem 1.5rem',
+                  background: 'var(--nt-sand-bg)',
+                  border: '1px solid var(--nt-border)',
+                  borderLeft: '4px solid var(--nt-green-deep)',
+                  borderRadius: '6px'
+                }
+              },
+                h('h3', {
+                  style: {
+                    fontFamily: 'var(--font-serif)',
+                    fontSize: '1.25rem',
+                    color: 'var(--nt-green-deep)',
+                    marginBottom: '0.4rem'
+                  }
+                }, pledgeCard.heading || 'Why Every Pledge Counts'),
+                pledgeCard.intro ? h('p', {
+                  style: {
+                    color: 'var(--nt-charcoal)',
+                    fontSize: '0.95rem',
+                    lineHeight: 1.55,
+                    marginBottom: '0.85rem'
+                  }
+                }, pledgeCard.intro) : null,
+                bullets.length > 0 ? h('ul', {
+                  className: 'clean-list',
+                  style: {
+                    fontSize: '0.92rem',
+                    color: 'var(--nt-charcoal)',
+                    margin: '0 0 0.85rem 0',
+                    paddingLeft: '1.2rem',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '0.35rem'
+                  }
+                }, bullets.map((item, idx) => {
+                  const text = typeof item === 'string' ? item : (item && item.point ? item.point : '');
+                  return h('li', { key: idx }, text);
+                })) : null,
+                pledgeCard.email_blurb ? h('div', {
+                  style: {
+                    fontSize: '0.88rem',
+                    color: 'var(--nt-muted)',
+                    borderTop: '1px solid var(--nt-border-subtle)',
+                    paddingTop: '0.65rem'
+                  },
+                  dangerouslySetInnerHTML: {
+                    __html: pledgeCard.email_blurb.replace(
+                      /([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})/g,
+                      '<a href="mailto:$1" style="color: var(--nt-green-deep); font-weight: 600; text-decoration: underline;">$1</a>'
+                    )
+                  }
+                }) : null
+              ),
+
+              // Frequently Asked Questions Accordions
+              faqs.length > 0 ? h('div', { style: { marginBottom: '3rem' } },
+                h('div', { className: 'section-intro-header' },
+                  h('h2', { className: 'section-title' }, 'Frequently Asked Questions'),
+                  h('p', { style: { color: 'var(--nt-muted)', marginTop: '0.5rem', fontSize: '1rem' } },
+                    'Answers to key questions regarding the commercial sale of the Commons, our charity bid, and long-term community ownership.'
+                  )
+                ),
+                h('div', { className: 'nt-accordion-group' },
+                  faqs.map((faq, idx) => {
+                    const q = faq.question || 'Question';
+                    const sub = faq.subtext;
+                    const ans = faq.answer || '';
+                    return h('details', { className: 'nt-accordion-item', open: true, key: idx },
+                      h('summary', { className: 'nt-accordion-summary' },
+                        h('div', { className: 'summary-heading-box' },
+                          h('span', { className: 'summary-title' }, q),
+                          sub ? h('span', { className: 'summary-subtext' }, sub) : null
+                        ),
+                        h('span', { className: 'summary-icon', 'aria-hidden': 'true' }, '+')
+                      ),
+                      h('div', {
+                        className: 'nt-accordion-body prose',
+                        dangerouslySetInnerHTML: { __html: renderMarkdown(ans) }
+                      })
+                    );
+                  })
+                )
+              ) : null
+
+            )
+          )
+        );
+      }
+    });
+
+    // =========================================================================
+    // 2. HOMEPAGE LIVE PREVIEW TEMPLATE
+    // =========================================================================
+    const HomePreview = createClass({
+      render: function() {
+        const entry = this.props.entry;
+        if (!entry) return null;
+        const data = entry.get('data') ? entry.get('data').toJS() : {};
+        const ann = data.announcement || {};
+        const hero = data.hero || {};
+        const mp = data.mission_purpose || {};
+        const stats = Array.isArray(data.stats) ? data.stats : [];
+        const roles = data.roles_compare || {};
+        const conservators = roles.conservators || {};
+        const friends = roles.friends || {};
+        const visiting = data.visiting || {};
+        const visitingItems = Array.isArray(visiting.items) ? visiting.items : [];
+        const story = data.campaign_story || {};
+        const supportChapter = data.support_chapter || {};
+        const heroImgSrc = resolveAssetUrl(this.props.getAsset, hero.image, '/assets/images/explore.webp');
+        const conservatorsLogoSrc = resolveAssetUrl(this.props.getAsset, conservators.logo, '/assets/images/conservators-badge.webp');
+        const friendsLogoSrc = resolveAssetUrl(this.props.getAsset, friends.logo, '/assets/images/logo-alpha.webp');
+
+        return h('div', { className: 'preview-page-wrapper' },
+          // 1. Urgent Notice Bar
+          ann.show !== false ? h('aside', {
+            className: 'urgent-notice-bar',
+            role: 'region',
+            'aria-label': 'Campaign Notice'
+          },
+            h('div', { className: 'urgent-notice-content' },
+              ann.tag ? h('span', { className: 'urgent-tag' }, ann.tag) : null,
+              ann.text ? h('span', { className: 'urgent-text' }, ann.text) : null,
+              ann.link ? h('a', {
+                href: ann.link,
+                className: 'urgent-link',
+                style: { textDecoration: 'none' }
+              }, ann.link_text || 'Read bid details & pledge support →') : null
+            )
+          ) : null,
+
+          // 2. Full-bleed Hero with authentic background image & typography overlay
+          h('section', { className: 'hero-nt hero-with-bg', id: 'overview' },
+            h('img', {
+              className: 'hero-bg-img',
+              src: heroImgSrc,
+              alt: hero.headline || 'Tunbridge Wells & Rusthall Commons'
+            }),
+            h('div', { className: 'container hero-grid' },
+              h('div', { className: 'hero-text-col' },
+                hero.kicker ? h('span', { className: 'hero-kicker' }, hero.kicker) : null,
+                h('h1', { className: 'hero-title', id: 'hero-title' }, hero.headline || 'Protecting our historic commons for everyone, forever.'),
+                h('div', { className: 'hero-actions' },
+                  h('a', {
+                    href: hero.primary_cta_url || 'campaign.html#pledge',
+                    className: 'btn btn-terracotta btn-lg',
+                    style: { textDecoration: 'none', cursor: 'default' }
+                  }, hero.primary_cta_text || 'Pledge to Buy the Commons →'),
+                  h('a', {
+                    href: hero.secondary_cta_url || '#visit',
+                    className: 'btn btn-secondary btn-lg',
+                    style: { textDecoration: 'none', cursor: 'default' }
+                  }, hero.secondary_cta_text || 'Plan Your Visit')
+                )
+              )
+            )
+          ),
+
+          // 3. Mission & Purpose Section (Two-Column Editorial Band)
+          h('section', { className: 'band band--parchment', 'aria-label': 'Mission and purpose' },
+            h('div', { className: 'container' },
+              h('div', { className: 'mission-editorial' },
+                h('div', { className: 'mission-statement' },
+                  h('h2', { className: 'band-kicker' }, mp.mission_heading || 'OUR MISSION'),
+                  h('p', { className: 'mission-statement-text' }, mp.mission_text || 'Working with the community to preserve, enhance and enjoy the Commons.')
+                ),
+                h('div', { className: 'mission-statement' },
+                  h('h2', { className: 'band-kicker' }, mp.purpose_heading || 'OUR PURPOSE'),
+                  h('p', { className: 'mission-statement-text' }, mp.purpose_text || 'To protect the Commons, celebrate their place in our community, and safeguard their future.')
+                )
+              )
+            )
+          ),
+
+          // 4. Commons at a Glance Stats
+          stats.length > 0 ? h('section', { className: 'band band--sage band--compact', 'aria-label': 'Commons at a glance' },
+            h('div', { className: 'container' },
+              h('dl', { className: 'stat-strip' },
+                stats.map((st, idx) => h('div', { key: idx, className: 'stat' },
+                  h('dt', { className: 'stat-label' }, st.label),
+                  h('dd', { className: 'stat-value' }, st.value),
+                  st.note ? h('dd', { className: 'stat-note' }, st.note) : null
+                ))
+              )
+            )
+          ) : null,
+
+          // 5. Roles Comparison (Conservators vs Friends)
+          roles.title ? h('section', { className: 'band band--parchment', 'aria-labelledby': 'roles-heading' },
+            h('div', { className: 'container' },
+              h('header', { className: 'band-header' },
+                roles.kicker ? h('span', { className: 'band-kicker band-kicker--pill' }, roles.kicker) : null,
+                h('h2', { className: 'band-title', id: 'roles-heading' }, roles.title),
+                roles.lede ? h('p', { className: 'band-lede' }, roles.lede) : null
+              ),
+              h('div', { className: 'roles-compare' },
+                // Conservators
+                h('article', { className: 'role' },
+                  conservators.tag ? h('span', { className: 'role-tag' }, conservators.tag) : null,
+                  h('div', { className: 'role-header-row' },
+                    conservatorsLogoSrc ? h('img', { src: conservatorsLogoSrc, alt: conservators.title || 'The Commons Conservators', className: 'role-logo', width: 52, height: 52 }) : null,
+                    h('h3', { className: 'role-title' }, conservators.title || 'The Commons Conservators')
+                  ),
+                  h('p', { className: 'role-text' }, conservators.text || ''),
+                  conservators.link_text ? h('a', { href: conservators.link_url || 'https://twcommons.org/', className: 'text-link', target: '_blank', rel: 'noopener' }, conservators.link_text) : null
+                ),
+                // Friends
+                h('article', { className: 'role role--friends' },
+                  friends.tag ? h('span', { className: 'role-tag' }, friends.tag) : null,
+                  h('div', { className: 'role-header-row' },
+                    friendsLogoSrc ? h('img', { src: friendsLogoSrc, alt: friends.title || 'Friends of the Commons', className: 'role-logo', width: 52, height: 52 }) : null,
+                    h('h3', { className: 'role-title' }, friends.title || 'Friends of the Commons')
+                  ),
+                  h('p', { className: 'role-text' }, friends.text || ''),
+                  friends.link_text ? h('a', { href: friends.link_url || 'about.html', className: 'text-link' }, friends.link_text) : null
+                )
+              )
+            )
+          ) : null,
+
+          // 6. Visiting Information (4-pillar card strip & actions)
+          h('section', { className: 'band band--sage', id: 'visit' },
+            h('div', { className: 'container' },
+              h('header', { className: 'band-header' },
+                visiting.kicker ? h('span', { className: 'band-kicker' }, visiting.kicker) : null,
+                h('h2', { className: 'band-title' }, visiting.heading || 'Visiting the Commons')
+              ),
+              visitingItems.length > 0 ? h('div', { className: 'visit-strip' },
+                visitingItems.map((item, idx) => h('article', { key: idx, className: 'visit-item' },
+                  h('h3', { className: 'visit-item-title' }, item.title),
+                  h('p', null, item.description)
+                ))
+              ) : null,
+              h('div', { className: 'action-row', style: { marginTop: '2rem' } },
+                h('a', { href: visiting.primary_btn_url || 'explore.html#plan-visit', className: 'btn btn-primary' }, visiting.primary_btn_text || 'Complete Visitor Guide →'),
+                h('a', { href: visiting.secondary_btn_url || 'explore.html', className: 'btn btn-secondary' }, visiting.secondary_btn_text || 'Open Map Viewer')
+              )
+            )
+          ),
+
+          // 7. Campaign Story Chapter
+          story.title ? h('section', { className: 'band band--parchment campaign-story', id: 'philosophy' },
+            h('div', { className: 'container' },
+              h('header', { className: 'campaign-story-head' },
+                story.kicker ? h('span', { className: 'band-kicker' }, story.kicker) : null,
+                h('h2', { className: 'campaign-story-title' }, story.title)
+              ),
+              h('div', { className: 'campaign-story-body' },
+                h('div', { className: 'campaign-story-text prose' },
+                  story.lede ? h('p', { className: 'campaign-story-lede' }, story.lede) : null,
+                  story.body ? h('div', { dangerouslySetInnerHTML: { __html: renderMarkdown(story.body) } }) : null
+                ),
+                story.quote ? h('blockquote', { className: 'pull-quote' },
+                  h('p', null, story.quote),
+                  story.quote_credit ? h('footer', { className: 'pull-quote-credit' }, story.quote_credit) : null
+                ) : null
+              ),
+              h('div', { className: 'cta-bar', style: { marginTop: '2rem' } },
+                story.cta_note ? h('p', { className: 'cta-bar-text' }, story.cta_note) : null,
+                h('div', { className: 'action-row action-row--tight' },
+                  h('a', { href: story.primary_cta_url || 'campaign.html#pledge', className: 'btn btn-terracotta btn-lg' }, story.primary_cta_text || 'Make a Pledge'),
+                  h('a', { href: story.secondary_cta_url || 'campaign.html', className: 'btn btn-ghost-light btn-lg' }, story.secondary_cta_text || 'Read More →')
+                )
+              )
+            )
+          ) : null,
+
+          // 8. Support Our Work Chapter
+          supportChapter.title ? h('section', { className: 'band band--forest support-chapter' },
+            h('div', { className: 'container' },
+              h('header', { className: 'support-head' },
+                supportChapter.kicker ? h('span', { className: 'band-kicker' }, supportChapter.kicker) : null,
+                h('h2', { className: 'band-title' }, supportChapter.title),
+                supportChapter.lede ? h('p', { className: 'band-lede' }, supportChapter.lede) : null
+              ),
+              h('div', { className: 'action-row', style: { marginTop: '1.5rem' } },
+                h('a', { href: supportChapter.primary_cta_url || 'support-us.html', className: 'btn btn-terracotta btn-lg' }, supportChapter.primary_cta_text || 'Ways to Support Us →'),
+                h('a', { href: supportChapter.secondary_cta_url || 'campaign.html#pledge', className: 'btn btn-light btn-lg' }, supportChapter.secondary_cta_text || 'Make a Pledge →')
+              )
+            )
+          ) : null
+        );
+      }
+    });
+
+    // =========================================================================
+    // 3. ABOUT & HISTORY LIVE PREVIEW TEMPLATE
+    // =========================================================================
+    const AboutPreview = createClass({
+      render: function() {
+        const entry = this.props.entry;
+        if (!entry) return null;
+        const data = entry.get('data') ? entry.get('data').toJS() : {};
+        const purpose = data.founding_purpose || {};
+        const objectives = data.objectives || {};
+        const objItems = Array.isArray(objectives.items) ? objectives.items : [];
+        const story = data.history_story || {};
+        const mosaic = data.living_mosaic || {};
+        const gov = data.governance_docs || {};
+        const docs = Array.isArray(gov.documents) ? gov.documents : [];
+
+        return h('div', { className: 'preview-page-wrapper' },
+          // Masthead Banner
+          h('section', { className: 'subpage-masthead' },
+            h('div', { className: 'subpage-masthead-inner' },
+              data.masthead_kicker ? h('span', { className: 'masthead-kicker' }, data.masthead_kicker) : null,
+              h('h1', { className: 'masthead-title' }, data.masthead_title || 'About The Friends'),
+              data.masthead_lead ? h('p', { className: 'masthead-lead' }, data.masthead_lead) : null
+            )
+          ),
+
+          h('main', { role: 'main', style: { padding: '3.5rem 0' } },
+            h('div', { className: 'container' },
+              // Founding Purpose Callout
+              purpose.heading ? h('div', { className: 'editorial-callout', style: { marginBottom: '3rem' } },
+                purpose.tag ? h('span', { className: 'editorial-tag' }, purpose.tag) : null,
+                h('h2', { className: 'editorial-heading', style: { fontSize: '1.75rem', lineHeight: 1.4 } }, purpose.heading),
+                purpose.text ? h('p', { style: { color: 'var(--nt-muted)', fontSize: '1.05rem', lineHeight: 1.7, marginTop: '1rem' } }, purpose.text) : null
+              ) : null,
+
+              // Charitable Objectives (3 Cards)
+              objectives.title ? h('section', { className: 'objects-section', style: { marginBottom: '4rem' } },
+                h('div', { className: 'section-intro-header' },
+                  objectives.kicker ? h('span', { className: 'section-kicker' }, objectives.kicker) : null,
+                  h('h2', { className: 'section-title' }, objectives.title),
+                  objectives.intro ? h('p', { style: { color: 'var(--nt-muted)', marginTop: '0.5rem', fontSize: '1.05rem', maxWidth: '820px' } }, objectives.intro) : null
+                ),
+                h('div', { className: 'objects-grid' },
+                  objItems.map((obj, idx) => {
+                    const img = resolveAssetUrl(this.props.getAsset, obj.image, '');
+                    return h('div', { key: idx, className: 'object-card' },
+                      img ? h('div', { className: 'object-card-media' },
+                        h('img', { src: img, alt: obj.title || '', width: 400, height: 155 })
+                      ) : null,
+                      h('div', { className: 'object-card-header' },
+                        h('span', { className: 'object-num objective-tag badge-green' }, obj.num || ('Objective 0' + (idx + 1)))
+                      ),
+                      h('h3', { className: 'object-title' }, obj.title),
+                      h('p', { className: 'object-body' }, obj.body)
+                    );
+                  })
+                )
+              ) : null,
+
+              // History & Origins Broadsheet Layout
+              story.title ? h('section', { style: { marginBottom: '4rem' } },
+                h('div', { className: 'section-intro-header' },
+                  story.kicker ? h('span', { className: 'section-kicker' }, story.kicker) : null,
+                  h('h2', { className: 'section-title' }, story.title)
+                ),
+                h('div', { className: 'newspaper-story-layout' },
+                  // Column 1
+                  h('div', { className: 'newspaper-col' },
+                    story.col1_text ? h('div', { className: 'prose', dangerouslySetInnerHTML: { __html: renderMarkdown(story.col1_text) } }) : null,
+                    story.col1_image ? h('figure', { style: { margin: '1.5rem 0 0 0' } },
+                      h('img', { src: resolveAssetUrl(this.props.getAsset, story.col1_image, '/assets/images/commons-panorama.webp'), alt: story.col1_caption || '', style: { width: '100%', aspectRatio: '16/9', objectFit: 'cover', borderRadius: '3px', border: '1px solid #DCD6CC', display: 'block' } }),
+                      story.col1_caption ? h('figcaption', { className: 'newspaper-caption' }, story.col1_caption) : null
+                    ) : null
+                  ),
+                  // Column 2
+                  h('div', { className: 'newspaper-col' },
+                    story.col2_image ? h('figure', { style: { margin: '0 0 1.25rem 0' } },
+                      h('img', { src: resolveAssetUrl(this.props.getAsset, story.col2_image, '/assets/images/happy-valley.webp'), alt: story.col2_caption || '', style: { width: '100%', aspectRatio: '16/9', objectFit: 'cover', borderRadius: '3px', border: '1px solid #DCD6CC', display: 'block' } }),
+                      story.col2_caption ? h('figcaption', { className: 'newspaper-caption' }, story.col2_caption) : null
+                    ) : null,
+                    story.col2_text ? h('div', { className: 'prose', dangerouslySetInnerHTML: { __html: renderMarkdown(story.col2_text) } }) : null,
+                    story.quote ? h('blockquote', {
+                      style: { margin: '0.75rem 0 1.25rem 0', padding: '0.75rem 1.25rem', borderLeft: '3px solid var(--nt-green-deep)', background: 'var(--nt-surface-alt)', fontStyle: 'italic', fontSize: '0.95rem', color: 'var(--nt-charcoal)', lineHeight: '1.6' }
+                    }, story.quote) : null,
+                    story.col2_conclusion ? h('div', { className: 'prose', dangerouslySetInnerHTML: { __html: renderMarkdown(story.col2_conclusion) } }) : null
+                  )
+                )
+              ) : null,
+
+              // The Living Mosaic Card
+              mosaic.title ? h('div', {
+                className: 'sharp-card living-mosaic-card',
+                style: { display: 'block', padding: '2.5rem', marginBottom: '4rem', background: '#ffffff', border: '1px solid var(--nt-border)' }
+              },
+                mosaic.kicker ? h('span', { className: 'section-kicker' }, mosaic.kicker) : null,
+                h('h3', { style: { fontFamily: 'var(--font-serif)', fontSize: '1.6rem', color: 'var(--nt-green-deep)', marginBottom: '1rem' } }, mosaic.title),
+                mosaic.text ? h('div', { className: 'prose', dangerouslySetInnerHTML: { __html: renderMarkdown(mosaic.text) } }) : null,
+                h('div', { style: { display: 'flex', gap: '0.75rem', flexWrap: 'wrap', marginTop: '1.5rem' } },
+                  mosaic.primary_btn_text ? h('a', { href: mosaic.primary_btn_url || 'explore.html', className: 'btn btn-secondary btn-sm' }, mosaic.primary_btn_text) : null,
+                  mosaic.secondary_btn_text ? h('a', { href: mosaic.secondary_btn_url || 'support-us.html#membership', className: 'btn btn-primary btn-sm' }, mosaic.secondary_btn_text) : null
+                )
+              ) : null,
+
+              // Official Governance Documents
+              gov.title ? h('div', { style: { marginBottom: '4rem' } },
+                h('div', { className: 'section-intro-header' },
+                  gov.kicker ? h('span', { className: 'section-kicker' }, gov.kicker) : null,
+                  h('h2', { className: 'section-title' }, gov.title),
+                  gov.intro ? h('p', { style: { color: 'var(--nt-muted)', marginTop: '0.5rem', fontSize: '1rem' } }, gov.intro) : null
+                ),
+                h('div', { className: 'grid-3' },
+                  docs.map((doc, idx) => h('div', { key: idx, className: 'sharp-card' },
+                    h('div', { className: 'sharp-card-content' },
+                      doc.tag ? h('span', { className: 'sharp-card-tag' }, doc.tag) : null,
+                      h('h3', { className: 'sharp-card-h3' }, doc.title),
+                      doc.description ? h('p', { className: 'sharp-card-p' }, doc.description) : null,
+                      doc.url ? h('a', { href: doc.url, target: '_blank', rel: 'noopener', className: 'btn btn-secondary btn-sm', style: { marginTop: 'auto' } }, doc.button_label || 'Download PDF →') : null
+                    )
+                  ))
+                )
+              ) : null
+            )
+          )
+        );
+      }
+    });
+
+    // =========================================================================
+    // 4. SUPPORT US LIVE PREVIEW TEMPLATE
+    // =========================================================================
+    const SupportPreview = createClass({
+      render: function() {
+        const entry = this.props.entry;
+        if (!entry) return null;
+        const data = entry.get('data') ? entry.get('data').toJS() : {};
+        const mem = data.membership || {};
+        const tiers = Array.isArray(mem.tiers) ? mem.tiers : [];
+        const bacs = mem.bacs_notice || {};
+        const impact = mem.support_impact || {};
+        const donations = data.donations || {};
+        const donationCards = Array.isArray(donations.cards) ? donations.cards : [];
+        const volunteering = data.volunteering || {};
+        const vImgCard = volunteering.image_card || {};
+        const vJoinCard = volunteering.join_card || {};
+        const vBullets = Array.isArray(vJoinCard.bullets) ? vJoinCard.bullets : [];
+        const pledge = data.pledge_panel || {};
+        const pBullets = Array.isArray(pledge.card_bullets) ? pledge.card_bullets : [];
+
+        return h('div', { className: 'preview-page-wrapper' },
+          // Masthead Banner
+          h('section', { className: 'subpage-masthead' },
+            h('div', { className: 'subpage-masthead-inner' },
+              data.masthead_kicker ? h('span', { className: 'masthead-kicker' }, data.masthead_kicker) : null,
+              h('h1', { className: 'masthead-title' }, data.masthead_title || 'Support Our Work'),
+              data.masthead_lead ? h('p', { className: 'masthead-lead' }, data.masthead_lead) : null
+            )
+          ),
+
+          h('main', { role: 'main', style: { padding: '3.5rem 0' } },
+            h('div', { className: 'container' },
+
+              // 1. Membership Section
+              h('section', { id: 'membership', style: { marginBottom: '4rem' } },
+                h('div', { className: 'section-intro-header', style: { textAlign: 'center', maxWidth: '800px', margin: '0 auto 2.5rem auto' } },
+                  mem.kicker ? h('span', { className: 'section-kicker' }, mem.kicker) : null,
+                  h('h2', { className: 'section-title' }, mem.title || 'Join as a Member of the Friends'),
+                  mem.intro ? h('p', { style: { color: 'var(--nt-muted)', marginTop: '0.5rem', fontSize: '1.05rem' } }, mem.intro) : null
+                ),
+
+                // Tiers Grid
+                tiers.length > 0 ? h('div', { className: 'grid-2', style: { maxWidth: '840px', margin: '0 auto 3rem auto' } },
+                  tiers.map((t, idx) => h('div', { key: idx, className: 'tier-card' + (idx === 0 ? ' featured' : '') },
+                    t.badge ? h('span', { className: 'tier-badge', style: idx === 1 ? { background: 'var(--nt-green-deep)', color: '#ffffff' } : {} }, t.badge) : null,
+                    h('div', { className: 'tier-name' }, t.name),
+                    h('div', { className: 'tier-price' }, '£' + (t.price || '0'), h('span', null, t.period || ' / year')),
+                    t.description ? h('p', { style: { color: 'var(--nt-muted)', fontSize: '0.9rem', marginBottom: '1.5rem', lineHeight: 1.5 } }, t.description) : null,
+                    Array.isArray(t.benefits) ? h('ul', { className: 'clean-list', style: { marginBottom: '1.5rem' } },
+                      t.benefits.map((b, bIdx) => h('li', { key: bIdx }, b))
+                    ) : null,
+                    t.gocardless_url ? h('a', { href: t.gocardless_url, target: '_blank', rel: 'noopener', className: 'btn ' + (idx === 0 ? 'btn-primary' : 'btn-secondary'), style: { width: '100%', marginTop: 'auto' } }, t.button_text || 'Join via Direct Debit →') : null
+                  ))
+                ) : null,
+
+                // BACS Offline Banking Card
+                bacs.heading ? h('div', { style: { maxWidth: '840px', margin: '0 auto 3rem auto' } },
+                  h('div', { className: 'offline-banking-card' },
+                    h('h4', null, bacs.heading),
+                    bacs.intro ? h('p', null, bacs.intro) : null,
+                    h('div', { className: 'offline-banking-grid' },
+                      h('div', null,
+                        h('strong', null, 'Bank Transfer (BACS / Standing Order):'), h('br'),
+                        'Bank: ', bacs.bank_name || 'NatWest', h('br'),
+                        'Account Name: ', bacs.account_name, h('br'),
+                        'Sort Code: ', h('strong', null, bacs.sort_code), h('br'),
+                        'Account Number: ', h('strong', null, bacs.account_number), h('br'),
+                        'Reference: ', h('em', null, bacs.reference)
+                      ),
+                      h('div', null,
+                        h('strong', null, 'By Cheque:'), h('br'),
+                        'Payable to: ', h('em', null, bacs.cheque_payable), h('br'),
+                        'Please send to:', h('br'),
+                        h('div', { style: { whiteSpace: 'pre-line' } }, bacs.cheque_address)
+                      )
+                    ),
+                    bacs.callout_text ? h('div', {
+                      style: { marginTop: '1.5rem', padding: '1.15rem 1.25rem', background: 'var(--nt-sand-bg)', borderLeft: '3px solid var(--nt-green-deep)', borderRadius: '4px', display: 'flex', flexDirection: 'column', gap: '0.65rem' }
+                    },
+                      h('p', { style: { margin: 0, fontSize: '0.95rem', color: 'var(--nt-charcoal)', lineHeight: 1.55 } }, bacs.callout_text),
+                      bacs.callout_btn_label ? h('div', null,
+                        h('a', { href: bacs.callout_btn_url || 'contact.html', className: 'btn btn-primary btn-sm' }, bacs.callout_btn_label)
+                      ) : null
+                    ) : null
+                  )
+                ) : null,
+
+                // Membership Impact Callout
+                impact.heading ? h('div', { className: 'editorial-callout', style: { marginTop: '2rem' } },
+                  impact.tag ? h('span', { className: 'editorial-tag' }, impact.tag) : null,
+                  h('h3', { className: 'editorial-heading', style: { fontSize: '1.45rem' } }, impact.heading),
+                  impact.p1 ? h('p', { style: { fontSize: '1.05rem', color: 'var(--nt-charcoal)', lineHeight: 1.65, marginTop: '0.75rem' } }, impact.p1) : null,
+                  impact.p2 ? h('p', { style: { fontSize: '0.98rem', color: 'var(--nt-muted)', lineHeight: 1.65, marginTop: '0.5rem', marginBottom: 0 } }, impact.p2) : null
+                ) : null
+              ),
+
+              // 2. Charitable Donations Section (4 Cards Grid)
+              donations.title ? h('section', { id: 'donate', style: { marginBottom: '4rem' } },
+                h('div', { className: 'section-intro-header' },
+                  donations.kicker ? h('span', { className: 'section-kicker' }, donations.kicker) : null,
+                  h('h2', { className: 'section-title' }, donations.title),
+                  donations.intro ? h('p', { style: { color: 'var(--nt-muted)', marginTop: '0.5rem', fontSize: '1.05rem', maxWidth: '800px' } }, donations.intro) : null
+                ),
+                h('div', { className: 'grid-2', style: { alignItems: 'stretch', gap: '2rem' } },
+                  donationCards.map((c, idx) => {
+                    const img = resolveAssetUrl(this.props.getAsset, c.image, '');
+                    return h('div', { key: idx, className: 'sharp-card', style: { background: '#ffffff', display: 'flex', flexDirection: 'column' } },
+                      img ? h('div', { style: { height: '180px', overflow: 'hidden', borderBottom: '1px solid var(--nt-border)' } },
+                        h('img', { src: img, alt: c.title || '', style: { width: '100%', height: '100%', objectFit: 'cover' } })
+                      ) : null,
+                      h('div', { style: { padding: '1.75rem', flexGrow: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' } },
+                        h('div', null,
+                          c.kicker ? h('span', { className: 'sharp-card-tag', style: { color: 'var(--nt-green-deep)', display: 'block', marginBottom: '0.4rem' } }, c.kicker) : null,
+                          h('h3', { style: { fontFamily: 'var(--font-serif)', fontSize: '1.35rem', color: 'var(--nt-charcoal)', marginBottom: '0.75rem' } }, c.title),
+                          c.text ? h('div', { className: 'prose', dangerouslySetInnerHTML: { __html: renderMarkdown(c.text) } }) : null
+                        ),
+                        h('div', { style: { marginTop: '1.25rem' } },
+                          c.primary_btn_text ? h('a', { href: c.primary_btn_url || '#', className: 'btn btn-primary btn-sm', style: { marginRight: '0.5rem', marginBottom: '0.5rem' } }, c.primary_btn_text) : null,
+                          c.secondary_btn_text ? h('a', { href: c.secondary_btn_url || '#', className: 'btn btn-terracotta btn-sm', style: { marginBottom: '0.5rem' } }, c.secondary_btn_text) : null,
+                          c.btn_text ? h('a', { href: c.btn_url || '#', className: 'btn btn-secondary btn-sm', style: { width: '100%', textAlign: 'center' } }, c.btn_text) : null,
+                          c.gift_aid_note ? h('div', { style: { fontSize: '0.82rem', color: 'var(--nt-muted)', lineHeight: 1.5, borderTop: '1px solid var(--nt-border)', paddingTop: '0.75rem', marginTop: '0.75rem' } }, c.gift_aid_note) : null,
+                          c.footer_note ? h('div', { style: { fontSize: '0.85rem', color: 'var(--nt-muted)', borderTop: '1px solid var(--nt-border-subtle)', paddingTop: '0.75rem', marginTop: '0.75rem' } }, c.footer_note) : null
+                        )
+                      )
+                    );
+                  })
+                )
+              ) : null,
+
+              // 3. Volunteering on the Commons
+              volunteering.title ? h('section', { id: 'volunteer', style: { marginBottom: '4rem' } },
+                h('div', { className: 'section-intro-header' },
+                  volunteering.kicker ? h('span', { className: 'section-kicker' }, volunteering.kicker) : null,
+                  h('h2', { className: 'section-title' }, volunteering.title),
+                  volunteering.intro ? h('p', { style: { color: 'var(--nt-muted)', marginTop: '0.5rem', fontSize: '1.05rem', maxWidth: '800px' } }, volunteering.intro) : null
+                ),
+                h('div', { className: 'grid-2', style: { alignItems: 'stretch', gap: '2rem' } },
+                  // Photo Card
+                  h('div', { className: 'sharp-card', style: { background: '#ffffff', display: 'flex', flexDirection: 'column' } },
+                    vImgCard.image ? h('div', { style: { height: '240px', overflow: 'hidden' } },
+                      h('img', { src: resolveAssetUrl(this.props.getAsset, vImgCard.image, '/assets/images/saturday.webp'), alt: vImgCard.title || '', style: { width: '100%', height: '100%', objectFit: 'cover' } })
+                    ) : null,
+                    h('div', { style: { padding: '1.5rem 1.75rem', flexGrow: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' } },
+                      h('div', null,
+                        h('h3', { style: { fontFamily: 'var(--font-serif)', fontSize: '1.25rem', color: 'var(--nt-green-deep)', marginBottom: '0.5rem' } }, vImgCard.title),
+                        h('p', { style: { color: 'var(--nt-muted)', fontSize: '0.92rem', lineHeight: 1.6, margin: 0 } }, vImgCard.text)
+                      ),
+                      vImgCard.footer ? h('div', { style: { marginTop: '1.25rem', fontSize: '0.85rem', color: 'var(--nt-muted)', borderTop: '1px solid var(--nt-border-subtle)', paddingTop: '0.75rem' } }, vImgCard.footer) : null
+                    )
+                  ),
+                  // Join Card
+                  h('div', { className: 'nt-form-box', style: { display: 'flex', flexDirection: 'column', justifyContent: 'space-between', padding: '2rem 2.25rem' } },
+                    h('div', null,
+                      vJoinCard.kicker ? h('span', { className: 'section-kicker' }, vJoinCard.kicker) : null,
+                      h('h3', { style: { fontFamily: 'var(--font-serif)', fontSize: '1.45rem', color: 'var(--nt-charcoal)', marginBottom: '0.75rem' } }, vJoinCard.title),
+                      h('p', { style: { color: 'var(--nt-muted)', fontSize: '0.95rem', lineHeight: 1.6, marginBottom: '1.25rem' } }, vJoinCard.text),
+                      vBullets.length > 0 ? h('div', { style: { padding: '1.15rem 1.25rem', background: 'var(--nt-surface-alt)', borderLeft: '3px solid var(--nt-green-deep)', marginBottom: '1.5rem' } },
+                        h('ul', { className: 'clean-list', style: { fontSize: '0.88rem', color: 'var(--nt-charcoal)', margin: 0, lineHeight: 1.6 } },
+                          vBullets.map((b, bIdx) => h('li', { key: bIdx }, b))
+                        )
+                      ) : null
+                    ),
+                    h('div', { style: { display: 'flex', flexDirection: 'column', gap: '0.75rem' } },
+                      vJoinCard.primary_btn_text ? h('a', { href: vJoinCard.primary_btn_url || 'contact.html', className: 'btn btn-primary btn-sm', style: { textAlign: 'center', justifyContent: 'center' } }, vJoinCard.primary_btn_text) : null,
+                      vJoinCard.secondary_btn_text ? h('a', { href: vJoinCard.secondary_btn_url || 'events.html', className: 'btn btn-secondary btn-sm', style: { textAlign: 'center', justifyContent: 'center' } }, vJoinCard.secondary_btn_text) : null
+                    )
+                  )
+                )
+              ) : null,
+
+              // 4. Campaign Pledging Panel
+              pledge.title ? h('section', { id: 'pledge-info', style: { marginBottom: '3rem' } },
+                h('div', { className: 'pledge-panel' },
+                  h('div', { className: 'pledge-panel-grid' },
+                    h('div', null,
+                      pledge.tag ? h('span', { className: 'urgent-tag', style: { background: 'rgba(0,0,0,0.3)', marginBottom: '0.75rem', display: 'inline-block' } }, pledge.tag) : null,
+                      h('h2', null, pledge.title),
+                      h('p', null, pledge.description),
+                      h('div', { style: { display: 'flex', gap: '0.75rem', flexWrap: 'wrap', marginTop: '1.25rem' } },
+                        pledge.primary_btn_text ? h('a', { href: pledge.primary_btn_url || 'campaign.html#pledge', className: 'btn btn-terracotta btn-lg' }, pledge.primary_btn_text) : null,
+                        pledge.secondary_btn_text ? h('a', { href: pledge.secondary_btn_url || 'campaign.html', className: 'btn btn-secondary btn-lg', style: { background: 'rgba(255,255,255,0.15)', borderColor: 'rgba(255,255,255,0.4)', color: '#ffffff' } }, pledge.secondary_btn_text) : null
+                      )
+                    ),
+                    h('div', { className: 'pledge-panel-card' },
+                      h('h3', { style: { fontFamily: 'var(--font-serif)', fontSize: '1.35rem', color: '#ffffff', marginBottom: '0.75rem' } }, pledge.card_heading || 'Why Every Pledge Counts'),
+                      h('p', { style: { color: '#dbeae0', fontSize: '0.95rem', lineHeight: 1.55, marginBottom: '1.25rem' } }, pledge.card_intro || ''),
+                      pBullets.length > 0 ? h('ul', { className: 'clean-list', style: { fontSize: '0.95rem', color: '#ffffff', marginBottom: '0.75rem' } },
+                        pBullets.map((b, bIdx) => h('li', { key: bIdx, style: { color: '#ffffff' } }, b))
+                      ) : null,
+                      pledge.email_contact ? h('div', { style: { fontSize: '0.82rem', color: '#dbeae0', borderTop: '1px solid rgba(255,255,255,0.2)', paddingTop: '0.65rem' } },
+                        'Prefer to pledge by email? Contact ',
+                        h('a', { href: 'mailto:' + pledge.email_contact, style: { color: '#ffffff', fontWeight: 600, textDecoration: 'underline' } }, pledge.email_contact)
+                      ) : null
+                    )
+                  )
+                )
+              ) : null
+
+            )
+          )
+        );
+      }
+    });
+
+    // =========================================================================
+    // 5. CONTACT PAGE LIVE PREVIEW TEMPLATE
+    // =========================================================================
+    const ContactPreview = createClass({
+      render: function() {
+        const entry = this.props.entry;
+        if (!entry) return null;
+        const data = entry.get('data') ? entry.get('data').toJS() : {};
+        const card = data.committee_card || {};
+        const contacts = Array.isArray(card.contacts) ? card.contacts : [];
+        const privacy = data.privacy_notice || {};
+        const form = data.form || {};
+        const cardImg = resolveAssetUrl(this.props.getAsset, card.image, '/assets/images/roger-john-nick.webp');
+
+        return h('div', { className: 'preview-page-wrapper' },
+          // Masthead Banner
+          h('section', { className: 'subpage-masthead' },
+            h('div', { className: 'subpage-masthead-inner' },
+              data.masthead_kicker ? h('span', { className: 'masthead-kicker' }, data.masthead_kicker) : null,
+              h('h1', { className: 'masthead-title' }, data.masthead_title || 'Contact the Friends'),
+              data.masthead_lead ? h('p', { className: 'masthead-lead' }, data.masthead_lead) : null
+            )
+          ),
+
+          h('section', { style: { padding: '3.5rem 0' } },
+            h('div', { className: 'container' },
+              h('div', { className: 'contact-layout' },
+
+                // Left Column: Directory & Key Contacts
+                h('div', { className: 'contact-col contact-col--info' },
+                  h('div', { className: 'sharp-card', style: { padding: '1.75rem 2rem' } },
+                    cardImg ? h('div', { className: 'sharp-card-img-wrap', style: { margin: '-1.75rem -2rem 1.25rem -2rem' } },
+                      h('img', { src: cardImg, alt: card.heading || '', style: { width: '100%', height: '210px', objectFit: 'cover' } }),
+                      card.caption ? h('div', {
+                        style: { padding: '0.4rem 1rem', fontSize: '0.72rem', color: 'var(--nt-muted)', background: 'var(--nt-sand-bg)', borderBottom: '1px solid var(--nt-border-subtle)', fontStyle: 'italic' }
+                      }, card.caption) : null
+                    ) : null,
+                    h('h2', { style: { fontFamily: 'var(--font-serif)', fontSize: '1.45rem', color: 'var(--nt-charcoal)', margin: '0 0 1rem 0' } }, card.heading || 'The Friends Committee & Officers'),
+                    contacts.length > 0 ? h('ul', { className: 'clean-list', style: { marginBottom: '1.5rem', display: 'flex', flexDirection: 'column', gap: '1rem' } },
+                      contacts.map((c, idx) => h('li', { key: idx },
+                        h('div', null,
+                          h('strong', null, c.role + ': '), c.name || '',
+                          c.email ? h('div', { style: { fontSize: '0.88rem', color: 'var(--nt-muted)' } },
+                            'Email: ', h('a', { href: 'mailto:' + c.email, style: { color: 'var(--nt-green-deep)', textDecoration: 'underline' } }, c.email)
+                          ) : null,
+                          c.details ? h('div', { style: { fontSize: '0.88rem', color: 'var(--nt-muted)' } }, c.details) : null
+                        )
+                      ))
+                    ) : null,
+                    card.footer_note ? h('div', { style: { fontSize: '0.85rem', color: 'var(--nt-muted)', borderTop: '1px solid var(--nt-border-subtle)', paddingTop: '0.75rem' } }, card.footer_note) : null
+                  ),
+
+                  // Privacy Notice
+                  privacy.heading ? h('div', {
+                    className: 'sharp-card',
+                    style: { marginTop: '1.5rem', padding: '1.5rem 1.75rem', background: 'var(--nt-sand-bg)', borderLeft: '4px solid var(--nt-green-deep)' }
+                  },
+                    h('h3', { style: { fontFamily: 'var(--font-serif)', fontSize: '1.1rem', color: 'var(--nt-green-deep)', margin: '0 0 0.5rem 0' } }, privacy.heading),
+                    h('p', { style: { fontSize: '0.88rem', color: 'var(--nt-charcoal)', lineHeight: 1.6, margin: 0 } }, privacy.text)
+                  ) : null
+                ),
+
+                // Right Column: Interactive Tally Contact Form
+                h('div', { className: 'contact-col contact-col--form' },
+                  h('div', { className: 'sharp-card contact-form-card' },
+                    h('h2', { style: { fontFamily: 'var(--font-serif)', fontSize: '1.65rem', color: 'var(--nt-charcoal)', margin: '0 0 0.5rem 0' } }, form.heading || 'Send Us a Message'),
+                    h('p', { style: { color: 'var(--nt-muted)', fontSize: '0.95rem', lineHeight: 1.6, marginBottom: '1.5rem' } }, form.intro || 'Fill out the form below and our volunteer team will direct your enquiry to the appropriate committee member.'),
+                    form.tally_id ? h('div', { className: 'tally-form-embed-wrapper' },
+                      h('iframe', {
+                        src: 'https://tally.so/embed/' + form.tally_id + '?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1',
+                        loading: 'lazy',
+                        width: '100%',
+                        height: '750',
+                        frameBorder: '0',
+                        scrolling: 'no',
+                        title: 'Contact The Friends of the Commons'
+                      })
+                    ) : null
+                  )
+                )
+
+              )
+            )
+          )
+        );
+      }
+    });
+
+    // =========================================================================
+    // 6. MASTER PAGES COLLECTION DISPATCHER
+    // =========================================================================
+    const PageDispatcherPreview = createClass({
+      render: function() {
+        const entry = this.props.entry;
+        if (!entry) return null;
+        const data = entry.get('data') ? entry.get('data').toJS() : {};
+
+        // Route by content indicators
+        if (data.safeguards || data.video_spotlight || data.march_showcase) {
+          return h(CampaignPreview, this.props);
+        }
+        if (data.hero || data.announcement || data.roles_compare || data.stats) {
+          return h(HomePreview, this.props);
+        }
+        if (data.objectives || data.founding_purpose || data.history_story || data.living_mosaic) {
+          return h(AboutPreview, this.props);
+        }
+        if (data.membership || data.donations || data.volunteering || data.pledge_panel) {
+          return h(SupportPreview, this.props);
+        }
+        if (data.committee_card || data.form || data.privacy_notice) {
+          return h(ContactPreview, this.props);
+        }
+        return h(CampaignPreview, this.props);
+      }
+    });
+
+    // =========================================================================
+    // 7. NEWS ARTICLES PREVIEW COMPONENT
+    // =========================================================================
     const NewsPreview = createClass({
       render: function() {
         const entry = this.props.entry;
-        const image = this.props.getAsset(entry.getIn(['data', 'image']));
+        if (!entry) return null;
+        const image = resolveAssetUrl(this.props.getAsset, entry.getIn(['data', 'image']), '');
         const title = entry.getIn(['data', 'title']) || 'Article Title';
         const category = entry.getIn(['data', 'category']) || 'Campaign Update';
         const date = entry.getIn(['data', 'date']) || '2026-10-02';
@@ -47,22 +1022,17 @@
         const pdfLabel = entry.getIn(['data', 'pdf_label']) || 'Download Document (PDF)';
 
         return h('div', { style: { padding: '2rem', fontFamily: 'Inter, sans-serif', maxWidth: '800px', margin: '0 auto', color: '#18221b' } },
-          // Header
           h('div', { style: { marginBottom: '1.5rem', borderBottom: '2px solid #d4ded8', paddingBottom: '1rem' } },
             h('span', { style: { fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 700, color: '#133926' } }, category),
             h('h1', { style: { fontFamily: '"Frank Ruhl Libre", serif', fontSize: '2.2rem', color: '#133926', margin: '0.5rem 0' } }, title),
             h('div', { style: { fontSize: '0.85rem', color: '#63726a' } }, 'Published: ' + date + ' • By ' + author)
           ),
-          // Featured Image
           image ? h('div', { style: { marginBottom: '1.5rem', border: '1px solid #d4ded8', background: '#fbf9f4' } },
-            h('img', { src: image.toString(), style: { width: '100%', maxHeight: '380px', objectFit: 'cover', display: 'block' } }),
+            h('img', { src: image, style: { width: '100%', maxHeight: '380px', objectFit: 'cover', display: 'block' } }),
             photoCredit ? h('div', { style: { padding: '0.5rem 0.75rem', fontSize: '0.8rem', color: '#63726a', borderTop: '1px solid #d4ded8' } }, photoCredit) : null
           ) : null,
-          // Summary Callout
           summary ? h('div', { style: { background: '#f5f8f6', borderLeft: '4px solid #133926', padding: '1rem 1.25rem', marginBottom: '1.5rem', fontSize: '1.05rem', fontStyle: 'italic', color: '#133926' } }, summary) : null,
-          // Article Body
           h('div', { className: 'prose', style: { fontSize: '1rem', lineHeight: '1.7', color: '#2d3732' } }, this.props.widgetFor('body')),
-          // PDF Attachment if present
           pdfUrl ? h('div', { style: { marginTop: '2rem', paddingTop: '1rem', borderTop: '1px solid #d4ded8' } },
             h('a', { href: pdfUrl, style: { display: 'inline-block', background: '#133926', color: '#ffffff', padding: '0.6rem 1.2rem', textDecoration: 'none', fontWeight: 600, fontSize: '0.9rem' } }, '📄 ' + pdfLabel)
           ) : null
@@ -70,7 +1040,30 @@
       }
     });
 
+    // =========================================================================
+    // 8. REGISTER ALL PREVIEW TEMPLATES WITH DECAP CMS
+    // =========================================================================
     CMS.registerPreviewTemplate("news", NewsPreview);
+    CMS.registerPreviewTemplate("campaign", CampaignPreview);
+    CMS.registerPreviewTemplate("home", HomePreview);
+    CMS.registerPreviewTemplate("about", AboutPreview);
+    CMS.registerPreviewTemplate("support", SupportPreview);
+    CMS.registerPreviewTemplate("contact", ContactPreview);
+    CMS.registerPreviewTemplate("pages", PageDispatcherPreview);
+
+    // 9. Floating shortcut button to open Web Media Optimiser in a new tab
+    window.addEventListener('DOMContentLoaded', () => {
+      const btn = document.createElement('a');
+      btn.href = '/admin/optimiser.html';
+      btn.target = '_blank';
+      btn.rel = 'noopener';
+      btn.innerHTML = '📷 Media Optimiser';
+      btn.title = 'Convert images to WebP before uploading';
+      btn.style.cssText = 'position:fixed; bottom:20px; right:20px; z-index:999999; background:#133926; color:#ffffff; padding:10px 16px; border-radius:30px; font-family:Inter,sans-serif; font-size:13px; font-weight:600; text-decoration:none; box-shadow:0 4px 14px rgba(0,0,0,0.25); display:flex; align-items:center; gap:6px; transition:transform 0.2s, background 0.2s;';
+      btn.onmouseover = () => { btn.style.background = '#22583b'; btn.style.transform = 'scale(1.05)'; };
+      btn.onmouseout = () => { btn.style.background = '#133926'; btn.style.transform = 'scale(1)'; };
+      document.body.appendChild(btn);
+    });
   </script>
 </body>
 </html>

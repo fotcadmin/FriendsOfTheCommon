@@ -1,0 +1,47 @@
+{
+  "masthead_kicker": "Get in Touch",
+  "masthead_title": "Contact the Friends",
+  "masthead_lead": "Have a question about our events, membership, or the freehold purchase campaign? Reach out to our volunteer trustee team.",
+  "committee_card": {
+    "image": "/assets/images/roger-john-nick.webp",
+    "caption": "The Friends Committee & Campaign Team walking through Tunbridge Wells Common.",
+    "heading": "The Friends Committee & Officers",
+    "contacts": [
+      {
+        "role": "Chairman",
+        "name": "Roger Barton",
+        "email": "chairman@fotcs.org.uk"
+      },
+      {
+        "role": "Community Bid & Campaign Lead",
+        "name": "John Barber",
+        "email": "johnspbarber@gmail.com"
+      },
+      {
+        "role": "Membership Secretary",
+        "name": "Chris Gurr",
+        "email": "membershipsecretary@fotcs.org.uk"
+      },
+      {
+        "role": "Treasurer",
+        "name": "Mike Trudel",
+        "email": "treasurer@fotcs.org.uk"
+      },
+      {
+        "role": "General Enquiries",
+        "name": "",
+        "email": "info@friendsofthecommons.co.uk"
+      }
+    ],
+    "footer_note": "The Friends of Tunbridge Wells & Rusthall Commons • Registered Charity"
+  },
+  "privacy_notice": {
+    "heading": "Privacy & Data Protection (UK GDPR)",
+    "text": "The Friends only holds personal details provided voluntarily for membership administration, newsletter distribution, pledge tracking, or volunteer coordination. We never sell or share personal data with commercial third parties."
+  },
+  "form": {
+    "heading": "Send Us a Message",
+    "intro": "Fill out the form below and our volunteer team will direct your enquiry to the appropriate committee member.",
+    "tally_id": "Ek4BMX"
+  }
+}

@@ -4,3 +4,11 @@
 /news-events       /news.html      301
 /news-events/      /news.html      301
 /news-events.html  /news.html      301
+/get-involved    /support-us.html    301!
+/get-involved/   /support-us.html    301!
+/get-involved.html /support-us.html   301!
+/support         /support-us.html    301!
+/support/        /support-us.html    301!
+/support.html    /support-us.html    301!
+/admin/optimizer.html /admin/optimiser.html 301
+/admin/optimizer     /admin/optimiser.html 301

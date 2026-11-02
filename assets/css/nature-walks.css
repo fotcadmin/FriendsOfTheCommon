@@ -7,7 +7,7 @@
   --nt-green: #004226;
   --nt-green-light: #eaf3ed;
   --nt-green-accent: #2e7d32;
-  --nt-terracotta: #c2593f;
+  --nt-terracotta: #a8422b;
   --nt-terracotta-light: #fdf5f2;
   --nt-sand: #f5f3ec;
   --nt-charcoal: #232a26;
@@ -289,6 +289,7 @@ body {
   margin-bottom: 1.5rem;
 }
 
+.trail-draw-box h3,
 .trail-draw-box h4 {
   font-family: var(--font-serif);
   color: var(--nt-green);
