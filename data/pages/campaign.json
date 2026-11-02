@@ -121,6 +121,12 @@
       "question": "How is my pledge data protected under UK GDPR?",
       "subtext": "Pledge Data Privacy Notice, data controller details, and your rights",
       "answer": "The Friends of Tunbridge Wells and Rusthall Commons is committed to protecting your personal information and ensuring complete transparency:\n\n* **1. Data Controller & Purpose:** Your details (name, email, postcode, optional telephone, and pledge amount) are recorded solely by the charity's Trustees to calculate collective community support, establish our financial capacity for purchase negotiations, and verify local backing for grant-matching bodies.\n* **2. Strict Confidentiality Guarantee:** Individual pledge sums, personal identities, and aggregate financial totals are held in strict confidence by the Trustees. To protect the charity's negotiating position, campaign pledge sums and financial targets are not disclosed to estate agents, vendors, or commercial third parties. Only broad, non-financial backing metrics (such as the breadth of local household participation across TN1, TN2 and TN4) may be referenced to demonstrate community mandate.\n* **3. No Financial Commitment Now:** Registering a pledge does not collect bank details or take money. You will only be contacted to transfer funds if and when a formal freehold acquisition contract is agreed and accepted by the Trustees.\n* **4. Your Rights & Data Erasure:** Under UK GDPR, you have the right to amend your pledge, request a copy of your entry, or ask for your personal details to be permanently erased at any time. To do so, email the Trustees at [secretary@friendsofthecommons.uk](mailto:secretary@friendsofthecommons.uk) or via our [Contact Page](contact.html). All pledge records will be securely deleted once the freehold campaign concludes."
+    },
+    {
+      "id": "faq-cookies",
+      "question": "Does this website use cookies or tracking?",
+      "subtext": "Cookie policy, local browser storage, and privacy standards",
+      "answer": "No. The Friends of the Commons website does not use tracking, advertising, or profiling cookies. Any data stored locally in your browser is strictly limited to essential functionality (such as interactive map display and filter preferences). Because we do not use non-essential tracking cookies, we do not require a cookie banner and do not collect your personal browsing data."
     }
   ]
 }
