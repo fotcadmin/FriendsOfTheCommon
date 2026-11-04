@@ -10,5 +10,11 @@
 /support         /support-us.html    301!
 /support/        /support-us.html    301!
 /support.html    /support-us.html    301!
+/sign-up         /support-us.html    301!
+/sign-up/        /support-us.html    301!
+/sign-up.html    /support-us.html    301!
+/signup          /support-us.html    301!
+/signup/         /support-us.html    301!
+/signup.html     /support-us.html    301!
 /admin/optimizer.html /admin/optimiser.html 301
 /admin/optimizer     /admin/optimiser.html 301

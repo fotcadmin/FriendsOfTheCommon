@@ -3,9 +3,9 @@
  * Main Client-side Interactive Script
  */
 
-/* Route legacy /get-involved URLs to the canonical Support page */
-(function redirectGetInvolved() {
-  if (/\/get-involved(\.html|\/)?$/i.test(window.location.pathname)) {
+/* Route legacy /get-involved & /sign-up URLs to the canonical Support page */
+(function redirectLegacyRoutes() {
+  if (/\/(get-involved|sign-up|signup)(\.html|\/)?$/i.test(window.location.pathname)) {
     window.location.replace('/support-us.html' + window.location.search + window.location.hash);
   }
 })();
